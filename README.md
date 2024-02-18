@@ -3,7 +3,6 @@
 
 &#xa0;
 
-  <!-- <a href="https://gaebalinfront.netlify.app">Demo</a> -->
 </div>
 
 <h1 align="center">메이플래닛 프론트엔드</h1>
@@ -31,6 +30,9 @@
 ## :dart: About
 
 메이플래닛 프론트엔드 레포지토리 입니다.
+
+데모 사이트 :
+<a href="https://maplanet-front.vercel.app/">Demo</a>
 
 <!-- [Demo](https://gaebalin-front-osh6006.vercel.app/) -->
 
