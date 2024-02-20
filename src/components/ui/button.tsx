@@ -3,9 +3,8 @@ import { ButtonHTMLAttributes } from 'react';
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   // 추가적인 프롭스가 필요한 경우 여기에 정의
-  color: 'main' | 'discord';
+  color: 'main' | 'discord' | '';
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'wide';
-  outline?: boolean;
 }
 
 const sizes = {
@@ -18,8 +17,8 @@ const sizes = {
 };
 
 const colors = {
-  main: 'border-Main bg-Main text-White',
-  discord: 'bg-discord border-discord'
+  main: ' bg-main text-White',
+  discord: 'bg-discord '
 };
 
 const Button: React.FunctionComponent<IButtonProps> = ({
@@ -27,20 +26,20 @@ const Button: React.FunctionComponent<IButtonProps> = ({
   color,
   size,
   disabled,
-  outline,
   className,
   ...props
 }) => {
   return (
     <button
       className={clsx(
-        'flex transform select-none items-center  justify-center gap-2 rounded-md text-lg font-semibold transition-all active:scale-95',
+        'flex transform select-none items-center justify-center gap-2 rounded-md text-lg font-semibold transition-all active:scale-95',
         disabled
-          ? 'bg-Disabled text-DisabledColor pointer-events-none border-transparent'
-          : color && colors[color],
-        size && sizes[size],
-        className,
-        outline && 'border-MediumGrey hover:bg-MediumGrey/30 border'
+          ? 'pointer-events-none border-transparent bg-slate-500 text-white'
+          : color
+            ? colors[color]
+            : '',
+        size ? sizes[size] : '',
+        className
       )}
       {...props}>
       {children}

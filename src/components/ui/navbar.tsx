@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Button from './button';
 import Link from 'next/link';
+import Icon from './icon';
 
 const Navbar = () => {
   return (
@@ -13,16 +14,19 @@ const Navbar = () => {
         </Link>
       </div>
       <div className='absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transform items-center'>
-        <Button size='sm' color='discord'>
+        <Button size='xs' color='discord'>
+          <Icon src={'/svgs/discord-icon.svg'} alt='discord' />
           <>메이플레닛 디스코드 채널</>
+          <Icon src={'/svgs/link.svg'} alt='link' />
         </Button>
       </div>
       <div className='flex items-center space-x-7 text-lg'>
         <Link href='/notice'>공지사항</Link>
         <Link href='/board1'>잠쩔</Link>
         <Link href='/board2'>겹사 의뢰</Link>
-        <Button size='sm' color='discord'>
-          <>로그인</>
+        <Button size='xs' color='discord'>
+          <Icon src={'/svgs/discord-icon.svg'} alt='discord' />
+          로그인
         </Button>
       </div>
     </nav>
