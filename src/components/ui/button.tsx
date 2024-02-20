@@ -1,17 +1,50 @@
-import DiscordIcon from './discord-icon';
+import clsx from 'clsx';
+import { ButtonHTMLAttributes } from 'react';
 
-interface ButtonProps {
-  text: string;
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  // 추가적인 프롭스가 필요한 경우 여기에 정의
+  color: 'main' | 'discord';
+  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'wide';
+  outline?: boolean;
 }
 
-const Button = ({ text }: ButtonProps) => {
+const sizes = {
+  xs: 'text-xs px-3 py-2',
+  sm: 'text-sm px-4 py-2',
+  md: 'text-base px-4 py-2',
+  lg: 'text-lg px-4 py-2',
+  xl: 'text-xl px-4 py-2',
+  wide: 'w-full px-1 py-2'
+};
+
+const colors = {
+  main: 'border-Main bg-Main text-White',
+  discord: 'bg-discord border-discord'
+};
+
+const Button: React.FunctionComponent<IButtonProps> = ({
+  children,
+  color,
+  size,
+  disabled,
+  outline,
+  className,
+  ...props
+}) => {
   return (
-    <>
-      <button className='flex-between flex items-center justify-center space-x-1 rounded-md bg-discord px-2 py-1 text-xs font-semibold text-white'>
-        <DiscordIcon />
-        <p className='mb-[1px]'>{text}</p>
-      </button>
-    </>
+    <button
+      className={clsx(
+        'flex transform select-none items-center  justify-center gap-2 rounded-md text-lg font-semibold transition-all active:scale-95',
+        disabled
+          ? 'bg-Disabled text-DisabledColor pointer-events-none border-transparent'
+          : color && colors[color],
+        size && sizes[size],
+        className,
+        outline && 'border-MediumGrey hover:bg-MediumGrey/30 border'
+      )}
+      {...props}>
+      {children}
+    </button>
   );
 };
 
