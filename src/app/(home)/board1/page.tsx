@@ -1,12 +1,12 @@
-interface CarryProps {}
+interface Board1Props {}
 
-const Carry = ( props : CarryProps ) => {
+const Board1 = ( props : Board1Props ) => {
   return (
     <div className='flex flex-col items-center justify-between '>
-      <div>Carry Page</div>
+      <div>Board1 Page</div>
       <div>Deploy Test!!</div>
     </div>
   )
 }
 
-export default Carry;
+export default Board1;

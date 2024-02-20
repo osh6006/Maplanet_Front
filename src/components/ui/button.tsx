@@ -1,8 +1,18 @@
+import DiscordIcon from './discord-icon';
 
-const Button = () => {
-  return (
-    <button className='bg-white text-black px-4 py-2 rounded-md'>로그인</button>
-  );
+interface ButtonProps {
+  text: string;
 }
+
+const Button = ({ text }: ButtonProps) => {
+  return (
+    <>
+      <button className='flex-between flex items-center justify-center space-x-1 rounded-md bg-discord px-2 py-1 text-xs font-semibold text-white'>
+        <DiscordIcon />
+        <p className='mb-[1px]'>{text}</p>
+      </button>
+    </>
+  );
+};
 
 export default Button;

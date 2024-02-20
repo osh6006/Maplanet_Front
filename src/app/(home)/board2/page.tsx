@@ -1,12 +1,12 @@
-interface RequestProps {}
+interface Board2Props {}
 
-const Request = ( props : RequestProps ) => {
+const Board2 = ( props : Board2Props ) => {
   return (
     <div className='flex flex-col items-center justify-between '>
-      <div>Request Page</div>
+      <div>Board2 Page</div>
       <div>Deploy Test!!</div>
     </div>
   )
 }
 
-export default Request;
+export default Board2;
