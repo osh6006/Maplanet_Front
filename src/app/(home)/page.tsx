@@ -25,7 +25,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
       <div>Home Page</div>
       <div>Deploy Test!!</div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col'>
+      <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-y-2 text-white'>
         <Controller
           name='meso'
           control={control}
@@ -55,6 +55,38 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
                       <Icon src='/svgs/x.svg' alt='money' />
                     </button>
                   }
+                />
+                {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}
+              </div>
+            );
+          }}
+        />
+
+        <Controller
+          name='title'
+          control={control}
+          rules={{
+            required: '메소는 필수로 입력해야 합니다.',
+            pattern: {
+              value: /^[0-9]*$/,
+              message: '숫자만 입력 가능합니다.'
+            }
+          }}
+          render={({ field: { value, onChange }, fieldState: { error, invalid } }) => {
+            const handleReset = () => {
+              onChange('');
+            };
+            return (
+              <div className='space-y-2'>
+                <Input
+                  label='제목'
+                  name='title'
+                  type='number'
+                  value={value}
+                  invalid={invalid}
+                  onChange={onChange}
+                  placeholder='제목을 입력해 주세요'
+                  labelRequired
                 />
                 {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}
               </div>
