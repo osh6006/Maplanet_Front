@@ -42,61 +42,51 @@ const Select: React.FunctionComponent<ISelectProps> = ({
   };
 
   return (
-    <div className='flex items-center justify-between '>
-      <label
+    <div ref={ref} className='text-lef relative inline-block w-full text-black '>
+      <button
+        type='button'
+        onClick={() => setIsOpen(!isOpen)}
         className={clsx(
-          ' mb-1 block font-medium',
-          labelRequired ? 'after:ml-1 after:text-warning after:content-["*"]' : ''
-        )}
-        htmlFor={name}>
-        {label}
-      </label>
-      <div ref={ref} className='text-lef relative inline-block w-full text-black '>
-        <button
-          type='button'
-          onClick={() => setIsOpen(!isOpen)}
-          className={clsx(
-            'flex h-[30px] w-full items-center justify-between rounded-md bg-white px-4 py-2 text-sm font-semibold focus:border-none focus:outline-none',
-            invalid ? 'focus:ring-2 focus:ring-warning' : 'focus:ring-2 focus:ring-main'
-          )}>
-          {value ? value : placeHolder}
-          <Icon src='/svgs/triangle.svg' alt='triangle' />
-        </button>
+          'flex h-[30px] w-full items-center justify-between rounded-md bg-white px-4 py-2 text-sm font-semibold focus:border-none focus:outline-none',
+          invalid ? 'focus:ring-2 focus:ring-warning' : 'focus:ring-2 focus:ring-main'
+        )}>
+        {value ? value : placeHolder}
+        <Icon src='/svgs/triangle.svg' alt='triangle' />
+      </button>
 
-        {isOpen && (
-          <div className='absolute right-0 mt-2  w-full overflow-hidden rounded-md border bg-transparent'>
-            {options?.map((option) => (
+      {isOpen && (
+        <div className='absolute right-0 mt-2  w-full overflow-hidden rounded-md border bg-transparent'>
+          {options?.map((option) => (
+            <div
+              key={option.value}
+              onClick={() => handleOptionClick(option)}
+              className='relative h-[38px] cursor-pointer bg-cover '>
+              <p
+                className={clsx(
+                  'absolute left-2 top-2 z-10 text-sm ',
+                  option.imgUrl ? 'text-white' : 'text-black'
+                )}>
+                {option.name}
+              </p>
               <div
-                key={option.value}
-                onClick={() => handleOptionClick(option)}
-                className='relative h-[38px] cursor-pointer bg-cover '>
-                <p
-                  className={clsx(
-                    'absolute left-2 top-2 z-10 text-sm ',
-                    option.imgUrl ? 'text-white' : 'text-black'
-                  )}>
-                  {option.name}
-                </p>
-                <div
-                  className={clsx(
-                    'absolute inset-0 w-full transition-all ',
-                    option.imgUrl ? 'blur-sm hover:blur-none' : 'bg-white hover:bg-slate-300 '
-                  )}
-                  style={{
-                    backgroundImage: `url(${option.imgUrl})`,
-                    // other styles
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'no-repeat',
-                    width: 'auto',
-                    height: 'auto'
-                  }}
-                />
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+                className={clsx(
+                  'absolute inset-0 w-full transition-all ',
+                  option.imgUrl ? 'blur-sm hover:blur-none' : 'bg-white hover:bg-slate-300 '
+                )}
+                style={{
+                  backgroundImage: `url(${option.imgUrl})`,
+                  // other styles
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                  backgroundRepeat: 'no-repeat',
+                  width: 'auto',
+                  height: 'auto'
+                }}
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

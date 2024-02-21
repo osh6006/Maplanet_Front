@@ -3,8 +3,10 @@
 import FormErrorMessage from '@/components/ui/form-error-message';
 import Icon from '@/components/ui/icon';
 import Input from '@/components/ui/input';
+import Label from '@/components/ui/label';
 import Select from '@/components/ui/select';
 import { IJamjjulPost } from '@/types';
+import clsx from 'clsx';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 interface IHomePageProps {}
@@ -32,15 +34,15 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
               message: '숫자만 입력 가능합니다.'
             }
           }}
-          render={({ field: { value, onChange }, fieldState: { error, invalid } }) => {
+          render={({ field: { value, name, onChange }, fieldState: { error, invalid } }) => {
             const handleReset = () => {
               onChange('');
             };
             return (
-              <div className='space-y-2'>
+              <div className='flex items-center justify-between space-y-2'>
+                <Label name={name} label='제목' required />
                 <Input
-                  label='meso'
-                  name='meso'
+                  name={name}
                   type='number'
                   value={value}
                   invalid={invalid}
@@ -68,11 +70,10 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
               message: '숫자만 입력 가능합니다.'
             }
           }}
-          render={({ field: { value, onChange }, fieldState: { error, invalid } }) => {
+          render={({ field: { value, onChange, name }, fieldState: { error, invalid } }) => {
             return (
               <div className='space-y-2'>
                 <Input
-                  label='제목'
                   name='title'
                   type='number'
                   value={value}
@@ -91,9 +92,10 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
           name='hunting_ground'
           control={control}
           rules={{ required: '사냥터를 선택해 주세요' }}
-          render={({ field: { value, onChange }, fieldState: { error, invalid } }) => {
+          render={({ field: { value, onChange, name }, fieldState: { error, invalid } }) => {
             return (
-              <div className='space-y-2'>
+              <div className='flex items-center justify-center space-y-2'>
+                <Label name={name} label='제목' required />
                 <Select
                   label='제목'
                   value={value}
