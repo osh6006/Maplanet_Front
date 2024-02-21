@@ -10,7 +10,14 @@ const Navbar = () => {
     <nav className='relative flex h-[65px] w-full justify-between bg-black px-[360px] text-white'>
       <div className='flex items-center space-x-4'>
         <Link href='/'>
-          <Image src='/images/logo.png' width={200} height={28} alt='logo' />
+          <Image
+            priority={true}
+            src='/images/logo.png'
+            width='0'
+            height='0'
+            alt='logo'
+            className='h-auto w-full'
+          />
         </Link>
       </div>
       <div className='absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transform items-center'>
