@@ -9,13 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        new: '#D92E2E',
         main: '#63B4FF',
-        discord: '#5865F2',
-        background: '#222222',
-        tableBackground: '#161616',
         warning: '#D92E2E',
         complete: '#FF0000',
-        new: '#D92E2E'
+        discord: '#5865F2',
+        background: '#222222',
+        tableBackground: '#161616'
       },
       fontSize: {
         header: '10px'
