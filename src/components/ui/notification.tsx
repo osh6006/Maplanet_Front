@@ -7,8 +7,8 @@ interface INotificationProps {
 
 const Notification: React.FunctionComponent<INotificationProps> = ({ content }) => {
   return (
-    <div className='fixed top-[65px] w-full bg-[#CE98B1] h-[40px] overflow-hidden'>
-      <div className='animate-slide-in-left h-[40px] flex items-center space-x-4 justify-center'>
+    <div className='fixed top-[60px] h-[40px] w-full overflow-hidden bg-[#CE98B1]'>
+      <div className='animate-slide-in-left flex h-[40px] items-center justify-center space-x-4'>
         <Icon src='/svgs/snail.svg' alt='snail' size={26} />
         {/* 디자인 폰트 사이즈가 너무 큰거 같아서 text-lg로 변경함 */}
         <div className='text-lg font-bold text-[#7C0747]'>

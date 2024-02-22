@@ -22,7 +22,7 @@ export default function Input({ name, type, icon, invalid, labelRequired, ...pro
         )}
         {...props}
       />
-      <div className='absolute bottom-2 end-2 flex items-center gap-x-1 '>{icon}</div>
+      <div className='absolute bottom-2 end-2 flex items-center gap-x-1'>{icon}</div>
     </div>
   );
 }

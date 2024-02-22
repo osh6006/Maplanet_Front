@@ -47,7 +47,7 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
                     placeholder='(만) 메소'
                     icon={
                       <button type='button' onClick={() => handleReset()}>
-                        <Icon src='/svgs/x.svg' alt='money' />
+                        <Icon src='/svgs/x.svg' alt='money' size={15} />
                       </button>
                     }
                   />
@@ -241,6 +241,31 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
                   </Button>
                 </div>
 
+                {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}
+              </div>
+            );
+          }}
+        />
+
+        <Controller
+          name='level'
+          control={control}
+          rules={{
+            required: '레벨 필수로 입력해야 합니다.'
+          }}
+          render={({ field: { value, onChange, name }, fieldState: { error, invalid } }) => {
+            return (
+              <div className='space-y-2'>
+                <Input
+                  name={name}
+                  type='text'
+                  value={value || ''}
+                  invalid={invalid}
+                  onChange={onChange}
+                  placeholder='제목을 입력해 주세요'
+                  labelRequired
+                  icon={<span className=' items-center text-[15px] leading-4 text-black'>LV</span>}
+                />
                 {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}
               </div>
             );

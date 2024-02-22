@@ -20,9 +20,7 @@ const config: Config = {
       fontSize: {
         header: '10px'
       },
-      padding: {
-        main: '360px'
-      },
+
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'

@@ -51,26 +51,26 @@ const Select: React.FunctionComponent<ISelectProps> = ({
           invalid ? 'focus:ring-2 focus:ring-warning' : 'focus:ring-2 focus:ring-main'
         )}>
         {value ? value : placeHolder}
-        <Icon src='/svgs/triangle.svg' alt='triangle' />
+        <Icon src='/svgs/triangle.svg' alt='triangle' size={15} />
       </button>
 
       {isOpen && (
-        <div className='absolute right-0 mt-2  w-full overflow-hidden rounded-md border bg-transparent'>
+        <ul className='absolute right-0 mt-2  w-full overflow-hidden rounded-md border bg-transparent'>
           {options?.map((option) => (
-            <div
+            <li
               key={option.value}
               onClick={() => handleOptionClick(option)}
               className='relative h-[38px] cursor-pointer bg-cover '>
               <p
                 className={clsx(
-                  'absolute left-2 top-2 z-10 text-sm ',
+                  'absolute left-2 top-2 z-[12] text-sm ',
                   option.imgUrl ? 'text-white' : 'text-black'
                 )}>
                 {option.name}
               </p>
               <div
                 className={clsx(
-                  'absolute inset-0 w-full transition-all ',
+                  'absolute inset-0 z-[10] w-full transition-all ',
                   option.imgUrl ? 'blur-sm hover:blur-none' : 'bg-white hover:bg-slate-300 '
                 )}
                 style={{
@@ -83,9 +83,9 @@ const Select: React.FunctionComponent<ISelectProps> = ({
                   height: 'auto'
                 }}
               />
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </div>
   );
