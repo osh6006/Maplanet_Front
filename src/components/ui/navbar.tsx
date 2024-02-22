@@ -7,17 +7,10 @@ import Icon from './icon';
 
 const Navbar = () => {
   return (
-    <nav className='relative flex h-[65px] w-full justify-between bg-black px-[360px] text-white'>
-      <div className='flex items-center space-x-4'>
+    <nav className='relative flex h-[65px] w-full justify-between bg-black px-[360px] '>
+      <div className='flex items-center'>
         <Link href='/'>
-          <Image
-            priority={true}
-            src='/images/logo.png'
-            width='0'
-            height='0'
-            alt='logo'
-            className='h-auto w-full'
-          />
+          <Image priority={true} src='/images/logo.png' width='200' height='50' alt='logo' />
         </Link>
       </div>
       <div className='absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transform items-center'>
@@ -27,7 +20,7 @@ const Navbar = () => {
           <Icon src={'/svgs/link.svg'} alt='link' />
         </Button>
       </div>
-      <div className='flex items-center space-x-7 text-lg'>
+      <div className='flex items-center space-x-7 whitespace-nowrap text-lg'>
         <Link href='/notice'>공지사항</Link>
         <Link href='/board1'>잠쩔</Link>
         <Link href='/board2'>겹사 의뢰</Link>

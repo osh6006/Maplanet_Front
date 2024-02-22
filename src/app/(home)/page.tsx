@@ -4,9 +4,9 @@ import FormErrorMessage from '@/components/ui/form-error-message';
 import Icon from '@/components/ui/icon';
 import Input from '@/components/ui/input';
 import Label from '@/components/ui/label';
+import Radio from '@/components/ui/radio';
 import Select from '@/components/ui/select';
 import { IJamjjulPost } from '@/types';
-import clsx from 'clsx';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 interface IHomePageProps {}
@@ -129,6 +129,29 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
                 />
                 {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}
               </div>
+            );
+          }}
+        />
+
+        <Controller
+          name='job'
+          control={control}
+          rules={{ required: '직업을 선택해 주세요' }}
+          render={({ field: { onChange, name }, fieldState: { error } }) => {
+            return (
+              <>
+                <Radio label={'전사'} name={name} id='전사' onChange={onChange} value={'전사'} />
+                <Radio
+                  label={'마법사'}
+                  name={name}
+                  id='마법사'
+                  onChange={onChange}
+                  value={'마법사'}
+                />
+                <Radio label={'궁수'} name={name} id='궁수' onChange={onChange} value={'궁수'} />
+                <Radio label={'도적'} name={name} id='도적' onChange={onChange} value={'도적'} />
+                {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}
+              </>
             );
           }}
         />
