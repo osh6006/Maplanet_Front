@@ -20,9 +20,21 @@ const config: Config = {
       fontSize: {
         header: '10px'
       },
+      padding: {
+        main: '360px'
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
+      },
+      animation: {
+        'slide-in-left': 'slide-in-left 20s infinite linear'
+      },
+      keyframes: {
+        'slide-in-left': {
+          '0%': { transform: 'translateX(65%)' },
+          '100%': { transform: 'translateX(-65%)' }
+        }
       }
     }
   },

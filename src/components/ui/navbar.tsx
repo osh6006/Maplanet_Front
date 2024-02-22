@@ -7,7 +7,7 @@ import Icon from './icon';
 
 const Navbar = () => {
   return (
-    <nav className='relative flex h-[65px] w-full justify-between bg-black px-[360px] text-white'>
+    <nav className='fixed flex h-[65px] w-full justify-between bg-black px-main text-white'>
       <div className='flex items-center space-x-4'>
         <Link href='/'>
           <Image src='/images/logo.png' width={200} height={28} alt='logo' />
@@ -15,9 +15,9 @@ const Navbar = () => {
       </div>
       <div className='absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transform items-center'>
         <Button size='xs' color='discord'>
-          <Icon src={'/svgs/discord-icon.svg'} alt='discord' />
+          <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15}/>
           <>메이플레닛 디스코드 채널</>
-          <Icon src={'/svgs/link.svg'} alt='link' />
+          <Icon src={'/svgs/link.svg'} alt='link' size={15}/>
         </Button>
       </div>
       <div className='flex items-center space-x-7 text-lg'>
@@ -25,7 +25,7 @@ const Navbar = () => {
         <Link href='/board1'>잠쩔</Link>
         <Link href='/board2'>겹사 의뢰</Link>
         <Button size='xs' color='discord'>
-          <Icon src={'/svgs/discord-icon.svg'} alt='discord' />
+          <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15}/>
           로그인
         </Button>
       </div>
