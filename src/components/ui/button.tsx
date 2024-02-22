@@ -17,7 +17,7 @@ const sizes = {
 };
 
 const colors = {
-  main: ' bg-main text-White',
+  main: 'bg-main text-White',
   discord: 'bg-discord ',
   gray: 'bg-tableBackground border'
 };
@@ -34,11 +34,8 @@ const Button: React.FunctionComponent<IButtonProps> = ({
     <button
       className={clsx(
         'flex transform select-none items-center justify-center gap-2 rounded-md text-lg font-semibold transition-all active:scale-95',
-        disabled
-          ? 'pointer-events-none border-transparent bg-slate-500 text-white'
-          : color
-            ? colors[color]
-            : '',
+        disabled ? 'pointer-events-none border-transparent bg-slate-500 text-white' : '',
+        color ? colors[color] : '',
         size ? sizes[size] : '',
         className
       )}
