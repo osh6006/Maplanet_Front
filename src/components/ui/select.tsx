@@ -74,6 +74,7 @@ const Select: React.FunctionComponent<ISelectProps> = ({
                   <>
                     <div className='flex items-center gap-x-2'>
                       <Badge
+                        size='select'
                         color={
                           option?.name?.split(' ')[0] === '2차' ? 'bg-teal-500' : 'bg-violet-500'
                         }>

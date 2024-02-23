@@ -1,13 +1,27 @@
 import clsx from 'clsx';
 
 interface IBadgeProps {
-  color: string;
   children: React.ReactNode;
+  size?: 'basic' | 'select' | 'card';
+  className?: string;
 }
 
-const Badge: React.FunctionComponent<IBadgeProps> = ({ color, children }) => {
+const sizes = {
+  basic: 'px-[24px] py-[4px] rounded-xl',
+  select: 'px-2 py-[1px]',
+  card: 'px-[12px] py-[4px] rounded-xl'
+};
+
+const Badge: React.FunctionComponent<IBadgeProps> = ({ size = 'basic', children, className }) => {
   return (
-    <span className={clsx('rounded-sm px-2 py-[1px] text-sm text-white', color)}>{children}</span>
+    <div
+      className={clsx(
+        'flex items-center justify-center gap-x-2 text-sm font-semibold text-white',
+        size ? sizes[size] : '',
+        className ? className : ''
+      )}>
+      {children}
+    </div>
   );
 };
 
