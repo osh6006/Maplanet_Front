@@ -15,7 +15,8 @@ const config: Config = {
         complete: '#FF0000',
         discord: '#5865F2',
         background: '#222222',
-        tableBackground: '#161616'
+        tableBackground: '#161616',
+        lightGray: '#444'
       },
       fontSize: {
         header: '10px'

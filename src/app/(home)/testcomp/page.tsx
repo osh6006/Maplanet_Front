@@ -12,6 +12,7 @@ import Select from '@/components/ui/select';
 import Button from '@/components/ui/button';
 import FormErrorMessage from '@/components/ui/form-error-message';
 import { filterJobList } from '@/util/util';
+import PostCard from '@/components/ui/post-card';
 
 const TestCompPage: React.FunctionComponent<any> = ({}) => {
   const { control, handleSubmit, watch } = useForm<IJamjjulPost>();
@@ -23,7 +24,7 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
   const jobWatch = watch('job') || null;
 
   return (
-    <>
+    <div className=''>
       <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-y-2 text-white'>
         <Controller
           name='meso'
@@ -310,11 +311,25 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
           }}
         />
 
-        <button type='submit' className='mt-10'>
+        <Button color='discord' size='xl' type='submit' className='mt-10'>
           test
-        </button>
+        </Button>
       </form>
-    </>
+
+      <PostCard
+        type='잠쩔'
+        date='2024-04-12'
+        title='1시간당 메소 150만에 4시간 해드립니다.'
+        meso='100,000,000'
+        subjob='스피어 맨'
+        map='죽은 나무의 숲 4'
+        time='4시간'
+        nickName='축지법 아저씨'
+        manner={44}
+        unManner={2}
+        view={20}
+      />
+    </div>
   );
 };
 
