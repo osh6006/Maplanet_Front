@@ -1,9 +1,11 @@
 'use client';
 
-import useOutsideClick from '@/hooks/use-outside-click';
 import clsx from 'clsx';
-import * as React from 'react';
+import { useState } from 'react';
+import useOutsideClick from '@/hooks/use-outside-click';
+
 import Icon from './icon';
+import Badge from './badge';
 
 interface IOption {
   value: string;
@@ -12,28 +14,24 @@ interface IOption {
 }
 
 interface ISelectProps {
-  label: string;
   value: string;
-  name: string;
-  labelRequired?: boolean;
   invalid: boolean;
   onChange: (...event: any[]) => void;
   placeHolder: string;
   options?: IOption[];
+  isJob?: boolean;
 }
 
 const Select: React.FunctionComponent<ISelectProps> = ({
-  label,
-  labelRequired,
-  name,
   value,
   invalid,
   placeHolder,
   options,
+  isJob,
   onChange
 }) => {
   const { isOpen, setIsOpen, ref } = useOutsideClick();
-  const [_, setSelectedOption] = React.useState<IOption>();
+  const [_, setSelectedOption] = useState<IOption>();
 
   const handleOptionClick = (option: IOption) => {
     setSelectedOption(option);
@@ -51,7 +49,9 @@ const Select: React.FunctionComponent<ISelectProps> = ({
           invalid ? 'focus:ring-2 focus:ring-warning' : 'focus:ring-2 focus:ring-main'
         )}>
         {value ? value : placeHolder}
-        <Icon src='/svgs/triangle.svg' alt='triangle' size={15} />
+        <div className={clsx('transition-all', isOpen ? 'rotate-[180deg]' : '')}>
+          <Icon src='/svgs/triangle.svg' alt='triangle' size={15} />
+        </div>
       </button>
 
       {isOpen && (
@@ -63,10 +63,20 @@ const Select: React.FunctionComponent<ISelectProps> = ({
               className='relative h-[38px] cursor-pointer bg-cover '>
               <p
                 className={clsx(
-                  'absolute left-2 top-2 z-[12] text-sm ',
+                  'absolute left-2 top-2 z-[20] text-sm ',
                   option.imgUrl ? 'text-white' : 'text-black'
                 )}>
-                {option.name}
+                {isJob ? (
+                  <div className='flex items-center gap-x-2'>
+                    <Badge
+                      color={option.name.split(' ')[0] === '2차' ? 'bg-teal-500' : 'bg-violet-500'}>
+                      {option.name.split(' ')[0]}
+                    </Badge>
+                    <p>{option.name.split(' ')[1]}</p>
+                  </div>
+                ) : (
+                  <>{option.name}</>
+                )}
               </p>
               <div
                 className={clsx(

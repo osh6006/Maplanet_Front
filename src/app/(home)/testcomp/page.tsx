@@ -7,11 +7,15 @@ import Input from '@/components/ui/input';
 import Label from '@/components/ui/label';
 import Radio from '@/components/ui/radio';
 import Select from '@/components/ui/select';
-import FormErrorMessage from '@/components/ui/form-error-message';
 import Button from '@/components/ui/button';
+import FormErrorMessage from '@/components/ui/form-error-message';
+import useJobList from '@/hooks/use-job-list';
+import clsx from 'clsx';
 
 const TestCompPage: React.FunctionComponent<any> = ({}) => {
   const { control, handleSubmit } = useForm<IJamjjulPost>();
+
+  const { selectedJob, filteredJobList, handleSelect } = useJobList();
 
   const onSubmit: SubmitHandler<IJamjjulPost> = (data) => {
     console.log(data);
@@ -46,7 +50,10 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
                     onChange={onChange}
                     placeholder='(만) 메소'
                     icon={
-                      <button type='button' onClick={() => handleReset()}>
+                      <button
+                        type='button'
+                        onClick={() => handleReset()}
+                        className={clsx(value ? 'block' : 'hidden')}>
                         <Icon src='/svgs/x.svg' alt='money' size={15} />
                       </button>
                     }
@@ -142,13 +149,10 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
               <div className='flex items-center justify-center space-y-2'>
                 <Label name={name} label='제목' required />
                 <Select
-                  label='제목'
                   value={value || ''}
-                  name='hunting_ground'
                   invalid={invalid}
                   onChange={onChange}
                   placeHolder='사냥터를 선택하세요'
-                  labelRequired
                   options={[
                     {
                       name: '죽은 나무의 숲',
@@ -171,6 +175,28 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
                       imgUrl: '/images/option-bg-4.png'
                     }
                   ]}
+                />
+                {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}
+              </div>
+            );
+          }}
+        />
+
+        <Controller
+          name='progress_time'
+          control={control}
+          rules={{ required: '사냥터를 선택해 주세요' }}
+          render={({ field: { value, onChange, name }, fieldState: { error, invalid } }) => {
+            return (
+              <div className='flex items-center justify-center space-y-2'>
+                <Label name={name} label='제목' required />
+                <Select
+                  value={value || ''}
+                  invalid={invalid}
+                  onChange={onChange}
+                  placeHolder='서브 직업을 선택하세요'
+                  options={filteredJobList}
+                  isJob
                 />
                 {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}
               </div>
