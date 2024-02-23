@@ -15,8 +15,10 @@ interface IPostCardProps {
   time: string;
   nickName: string;
   manner: number;
+  avatarUrl: string;
   unManner: number;
   view: number;
+  completed: boolean;
 }
 
 const PostCard: React.FunctionComponent<IPostCardProps> = ({
@@ -30,28 +32,40 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
   nickName,
   manner,
   unManner,
-  view
+  view,
+  avatarUrl,
+  completed
 }) => {
   return (
-    <div className='flex flex-col rounded-3xl  bg-[#161616] p-10 px-6'>
+    <div className='relative flex flex-col  rounded-3xl bg-[#161616] p-10 px-6'>
+      {completed ? (
+        <div className='absolute inset-0 z-30 flex items-center justify-center'>
+          <div className='relative flex h-full w-full items-center justify-center'>
+            <h1 className='z-10 text-3xl font-semibold'>완료</h1>
+            <div className='absolute inset-0 bg-black/90 blur-sm '></div>
+          </div>
+        </div>
+      ) : (
+        ''
+      )}
       <div className='w-fit'>
-        <Badge color='bg-main' size='basic'>
+        <Badge className='bg-main' size='basic'>
           {type}
         </Badge>
       </div>
       <time className='mt-4 font-medium text-gray-400'>{date}</time>
       <h1 className='my-2 text-xl font-semibold'>{title}</h1>
       <div className='my-4 flex flex-nowrap items-center gap-x-2'>
-        <Badge size='card' color='bg-[#444]'>
+        <Badge size='card' className='bg-[#444] text-yellow-400'>
           {meso}
         </Badge>
-        <Badge size='card' color='bg-[#444]'>
+        <Badge size='card' className='bg-red-600'>
           {subjob}
         </Badge>
-        <Badge size='card' color='bg-[#444]'>
+        <Badge size='card' className='bg-[#444]'>
           {map}
         </Badge>
-        <Badge size='card' color='bg-[#444]'>
+        <Badge size='card' className='bg-[#444]'>
           {time}
         </Badge>
       </div>
@@ -81,6 +95,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
 
       <div className='mt-6 flex items-center justify-between leading-3'>
         <div className='flex items-center gap-x-3 text-gray-400'>
+          {/* Avatar URL */}
           <Avatar imgUrl={faker.image.avatarGitHub()} size={35} />
           <p>{nickName}</p>
           <Icon src={'/svgs/maple.svg'} alt='manner' size={20} />

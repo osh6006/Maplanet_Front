@@ -328,6 +328,8 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
         manner={44}
         unManner={2}
         view={20}
+        avatarUrl=''
+        completed
       />
     </div>
   );
