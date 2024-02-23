@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <nav className='fixed z-50 flex h-[60px] w-full bg-black text-white'>
       <Inner>
-        <div className='flex items-center justify-between'>
+        <div className='flex h-full items-center justify-between'>
           <div className='flex items-center space-x-4'>
             <Link href='/'>
               <Image priority={true} src='/images/logo.png' width='200' height='50' alt='logo' />
