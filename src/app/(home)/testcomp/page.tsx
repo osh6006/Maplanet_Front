@@ -1,6 +1,8 @@
 'use client';
-import { IJamjjulPost } from '@/types';
+import clsx from 'clsx';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+
+import { IJamjjulPost, Job } from '@/types';
 
 import Icon from '@/components/ui/icon';
 import Input from '@/components/ui/input';
@@ -9,17 +11,16 @@ import Radio from '@/components/ui/radio';
 import Select from '@/components/ui/select';
 import Button from '@/components/ui/button';
 import FormErrorMessage from '@/components/ui/form-error-message';
-import useJobList from '@/hooks/use-job-list';
-import clsx from 'clsx';
+import { filterJobList } from '@/util/util';
 
 const TestCompPage: React.FunctionComponent<any> = ({}) => {
-  const { control, handleSubmit } = useForm<IJamjjulPost>();
-
-  const { selectedJob, filteredJobList, handleSelect } = useJobList();
+  const { control, handleSubmit, watch } = useForm<IJamjjulPost>();
 
   const onSubmit: SubmitHandler<IJamjjulPost> = (data) => {
     console.log(data);
   };
+
+  const jobWatch = watch('job') || null;
 
   return (
     <>
@@ -153,6 +154,7 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
                   invalid={invalid}
                   onChange={onChange}
                   placeHolder='사냥터를 선택하세요'
+                  disabled={false}
                   options={[
                     {
                       name: '죽은 나무의 숲',
@@ -183,35 +185,13 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
         />
 
         <Controller
-          name='progress_time'
-          control={control}
-          rules={{ required: '사냥터를 선택해 주세요' }}
-          render={({ field: { value, onChange, name }, fieldState: { error, invalid } }) => {
-            return (
-              <div className='flex items-center justify-center space-y-2'>
-                <Label name={name} label='제목' required />
-                <Select
-                  value={value || ''}
-                  invalid={invalid}
-                  onChange={onChange}
-                  placeHolder='서브 직업을 선택하세요'
-                  options={filteredJobList}
-                  isJob
-                />
-                {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}
-              </div>
-            );
-          }}
-        />
-
-        <Controller
           name='job'
           control={control}
           rules={{ required: '직업을 선택해 주세요' }}
           render={({ field: { onChange, name }, fieldState: { error } }) => {
             return (
               <>
-                <Radio label={'전사'} name={name} id='전사' onChange={onChange} value={'전사'} />
+                <Radio label={'전사'} name={name} id='전사' value={'전사'} onChange={onChange} />
                 <Radio
                   label={'마법사'}
                   name={name}
@@ -219,10 +199,42 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
                   onChange={onChange}
                   value={'마법사'}
                 />
-                <Radio label={'궁수'} name={name} id='궁수' onChange={onChange} value={'궁수'} />
                 <Radio label={'도적'} name={name} id='도적' onChange={onChange} value={'도적'} />
+                <Radio label={'궁수'} name={name} id='궁수' onChange={onChange} value={'궁수'} />
                 {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}
               </>
+            );
+          }}
+        />
+
+        <Controller
+          name='progress_time'
+          control={control}
+          rules={{ required: '서브 직업을 선택해 주세요' }}
+          disabled={!jobWatch ? true : false}
+          render={({
+            field: { value, onChange, name, disabled },
+            fieldState: { error, invalid }
+          }) => {
+            // 사용자가 체크박스로 1차 직업을 변경하는 경우 자동으로 2차 직업의 첫번째 값으로 변경
+            let newValue = value;
+            if (!filterJobList(jobWatch as Job).some((el: any) => el.value === value)) {
+              newValue = filterJobList(jobWatch as Job)[0]?.value;
+            }
+            return (
+              <div className='flex items-center justify-center space-y-2'>
+                <Label name={name} label='제목' required />
+                <Select
+                  value={newValue}
+                  invalid={invalid}
+                  onChange={onChange}
+                  placeHolder='서브 직업을 선택하세요'
+                  options={filterJobList(jobWatch as Job)}
+                  disabled={disabled}
+                  isJob
+                />
+                {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}
+              </div>
             );
           }}
         />
