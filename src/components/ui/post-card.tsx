@@ -37,7 +37,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
   completed
 }) => {
   return (
-    <div className='relative flex flex-col  rounded-3xl bg-[#161616] p-10 px-6'>
+    <div className='relative flex flex-col rounded-3xl bg-[#161616] p-10 px-6'>
       {completed ? (
         <div className='absolute inset-0 z-30 flex items-center justify-center'>
           <div className='relative flex h-full w-full items-center justify-center'>
