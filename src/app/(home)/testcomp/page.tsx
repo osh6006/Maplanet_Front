@@ -219,7 +219,7 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
             // 사용자가 체크박스로 1차 직업을 변경하는 경우 자동으로 2차 직업의 첫번째 값으로 변경
             let newValue = value;
             if (!filterJobList(jobWatch as Job).some((el: any) => el.value === value)) {
-              newValue = filterJobList(jobWatch as Job)[0]?.value;
+              newValue = '';
             }
             return (
               <div className='flex items-center justify-center space-y-2'>
