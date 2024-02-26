@@ -42,7 +42,7 @@ const Select: React.FunctionComponent<ISelectProps> = ({
   };
 
   return (
-    <div ref={ref} className='text-lef relative inline-block w-full text-black '>
+    <div ref={ref} className='relative inline-block w-full text-left text-black '>
       <button
         disabled={disabled}
         type='button'
