@@ -1,3 +1,4 @@
+'use client';
 import clsx from 'clsx';
 
 import useOutsideClick from '@/hooks/use-outside-click';

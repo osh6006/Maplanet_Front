@@ -1,23 +1,28 @@
-'use client';
-
-import Sort from './components/sort';
+import Sort from '../components/sort';
 import PostBanner from '@/components/ui/post-banner';
-import Search from './components/search';
+import Search from '../components/search';
 import PostCard from '@/components/ui/post-card';
-import Pagination from './components/pagination';
+import Pagination from '../components/pagination';
 
 interface IHelperBoardPageProps {}
 
-// TODO : get data
+// TODO : fetch data
 
-const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = (props) => {
+const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
+  searchParams
+}: {
+  searchParams?: {
+    query?: string;
+    page?: string;
+  };
+}) => {
   return (
     <div className=''>
       <PostBanner title='쩔 게시판' imgUrl='/images/banner.png' />
 
       <div className='mx-auto max-w-[500px] sm:max-w-[670px] lg:max-w-[1000px] xl:max-w-[1440px] xl:px-20'>
         <div className='mt-8 flex w-full flex-col justify-between gap-y-4 px-10 sm:flex-row sm:px-0'>
-          <Sort
+          {/* <Sort
             options={[
               {
                 name: '최신 순',
@@ -26,12 +31,12 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = (props) 
               },
               {
                 name: '가격 순',
-                value: 'recently',
+                value: 'recently  ',
                 icon: undefined
               }
             ]}
-          />
-          <Search />
+          /> */}
+          {/* <Search /> */}
         </div>
 
         <div className='mt-4 grid grid-cols-1 place-items-center gap-7 sm:grid-cols-2 sm:place-items-start lg:grid-cols-3 xl:grid-cols-4'>
@@ -54,7 +59,7 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = (props) 
             />
           ))}
         </div>
-        <Pagination totalPost={123} />
+        <Pagination totalPost={123} itemsPerPage={5} />
       </div>
     </div>
   );

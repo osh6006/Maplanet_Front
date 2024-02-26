@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Button from './button';
 import Link from 'next/link';
 import Icon from './icon';
@@ -13,14 +12,13 @@ const Navbar = () => {
         <div className='flex h-full items-center justify-between'>
           <div className='flex items-center space-x-4'>
             <Link href='/' className='text-2xl font-semibold '>
-              {/* <Image priority={true} src='/images/logo.png' width='200' height='50' alt='logo' /> */}
               매랜피플
             </Link>
           </div>
           <div className='absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transform items-center'>
             <Button size='xs' color='discord'>
               <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15} />
-              <>메이플레닛 디스코드 채널</>
+              <span>메이플레닛 디스코드 채널</span>
               <Icon src={'/svgs/link.svg'} alt='link' size={15} />
             </Button>
           </div>

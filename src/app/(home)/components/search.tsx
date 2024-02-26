@@ -123,7 +123,7 @@ const Search: React.FunctionComponent<ISearchProps> = (props) => {
             );
           }}
         />
-        <Button color='main' size='sm' className=''>
+        <Button color='main' size='sm' className='' type='submit' onClick={() => {}}>
           등록하기
         </Button>
       </div>

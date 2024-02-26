@@ -1,7 +1,8 @@
+'use client';
+
 import Avatar from './avatar';
 import Badge from './badge';
 
-import { faker } from '@faker-js/faker';
 import Icon from './icon';
 import Button from './button';
 
@@ -99,7 +100,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
         <div className='flex items-center gap-x-2 text-gray-400'>
           {/* Avatar URL */}
           <div className='flex items-center gap-x-1 text-nowrap text-sm font-semibold'>
-            <Avatar imgUrl={faker.image.avatarGitHub()} size={30} />
+            <Avatar imgUrl={'/svgs/snail.svg'} size={30} />
             <p className=''>{nickName}</p>
           </div>
 
@@ -115,9 +116,9 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
           </div>
         </div>
 
-        <div className='flex items-center gap-x-2 font-light'>
-          <Icon src={'/svgs/eyes.svg'} alt='view' size={15} />
-          <p>{view}</p>
+        <div className='flex items-center gap-x-1 font-light'>
+          <Icon src={'/svgs/eyes.svg'} alt='view' size={20} />
+          <p className='leading-3'>{view}</p>
         </div>
       </div>
     </div>
