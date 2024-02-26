@@ -27,7 +27,7 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
 
   return (
     <div className=''>
-      <PostBanner imgUrl='' />
+      <PostBanner title='테스트 배너' imgUrl='' />
       <Inner>
         <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-y-2 text-white'>
           <Controller
