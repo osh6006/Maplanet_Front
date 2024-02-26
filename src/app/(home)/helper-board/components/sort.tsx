@@ -32,9 +32,7 @@ const Sort: React.FunctionComponent<IFilterProps> = ({ options }) => {
   };
 
   return (
-    <div
-      className='relative inline-block  flex-col items-center gap-x-2 rounded-md bg-lightGray'
-      ref={ref}>
+    <div className='relative flex-col items-center gap-x-2 rounded-md bg-lightGray' ref={ref}>
       <button
         type='button'
         onClick={() => setIsOpen(!isOpen)}
@@ -48,7 +46,7 @@ const Sort: React.FunctionComponent<IFilterProps> = ({ options }) => {
       </button>
 
       {isOpen ? (
-        <ul className='absolute right-0 mt-2 w-full cursor-pointer rounded-md bg-white text-black '>
+        <ul className='absolute right-0 z-10 mt-2 w-full cursor-pointer rounded-md bg-white text-black '>
           {options?.map((option) => (
             <li
               key={option?.value}

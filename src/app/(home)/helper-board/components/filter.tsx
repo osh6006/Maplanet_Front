@@ -41,7 +41,7 @@ const Filter: React.FunctionComponent<IFilterProps> = ({
   return (
     <div
       ref={ref}
-      className='relative inline-block flex-col items-center gap-x-2 rounded-md bg-lightGray'>
+      className='relative inline-block w-full flex-col items-center gap-x-2 rounded-md bg-lightGray'>
       <button
         disabled={disabled}
         type='button'
@@ -56,7 +56,7 @@ const Filter: React.FunctionComponent<IFilterProps> = ({
       </button>
 
       {isOpen && (
-        <ul className='absolute left-0 mt-2 grid w-[300px] cursor-pointer grid-cols-3 overflow-hidden rounded-md bg-white text-black'>
+        <ul className='absolute left-0 z-10 mt-2 grid w-full cursor-pointer grid-cols-3 overflow-hidden rounded-md bg-white text-black sm:w-[300px]'>
           {options?.map((option) => (
             <li
               key={option?.value}

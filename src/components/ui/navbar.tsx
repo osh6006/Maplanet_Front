@@ -8,12 +8,13 @@ import Inner from './inner';
 
 const Navbar = () => {
   return (
-    <nav className='fixed z-50 flex h-[60px] w-full bg-black text-white'>
+    <nav className='fixed z-50 flex h-[60px] w-full bg-black px-10 text-white xl:px-0'>
       <Inner>
         <div className='flex h-full items-center justify-between'>
           <div className='flex items-center space-x-4'>
-            <Link href='/'>
-              <Image priority={true} src='/images/logo.png' width='200' height='50' alt='logo' />
+            <Link href='/' className='text-2xl font-semibold '>
+              {/* <Image priority={true} src='/images/logo.png' width='200' height='50' alt='logo' /> */}
+              매랜피플
             </Link>
           </div>
           <div className='absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transform items-center'>

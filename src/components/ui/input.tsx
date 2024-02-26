@@ -12,7 +12,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export default function Input({ name, type, icon, invalid, labelRequired, ...props }: InputProps) {
   return (
-    <div className='relative'>
+    <div className='relative w-full'>
       <div className='pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3'></div>
       <input
         id={name}
