@@ -42,13 +42,13 @@ const Select: React.FunctionComponent<ISelectProps> = ({
   };
 
   return (
-    <div ref={ref} className='relative inline-block w-full text-left text-black '>
+    <div ref={ref} className='text-lef relative inline-block w-full text-black '>
       <button
         disabled={disabled}
         type='button'
         onClick={() => setIsOpen(!isOpen)}
         className={clsx(
-          'flex h-[30px] w-full items-center justify-between rounded-md  px-4 py-2 text-sm font-semibold focus:border-none focus:outline-none',
+          'flex h-[30px] w-full items-center justify-between rounded-md px-4 py-2 text-sm font-semibold focus:border-none focus:outline-none',
           invalid ? 'focus:ring-2 focus:ring-warning' : 'focus:ring-2 focus:ring-main',
           disabled ? 'cursor-not-allowed bg-gray-500 text-gray-400' : 'bg-white'
         )}>

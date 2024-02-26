@@ -1,9 +1,9 @@
 'use client';
 
+import Sort from './components/sort';
 import Inner from '@/components/ui/inner';
 import PostBanner from '@/components/ui/post-banner';
-import * as React from 'react';
-import Filter from './components/filter';
+import Search from './components/search';
 
 interface IHelperBoardPageProps {}
 
@@ -13,8 +13,8 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = (props) 
       <PostBanner title='쩔 게시판' imgUrl='/images/banner.png' />
 
       <Inner>
-        <div className='mt-8 flex w-full justify-between'>
-          <Filter
+        <div className='mt-8 flex w-full justify-between '>
+          <Sort
             options={[
               {
                 name: '최신 순',
@@ -28,6 +28,7 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = (props) 
               }
             ]}
           />
+          <Search />
         </div>
       </Inner>
     </div>

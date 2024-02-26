@@ -17,7 +17,7 @@ export default function Input({ name, type, icon, invalid, labelRequired, ...pro
       <input
         id={name}
         className={clsx(
-          `h-[30px] w-full rounded-md border px-4 py-2 text-sm font-semibold text-black placeholder-gray-400 shadow-sm focus:border-main focus:outline-none 
+          `w-full rounded-md border px-4 py-2 text-sm font-semibold text-black placeholder-gray-400 shadow-sm focus:border-main focus:outline-none 
         focus:ring-2 focus:ring-main`
         )}
         {...props}

@@ -361,7 +361,7 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
           unManner={2}
           view={20}
           avatarUrl=''
-          completed
+          completed={false}
         />
       </Inner>
     </div>

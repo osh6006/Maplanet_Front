@@ -56,16 +56,16 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
       <time className='mt-4 font-medium text-gray-400'>{date}</time>
       <h1 className='my-2 text-xl font-semibold'>{title}</h1>
       <div className='my-4 flex flex-nowrap items-center gap-x-2'>
-        <Badge size='card' className='bg-[#444] text-yellow-400'>
+        <Badge size='card' className='text-yellow-400 bg-lightGray'>
           {meso}
         </Badge>
         <Badge size='card' className='bg-red-600'>
           {subjob}
         </Badge>
-        <Badge size='card' className='bg-[#444]'>
+        <Badge size='card' className='bg-lightGray'>
           {map}
         </Badge>
-        <Badge size='card' className='bg-[#444]'>
+        <Badge size='card' className='bg-lightGray'>
           {time}
         </Badge>
       </div>

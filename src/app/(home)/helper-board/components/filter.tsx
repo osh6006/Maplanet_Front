@@ -1,64 +1,72 @@
-import clsx from 'clsx';
+'use client';
 
-import useOutsideClick from '@/hooks/use-outside-click';
-import Icon from '@/components/ui/icon';
 import { useState } from 'react';
 
+import useOutsideClick from '@/hooks/use-outside-click';
+import clsx from 'clsx';
+import Icon from '@/components/ui/icon';
+
 interface IOption {
-  name: string;
   value: string;
-  icon?: React.ReactNode;
+  name: string;
+  imgUrl: string;
 }
 
 interface IFilterProps {
-  options: IOption[];
+  value: string;
+  placeHolder: string;
+  disabled?: boolean;
+  options?: IOption[];
+  onChange: (...event: any[]) => void;
 }
 
-const Filter: React.FunctionComponent<IFilterProps> = ({ options }) => {
+const Filter: React.FunctionComponent<IFilterProps> = ({
+  placeHolder,
+  options,
+  disabled,
+  onChange
+}) => {
   const { isOpen, setIsOpen, ref } = useOutsideClick();
-
   const [selectedOption, setSelectedOption] = useState<IOption>({
-    name: options[0]?.name || '노 필터',
-    value: options[0]?.value || '',
-    icon: options[0]?.icon || <></>
+    name: '',
+    value: '',
+    imgUrl: ''
   });
 
   const handleOptionClick = (option: IOption) => {
     setSelectedOption(option);
-
-    // TODO : filter URL
-
+    onChange(option.value);
     setIsOpen(false);
   };
-
-  console.log(options);
-
   return (
-    <div className='relative inline-block  flex-col items-center gap-x-2' ref={ref}>
+    <div
+      ref={ref}
+      className='relative inline-block flex-col items-center gap-x-2 rounded-md bg-lightGray'>
       <button
+        disabled={disabled}
         type='button'
         onClick={() => setIsOpen(!isOpen)}
         className={clsx(
-          'flex w-full min-w-32 items-center justify-between rounded-md border px-4 py-2 text-sm font-semibold'
+          'flex w-full items-center justify-between gap-x-5 rounded-md px-4 py-2 font-semibold'
         )}>
-        {selectedOption.name}
+        {selectedOption.name ? selectedOption.name : placeHolder}
         <div className={clsx('transition-all', isOpen ? 'rotate-[180deg]' : '')}>
           <Icon src='/svgs/triangle.svg' alt='triangle' size={15} />
         </div>
       </button>
 
-      {isOpen ? (
-        <ul className='absolute right-0 mt-2 w-full cursor-pointer rounded-md bg-white text-black '>
+      {isOpen && (
+        <ul className='absolute left-0 mt-2 grid w-[300px] cursor-pointer grid-cols-3 overflow-hidden rounded-md bg-white text-black'>
           {options?.map((option) => (
             <li
               key={option?.value}
               onClick={() => handleOptionClick(option)}
-              className='relative p-2 transition-colors hover:text-main'>
-              {option?.name}
+              className='relative whitespace-nowrap px-2 py-3 text-center transition-colors hover:bg-main hover:text-white'>
+              <>{option?.name}</>
             </li>
           ))}
         </ul>
-      ) : null}
+      )}
     </div>
   );
 };
