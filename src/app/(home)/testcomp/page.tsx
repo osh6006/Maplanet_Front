@@ -2,7 +2,7 @@
 import clsx from 'clsx';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { IJamjjulPost, Job } from '@/types';
+import { IHelperPost, Job } from '@/types';
 
 import Icon from '@/components/ui/icon';
 import Input from '@/components/ui/input';
@@ -17,13 +17,13 @@ import PostBanner from '@/components/ui/post-banner';
 import Inner from '@/components/ui/inner';
 
 const TestCompPage: React.FunctionComponent<any> = ({}) => {
-  const { control, handleSubmit, watch } = useForm<IJamjjulPost>();
+  const { control, handleSubmit, watch } = useForm<IHelperPost>();
 
-  const onSubmit: SubmitHandler<IJamjjulPost> = (data) => {
+  const onSubmit: SubmitHandler<IHelperPost> = (data) => {
     console.log(data);
   };
 
-  const jobWatch = watch('job') || null;
+  const jobWatch = watch('main_job') || null;
 
   return (
     <div className=''>
@@ -190,7 +190,7 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
           />
 
           <Controller
-            name='job'
+            name='main_job'
             control={control}
             rules={{ required: '직업을 선택해 주세요' }}
             render={({ field: { onChange, name }, fieldState: { error } }) => {
@@ -213,7 +213,7 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
           />
 
           <Controller
-            name='progress_time'
+            name='sub_job'
             control={control}
             rules={{ required: '서브 직업을 선택해 주세요' }}
             disabled={!jobWatch ? true : false}
