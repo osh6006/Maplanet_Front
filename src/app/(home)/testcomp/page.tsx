@@ -50,18 +50,23 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
                     <Label name={name} label='제목' required />
                     <Input
                       name={name}
-                      type='number'
+                      type='text'
                       value={value || ''}
                       invalid={invalid}
                       onChange={onChange}
                       placeholder='(만) 메소'
                       icon={
-                        <button
-                          type='button'
-                          onClick={() => handleReset()}
-                          className={clsx(value ? 'block' : 'hidden')}>
-                          <Icon src='/svgs/x.svg' alt='money' size={15} />
-                        </button>
+                        <div className='flex items-center gap-x-1'>
+                          <span className=' items-center text-[15px] leading-4 text-black'>
+                            (만) 메소
+                          </span>
+                          <button
+                            type='button'
+                            onClick={() => handleReset()}
+                            className={clsx(value ? 'block' : 'hidden')}>
+                            <Icon src='/svgs/x.svg' alt='money' size={15} />
+                          </button>
+                        </div>
                       }
                     />
                   </div>
@@ -126,6 +131,14 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
               pattern: {
                 value: /^[0-9]*$/,
                 message: '숫자만 입력 가능합니다.'
+              },
+              minLength: {
+                message: '최소 5글자 이상 입력해야 합니다.',
+                value: 5
+              },
+              maxLength: {
+                message: '30글자 이상은 입력이 불가합니다.',
+                value: 30
               }
             }}
             render={({ field: { value, onChange, name }, fieldState: { error, invalid } }) => {
@@ -227,19 +240,24 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
                 newValue = '';
               }
               return (
-                <div className='flex items-center justify-center space-y-2'>
-                  <Label name={name} label='제목' required />
-                  <Select
-                    value={newValue}
-                    invalid={invalid}
-                    onChange={onChange}
-                    placeHolder='서브 직업을 선택하세요'
-                    options={filterJobList(jobWatch as Job)}
-                    disabled={disabled}
-                    isJob
-                  />
-                  {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}
-                </div>
+                <>
+                  <div className='flex items-center justify-center space-y-2'>
+                    <Label name={name} label='제목' required />
+                    <Select
+                      value={newValue}
+                      invalid={invalid}
+                      onChange={onChange}
+                      placeHolder='서브 직업을 선택하세요'
+                      options={filterJobList(jobWatch as Job)}
+                      disabled={disabled}
+                      isJob
+                    />
+                    {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}
+                  </div>
+                  <span className='w-full text-right text-yellow'>
+                    *모든 쩔은 2차 전직부터 가능합니다.
+                  </span>
+                </>
               );
             }}
           />
@@ -252,6 +270,14 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
               pattern: {
                 value: /^[0-9]*$/,
                 message: '숫자만 입력 가능합니다.'
+              },
+              max: {
+                message: '최소 10Lv 이상 입력해야 합니다.',
+                value: 5
+              },
+              maxLength: {
+                message: '200Lv 이상은 입력이 불가능 합니다.',
+                value: 30
               }
             }}
             disabled={false}
@@ -294,7 +320,7 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
             name='level'
             control={control}
             rules={{
-              required: '레벨 필수로 입력해야 합니다.'
+              required: '레벨은 필수로 입력해야 합니다.'
             }}
             render={({ field: { value, onChange, name }, fieldState: { error, invalid } }) => {
               return (
