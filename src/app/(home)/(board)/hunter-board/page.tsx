@@ -1,3 +1,5 @@
+import { hunterBoardFilters, sortOptions } from '@/data/board';
+
 import Sort from '../components/sort';
 import Search from '../components/search';
 
@@ -23,54 +25,8 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
 
       <div className='mx-auto max-w-[500px] sm:max-w-[670px] lg:max-w-[1000px] xl:max-w-[1440px] xl:px-20'>
         <div className='mt-8 flex w-full flex-col justify-between gap-y-4 px-10 sm:flex-row sm:px-0'>
-          <Sort
-            options={[
-              {
-                name: '최신 순',
-                value: 'recently',
-                icon: undefined
-              },
-              {
-                name: '가격 순',
-                value: 'recently  ',
-                icon: undefined
-              }
-            ]}
-          />
-          <Search
-            filters={[
-              {
-                value: 'searchMeso',
-                name: '메소',
-                imgUrl: ''
-              },
-              {
-                value: 'searchReportKind',
-                name: '겹사 종류',
-                imgUrl: ''
-              },
-              {
-                value: 'searchTitle',
-                name: '제목',
-                imgUrl: ''
-              },
-              {
-                value: 'searchRequestNickname',
-                name: '닉네임',
-                imgUrl: ''
-              },
-              {
-                value: 'searchPlaceTheifNickname',
-                name: '레벨',
-                imgUrl: ''
-              },
-              {
-                value: 'searchDiscordName',
-                name: '디스코드 닉네임',
-                imgUrl: ''
-              }
-            ]}
-          />
+          <Sort options={sortOptions} />
+          <Search filters={hunterBoardFilters} />
         </div>
 
         <div className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 sm:place-items-start lg:grid-cols-3 xl:grid-cols-4'>

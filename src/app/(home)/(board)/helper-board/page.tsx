@@ -3,6 +3,7 @@ import PostBanner from '@/app/(home)/(board)/components/post-banner';
 import Search from '../components/search';
 import PostCard from '@/app/(home)/(board)/components/post-card';
 import Pagination from '../components/pagination';
+import { helperBoardFilters, sortOptions } from '@/data/board';
 
 interface IHelperBoardPageProps {}
 
@@ -19,75 +20,13 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
   return (
     <main>
       <PostBanner title='쩔 게시판' imgUrl='/images/banner.png' />
-
       <div className='mx-auto max-w-[500px] sm:max-w-[670px] lg:max-w-[1000px] xl:max-w-[1440px] xl:px-20'>
         <div className='mt-8 flex w-full flex-col justify-between gap-y-4 px-10 sm:flex-row sm:px-0'>
-          <Sort
-            options={[
-              {
-                name: '최신 순',
-                value: 'recently',
-                icon: undefined
-              },
-              {
-                name: '가격 순',
-                value: 'recently  ',
-                icon: undefined
-              }
-            ]}
-          />
-          <Search
-            filters={[
-              {
-                value: 'searchMeso',
-                name: '메소',
-                imgUrl: ''
-              },
-              {
-                value: 'searchTitle',
-                name: '제목',
-                imgUrl: ''
-              },
-              {
-                value: 'searchNickname',
-                name: '닉네임',
-                imgUrl: ''
-              },
-              {
-                value: 'searchHuntingGround',
-                name: '사냥터',
-                imgUrl: ''
-              },
-              {
-                value: 'searchLevel',
-                name: '레벨',
-                imgUrl: ''
-              },
-              {
-                value: 'searchSubJob',
-                name: '서브 직업',
-                imgUrl: ''
-              },
-              {
-                value: 'searchProgressKind',
-                name: '진행 상태',
-                imgUrl: ''
-              },
-              {
-                value: 'searchProgressTime',
-                name: '진행 시간',
-                imgUrl: ''
-              },
-              {
-                value: 'searchDiscordName',
-                name: '디스코드 닉네임',
-                imgUrl: ''
-              }
-            ]}
-          />
+          <Sort options={sortOptions} />
+          <Search filters={helperBoardFilters} />
         </div>
 
-        <div className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 sm:place-items-start lg:grid-cols-3 xl:grid-cols-4'>
+        <ul className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 sm:place-items-start lg:grid-cols-3 xl:grid-cols-4'>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((el) => (
             <PostCard
               type='잠쩔'
@@ -107,7 +46,7 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
               key={el}
             />
           ))}
-        </div>
+        </ul>
         <Pagination totalPost={123} itemsPerPage={5} />
       </div>
     </main>
