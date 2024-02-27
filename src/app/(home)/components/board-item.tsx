@@ -29,7 +29,7 @@ const BoardItem: React.FunctionComponent<IBoardItemProps> = (props) => {
   // 쩔, 겹사 보드
   if (props.category === '쩔' || props.category === '겹사') {
     return (
-      <li className='flex h-[94px] w-full list-none flex-col justify-center gap-1 rounded-xl bg-tableBackground p-3 '>
+      <li className='flex w-full list-none flex-col justify-center gap-1 rounded-xl bg-tableBackground px-4 py-4'>
         {/* 첫번째 내용 */}
         <div className='flex'>
           {/* 프로필 */}
@@ -45,7 +45,7 @@ const BoardItem: React.FunctionComponent<IBoardItemProps> = (props) => {
         </div>
 
         {/* 두번째 내용 */}
-        <div className='text-base'>1 시간당 메소 150만에 4시간 해드립니다</div>
+        <div className='my-2 text-base'>1 시간당 메소 150만에 4시간 해드립니다</div>
 
         {/* 세번째 내용 */}
         <div className='flex'>
@@ -53,7 +53,7 @@ const BoardItem: React.FunctionComponent<IBoardItemProps> = (props) => {
             <Icon src='/svgs/money.svg' alt='money' size={14} />
             <span className='text-sm text-[#ff6666]'>{addCommasToCost(props.cost)}</span>
           </div>
-          <div className='flex items-center gap-8 text-xs text-[#cecece]'>
+          <div className='flex items-center gap-8 text-sm text-[#cecece]'>
             <div className='flex items-center gap-1'>
               <Icon src='/svgs/잠쩔.svg' alt='잠쩔' size={12} />
               잠쩔
