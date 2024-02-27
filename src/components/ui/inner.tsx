@@ -5,7 +5,7 @@ interface IInnerProps {
 }
 
 const Inner: React.FunctionComponent<IInnerProps> = ({ children }) => {
-  return <div className='mx-auto flex w-full max-w-[1200px] justify-between px-4'>{children}</div>;
+  return <div className='mx-auto w-full  max-w-[1200px] '>{children}</div>;
 };
 
 export default Inner;

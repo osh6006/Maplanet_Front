@@ -1,21 +1,26 @@
-import useSWR from 'swr'
+import { jobList } from '@/data/job';
+import { Job } from '@/types';
 
-const url = 'http://13.209.210.215:3000/main';
-const fetcher = (url: string) => fetch(url).then(res => res.json())
+export const filterJobList = (job?: Job | null) => {
+  if (job) {
+    const filteredArr = jobList?.filter((el) => el[job])[0];
 
-interface FetchMainpageDataResult {
-  data: any;
-  isLoading: boolean;
-  error: boolean;
-}
+    const result: any[] = [];
+    if (filteredArr) {
+      for (const value of Object?.values(filteredArr)) {
+        for (const [key, subValue] of Object?.entries<string[]>(value)) {
+          subValue.forEach((arrayValue) => {
+            result.push({
+              name: `${key} ${arrayValue}`,
+              value: arrayValue
+            });
+          });
+        }
+      }
+    }
 
-// 메인페이지 쩔 데이터 가져오기
-export const FetchMainPageData = (): FetchMainpageDataResult => {
-  const { data, error, isLoading } = useSWR(`${url}`, fetcher)
-
-  return {
-    data,
-    isLoading,
-    error,
+    return result;
   }
-}
+
+  return [];
+};

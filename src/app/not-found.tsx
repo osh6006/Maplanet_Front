@@ -23,7 +23,7 @@ const NotFound: React.FunctionComponent<Props> = (props) => {
         <Button size='md' color='main' onClick={() => router.push('/')}>
           메인
         </Button>
-        <Button size='md' color='' className='bg-[#7e7e7e]' onClick={() => router.back()}>
+        <Button size='md' color='gray' onClick={() => router.back()}>
           이전 페이지
         </Button>
       </div>
