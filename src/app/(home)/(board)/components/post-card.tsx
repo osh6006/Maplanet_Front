@@ -103,7 +103,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
           onClick={() => {
             // TODO : Move Profile
           }}>
-          <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={15} />
+          <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={20} />
           1:1 대화
         </Button>
       </div>

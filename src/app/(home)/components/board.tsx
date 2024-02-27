@@ -160,7 +160,7 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category, bgImage }) => {
       </div>
 
       {/* 아이템 리스트 컴포넌트*/}
-      <ul className='mt-[17px] flex flex-col justify-around gap-[13px]'>
+      <ul className='mt-[17px] flex  flex-col justify-around gap-[13px]'>
         {filteredData[0].items.map((item) => {
           return <BoardItem key={item.id} category={category} {...item} />;
         })}

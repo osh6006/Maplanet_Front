@@ -7,6 +7,7 @@ import Filter from './filter';
 import Icon from '@/components/ui/icon';
 import Input from '@/components/ui/input';
 import Button from '@/components/ui/button';
+import Link from 'next/link';
 
 interface IFilter {
   name: string;
@@ -109,6 +110,11 @@ const Search: React.FunctionComponent<ISearchProps> = ({ filters }) => {
         <Button color='main' size='md' className='' type='submit'>
           검색
         </Button>
+        {/* <Link href={'/write'}>
+          <Button color='main' size='md' className='text-white' type='button'>
+            새 글
+          </Button>
+        </Link> */}
       </div>
     </form>
   );
