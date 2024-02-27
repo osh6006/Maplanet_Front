@@ -5,6 +5,7 @@ import Badge from '../../../../components/ui/badge';
 
 import Icon from '../../../../components/ui/icon';
 import Button from '../../../../components/ui/button';
+import InlineProfile from '@/components/ui/inline-profile';
 
 interface IPostCardProps {
   type: string;
@@ -108,25 +109,12 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
       </div>
 
       <div className='mt-6 flex items-center justify-between '>
-        <div className='flex items-center gap-x-2 text-gray-400'>
-          {/* Avatar URL */}
-          <div className='flex items-center gap-x-1 text-nowrap text-sm font-semibold'>
-            <Avatar imgUrl={'/svgs/snail.svg'} size={30} />
-            <p>{discordNickName}</p>
-          </div>
-
-          <div className='flex items-center gap-x-1'>
-            <Icon src={'/svgs/maple.svg'} alt='manner' size={15} />
-            <span>·</span>
-            <p>{manner}</p>
-          </div>
-          <div className='flex items-center gap-x-1'>
-            <Icon src={'/svgs/un-manner.svg'} alt='unmanner' size={15} />
-            <span>·</span>
-            <p>{unManner}</p>
-          </div>
-        </div>
-
+        <InlineProfile
+          imgUrl={avatarUrl}
+          manner={manner}
+          unManner={unManner}
+          discordNickName={discordNickName!}
+        />
         <div className='flex items-center gap-x-1 font-light'>
           <Icon src={'/svgs/eyes.svg'} alt='view' size={20} />
           <p className='leading-3'>{view}</p>
