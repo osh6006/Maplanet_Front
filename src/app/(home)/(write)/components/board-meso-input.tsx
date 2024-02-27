@@ -29,9 +29,9 @@ const BoardMesoInput: React.FunctionComponent<IBoardMesoInputProps> = ({ control
           onChange('');
         };
         return (
-          <div className='flex-col'>
+          <div className='flex-col '>
             <div className='flex justify-between gap-y-2'>
-              <Label name={name} label='제목' required className='flex-1' />
+              <Label name={name} label='메소' required className='flex-1' />
               <div className='space-y-4'>
                 <Input
                   name={name}
@@ -42,9 +42,7 @@ const BoardMesoInput: React.FunctionComponent<IBoardMesoInputProps> = ({ control
                   placeholder='(만) 메소'
                   icon={
                     <div className='flex items-center gap-x-1'>
-                      <span className=' items-center text-[15px] leading-4 text-black'>
-                        (만) 메소
-                      </span>
+                      <span className=' items-center text-[15px] text-black'>(만) 메소</span>
                       <button
                         type='button'
                         onClick={() => handleReset()}
@@ -103,7 +101,9 @@ const BoardMesoInput: React.FunctionComponent<IBoardMesoInputProps> = ({ control
                 </div>
               </div>
             </div>
-            {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}
+            <div className='mt-2'>
+              {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}
+            </div>
           </div>
         );
       }}
