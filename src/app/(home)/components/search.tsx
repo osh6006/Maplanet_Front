@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import Filter from './filter';
@@ -10,16 +11,38 @@ import Button from '@/components/ui/button';
 interface ISearchProps {}
 
 const Search: React.FunctionComponent<ISearchProps> = (props) => {
-  const { control, handleSubmit, watch } = useForm<{
-    filter: string;
-    contents: string;
+  const { replace, push } = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const { control, handleSubmit, resetField } = useForm<{
+    key: string;
+    value: string;
   }>();
 
   const onSubmit: SubmitHandler<{
-    filter: string;
-    contents: string;
-  }> = (data) => {
-    console.log(data);
+    key: string;
+    value: string;
+  }> = async (data) => {
+    if (data.key && data.value) {
+      const params = new URLSearchParams(searchParams);
+
+      const keyArr: string[] = [];
+      params.forEach((_, key) => {
+        if (key !== data.key) {
+          keyArr.push(key);
+        }
+      });
+
+      keyArr.forEach((key) => {
+        params.delete(key);
+      });
+
+      resetField('value');
+      params.set('page', '1');
+      params.set(data.key, data.value);
+      push(`${pathname}?${params.toString()}`);
+    }
   };
 
   return (
@@ -27,7 +50,10 @@ const Search: React.FunctionComponent<ISearchProps> = (props) => {
       onSubmit={handleSubmit(onSubmit)}
       className='flex flex-col items-center gap-x-2 gap-y-4 sm:flex-row'>
       <Controller
-        name='filter'
+        name='key'
+        rules={{
+          required: '필터를 선택 안함'
+        }}
         control={control}
         render={({ field: { value, onChange, disabled } }) => {
           return (
@@ -55,11 +81,6 @@ const Search: React.FunctionComponent<ISearchProps> = (props) => {
                   {
                     value: 'searchHuntingGround',
                     name: '사냥터',
-                    imgUrl: ''
-                  },
-                  {
-                    value: 'searchNickname',
-                    name: '닉네임',
                     imgUrl: ''
                   },
                   {
@@ -97,7 +118,7 @@ const Search: React.FunctionComponent<ISearchProps> = (props) => {
 
       <div className='flex w-full items-center gap-x-2 sm:w-auto'>
         <Controller
-          name='contents'
+          name='value'
           control={control}
           rules={{
             required: '제목은 필수로 입력해야 합니다.'
@@ -123,8 +144,8 @@ const Search: React.FunctionComponent<ISearchProps> = (props) => {
             );
           }}
         />
-        <Button color='main' size='sm' className='' type='submit' onClick={() => {}}>
-          등록하기
+        <Button color='main' size='md' className='' type='submit' onClick={() => {}}>
+          검색
         </Button>
       </div>
     </form>

@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 import useOutsideClick from '@/hooks/use-outside-click';
 import clsx from 'clsx';
@@ -16,7 +17,7 @@ interface IFilterProps {
   value: string;
   placeHolder: string;
   disabled?: boolean;
-  options?: IOption[];
+  options: IOption[];
   onChange: (...event: any[]) => void;
 }
 
@@ -24,20 +25,33 @@ const Filter: React.FunctionComponent<IFilterProps> = ({
   placeHolder,
   options,
   disabled,
-  onChange
+  onChange,
+  value
 }) => {
   const { isOpen, setIsOpen, ref } = useOutsideClick();
-  const [selectedOption, setSelectedOption] = useState<IOption>({
-    name: '',
-    value: '',
-    imgUrl: ''
-  });
+  const [selectedOption, setSelectedOption] = useState<IOption>();
+  const searchParams = useSearchParams();
 
   const handleOptionClick = (option: IOption) => {
-    setSelectedOption(option);
-    onChange(option.value);
-    setIsOpen(false);
+    if (selectedOption?.value) {
+      const params = new URLSearchParams(searchParams);
+      params.delete(selectedOption?.value!);
+      setSelectedOption(option);
+      onChange(option.value);
+      setIsOpen(false);
+    }
   };
+
+  useEffect(() => {
+    setSelectedOption({
+      name: options[0].name || '',
+      value: options[0].value || '',
+      imgUrl: options[0].imgUrl || ''
+    });
+
+    onChange(options[0].value);
+  }, []);
+
   return (
     <div
       ref={ref}
@@ -49,7 +63,7 @@ const Filter: React.FunctionComponent<IFilterProps> = ({
         className={clsx(
           'flex w-full items-center justify-between gap-x-5 rounded-md px-4 py-2 font-semibold'
         )}>
-        {selectedOption.name ? selectedOption.name : placeHolder}
+        {selectedOption?.name ? selectedOption.name : placeHolder}
         <div className={clsx('transition-all', isOpen ? 'rotate-[180deg]' : '')}>
           <Icon src='/svgs/triangle.svg' alt='triangle' size={15} />
         </div>
@@ -59,10 +73,10 @@ const Filter: React.FunctionComponent<IFilterProps> = ({
         <ul className='absolute left-0 z-10 mt-2 grid w-full cursor-pointer grid-cols-3 overflow-hidden rounded-md bg-white text-black sm:w-[300px]'>
           {options?.map((option) => (
             <li
-              key={option?.value}
+              key={option.value}
               onClick={() => handleOptionClick(option)}
               className='relative whitespace-nowrap px-2 py-3 text-center transition-colors hover:bg-main hover:text-white'>
-              <>{option?.name}</>
+              <>{option.name}</>
             </li>
           ))}
         </ul>

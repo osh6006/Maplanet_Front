@@ -74,7 +74,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
         </Badge>
       </div>
 
-      <div className='flex items-center justify-between gap-x-2 '>
+      <div className='flex items-center justify-between gap-x-2  text-nowrap'>
         <Button
           color='lightGray'
           size='card'

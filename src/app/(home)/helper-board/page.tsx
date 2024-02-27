@@ -6,8 +6,6 @@ import Pagination from '../components/pagination';
 
 interface IHelperBoardPageProps {}
 
-// TODO : fetch data
-
 const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
   searchParams
 }: {
@@ -16,13 +14,15 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
     page?: string;
   };
 }) => {
+  // TODO : fetch data using searchParams
+
   return (
     <div className=''>
       <PostBanner title='쩔 게시판' imgUrl='/images/banner.png' />
 
       <div className='mx-auto max-w-[500px] sm:max-w-[670px] lg:max-w-[1000px] xl:max-w-[1440px] xl:px-20'>
         <div className='mt-8 flex w-full flex-col justify-between gap-y-4 px-10 sm:flex-row sm:px-0'>
-          {/* <Sort
+          <Sort
             options={[
               {
                 name: '최신 순',
@@ -35,11 +35,11 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
                 icon: undefined
               }
             ]}
-          /> */}
-          {/* <Search /> */}
+          />
+          <Search />
         </div>
 
-        <div className='mt-4 grid grid-cols-1 place-items-center gap-7 sm:grid-cols-2 sm:place-items-start lg:grid-cols-3 xl:grid-cols-4'>
+        <div className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 sm:place-items-start lg:grid-cols-3 xl:grid-cols-4'>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((el) => (
             <PostCard
               type='잠쩔'
