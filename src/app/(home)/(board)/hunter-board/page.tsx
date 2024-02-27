@@ -18,7 +18,7 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
   // TODO : fetch data using searchParams
 
   return (
-    <div className=''>
+    <main>
       <PostBanner title='겹사 의뢰' imgUrl='/images/banner.png' />
 
       <div className='mx-auto max-w-[500px] sm:max-w-[670px] lg:max-w-[1000px] xl:max-w-[1440px] xl:px-20'>
@@ -83,7 +83,8 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
               subjob='스피어 맨'
               map='죽은 나무의 숲 4'
               time='4시간'
-              nickName='축지법 아저씨'
+              badges={['타락파워전사']}
+              discordNickName='축지법 아저씨'
               manner={44}
               unManner={2}
               view={20}
@@ -95,7 +96,7 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
         </div>
         <Pagination totalPost={123} itemsPerPage={5} />
       </div>
-    </div>
+    </main>
   );
 };
 

@@ -11,15 +11,17 @@ interface IPostCardProps {
   date: string;
   title: string;
   meso: string;
-  subjob: string;
-  map: string;
   time: string;
-  nickName: string;
   manner: number;
-  avatarUrl: string;
   unManner: number;
   view: number;
+  avatarUrl: string;
   completed: boolean;
+  map?: string;
+  subjob?: string;
+  mapleNickName?: string;
+  discordNickName?: string;
+  badges?: string[];
 }
 
 const PostCard: React.FunctionComponent<IPostCardProps> = ({
@@ -30,12 +32,14 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
   subjob,
   map,
   time,
-  nickName,
+  mapleNickName,
+  discordNickName,
   manner,
   unManner,
   view,
   avatarUrl,
-  completed
+  completed,
+  badges
 }) => {
   return (
     <div
@@ -57,7 +61,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
           <Icon src='/svgs/hunt.svg' size={20} alt='meso' />
           {type}
         </Badge>
-        <time className='font-medium text-gray-400'>{'3일 전'}</time>
+        <time className='font-medium text-gray-400'>{date}</time>
       </div>
 
       <h1 className='my-2 text-xl font-semibold'>{title}</h1>
@@ -66,15 +70,11 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
           <Icon src='/svgs/money.svg' size={20} alt='meso' />
           {meso}
         </Badge>
-        <Badge size='card' className='bg-lightGray'>
-          {subjob}
-        </Badge>
-        <Badge size='card' className='bg-lightGray'>
-          {map}
-        </Badge>
-        <Badge size='card' className='bg-lightGray'>
-          {time}
-        </Badge>
+        {badges?.map((el) => (
+          <Badge size='card' key={el} className='bg-lightGray '>
+            {el}
+          </Badge>
+        ))}
       </div>
 
       <div
@@ -112,7 +112,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
           {/* Avatar URL */}
           <div className='flex items-center gap-x-1 text-nowrap text-sm font-semibold'>
             <Avatar imgUrl={'/svgs/snail.svg'} size={30} />
-            <p className=''>{nickName}</p>
+            <p>{discordNickName}</p>
           </div>
 
           <div className='flex items-center gap-x-1'>
