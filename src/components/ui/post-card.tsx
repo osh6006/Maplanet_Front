@@ -1,7 +1,8 @@
+'use client';
+
 import Avatar from './avatar';
 import Badge from './badge';
 
-import { faker } from '@faker-js/faker';
 import Icon from './icon';
 import Button from './button';
 
@@ -37,7 +38,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
   completed
 }) => {
   return (
-    <div className='relative flex flex-col rounded-3xl bg-[#161616] p-10 px-6'>
+    <div className='relative w-full flex-col rounded-3xl bg-[#161616] px-6 py-6 sm:flex sm:w-[320px]'>
       {completed ? (
         <div className='absolute inset-0 z-30 flex items-center justify-center'>
           <div className='relative flex h-full w-full items-center justify-center'>
@@ -48,32 +49,35 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
       ) : (
         ''
       )}
-      <div className='w-fit'>
-        <Badge className='bg-main' size='basic'>
+      <div className='flex w-full items-center justify-between'>
+        <Badge className='bg-lightGray' size='basic'>
+          <Icon src='/svgs/hunt.svg' size={20} alt='meso' />
           {type}
         </Badge>
+        <time className='font-medium text-gray-400'>{'3일 전'}</time>
       </div>
-      <time className='mt-4 font-medium text-gray-400'>{date}</time>
+
       <h1 className='my-2 text-xl font-semibold'>{title}</h1>
-      <div className='my-4 flex flex-nowrap items-center gap-x-2'>
-        <Badge size='card' className='bg-[#444] text-yellow-400'>
+      <div className='my-8 flex flex-wrap items-center gap-2'>
+        <Badge size='card' className='bg-lightGray text-yellow'>
+          <Icon src='/svgs/money.svg' size={20} alt='meso' />
           {meso}
         </Badge>
-        <Badge size='card' className='bg-red-600'>
+        <Badge size='card' className='bg-lightGray'>
           {subjob}
         </Badge>
-        <Badge size='card' className='bg-[#444]'>
+        <Badge size='card' className='bg-lightGray'>
           {map}
         </Badge>
-        <Badge size='card' className='bg-[#444]'>
+        <Badge size='card' className='bg-lightGray'>
           {time}
         </Badge>
       </div>
 
-      <div className='my-4 flex items-center justify-center gap-x-2'>
+      <div className='flex items-center justify-between gap-x-2  text-nowrap'>
         <Button
           color='lightGray'
-          size='wide'
+          size='card'
           onClick={() => {
             // TODO : Modal Open
           }}>
@@ -81,34 +85,40 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
         </Button>
         <Button
           color='lightGray'
-          size='wide'
+          size='card'
           onClick={() => {
             // TODO : Move Profile
           }}>
           프로필 보기
         </Button>
-        <Button color='discord' size='wide'>
-          <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={15} />
+        <Button color='discord' size='card'>
           1:1 대화
         </Button>
       </div>
 
-      <div className='mt-6 flex items-center justify-between leading-3'>
-        <div className='flex items-center gap-x-3 text-gray-400'>
+      <div className='mt-6 flex items-center justify-between '>
+        <div className='flex items-center gap-x-2 text-gray-400'>
           {/* Avatar URL */}
-          <Avatar imgUrl={faker.image.avatarGitHub()} size={35} />
-          <p>{nickName}</p>
-          <Icon src={'/svgs/maple.svg'} alt='manner' size={20} />
-          <span>·</span>
-          <p>{manner}</p>
-          <Icon src={'/svgs/un-manner.svg'} alt='report' size={20} />
-          <span>·</span>
-          <p>{unManner}</p>
+          <div className='flex items-center gap-x-1 text-nowrap text-sm font-semibold'>
+            <Avatar imgUrl={'/svgs/snail.svg'} size={30} />
+            <p className=''>{nickName}</p>
+          </div>
+
+          <div className='flex items-center gap-x-1'>
+            <Icon src={'/svgs/maple.svg'} alt='manner' size={15} />
+            <span>·</span>
+            <p>{manner}</p>
+          </div>
+          <div className='flex items-center gap-x-1'>
+            <Icon src={'/svgs/un-manner.svg'} alt='unmanner' size={15} />
+            <span>·</span>
+            <p>{unManner}</p>
+          </div>
         </div>
 
-        <div className='flex items-center gap-x-2 '>
+        <div className='flex items-center gap-x-1 font-light'>
           <Icon src={'/svgs/eyes.svg'} alt='view' size={20} />
-          <p>{view}</p>
+          <p className='leading-3'>{view}</p>
         </div>
       </div>
     </div>

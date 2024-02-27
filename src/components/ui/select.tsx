@@ -48,7 +48,7 @@ const Select: React.FunctionComponent<ISelectProps> = ({
         type='button'
         onClick={() => setIsOpen(!isOpen)}
         className={clsx(
-          'flex h-[30px] w-full items-center justify-between rounded-md  px-4 py-2 text-sm font-semibold focus:border-none focus:outline-none',
+          'flex h-[30px] w-full items-center justify-between rounded-md px-4 py-2 text-sm font-semibold focus:border-none focus:outline-none',
           invalid ? 'focus:ring-2 focus:ring-warning' : 'focus:ring-2 focus:ring-main',
           disabled ? 'cursor-not-allowed bg-gray-500 text-gray-400' : 'bg-white'
         )}>
@@ -75,7 +75,7 @@ const Select: React.FunctionComponent<ISelectProps> = ({
                     <div className='flex items-center gap-x-2'>
                       <Badge
                         size='select'
-                        color={
+                        className={
                           option?.name?.split(' ')[0] === '2차' ? 'bg-teal-500' : 'bg-violet-500'
                         }>
                         {option?.name?.split(' ')[0] || ''}
