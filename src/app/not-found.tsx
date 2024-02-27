@@ -20,10 +20,10 @@ const NotFound: React.FunctionComponent<Props> = (props) => {
         요청하신 페이지 경로를 확인해주세요
       </p>
       <div className='flex place-content-between gap-x-4 text-2xl font-bold text-white'>
-        <Button size='xs' color='main' onClick={() => router.push('/')}>
+        <Button size='md' color='main' onClick={() => router.push('/')}>
           메인
         </Button>
-        <Button size='xs' color='' className='bg-zinc-500' onClick={() => router.back()}>
+        <Button size='md' color='' className='bg-[#7e7e7e]' onClick={() => router.back()}>
           이전 페이지
         </Button>
       </div>

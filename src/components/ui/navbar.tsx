@@ -8,7 +8,7 @@ import Inner from './inner';
 
 const Navbar = () => {
   return (
-    <nav className='fixed flex h-[60px] w-full bg-black text-white'>
+    <nav className='fixed flex h-[60px] w-full bg-black text-white z-10'>
       <Inner>
         <div className='flex items-center space-x-4'>
           <Link href='/'>
