@@ -347,22 +347,6 @@ const TestCompPage: React.FunctionComponent<any> = ({}) => {
             test
           </Button>
         </form>
-
-        <PostCard
-          type='잠쩔'
-          date='2024-04-12'
-          title='1시간당 메소 150만에 4시간 해드립니다.'
-          meso='100,000,000'
-          subjob='스피어 맨'
-          map='죽은 나무의 숲 4'
-          time='4시간'
-          nickName='축지법 아저씨'
-          manner={44}
-          unManner={2}
-          view={20}
-          avatarUrl=''
-          completed={false}
-        />
       </Inner>
     </div>
   );
