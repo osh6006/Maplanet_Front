@@ -23,9 +23,9 @@ const Navbar = () => {
             </Button>
           </div>
           <div className='flex items-center space-x-7 whitespace-nowrap text-lg'>
+            <Link href='/helper-board'>잠쩔</Link>
+            <Link href='/hunter-board'>겹사 의뢰</Link>
             <Link href='/notice'>공지사항</Link>
-            <Link href='/board1'>잠쩔</Link>
-            <Link href='/board2'>겹사 의뢰</Link>
             <Button size='xs' color='discord'>
               <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15} />
               로그인

@@ -1,7 +1,7 @@
 import Sort from '../components/sort';
-import PostBanner from '@/components/ui/post-banner';
+import PostBanner from '@/app/(home)/(board)/components/post-banner';
 import Search from '../components/search';
-import PostCard from '@/components/ui/post-card';
+import PostCard from '@/app/(home)/(board)/components/post-card';
 import Pagination from '../components/pagination';
 
 interface IHelperBoardPageProps {}
@@ -36,7 +36,55 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
               }
             ]}
           />
-          <Search />
+          <Search
+            filters={[
+              {
+                value: 'searchMeso',
+                name: '메소',
+                imgUrl: ''
+              },
+              {
+                value: 'searchTitle',
+                name: '제목',
+                imgUrl: ''
+              },
+              {
+                value: 'searchNickname',
+                name: '닉네임',
+                imgUrl: ''
+              },
+              {
+                value: 'searchHuntingGround',
+                name: '사냥터',
+                imgUrl: ''
+              },
+              {
+                value: 'searchLevel',
+                name: '레벨',
+                imgUrl: ''
+              },
+              {
+                value: 'searchSubJob',
+                name: '서브 직업',
+                imgUrl: ''
+              },
+              {
+                value: 'searchProgressKind',
+                name: '진행 상태',
+                imgUrl: ''
+              },
+              {
+                value: 'searchProgressTime',
+                name: '진행 시간',
+                imgUrl: ''
+              },
+              {
+                value: 'searchDiscordName',
+                name: '디스코드 이름',
+                imgUrl: ''
+              }
+            ]}
+          />
         </div>
 
         <div className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 sm:place-items-start lg:grid-cols-3 xl:grid-cols-4'>

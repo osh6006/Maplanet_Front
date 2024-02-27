@@ -1,10 +1,10 @@
 'use client';
 
-import Avatar from './avatar';
-import Badge from './badge';
+import Avatar from '../../../../components/ui/avatar';
+import Badge from '../../../../components/ui/badge';
 
-import Icon from './icon';
-import Button from './button';
+import Icon from '../../../../components/ui/icon';
+import Button from '../../../../components/ui/button';
 
 interface IPostCardProps {
   type: string;

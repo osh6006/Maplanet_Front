@@ -8,9 +8,17 @@ import Icon from '@/components/ui/icon';
 import Input from '@/components/ui/input';
 import Button from '@/components/ui/button';
 
-interface ISearchProps {}
+interface IFilter {
+  name: string;
+  value: string;
+  imgUrl: string;
+}
 
-const Search: React.FunctionComponent<ISearchProps> = (props) => {
+interface ISearchProps {
+  filters: IFilter[];
+}
+
+const Search: React.FunctionComponent<ISearchProps> = ({ filters }) => {
   const { replace } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -61,54 +69,8 @@ const Search: React.FunctionComponent<ISearchProps> = (props) => {
               <Filter
                 value={value}
                 onChange={onChange}
-                placeHolder='메소'
-                options={[
-                  {
-                    value: 'searchMeso',
-                    name: '메소',
-                    imgUrl: ''
-                  },
-                  {
-                    value: 'searchTitle',
-                    name: '제목',
-                    imgUrl: ''
-                  },
-                  {
-                    value: 'searchNickname',
-                    name: '닉네임',
-                    imgUrl: ''
-                  },
-                  {
-                    value: 'searchHuntingGround',
-                    name: '사냥터',
-                    imgUrl: ''
-                  },
-                  {
-                    value: 'searchLevel',
-                    name: '레벨',
-                    imgUrl: ''
-                  },
-                  {
-                    value: 'searchSubJob',
-                    name: '서브 직업',
-                    imgUrl: ''
-                  },
-                  {
-                    value: 'searchProgressKind',
-                    name: '진행 상태',
-                    imgUrl: ''
-                  },
-                  {
-                    value: 'searchProgressTime',
-                    name: '진행 시간',
-                    imgUrl: ''
-                  },
-                  {
-                    value: 'searchDiscordName',
-                    name: '디스코드 이름',
-                    imgUrl: ''
-                  }
-                ]}
+                placeHolder={filters[0].name}
+                options={filters}
                 disabled={disabled}
               />
             </div>
@@ -136,7 +98,7 @@ const Search: React.FunctionComponent<ISearchProps> = (props) => {
                   labelRequired
                   icon={
                     <div className='flex items-center'>
-                      <Icon src='/svgs/search.svg' alt='search' size={15} />
+                      <Icon src='/svgs/search.svg' alt='search' size={20} />
                     </div>
                   }
                 />
