@@ -38,7 +38,10 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
   completed
 }) => {
   return (
-    <div className='relative w-full flex-col rounded-3xl bg-[#161616] px-6 py-6 sm:flex sm:w-[320px]'>
+    <div
+      className='group relative w-full flex-col overflow-hidden rounded-3xl bg-[#161616] px-6 py-6 transition-all sm:flex
+    sm:w-[320px]
+    '>
       {completed ? (
         <div className='absolute inset-0 z-30 flex items-center justify-center'>
           <div className='relative flex h-full w-full items-center justify-center'>
@@ -49,7 +52,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
       ) : (
         ''
       )}
-      <div className='flex w-full items-center justify-between'>
+      <div className='flex w-full items-center justify-between '>
         <Badge className='bg-lightGray' size='basic'>
           <Icon src='/svgs/hunt.svg' size={20} alt='meso' />
           {type}
@@ -74,10 +77,12 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
         </Badge>
       </div>
 
-      <div className='flex items-center justify-between gap-x-2  text-nowrap'>
+      <div
+        className='absolute inset-0 flex flex-col items-center justify-center gap-y-2 text-nowrap  bg-black/50 px-4 opacity-0 transition
+       group-hover:opacity-100 group-hover:duration-300'>
         <Button
           color='lightGray'
-          size='card'
+          size='wide'
           onClick={() => {
             // TODO : Modal Open
           }}>
@@ -85,13 +90,19 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
         </Button>
         <Button
           color='lightGray'
-          size='card'
+          size='wide'
           onClick={() => {
             // TODO : Move Profile
           }}>
           프로필 보기
         </Button>
-        <Button color='discord' size='card'>
+        <Button
+          color='discord'
+          size='wide'
+          onClick={() => {
+            // TODO : Move Profile
+          }}>
+          <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={15} />
           1:1 대화
         </Button>
       </div>
