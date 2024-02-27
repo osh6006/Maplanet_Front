@@ -11,7 +11,7 @@ import Button from '@/components/ui/button';
 interface ISearchProps {}
 
 const Search: React.FunctionComponent<ISearchProps> = (props) => {
-  const { replace, push } = useRouter();
+  const { replace } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -41,7 +41,7 @@ const Search: React.FunctionComponent<ISearchProps> = (props) => {
       resetField('value');
       params.set('page', '1');
       params.set(data.key, data.value);
-      push(`${pathname}?${params.toString()}`);
+      replace(`${pathname}?${params.toString()}`);
     }
   };
 
@@ -121,7 +121,7 @@ const Search: React.FunctionComponent<ISearchProps> = (props) => {
           name='value'
           control={control}
           rules={{
-            required: '제목은 필수로 입력해야 합니다.'
+            required: '내용은 필수로 입력해야 합니다.'
           }}
           render={({ field: { value, onChange }, fieldState: { invalid } }) => {
             return (
@@ -144,7 +144,7 @@ const Search: React.FunctionComponent<ISearchProps> = (props) => {
             );
           }}
         />
-        <Button color='main' size='md' className='' type='submit' onClick={() => {}}>
+        <Button color='main' size='md' className='' type='submit'>
           검색
         </Button>
       </div>
