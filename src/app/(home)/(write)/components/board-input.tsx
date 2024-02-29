@@ -14,14 +14,12 @@ import { IHelperPost } from '@/types';
 
 interface IBoardInputProps extends UseControllerProps<FieldValues> {
   control: any;
-  name: string;
   label: string;
-  disabled: boolean;
   icon?: React.ReactNode;
   placeholder: string;
 }
 
-const BoardTitleInput: React.FunctionComponent<IBoardInputProps> = ({
+const BoardInput: React.FunctionComponent<IBoardInputProps> = ({
   control,
   name,
   label,
@@ -60,4 +58,4 @@ const BoardTitleInput: React.FunctionComponent<IBoardInputProps> = ({
   );
 };
 
-export default BoardTitleInput;
+export default BoardInput;

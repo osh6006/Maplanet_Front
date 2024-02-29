@@ -46,9 +46,7 @@ const BoardMesoInput: React.FunctionComponent<IBoardMesoInputProps> = ({
                   placeholder='(만) 메소'
                   icon={
                     <div className='flex items-center gap-x-1'>
-                      <span className=' items-center text-[15px] leading-4 text-black'>
-                        (만) 메소
-                      </span>
+                      <span className=' items-center text-[15px] text-black'>(만) 메소</span>
                       <button
                         type='button'
                         onClick={() => handleReset()}

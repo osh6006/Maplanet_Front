@@ -1,4 +1,10 @@
-import { Control, Controller, RegisterOptions } from 'react-hook-form';
+import {
+  Control,
+  Controller,
+  FieldValues,
+  RegisterOptions,
+  UseControllerProps
+} from 'react-hook-form';
 
 import Radio from '@/components/ui/radio';
 import FormErrorMessage from '@/components/ui/form-error-message';
@@ -6,16 +12,9 @@ import FormErrorMessage from '@/components/ui/form-error-message';
 import { IHelperPost } from '@/types';
 import Label from '@/components/ui/label';
 
-interface IBoardRadioProps {
-  control: Control<IHelperPost, any, IHelperPost>;
-  name: string;
+interface IBoardRadioProps extends UseControllerProps<FieldValues> {
+  control: any;
   label: string;
-  rules?:
-    | Omit<
-        RegisterOptions<IHelperPost, keyof IHelperPost>,
-        'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'
-      >
-    | undefined;
   options: {
     id: string;
     label: string;
@@ -40,7 +39,7 @@ const BoardRadio: React.FunctionComponent<IBoardRadioProps> = ({
           <div className='space-y-2'>
             <div className='flex w-full justify-between'>
               <Label name={name} label={label} required className='flex-1' />
-              <div className='flex flex-1 items-center '>
+              <div className='flex flex-1 items-center gap-x-4'>
                 {options.map((el) => (
                   <Radio
                     label={el.label}

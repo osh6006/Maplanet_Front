@@ -8,7 +8,6 @@ import BoardMesoInput from './board-meso-input';
 
 import { IHelperPost } from '@/types';
 import BoardRadio from './board-radio';
-import Radio from '@/components/ui/radio';
 import BoardSelect from './board-select';
 
 interface IHelperBoardFormProps {}

@@ -12,12 +12,13 @@ const Icon: React.FunctionComponent<IIconProps> = ({ src, alt, size, className }
     <Image
       src={src}
       alt={alt}
-      width={size || 15}
-      height={size || 15}
+      width={size}
+      height={size}
       style={{
         height: size,
         width: size
       }}
+      className={className}
     />
   );
 };
