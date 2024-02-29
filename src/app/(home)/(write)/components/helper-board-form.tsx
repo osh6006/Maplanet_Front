@@ -25,7 +25,7 @@ const HelperBoardForm: React.FunctionComponent<IHelperBoardFormProps> = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='grid grid-cols-2 gap-x-8'>
       <div className='flex flex-col gap-y-8'>
-        <BoardMesoInput control={control} />
+        <BoardMesoInput name='meso' control={control} />
         <BoardInput
           control={control}
           name='title'

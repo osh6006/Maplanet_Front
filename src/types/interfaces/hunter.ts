@@ -15,3 +15,11 @@ export interface IHunterBoard {
   created_at: string;
   updated_at: string;
 }
+
+export interface IHunterPost {
+  meso: number;
+  report_kind: string;
+  title: string;
+  request_nickname: string;
+  place_theif_nickname: string;
+}
