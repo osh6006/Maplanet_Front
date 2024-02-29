@@ -18,7 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
-      <body className={`${notoSansKR.className} bg-background text-white`}>{children}</body>
+      <body className={`${notoSansKR.className} bg-background text-white`}>
+        {children}
+        <div id='modal-root'></div>
+      </body>
     </html>
   );
 }
