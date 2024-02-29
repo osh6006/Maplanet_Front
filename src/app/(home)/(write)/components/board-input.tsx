@@ -10,6 +10,8 @@ interface IBoardInputProps {
   control: Control<IHelperPost, any, IHelperPost>;
   name: string;
   label: string;
+  disabled: boolean;
+  icon?: React.ReactNode;
   placeholder: string;
   rules?:
     | Omit<
@@ -24,13 +26,16 @@ const BoardTitleInput: React.FunctionComponent<IBoardInputProps> = ({
   name,
   label,
   placeholder,
-  rules
+  rules,
+  disabled,
+  icon
 }) => {
   return (
     <Controller
       name={name as keyof IHelperPost}
       control={control}
       rules={rules}
+      disabled={disabled}
       render={({ field: { value, onChange, name }, fieldState: { error, invalid } }) => {
         return (
           <div className='flex justify-between gap-y-2'>
@@ -39,11 +44,12 @@ const BoardTitleInput: React.FunctionComponent<IBoardInputProps> = ({
               <Input
                 name='title'
                 type='text'
-                value={value as string}
+                value={(value as string) || ''}
                 invalid={invalid}
                 onChange={onChange}
                 placeholder={placeholder}
                 labelRequired
+                icon={icon}
               />
               {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}
             </div>

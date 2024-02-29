@@ -32,7 +32,7 @@ const BoardMesoInput: React.FunctionComponent<IBoardMesoInputProps> = ({ control
           <div className='flex-col '>
             <div className='flex justify-between gap-y-2'>
               <Label name={name} label='메소' required className='flex-1' />
-              <div className='space-y-4'>
+              <div className='space-y-2'>
                 <Input
                   name={name}
                   type='text'

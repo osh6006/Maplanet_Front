@@ -16,9 +16,9 @@ const Badge: React.FunctionComponent<IBadgeProps> = ({ size = 'basic', children,
   return (
     <div
       className={clsx(
-        'flex items-center justify-center gap-x-2 text-sm text-white',
+        'flex items-center justify-center gap-x-2 rounded-sm text-sm text-white',
         size ? sizes[size] : '',
-        className ? className : ''
+        className
       )}>
       {children}
     </div>
