@@ -5,9 +5,10 @@ interface IIconProps {
   alt: string;
   size: number;
   className?: string;
+  priority?: boolean;
 }
 
-const Icon: React.FunctionComponent<IIconProps> = ({ src, alt, size, className }) => {
+const Icon: React.FunctionComponent<IIconProps> = ({ src, alt, size, className, priority }) => {
   return (
     <Image
       src={src}
@@ -19,6 +20,7 @@ const Icon: React.FunctionComponent<IIconProps> = ({ src, alt, size, className }
         width: size
       }}
       className={className}
+      priority={priority}
     />
   );
 };

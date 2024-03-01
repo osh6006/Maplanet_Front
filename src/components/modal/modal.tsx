@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
+import Icon from '../ui/icon';
 
 interface IModalProps {
   isOpen: boolean;
@@ -25,7 +26,12 @@ const Modal: React.FunctionComponent<IModalProps> = ({ children, onClose, isOpen
           <div
             className='fixed inset-0 z-[5000] flex items-center justify-center bg-black/65 px-10'
             onClick={onClose}>
-            {children}
+            <div className='min-w-[370px] max-w-2xl rounded-md bg-tableBackground px-10 py-14'>
+              <button className='flex w-full justify-end' onClick={onClose}>
+                <Icon size={25} src='/svgs/x.svg' alt='X' priority />
+              </button>
+              {children}
+            </div>
           </div>,
           document.getElementById('modal-root') as HTMLElement
         )
