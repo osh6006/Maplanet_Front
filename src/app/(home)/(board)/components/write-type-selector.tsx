@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 
-import { TWirteType } from '../write/page';
+import { TWirteType } from '../board-write/page';
 
 interface IWriteTypeSelectorProps {
   writeType: TWirteType;

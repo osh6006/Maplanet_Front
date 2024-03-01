@@ -1,5 +1,5 @@
 import Sort from '../components/sort';
-import PostBanner from '@/app/(home)/(board)/components/post-banner';
+import Banner from '@/components/ui/banner';
 import Search from '../components/search';
 import PostCard from '@/app/(home)/(board)/components/post-card';
 import Pagination from '../components/pagination';
@@ -19,7 +19,7 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
 
   return (
     <main>
-      <PostBanner title='쩔 게시판' imgUrl='/images/banner.png' />
+      <Banner title='쩔 게시판' imgUrl='/images/banner.png' />
       <div className='mx-auto max-w-[500px] sm:max-w-[670px] lg:max-w-[1000px] xl:max-w-[1440px] xl:px-20'>
         <div className='mt-8 flex w-full flex-col justify-between gap-y-4 px-10 sm:flex-row sm:px-0'>
           <Sort options={sortOptions} />
