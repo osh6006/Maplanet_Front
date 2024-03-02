@@ -24,7 +24,15 @@ const NoticeForm: React.FunctionComponent<INoticeFormProps> = (props) => {
         control={control}
         placeholder='제목을 입력해 주세요'
         rules={{
-          required: '제목을 입력해 주세요'
+          required: '제목을 입력해 주세요',
+          minLength: {
+            message: '최소 5글자 이상 입력해야 합니다.',
+            value: 5
+          },
+          maxLength: {
+            message: '30글자 이상은 입력이 불가합니다.',
+            value: 30
+          }
         }}
       />
       <NoticeInput
@@ -33,7 +41,15 @@ const NoticeForm: React.FunctionComponent<INoticeFormProps> = (props) => {
         control={control}
         placeholder='분류를 입력해 주세요'
         rules={{
-          required: '분류를 입력해 주세요'
+          required: '분류를 입력해 주세요',
+          minLength: {
+            message: '최소 5글자 이상 입력해야 합니다.',
+            value: 5
+          },
+          maxLength: {
+            message: '10글자 이상은 입력이 불가합니다.',
+            value: 30
+          }
         }}
       />
       <NoticeTextArea
