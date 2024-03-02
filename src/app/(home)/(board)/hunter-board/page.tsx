@@ -29,7 +29,7 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
           <Search filters={hunterBoardFilters} />
         </div>
 
-        <div className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 sm:place-items-start lg:grid-cols-3 xl:grid-cols-4'>
+        <div className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((el) => (
             <PostCard
               type='잠쩔'

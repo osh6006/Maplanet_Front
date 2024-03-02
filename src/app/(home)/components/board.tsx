@@ -152,7 +152,7 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category, bgImage }) => {
           width: 'auto',
           height: 'auto'
         }}>
-        <span className='absolute inset-0 z-0 bg-black opacity-60'></span>
+        <span className='absolute inset-0 z-0 bg-black/60'></span>
         <span className='z-[1] text-[20px] font-bold'>{category}</span>
         <Link href='/' className='z-[1]'>
           <Icon src='/svgs/plus.svg' alt='plus' size={24} />
