@@ -1,9 +1,9 @@
-interface IPostBannerProps {
-  imgUrl: string;
+interface IBannerProps {
   title: string;
+  imgUrl?: string;
 }
 
-const PostBanner: React.FunctionComponent<IPostBannerProps> = ({ imgUrl, title }) => {
+const Banner: React.FunctionComponent<IBannerProps> = ({ imgUrl, title }) => {
   return (
     <div className='relative flex h-[200px] w-[100dvw] items-center justify-center  '>
       <div
@@ -21,4 +21,4 @@ const PostBanner: React.FunctionComponent<IPostBannerProps> = ({ imgUrl, title }
   );
 };
 
-export default PostBanner;
+export default Banner;

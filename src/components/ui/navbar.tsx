@@ -1,9 +1,9 @@
 'use client';
 
-import Button from './button';
-import Link from 'next/link';
 import Icon from './icon';
 import Inner from './inner';
+import Link from 'next/link';
+import Button from './button';
 
 const Navbar = () => {
   return (

@@ -13,7 +13,7 @@ import Button from '@/components/ui/button';
 import FormErrorMessage from '@/components/ui/form-error-message';
 import { filterJobList } from '@/util/util';
 import PostCard from '@/app/(home)/(board)/components/post-card';
-import PostBanner from '@/app/(home)/(board)/components/post-banner';
+import PostBanner from '@/components/ui/banner';
 import Inner from '@/components/ui/inner';
 
 const TestCompPage: React.FunctionComponent<any> = ({}) => {

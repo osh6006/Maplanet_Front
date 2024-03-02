@@ -1,16 +1,8 @@
-import {
-  Control,
-  Controller,
-  FieldValues,
-  RegisterOptions,
-  UseControllerProps
-} from 'react-hook-form';
+import { Controller, FieldValues, UseControllerProps } from 'react-hook-form';
 
 import Input from '@/components/ui/input';
 import Label from '@/components/ui/label';
 import FormErrorMessage from '@/components/ui/form-error-message';
-
-import { IHelperPost } from '@/types';
 
 interface IBoardInputProps extends UseControllerProps<FieldValues> {
   control: any;
@@ -30,7 +22,7 @@ const BoardInput: React.FunctionComponent<IBoardInputProps> = ({
 }) => {
   return (
     <Controller
-      name={name as keyof IHelperPost}
+      name={name}
       control={control}
       rules={rules}
       disabled={disabled}
