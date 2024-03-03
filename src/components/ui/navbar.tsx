@@ -26,7 +26,12 @@ const Navbar = () => {
             <Link href='/helper-board'>잠쩔</Link>
             <Link href='/hunter-board'>겹사 의뢰</Link>
             <Link href='/notice'>공지사항</Link>
-            <Button size='xs' color='discord'>
+            <Link href='/board-write'>
+              <Button color='main' size='sm'>
+                + 새 글
+              </Button>
+            </Link>
+            <Button size='sm' color='discord'>
               <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15} />
               로그인
             </Button>
