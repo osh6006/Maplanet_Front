@@ -19,8 +19,9 @@ const Pagination: React.FunctionComponent<IPaginationProps> = ({ totalPost, item
 
   let firstNum = Math.max(1, currentPage - Math.floor(itemsPerPage / 2));
   let lastNum = Math.min(totalPages, firstNum + itemsPerPage - 1);
-
   let pageArr = Array.from({ length: lastNum - firstNum + 1 }, (_, index) => firstNum + index);
+
+  console.log(pageArr);
 
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams);
@@ -47,7 +48,7 @@ const Pagination: React.FunctionComponent<IPaginationProps> = ({ totalPost, item
       <p className='absolute'>
         등록된 쩔 게시글 <strong>{totalPost}</strong>개
       </p>
-      <div className='flex items-center gap-x-2 text-xs mx-auto'>
+      <div className='mx-auto flex items-center gap-x-2 text-xs'>
         <button type='button' onClick={() => handlePrevPage()} disabled={currentPage <= 1}>
           이전
         </button>

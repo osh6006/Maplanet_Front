@@ -7,6 +7,7 @@ import { helperBoardFilters, sortOptions } from '@/data/board';
 import { Suspense } from 'react';
 import { getHelperBoardData } from '@/actions/helper-board';
 import { IHelperBoard } from '@/types';
+import { filterImageUrl } from '@/util/util';
 
 interface IHelperBoardPageProps {}
 
@@ -26,7 +27,7 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
   return (
     <main>
       <Banner title='쩔 게시판' imgUrl='/images/banner.png' />
-      <Suspense>
+      <Suspense fallback={<div>loading...</div>}>
         <div className='mx-auto max-w-[500px] sm:max-w-[670px] lg:max-w-[1000px] xl:max-w-[1440px] xl:px-20'>
           <div className='mt-8 flex w-full flex-col justify-between gap-y-4 px-10 sm:flex-row sm:px-0'>
             <Sort options={sortOptions} />
@@ -45,7 +46,7 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
                 manner={el.manner_count}
                 unManner={el.report_count}
                 view={el.view_count}
-                avatarUrl={''}
+                avatarUrl={filterImageUrl(el.discord_image)}
                 completed={el.complete}
                 key={el.board1_id}
               />

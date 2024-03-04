@@ -48,7 +48,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
     <>
       <PostCardModal postId={123} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <div
-        className='group relative w-full flex-col overflow-hidden rounded-3xl bg-[#161616] p-8 transition-all sm:flex
+        className='group relative h-full w-full flex-col justify-between overflow-hidden rounded-3xl bg-[#161616] p-8 transition-all sm:flex
     sm:w-[320px]
     '>
         {completed ? (
@@ -96,8 +96,8 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
           </time>
         </div>
 
-        <h1 className='my-2 text-xl font-semibold'>{title}</h1>
-        <div className='my-8 flex flex-wrap items-center gap-2'>
+        <h1 className='my-6 text-xl font-semibold'>{title}</h1>
+        <div className='mb-4 mt-3 flex flex-wrap items-center gap-2'>
           <Badge size='card' className='bg-lightGray text-yellow'>
             <Icon src='/svgs/money.svg' size={20} alt='meso' />
             {meso}
