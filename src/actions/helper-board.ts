@@ -1,7 +1,7 @@
 const SERVER_URL = process.env.SERVER_URL;
 
 export async function getHelperBoardData(page?: string) {
-  const res = await fetch(`${SERVER_URL}board1` as string, {
+  const res = await fetch(`${SERVER_URL}/board1?page=${page}` as string, {
     cache: 'force-cache'
   });
 

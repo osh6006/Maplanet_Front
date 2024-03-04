@@ -56,7 +56,7 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category, bgImage }) => {
       {/* 아이템 리스트 컴포넌트*/}
       <ul className='mt-[17px] flex  flex-col justify-around gap-[13px]'>
         {category === '쩔' &&
-          categoryData.map((item: any, index: any) => {
+          categoryData?.map((item: any, index: any) => {
             return (
               <HelperBoardItem
                 key={index}
@@ -80,7 +80,7 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category, bgImage }) => {
           })}
 
         {category === '겹사' &&
-          categoryData.map((item: any, index: any) => {
+          categoryData?.map((item: any, index: any) => {
             return (
               <HunterBoardItem
                 key={index}
@@ -102,7 +102,7 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category, bgImage }) => {
           })}
 
         {category === '쩔 매너 유저' &&
-          categoryData.map((item: any, index: any) => {
+          categoryData?.map((item: any, index: any) => {
             return (
               <HelperMannerBoardItem
                 key={index}
@@ -117,7 +117,7 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category, bgImage }) => {
           })}
 
         {category === '현상 수배' &&
-          categoryData.map((item: any, index: any) => {
+          categoryData?.map((item: any, index: any) => {
             return (
               <HunterMesoBoardItem
                 key={index}

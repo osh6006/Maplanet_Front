@@ -19,8 +19,9 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
   };
 }) => {
   // TODO : fetch data using searchParams
-  const fetchData = await getHelperBoardData();
+  const fetchData = await getHelperBoardData(searchParams?.page || '1');
   const helperBoardData: IHelperBoard[] = fetchData.board1Data;
+  const totalBoardCount = fetchData.getBoardCount;
 
   return (
     <main>
@@ -44,13 +45,13 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
                 manner={el.manner_count}
                 unManner={el.report_count}
                 view={el.view_count}
-                avatarUrl={el.discord_image}
+                avatarUrl={''}
                 completed={el.complete}
                 key={el.board1_id}
               />
             ))}
           </ul>
-          <Pagination totalPost={123} itemsPerPage={5} />
+          <Pagination totalPost={totalBoardCount || 0} itemsPerPage={5} />
         </div>
       </Suspense>
     </main>

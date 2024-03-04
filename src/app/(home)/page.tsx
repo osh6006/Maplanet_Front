@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import Icon from '@/components/ui/icon';
 import Inner from '@/components/ui/inner';
@@ -15,7 +15,14 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
   if (error) return <div>에러가 발생했습니다.</div>;
 
   const category = ['쩔', '겹사', '쩔 매너 유저', '현상 수배'];
-  const bgImage = ['/images/option-bg-1.png', '/images/option-bg-3.png', '/images/option-bg-1.png', '/images/option-bg-3.png'];
+  const bgImage = [
+    '/images/option-bg-1.png',
+    '/images/option-bg-3.png',
+    '/images/option-bg-1.png',
+    '/images/option-bg-3.png'
+  ];
+
+  console.log(data);
 
   return (
     // 헤더와 푸터를 제외한 메인
@@ -32,14 +39,23 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
         </div>
         {/* 방문자 수 */}
         <div className='absolute right-0 my-[40px] flex flex-col gap-2 text-sm font-light text-[#c3c3c3]'>
-          <p>전체 방문 유저: <span className='text-[#fff] font-normal'>{data.visitorsData.total_visitors}</span></p>
-          <p>오늘 방문 유저: <span className='text-[#fff] font-normal'>{data.visitorsData.today_visitors}</span></p>
-          <p>현재 접속 유저: <span className='text-[#fff] font-normal'>{data.visitorsData.logged_in_user}</span></p>
+          <p>
+            전체 방문 유저:{' '}
+            <span className='font-normal text-[#fff]'>{data.visitorsData?.total_visitors}</span>
+          </p>
+          <p>
+            오늘 방문 유저:{' '}
+            <span className='font-normal text-[#fff]'>{data.visitorsData?.today_visitors}</span>
+          </p>
+          <p>
+            현재 접속 유저:{' '}
+            <span className='font-normal text-[#fff]'>{data.visitorsData?.logged_in_user}</span>
+          </p>
         </div>
 
         {/* 메인 컨텐츠 부분 */}
         <div className='grid w-full grid-cols-2 grid-rows-2 gap-10'>
-          {category.map((item, index) => {
+          {category?.map((item, index) => {
             return <Board key={index} category={item} bgImage={bgImage[index]} />;
           })}
         </div>
