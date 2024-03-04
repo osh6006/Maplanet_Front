@@ -1,23 +1,18 @@
 import useSWR from 'swr';
 
-const url = 'http://13.209.210.215:3000';
+interface SWRResponse {
+  data: any;
+  error: any;
+  isLoading: boolean;
+}
 
-const fetcher = async (url: string) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  const res = await fetch(url);
-  if (!res.ok) {
-    throw new Error('Network response was not ok');
-  }
-  return res.json();
-};
-
-function MainpageFetcher() {
-  const { data, error } = useSWR(`${url}/main`, fetcher);
-
+function MainpageFetcher(): SWRResponse {
+  // SWR내의 에러는 API서버에서 내려온 에러를 의미
+  const { data, error } = useSWR(`/main`);
   return {
     data,
     error,
-    isLoading: !error && !data,
+    isLoading: !error && !data
   };
 }
 
