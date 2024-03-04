@@ -1,15 +1,27 @@
+'use client'
+
 import Icon from '@/components/ui/icon';
 import Inner from '@/components/ui/inner';
-import Board from '@/app/(home)/components/board';
+import MainpageFetcher from '@/hooks/data-fetch';
+import Spinner from '@/components/ui/spinner';
+import Board from './components/board';
 
 interface IHomePageProps {}
 
 const HomePage: React.FunctionComponent<IHomePageProps> = () => {
+  const { data, isLoading, error } = MainpageFetcher();
+
+  if (isLoading) return <Spinner />;
+  if (error) return <div>에러가 발생했습니다.</div>;
+
+  const category = ['쩔', '겹사', '쩔 매너 유저', '현상 수배'];
+  const bgImage = ['/images/option-bg-1.png', '/images/option-bg-3.png', '/images/option-bg-1.png', '/images/option-bg-3.png'];
+
   return (
     // 헤더와 푸터를 제외한 메인
     <Inner>
-      <main className='flex w-full flex-col items-center justify-between text-white'>
-        {/* 로고 배너와 방문자수 부분 */}
+      <main className='relative flex w-full flex-col items-center justify-between text-white'>
+        {/* 로고 배너*/}
         <div className='my-[40px] flex flex-col items-center gap-4'>
           <Icon src='/images/pig.png' alt='logo' size={150} />
           <div>
@@ -18,13 +30,18 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
           </div>
           <h1 className='text-4xl font-semibold tracking-[1rem]'>매랜피플</h1>
         </div>
+        {/* 방문자 수 */}
+        <div className='absolute right-0 my-[40px] flex flex-col gap-2 text-sm font-light text-[#c3c3c3]'>
+          <p>전체 방문 유저: <span className='text-[#fff] font-normal'>{data.visitorsData.total_visitors}</span></p>
+          <p>오늘 방문 유저: <span className='text-[#fff] font-normal'>{data.visitorsData.today_visitors}</span></p>
+          <p>현재 접속 유저: <span className='text-[#fff] font-normal'>{data.visitorsData.logged_in_user}</span></p>
+        </div>
 
         {/* 메인 컨텐츠 부분 */}
         <div className='grid w-full grid-cols-2 grid-rows-2 gap-10'>
-          <Board category='쩔' bgImage={'/images/option-bg-1.png'} />
-          <Board category='겹사' bgImage={'/images/option-bg-3.png'} />
-          <Board category='쩔 매너 유저' bgImage={'/images/option-bg-1.png'} />
-          <Board category='현상 수배' bgImage={'/images/option-bg-3.png'} />
+          {category.map((item, index) => {
+            return <Board key={index} category={item} bgImage={bgImage[index]} />;
+          })}
         </div>
       </main>
     </Inner>
