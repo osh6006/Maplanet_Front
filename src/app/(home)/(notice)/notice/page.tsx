@@ -1,10 +1,10 @@
+import { Suspense } from 'react';
+import Link from 'next/link';
 import Inner from '@/components/ui/inner';
 import Button from '@/components/ui/button';
+import Banner from '@/components/ui/banner';
 import NoticeList from '../components/notice-list';
 import NoticePageNation from '../components/notice-pagination';
-import Link from 'next/link';
-import Banner from '@/components/ui/banner';
-import { Suspense } from 'react';
 
 interface INoticePageProps {}
 
