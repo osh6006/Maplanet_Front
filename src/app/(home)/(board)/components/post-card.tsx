@@ -1,29 +1,28 @@
 'use client';
 
-import Avatar from '../../../../components/ui/avatar';
-import Badge from '../../../../components/ui/badge';
+import { useState } from 'react';
 
 import Icon from '../../../../components/ui/icon';
+import Badge from '../../../../components/ui/badge';
 import Button from '../../../../components/ui/button';
 import InlineProfile from '@/components/ui/inline-profile';
-import Link from 'next/link';
-import { useState } from 'react';
-import Modal from '@/components/modal/modal';
 import PostCardModal from '@/components/modal/post-card-modal';
+
+import dayjs from 'dayjs';
+import 'dayjs/locale/ko';
+import clsx from 'clsx';
+dayjs.locale('ko');
 
 interface IPostCardProps {
   type: string;
   date: string;
   title: string;
   meso: string;
-  time: string;
   manner: number;
   unManner: number;
   view: number;
   avatarUrl: string;
   completed: boolean;
-  map?: string;
-  subjob?: string;
   mapleNickName?: string;
   discordNickName?: string;
   badges?: string[];
@@ -34,9 +33,6 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
   date,
   title,
   meso,
-  subjob,
-  map,
-  time,
   mapleNickName,
   discordNickName,
   manner,
@@ -47,12 +43,12 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
   badges
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <>
       <PostCardModal postId={123} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-
       <div
-        className='group relative w-full flex-col overflow-hidden rounded-3xl bg-[#161616] px-6 py-6 transition-all sm:flex
+        className='group relative w-full flex-col overflow-hidden rounded-3xl bg-[#161616] p-8 transition-all sm:flex
     sm:w-[320px]
     '>
         {completed ? (
@@ -66,11 +62,12 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
           ''
         )}
         <div className='flex w-full items-center justify-between '>
-          <Badge className='bg-lightGray' size='basic'>
-            <Icon src='/svgs/hunt.svg' size={20} alt='meso' />
+          <Badge className={clsx(type === '잠쩔' ? 'bg-main' : 'bg-violet')} size='card'>
             {type}
           </Badge>
-          <time className='font-medium text-gray-400'>{date}</time>
+          <time className='font-medium text-gray-400'>
+            {dayjs(date).format('YYYY년 MM월 DD일')}
+          </time>
         </div>
 
         <h1 className='my-2 text-xl font-semibold'>{title}</h1>

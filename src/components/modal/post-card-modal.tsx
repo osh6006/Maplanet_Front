@@ -18,40 +18,47 @@ const PostCardModal: React.FunctionComponent<IPostCardModalProps> = ({ isOpen, o
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div className='flex flex-col gap-4 sm:flex-row' onClick={(e) => e.stopPropagation()}>
-        <div className='flex basis-[30%] flex-col items-center gap-y-2'>
-          <Avatar imgUrl={faker.image.avatarGitHub()} size={100} />
-          <h1 className='text-xl'>축지법 아저씨</h1>
-          <div className='flex items-center justify-center gap-x-2'>
-            <div className='flex items-center gap-x-1'>
-              <Icon src={'/svgs/maple.svg'} alt='manner' size={15} />
-              <span>·</span>
-              <p>{13}</p>
-            </div>
-            <div className='flex items-center gap-x-1'>
-              <Icon src={'/svgs/un-manner.svg'} alt='unmanner' size={15} />
-              <span>·</span>
-              <p>{14}</p>
+      <div className='flex flex-col gap-4 ' onClick={(e) => e.stopPropagation()}>
+        <div className='flex  items-center gap-y-2'>
+          <div className='flex items-center gap-x-2'>
+            <Avatar imgUrl={faker.image.avatarGitHub()} size={30} />
+            <div className='flex flex-col gap-x-2'>
+              <h1 className='text-xl'>축지법 아저씨</h1>
+              <div className='flex items-center gap-x-3'>
+                <div className='flex items-center gap-x-1'>
+                  <Icon src={'/svgs/maple.svg'} alt='manner' size={15} />
+                  <span>·</span>
+                  <p>{13}</p>
+                </div>
+                <div className='flex items-center gap-x-1'>
+                  <Icon src={'/svgs/un-manner.svg'} alt='unmanner' size={15} />
+                  <span>·</span>
+                  <p>{14}</p>
+                </div>
+              </div>
             </div>
           </div>
-          <Button
-            color='discord'
-            size='wide'
-            onClick={() => {
-              // TODO : Move Profile
-              console.log('asdf');
-            }}>
-            1:1 대화
-          </Button>
-          <Button
-            color='lightGray'
-            size='wide'
-            onClick={() => {
-              // TODO : Move Profile
-              console.log('asdf');
-            }}>
-            프로필 보기
-          </Button>
+
+          <div className='flex flex-1 justify-between gap-x-2'>
+            <Button
+              color='discord'
+              size='wide'
+              onClick={() => {
+                // TODO : Move Profile
+                console.log('asdf');
+              }}>
+              1:1 대화
+            </Button>
+            <Button
+              color='lightGray'
+              size='wide'
+              onClick={() => {
+                // TODO : Move Profile
+                console.log('asdf');
+              }}>
+              프로필 보기
+            </Button>
+          </div>
         </div>
         <div className='grid flex-1 grid-cols-3 gap-2'>
           <dl className='flex flex-col items-center justify-center rounded-md border text-center'>

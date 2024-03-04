@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Noto_Sans_KR } from 'next/font/google';
 import './globals.css';
-import Providers from './providers';
+import SWRProvider from './swr-provider';
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ['latin']
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <body className={`${notoSansKR.className} bg-background text-white`}>
-        <Providers>{children}</Providers>
+        <SWRProvider>{children}</SWRProvider>
         <div id='modal-root'></div>
       </body>
     </html>

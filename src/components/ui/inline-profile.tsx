@@ -18,7 +18,7 @@ const InlineProfile: React.FunctionComponent<IInlineProfileProps> = ({
     <div className='flex items-center gap-x-2 text-gray-400'>
       {/* Avatar URL From Server*/}
       <div className='flex items-center gap-x-1 text-nowrap text-sm font-semibold'>
-        <Avatar imgUrl={'/svgs/snail.svg'} size={30} />
+        <Avatar imgUrl={imgUrl || '/svgs/snail.svg'} size={30} />
         <p>{discordNickName}</p>
       </div>
 
