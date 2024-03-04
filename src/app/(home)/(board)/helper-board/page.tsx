@@ -37,7 +37,8 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
           <ul className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
             {helperBoardData?.map((el) => (
               <PostCard
-                type={'잠쩔'}
+                id={el.board1_id}
+                type={el.progress_kind}
                 date={el.created_at}
                 title={el.title}
                 meso={el.meso + ''}

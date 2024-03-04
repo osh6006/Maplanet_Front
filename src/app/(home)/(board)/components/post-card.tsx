@@ -14,6 +14,7 @@ import clsx from 'clsx';
 dayjs.locale('ko');
 
 interface IPostCardProps {
+  id: number;
   type: string;
   date: string;
   title: string;
@@ -29,6 +30,7 @@ interface IPostCardProps {
 }
 
 const PostCard: React.FunctionComponent<IPostCardProps> = ({
+  id,
   type,
   date,
   title,
@@ -46,7 +48,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
 
   return (
     <>
-      <PostCardModal postId={123} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <PostCardModal postId={id} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <div
         className='group relative h-full w-full flex-col justify-between overflow-hidden rounded-3xl bg-[#161616] p-8 transition-all sm:flex
     sm:w-[320px]
