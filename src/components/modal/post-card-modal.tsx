@@ -1,18 +1,17 @@
 'use client';
-
+import clsx from 'clsx';
 import useSWR from 'swr';
+
+import Link from 'next/link';
 import Avatar from '../ui/avatar';
 import Badge from '../ui/badge';
 import Button from '../ui/button';
 import Icon from '../ui/icon';
 import Modal from './modal';
-
-import { faker } from '@faker-js/faker';
-import { IHelperBoardDetail } from '@/types/interfaces/helper';
 import Loading from '../ui/loading';
-import Link from 'next/link';
-import clsx from 'clsx';
+
 import { filterImageUrl } from '@/util/util';
+import { IHelperBoardDetail } from '@/types/interfaces/helper';
 
 interface IPostCardModalProps {
   isOpen: boolean;
