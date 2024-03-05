@@ -18,7 +18,7 @@ export async function getHunterBoardData(page?: string, searchType?: string, val
     console.log(`${SERVER_URL}/board2/search?page=${page}&${searchType}=${value}`);
 
     const res = await fetch(
-      `${SERVER_URL}/board1/search?page=${page}&${searchType}=${value}` as string,
+      `${SERVER_URL}/board2/search?page=${page}&${searchType}=${value}` as string,
       {
         cache: 'force-cache'
       }

@@ -32,7 +32,7 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
   );
 
   const hunterBoardData: IHunterBoard[] = fetchData.board2Data;
-  const searchBoardData: IHunterBoard[] = fetchData.search1Data;
+  const searchBoardData: IHunterBoard[] = fetchData.search2Data;
   const totalBoardCount = fetchData.getBoard2Count;
 
   return (
