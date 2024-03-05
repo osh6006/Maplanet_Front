@@ -20,7 +20,7 @@ const Pagination: React.FunctionComponent<IPaginationProps> = ({ totalPost, item
   let firstNum = Math.max(1, currentPage - Math.floor(itemsPerPage / 2));
   let lastNum = Math.min(totalPages, firstNum + itemsPerPage - 1);
 
-  let pageArr = Array.from({ length: lastNum - firstNum + 1 }, (_, index) => firstNum + index);
+  let pageArr = Array.from({  length: lastNum - firstNum + 1 }, (_, index) => firstNum + index);
 
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams);

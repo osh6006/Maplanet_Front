@@ -4,19 +4,22 @@ import * as React from 'react';
 import Link from 'next/link';
 import Icon from '@/components/ui/icon';
 import Spinner from '@/components/ui/spinner';
-import MainpageFetcher from '@/hooks/data-fetch';
+import GetHomeData from '@/actions/home';
 import HelperBoardItem from './helper-board-item';
 import HunterBoardItem from './hunter-board-item';
 import HelperMannerBoardItem from './helper-manner-board-item';
 import HunterMesoBoardItem from './hunter-meso-board-item';
+import clsx from 'clsx';
 
 interface IBoardProps {
   category: string;
-  bgImage: string;
+  // bgImage: string;
 }
 
-const Board: React.FunctionComponent<IBoardProps> = ({ category, bgImage }) => {
-  const { data, isLoading, error } = MainpageFetcher();
+const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
+  const { data, isLoading, error } = GetHomeData();
+
+  console.log(data);
 
   let categoryData = [];
 
@@ -38,17 +41,22 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category, bgImage }) => {
       {/* 카테고리 제목 컴포넌트*/}
       <div
         className={`relative flex h-[70px] w-full items-center justify-between overflow-hidden rounded-xl px-[13px] py-[22px]`}
-        style={{
-          backgroundImage: `url(${bgImage})`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          width: 'auto',
-          height: 'auto'
-        }}>
+        style={
+          {
+            // backgroundImage: `url(${bgImage})`,
+            // backgroundPosition: 'center',
+            // backgroundSize: 'cover',
+            // backgroundRepeat: 'no-repeat',
+            // width: 'auto',
+            // height: 'auto'
+          }
+        }>
         <span className='absolute inset-0 z-0 bg-black/60'></span>
         <span className='z-[1] text-[20px] font-bold'>{category}</span>
-        <Link href='/' className='z-[1]'>
+        <Link
+          href={category === '쩔' ? '/helper-board' : category === '겹사' ? '/hunter-board' : '#'}
+          className='z-[1]'
+          style={{ display: category !== '쩔' && category !== '겹사' ? 'none' : 'block' }}>
           <Icon src='/svgs/plus.svg' alt='plus' size={24} />
         </Link>
       </div>
@@ -56,7 +64,7 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category, bgImage }) => {
       {/* 아이템 리스트 컴포넌트*/}
       <ul className='mt-[17px] flex  flex-col justify-around gap-[13px]'>
         {category === '쩔' &&
-          categoryData.map((item: any, index: any) => {
+          categoryData?.map((item: any, index: any) => {
             return (
               <HelperBoardItem
                 key={index}
@@ -80,7 +88,7 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category, bgImage }) => {
           })}
 
         {category === '겹사' &&
-          categoryData.map((item: any, index: any) => {
+          categoryData?.map((item: any, index: any) => {
             return (
               <HunterBoardItem
                 key={index}
@@ -102,7 +110,7 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category, bgImage }) => {
           })}
 
         {category === '쩔 매너 유저' &&
-          categoryData.map((item: any, index: any) => {
+          categoryData?.map((item: any, index: any) => {
             return (
               <HelperMannerBoardItem
                 key={index}
@@ -117,7 +125,7 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category, bgImage }) => {
           })}
 
         {category === '현상 수배' &&
-          categoryData.map((item: any, index: any) => {
+          categoryData?.map((item: any, index: any) => {
             return (
               <HunterMesoBoardItem
                 key={index}

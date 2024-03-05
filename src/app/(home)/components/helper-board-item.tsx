@@ -1,6 +1,8 @@
+import Badge from '@/components/ui/badge';
 import Button from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import InlineProfile from '@/components/ui/inline-profile';
+import clsx from 'clsx';
 import * as React from 'react';
 
 interface IHelperBoardItemProps {
@@ -66,29 +68,35 @@ const HelperBoardItem: React.FunctionComponent<IHelperBoardItemProps> = ({
       <div className='my-2 text-base'>{title}</div>
 
       {/* 세번째 내용 */}
-      <div className='flex'>
-        <div className='mr-12 flex items-center gap-1'>
+      <div className='flex gap-[5px]'>
+        <Badge size='card' className='bg-lightGray'>
           <Icon src='/svgs/money.svg' alt='money' size={14} />
-          <span className='text-sm text-[#ff6666]'>{addCommasToCost(cost)}</span>
-        </div>
-        <div className='flex items-center gap-8 text-sm text-[#cecece]'>
+          <span className='text-[#EBFF00] text-[12px]'>{addCommasToCost(cost)}</span>
+        </Badge>
+        <Badge size='card' className={clsx(type === '잠쩔' ? 'bg-main' : 'bg-[#6E58F2]')}>
           <div className='flex items-center gap-1'>
-            <Icon src={`/svgs/${type}.svg`} alt={type} size={12} />
-            {type}
+            <Icon src={`/svgs/hunt.svg`} alt={type} size={12} />
+            <span className='text-[12px]'>{type}</span>
           </div>
+        </Badge>
+        <Badge size='card' className='bg-lightGray text-[12px]'>
           <div className='flex items-center gap-1'>
             <Icon src='/svgs/map.svg' alt='map' size={12} />
-            {map}
+            <span className='text-[12px]'>{map}</span>
           </div>
+        </Badge>
+        <Badge size='card' className='bg-lightGray text-[12px]'>
           <div className='flex items-center gap-1'>
             <Icon src='/svgs/time.svg' alt='time' size={12} />
-            <span>{time}</span>
+            <span className='text-[12px]'>{time}</span>
           </div>
+        </Badge>
+        <Badge size='card' className='bg-lightGray text-[12px]'>
           <div className='flex items-center gap-1'>
             <Icon src='/svgs/jobs.svg' alt='jobs' size={12} />
-            {job}
+            <span className='text-[12px]'>{job}</span>
           </div>
-        </div>
+        </Badge>
       </div>
     </li>
   );

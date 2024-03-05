@@ -1,3 +1,4 @@
+import Badge from '@/components/ui/badge';
 import Button from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import InlineProfile from '@/components/ui/inline-profile';
@@ -49,7 +50,7 @@ const HunterBoardItem: React.FunctionComponent<IHunterBoardItemProps> = ({
           discordNickName={profileName}
         />
         {/* 날짜, 조회수 */}
-        <div className='ml-2 flex flex-grow items-center justify-between text-xs text-[#aeaeae]'>
+        <div className='flex flex-grow items-center justify-end text-xs text-[#aeaeae] gap-3'>
           {date.toString().split('T')[0]}
           <div className='flex items-center gap-x-1'>
             <Icon src='/svgs/eyes.svg' alt='eyes' size={12} />
@@ -62,21 +63,23 @@ const HunterBoardItem: React.FunctionComponent<IHunterBoardItemProps> = ({
       <div className='my-2 text-base'>{title}</div>
 
       {/* 세번째 내용 */}
-      <div className='flex'>
-        <div className='mr-12 flex items-center gap-1'>
+      <div className='flex gap-[5px]'>
+        <Badge size='card' className='bg-lightGray'>
           <Icon src='/svgs/money.svg' alt='money' size={14} />
-          <span className='text-sm text-[#ff6666]'>{addCommasToCost(cost)}</span>
-        </div>
-        <div className='flex items-center gap-8 text-sm text-[#cecece]'>
+          <span className='text-[12px] text-[#EBFF00]'>{addCommasToCost(cost)}</span>
+        </Badge>
+        <Badge size='card' className='bg-lightGray text-[12px]'>
           <div className='flex items-center gap-1'>
-            <Icon src={`/svgs/hunt.svg`} alt={type} size={12} />
-            {type}
+            <Icon src='/svgs/hunt.svg' alt='map' size={12} />
+            <span className='text-[12px]'>{type}</span>
           </div>
+        </Badge>
+        <Badge size='card' className='bg-lightGray'>
           <div className='flex items-center gap-1'>
-            <Icon src='/svgs/nickname.svg' alt='jobs' size={14} />
-            {nickname}
+            <Icon src='/svgs/nickname.svg' alt='map' size={12} />
+            <span className='text-[12px]'>{nickname}</span>
           </div>
-        </div>
+        </Badge>
       </div>
     </li>
   );
