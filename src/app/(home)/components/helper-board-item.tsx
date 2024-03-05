@@ -55,7 +55,7 @@ const HelperBoardItem: React.FunctionComponent<IHelperBoardItemProps> = ({
           discordNickName={profileName}
         />
         {/* 날짜, 조회수 */}
-        <div className='ml-2 flex flex-grow items-center justify-between text-xs text-[#aeaeae]'>
+        <div className='ml-2 flex flex-grow items-center justify-end text-xs text-[#aeaeae] gap-3'>
           {date.toString().split('T')[0]}
           <div className='flex items-center gap-x-1'>
             <Icon src='/svgs/eyes.svg' alt='eyes' size={12} />

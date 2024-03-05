@@ -30,10 +30,10 @@ const HelperMannerBoardItem: React.FunctionComponent<IHelperMannerBoardItemProps
 
       {/* 버튼 */}
       <div className='flex gap-2'>
-        <Button color='main' size='xs'>
+        <Button color='main' size='sm'>
           프로필 보기
         </Button>
-        <Button color='discord' size='xs'>
+        <Button color='discord' size='sm'>
           <Icon src='/svgs/discord-icon.svg' alt='discord-icon' size={12}></Icon>
           <span>1:1 대화</span>
         </Button>

@@ -9,7 +9,7 @@ interface IBadgeProps {
 const sizes = {
   basic: 'px-[24px] py-[4px] rounded-xl',
   select: 'px-2 py-[1px]',
-  card: 'px-[12px] py-[4px] rounded-xl'
+  card: 'px-[12px] py-[4px] rounded-xl',
 };
 
 const Badge: React.FunctionComponent<IBadgeProps> = ({ size = 'basic', children, className }) => {

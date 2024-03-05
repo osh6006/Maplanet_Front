@@ -9,7 +9,6 @@ import HelperBoardItem from './helper-board-item';
 import HunterBoardItem from './hunter-board-item';
 import HelperMannerBoardItem from './helper-manner-board-item';
 import HunterMesoBoardItem from './hunter-meso-board-item';
-import clsx from 'clsx';
 
 interface IBoardProps {
   category: string;
@@ -57,7 +56,10 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
           href={category === '쩔' ? '/helper-board' : category === '겹사' ? '/hunter-board' : '#'}
           className='z-[1]'
           style={{ display: category !== '쩔' && category !== '겹사' ? 'none' : 'block' }}>
-          <Icon src='/svgs/plus.svg' alt='plus' size={24} />
+          <div className='flex h-10 w-10 items-center justify-center'>
+            {/* <Icon src='/svgs/plus.svg' alt='plus' size={24} className='transition hover:animate-shadow'/> */}
+            
+          </div>
         </Link>
       </div>
 
