@@ -6,7 +6,6 @@ import Icon from '../../../../components/ui/icon';
 import Badge from '../../../../components/ui/badge';
 import Button from '../../../../components/ui/button';
 import InlineProfile from '@/components/ui/inline-profile';
-import PostCardModal from '@/components/modal/post-card-modal';
 
 import dayjs from 'dayjs';
 import 'dayjs/locale/ko';
@@ -51,12 +50,6 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
 
   return (
     <>
-      <PostCardModal
-        postId={id}
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        boardType={boardType}
-      />
       <div
         className='group relative h-full w-full flex-col justify-between overflow-hidden rounded-3xl bg-[#161616] p-8 transition-all sm:flex
     sm:w-[320px]

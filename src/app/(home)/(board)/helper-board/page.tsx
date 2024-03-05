@@ -1,13 +1,14 @@
+import { Suspense } from 'react';
+import { getHelperBoardData } from '@/actions/helper-board';
+import { helperBoardFilters, sortOptions } from '@/data/board';
+
 import Sort from '../components/sort';
 import Banner from '@/components/ui/banner';
 import Search from '../components/search';
-import PostCard from '@/app/(home)/(board)/components/post-card';
 import Pagination from '../components/pagination';
-import { helperBoardFilters, sortOptions } from '@/data/board';
-import { Suspense } from 'react';
-import { getHelperBoardData } from '@/actions/helper-board';
+import HelperCard from '../components/helper-card';
+
 import { IHelperBoard } from '@/types';
-import { filterImageUrl } from '@/util/util';
 
 interface IHelperBoardPageProps {}
 
@@ -45,39 +46,17 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
 
           <ul className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
             {helperBoardData?.map((el) => (
-              <PostCard
-                id={el.board1_id}
-                type={el.progress_kind}
-                date={el.created_at}
-                title={el.title}
-                meso={el.meso + ''}
-                discordNickName={el.discord_global_name}
-                badges={[el.hunting_ground, el.progress_time + ' 시간', el.sub_job]}
-                manner={el.manner_count}
-                unManner={el.report_count}
-                view={el.view_count}
-                avatarUrl={filterImageUrl(el.discord_image)}
-                completed={el.complete}
+              <HelperCard
                 key={el.board1_id}
-                boardType={'board1'}
+                {...el}
+                badges={[el.hunting_ground, el.progress_time + ' 시간', el.sub_job]}
               />
             ))}
             {searchBoardData?.map((el) => (
-              <PostCard
-                id={el.board1_id}
-                type={el.progress_kind}
-                date={el.created_at}
-                title={el.title}
-                meso={el.meso + ''}
-                discordNickName={el.discord_global_name}
-                badges={[el.hunting_ground, el.progress_time + ' 시간', el.sub_job]}
-                manner={el.manner_count}
-                unManner={el.report_count}
-                view={el.view_count}
-                avatarUrl={filterImageUrl(el.discord_image)}
-                completed={el.complete}
+              <HelperCard
                 key={el.board1_id}
-                boardType={'board1'}
+                {...el}
+                badges={[el.hunting_ground, el.progress_time + ' 시간', el.sub_job]}
               />
             ))}
           </ul>

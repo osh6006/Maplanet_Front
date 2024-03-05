@@ -1,15 +1,15 @@
-import { hunterBoardFilters, sortOptions } from '@/data/board';
+import { Suspense } from 'react';
+import { getHunterBoardData } from '@/actions/hunter-board';
 
 import Sort from '../components/sort';
 import Search from '../components/search';
-
-import Pagination from '../components/pagination';
-import PostCard from '@/app/(home)/(board)/components/post-card';
 import Banner from '@/components/ui/banner';
-import { Suspense } from 'react';
-import { getHunterBoardData } from '@/actions/hunter-board';
+import Pagination from '../components/pagination';
+import HunterCard from '../components/hunter-card';
+
 import { IHunterBoard } from '@/types';
-import { filterImageUrl } from '@/util/util';
+
+import { hunterBoardFilters, sortOptions } from '@/data/board';
 
 interface IHelperBoardPageProps {}
 
@@ -47,41 +47,11 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
 
           <div className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
             {hunterBoardData?.map((el) => (
-              <PostCard
-                id={el.board2_id}
-                type={el.report_kind}
-                date={el.created_at}
-                title={el.title}
-                meso={el.meso + ''}
-                badges={[el.place_theif_nickname]}
-                discordNickName='축지법 아저씨'
-                manner={el.manner_count}
-                unManner={el.report_count}
-                view={el.view_count}
-                avatarUrl={filterImageUrl(el.discord_image)}
-                completed={el.complete}
-                key={el.board2_id}
-                boardType={'board2'}
-              />
+              <HunterCard {...el} key={el.board2_id} badges={[el.place_theif_nickname]} />
             ))}
 
             {searchBoardData?.map((el) => (
-              <PostCard
-                id={el.board2_id}
-                type={el.report_kind}
-                date={el.created_at}
-                title={el.title}
-                meso={el.meso + ''}
-                badges={[el.place_theif_nickname]}
-                discordNickName='축지법 아저씨'
-                manner={el.manner_count}
-                unManner={el.report_count}
-                view={el.view_count}
-                avatarUrl={filterImageUrl(el.discord_image)}
-                completed={el.complete}
-                key={el.board2_id}
-                boardType={'board2'}
-              />
+              <HunterCard {...el} key={el.board2_id} badges={[el.place_theif_nickname]} />
             ))}
           </div>
           <Pagination totalPost={totalBoardCount || 0} itemsPerPage={5} />
