@@ -24,3 +24,10 @@ export const filterJobList = (job?: Job | null) => {
 
   return [];
 };
+
+export function filterImageUrl(url: string) {
+  if (url && !url.includes('https://')) {
+    return '';
+  }
+  return url;
+}

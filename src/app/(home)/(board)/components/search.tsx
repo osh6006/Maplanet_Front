@@ -49,7 +49,8 @@ const Search: React.FunctionComponent<ISearchProps> = ({ filters }) => {
 
       resetField('value');
       params.set('page', '1');
-      params.set(data.key, data.value);
+      params.set('searchType', data.key);
+      params.set('value', data.value);
       replace(`${pathname}?${params.toString()}`);
     }
   };

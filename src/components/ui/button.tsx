@@ -35,7 +35,7 @@ const Button: React.FunctionComponent<IButtonProps> = ({
   return (
     <button
       className={clsx(
-        'flex transform select-none items-center justify-center gap-2 rounded-md text-lg font-semibold transition-all active:scale-95',
+        'flex transform select-none items-center justify-center gap-2 whitespace-nowrap rounded-md text-lg font-semibold transition-all active:scale-95',
         disabled ? 'pointer-events-none border-transparent bg-slate-500 text-white' : '',
         color ? colors[color] : '',
         size ? sizes[size] : '',

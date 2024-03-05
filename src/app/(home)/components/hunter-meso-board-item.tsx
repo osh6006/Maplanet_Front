@@ -36,7 +36,7 @@ const HunterMesoBoardItem: React.FunctionComponent<IHunterMesoBoardItemProps> = 
   return (
     <li className='flex h-[94px] w-full list-none items-center justify-between gap-1 rounded-xl bg-tableBackground px-[17px]'>
       {/* 프로필 */}
-      <InlineProfile imgUrl={profileImg} manner={manner} unManner={15} discordNickName={profileName} />
+      <InlineProfile imgUrl={''} manner={manner} unManner={15} discordNickName={profileName} />
 
       {/* 현상금 */}
       <div className='flex items-center'>
