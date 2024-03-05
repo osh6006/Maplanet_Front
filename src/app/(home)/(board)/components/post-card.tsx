@@ -11,6 +11,7 @@ import PostCardModal from '@/components/modal/post-card-modal';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ko';
 import clsx from 'clsx';
+import { BoardType } from '@/types';
 dayjs.locale('ko');
 
 interface IPostCardProps {
@@ -24,6 +25,7 @@ interface IPostCardProps {
   view: number;
   avatarUrl: string;
   completed: boolean;
+  boardType: BoardType;
   mapleNickName?: string;
   discordNickName?: string;
   badges?: string[];
@@ -42,19 +44,25 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
   view,
   avatarUrl,
   completed,
-  badges
+  badges,
+  boardType
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
-      <PostCardModal postId={id} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <PostCardModal
+        postId={id}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        boardType={boardType}
+      />
       <div
         className='group relative h-full w-full flex-col justify-between overflow-hidden rounded-3xl bg-[#161616] p-8 transition-all sm:flex
     sm:w-[320px]
     '>
         {completed ? (
-          <div className='absolute inset-0 z-30 flex items-center justify-center backdrop-blur-sm'>
+          <div className='absolute inset-0 z-[15] flex items-center justify-center backdrop-blur-sm'>
             <div className='relative flex h-full w-full items-center justify-center'>
               <h1 className='z-10 text-3xl font-semibold'>완료</h1>
               <div className='absolute inset-0 bg-black/40'></div>

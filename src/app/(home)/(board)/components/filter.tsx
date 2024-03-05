@@ -70,7 +70,7 @@ const Filter: React.FunctionComponent<IFilterProps> = ({
       </button>
 
       {isOpen && (
-        <ul className='absolute left-0 z-10 mt-2 grid w-full cursor-pointer grid-cols-3  overflow-hidden rounded-md bg-white text-black sm:w-[400px] sm:gap-2 sm:p-2'>
+        <ul className='absolute left-0 z-[40] mt-2 grid w-full cursor-pointer grid-cols-3  overflow-hidden rounded-md bg-white text-black sm:w-[400px] sm:gap-2 sm:p-2'>
           {options?.map((option) => (
             <li
               key={option.value}

@@ -7,6 +7,9 @@ import Pagination from '../components/pagination';
 import PostCard from '@/app/(home)/(board)/components/post-card';
 import Banner from '@/components/ui/banner';
 import { Suspense } from 'react';
+import { getHunterBoardData } from '@/actions/hunter-board';
+import { IHunterBoard } from '@/types';
+import { filterImageUrl } from '@/util/util';
 
 interface IHelperBoardPageProps {}
 
@@ -14,11 +17,23 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
   searchParams
 }: {
   searchParams?: {
-    query?: string;
     page?: string;
+    query?: string;
+    value?: string;
+    searchType?: string;
   };
 }) => {
   // TODO : fetch data using searchParams
+
+  const fetchData = await getHunterBoardData(
+    searchParams?.page || '1',
+    searchParams?.searchType,
+    searchParams?.value
+  );
+
+  const hunterBoardData: IHunterBoard[] = fetchData.board2Data;
+  const searchBoardData: IHunterBoard[] = fetchData.search1Data;
+  const totalBoardCount = fetchData.getBoard2Count;
 
   return (
     <main>
@@ -31,27 +46,45 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
           </div>
 
           <div className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((el) => (
+            {hunterBoardData?.map((el) => (
               <PostCard
-                type='잠쩔'
-                date='2024-04-12'
-                title='1시간당 메소 150만에 4시간 해드립니다.'
-                meso='100,000,000'
-                subjob='스피어 맨'
-                map='죽은 나무의 숲 4'
-                time='4시간'
-                badges={['타락파워전사']}
+                id={el.board2_id}
+                type={el.report_kind}
+                date={el.created_at}
+                title={el.title}
+                meso={el.meso + ''}
+                badges={[el.place_theif_nickname]}
                 discordNickName='축지법 아저씨'
-                manner={44}
-                unManner={2}
-                view={20}
-                avatarUrl=''
-                completed={false}
-                key={el}
+                manner={el.manner_count}
+                unManner={el.report_count}
+                view={el.view_count}
+                avatarUrl={filterImageUrl(el.discord_image)}
+                completed={el.complete}
+                key={el.board2_id}
+                boardType={'board2'}
+              />
+            ))}
+
+            {searchBoardData?.map((el) => (
+              <PostCard
+                id={el.board2_id}
+                type={el.report_kind}
+                date={el.created_at}
+                title={el.title}
+                meso={el.meso + ''}
+                badges={[el.place_theif_nickname]}
+                discordNickName='축지법 아저씨'
+                manner={el.manner_count}
+                unManner={el.report_count}
+                view={el.view_count}
+                avatarUrl={filterImageUrl(el.discord_image)}
+                completed={el.complete}
+                key={el.board2_id}
+                boardType={'board2'}
               />
             ))}
           </div>
-          <Pagination totalPost={123} itemsPerPage={5} />
+          <Pagination totalPost={totalBoardCount || 0} itemsPerPage={5} />
         </div>
       </Suspense>
     </main>

@@ -54,7 +54,7 @@ const Pagination: React.FunctionComponent<IPaginationProps> = ({ totalPost, item
   return (
     <div className='relative mt-8 flex items-center'>
       <p className='absolute'>
-        등록된 쩔 게시글 <strong>{totalPost}</strong>개
+        등록된 게시글 <strong>{totalPost}</strong>개
       </p>
       <div className='mx-auto flex items-center gap-x-2 text-xs'>
         <button type='button' onClick={() => handlePrevPage()} disabled={currentPage <= 1}>

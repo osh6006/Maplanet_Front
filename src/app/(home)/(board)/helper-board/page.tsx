@@ -59,6 +59,7 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
                 avatarUrl={filterImageUrl(el.discord_image)}
                 completed={el.complete}
                 key={el.board1_id}
+                boardType={'board1'}
               />
             ))}
             {searchBoardData?.map((el) => (
@@ -76,6 +77,7 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
                 avatarUrl={filterImageUrl(el.discord_image)}
                 completed={el.complete}
                 key={el.board1_id}
+                boardType={'board1'}
               />
             ))}
           </ul>

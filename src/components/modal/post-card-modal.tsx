@@ -12,11 +12,13 @@ import Loading from '../ui/loading';
 
 import { filterImageUrl } from '@/util/util';
 import { IHelperBoardDetail } from '@/types/interfaces/helper';
+import { BoardType } from '@/types';
 
 interface IPostCardModalProps {
   isOpen: boolean;
   onClose: () => void;
   postId: number;
+  boardType: BoardType;
 }
 
 const DL = ({ children }: { children: React.ReactNode }) => {
@@ -43,10 +45,11 @@ const DD = ({ children }: { children: React.ReactNode }) => {
 const PostCardModal: React.FunctionComponent<IPostCardModalProps> = ({
   isOpen,
   onClose,
-  postId
+  postId,
+  boardType
 }) => {
   // data fetching using swr
-  const { data, error, isLoading } = useSWR<IHelperBoardDetail>(`/board1/detail/${postId}`);
+  const { data, error, isLoading } = useSWR<IHelperBoardDetail>(`/${boardType}/detail/${postId}`);
 
   if (isLoading) {
     return (
