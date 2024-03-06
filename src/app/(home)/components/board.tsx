@@ -9,6 +9,7 @@ import HelperBoardItem from './helper-board-item';
 import HunterBoardItem from './hunter-board-item';
 import HelperMannerBoardItem from './helper-manner-board-item';
 import HunterMesoBoardItem from './hunter-meso-board-item';
+import clsx from 'clsx';
 
 interface IBoardProps {
   category: string;
@@ -16,6 +17,8 @@ interface IBoardProps {
 }
 
 const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
+  const [isHovered, setIsHovered] = React.useState(false);
+
   const { data, isLoading, error } = GetHomeData();
 
   console.log(data);
@@ -39,7 +42,10 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
     <div>
       {/* 카테고리 제목 컴포넌트*/}
       <div
-        className={`relative flex h-[70px] w-full items-center justify-between overflow-hidden rounded-xl px-[13px] py-[22px]`}
+        className={clsx(  
+          isHovered ? 'bg-black/60' : '',
+          'relative flex h-[70px] w-full items-center justify-between overflow-hidden rounded-xl bg-black px-[20px] py-[22px] transition-all duration-200'
+        )}
         style={
           {
             // backgroundImage: `url(${bgImage})`,
@@ -50,15 +56,26 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
             // height: 'auto'
           }
         }>
-        <span className='absolute inset-0 z-0 bg-black/60'></span>
+        {/* <span className='absolute inset-0 z-0 bg-black/60'></span> */}
         <span className='z-[1] text-[20px] font-bold'>{category}</span>
         <Link
           href={category === '쩔' ? '/helper-board' : category === '겹사' ? '/hunter-board' : '#'}
           className='z-[1]'
           style={{ display: category !== '쩔' && category !== '겹사' ? 'none' : 'block' }}>
-          <div className='flex h-10 w-10 items-center justify-center'>
-            {/* <Icon src='/svgs/plus.svg' alt='plus' size={24} className='transition hover:animate-shadow'/> */}
-            
+          <div
+            className='flex h-10 w-10 items-center justify-center'
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}>
+            <Icon
+              src='/svgs/plus-large.svg'
+              alt='plus'
+              size={24}
+              className={clsx(
+                isHovered
+                  ? 'scale-90 transition-all duration-200'
+                  : 'scale-100 transition-all duration-200'
+              )}
+            />
           </div>
         </Link>
       </div>
@@ -70,7 +87,9 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
             return (
               <HelperBoardItem
                 key={index}
-                id={item.board1_id}
+                boardId={item.board1_id}
+                userId={item.user_id}
+                discordId={item.discord_id}
                 profileImg={item.discord_image}
                 profileName={item.discord_global_name}
                 manner={item.manner_count}
@@ -94,7 +113,8 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
             return (
               <HunterBoardItem
                 key={index}
-                id={item.board2_id}
+                boardId={item.board2_id}
+                discordId={item.discord_id}
                 profileImg={item.discord_image}
                 profileName={item.discord_global_name}
                 manner={item.manner_count}
@@ -116,7 +136,8 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
             return (
               <HelperMannerBoardItem
                 key={index}
-                id={item.board1_id}
+                boardId={item.board1_id}
+                userId={item.user_id}
                 discordId={item.discord_id}
                 profileImg={item.discord_image}
                 profileName={item.discord_global_name}
@@ -131,7 +152,8 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
             return (
               <HunterMesoBoardItem
                 key={index}
-                id={item.board2_id}
+                boardId={item.board2_id}
+                userId={item.user_id}
                 discordId={item.discord_id}
                 profileImg={item.discord_image}
                 profileName={item.discord_global_name}

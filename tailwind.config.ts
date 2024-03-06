@@ -37,19 +37,18 @@ const config: Config = {
       },
       animation: {
         'slide-in-left': 'slide-in-left 20s infinite linear',
-        'shadow': 'shadow 1s infinite linear'
+        'button-hover': 'button-hover 2s infinite running'
       },
       keyframes: {
         'slide-in-left': {
           '0%': { transform: 'translateX(65%)' },
           '100%': { transform: 'translateX(-65%)' }
         },
-        'shadow': {
-          '0%': { boxShadow: '0 0 0 0 rgba(255, 255, 255, 0.5)' },
-          '100%': { boxShadow: '0 0 0 10px rgba(0, 0, 0, 0)' }
+        'button-hover': {
+          '0%': { transform: 'translateX(0) rotate(35deg)' },
+          '100%': { transform: 'translateX(500px) rotate(35deg)' }
         }
-
-      }
+      },
     }
   },
   plugins: []

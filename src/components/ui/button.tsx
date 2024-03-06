@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, useState } from 'react';
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   // 추가적인 프롭스가 필요한 경우 여기에 정의
@@ -32,17 +32,24 @@ const Button: React.FunctionComponent<IButtonProps> = ({
   className,
   ...props
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <button
       className={clsx(
-        'flex transform select-none items-center justify-center gap-2 rounded-md text-lg font-semibold transition-all active:scale-95',
+        'shadow-[inset_0_0_20px_rgba(255,255,255,0)] duration-200 hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.1)]',
+        'relative z-20 overflow-hidden flex transform select-none items-center justify-center gap-2 rounded-md text-lg font-semibold transition-all active:scale-95',
         disabled ? 'pointer-events-none border-transparent bg-slate-500 text-white' : '',
         color ? colors[color] : '',
         size ? sizes[size] : '',
         className
       )}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       {...props}>
       {children}
+      {/* hover after content */}
+      <div className={clsx(isHovered ? 'animate-button-hover' : '', 'absolute left-[-55px] top-[-50px] h-[155px] w-[50px] origin-top rotate-[35deg] bg-white blur-md opacity-20 transition-all duration-[500ms] ease-in-out after:content-[""]')}></div>
     </button>
   );
 };

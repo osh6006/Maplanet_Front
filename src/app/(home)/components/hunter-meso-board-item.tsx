@@ -4,7 +4,8 @@ import InlineProfile from '@/components/ui/inline-profile';
 import * as React from 'react';
 
 interface IHunterMesoBoardItemProps {
-  id: number;
+  boardId: number;
+  userId: number;
   discordId: string;
   profileImg: string;
   profileName: string;
@@ -13,7 +14,8 @@ interface IHunterMesoBoardItemProps {
 }
 
 const HunterMesoBoardItem: React.FunctionComponent<IHunterMesoBoardItemProps> = ({
-  id,
+  boardId,
+  userId,
   discordId,
   profileImg,
   profileName,
@@ -31,7 +33,7 @@ const HunterMesoBoardItem: React.FunctionComponent<IHunterMesoBoardItemProps> = 
   //   return addCommasToCost(dividedCost);
   // };
 
-  console.log('board id:', id, 'discord id:', discordId);
+  console.log('hunter meso board:', 'board id:', boardId, 'user id:', userId, 'discord id:', discordId);
   // 쩔, 겹사 보드
   return (
     <li className='flex h-[94px] w-full list-none items-center justify-between gap-1 rounded-xl bg-tableBackground px-[17px]'>
@@ -45,7 +47,7 @@ const HunterMesoBoardItem: React.FunctionComponent<IHunterMesoBoardItemProps> = 
           <span className='text-xs'>메소</span>
         </div>
         {/* 버튼 */}
-        <Button color='main' size='sm'>
+        <Button color='lightGray' size='sm'>
           프로필 보기
         </Button>
         <Button color='discord' size='sm'>

@@ -5,7 +5,8 @@ import InlineProfile from '@/components/ui/inline-profile';
 import * as React from 'react';
 
 interface IHunterBoardItemProps {
-  id: number;
+  boardId: number;
+  discordId: string;
   profileImg: string;
   profileName: string;
   manner: number;
@@ -19,7 +20,8 @@ interface IHunterBoardItemProps {
 }
 
 const HunterBoardItem: React.FunctionComponent<IHunterBoardItemProps> = ({
-  id,
+  boardId,
+  discordId,
   profileImg,
   profileName,
   manner,
@@ -31,15 +33,44 @@ const HunterBoardItem: React.FunctionComponent<IHunterBoardItemProps> = ({
   type,
   nickname
 }) => {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+
   const addCommasToCost = (cost: number | undefined) => {
     if (cost === undefined) return 0;
     return cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
-  console.log('board id:', id);
-  // 쩔, 겹사 보드
+  console.log('hunter board:', 'board id:', boardId, 'discord id:', discordId);
+
   return (
-    <li className='flex w-full list-none flex-col justify-center gap-1 rounded-xl bg-tableBackground px-4 py-4'>
+    <li className='group relative flex w-full list-none flex-col justify-center gap-1 rounded-xl bg-tableBackground px-4 py-4'>
+
+      {/* mouse hover content */}
+      <div className='absolute inset-0 flex items-center justify-center gap-x-2 rounded-xl bg-black/60 px-4 opacity-0 transition-all duration-300 group-hover:opacity-100'>
+        <Button color='lightGray' size='sm' onClick={() => console.log('helper board:', 'board id:', boardId, 'discord id:', discordId)}>
+          상세보기
+        </Button>
+        <Button
+          color='lightGray'
+          size='sm'
+          onClick={() => {
+            // TODO : Move Profile
+            console.log('helper board:', 'board id:', boardId, 'discord id:', discordId);
+          }}>
+          프로필 보기
+        </Button>
+        <Button
+          color='discord'
+          size='sm'
+          onClick={() => {
+            // TODO : Discord Chat
+            console.log('helper board:', 'board id:', boardId, 'discord id:', discordId);
+          }}>
+          <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={20} />
+          1:1 대화
+        </Button>
+      </div>
+
       {/* 첫번째 내용 */}
       <div className='flex'>
         {/* 프로필 */}

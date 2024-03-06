@@ -4,7 +4,8 @@ import InlineProfile from '@/components/ui/inline-profile';
 import * as React from 'react';
 
 interface IHelperMannerBoardItemProps {
-  id: number;
+  boardId: number;
+  userId: number;
   discordId: string;
   profileImg: string;
   profileName: string;
@@ -13,15 +14,15 @@ interface IHelperMannerBoardItemProps {
 }
 
 const HelperMannerBoardItem: React.FunctionComponent<IHelperMannerBoardItemProps> = ({
-  id,
+  boardId,
+  userId,
   discordId,
   profileImg,
   profileName,
   manner,
   cost
 }) => {
-
-  console.log('board id:', id, 'discord id:', discordId);
+  console.log('helper manner board:', 'board id:', boardId, 'user id:', userId, 'discord id:', discordId);
   // 쩔, 겹사 보드
   return (
     <li className='flex h-[94px] w-full list-none items-center justify-between gap-1 rounded-xl bg-tableBackground px-[17px]'>
@@ -30,7 +31,7 @@ const HelperMannerBoardItem: React.FunctionComponent<IHelperMannerBoardItemProps
 
       {/* 버튼 */}
       <div className='flex gap-2'>
-        <Button color='main' size='sm'>
+        <Button color='lightGray' size='sm'>
           프로필 보기
         </Button>
         <Button color='discord' size='sm'>

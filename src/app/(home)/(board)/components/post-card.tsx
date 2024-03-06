@@ -85,7 +85,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
 
         <div
           className='absolute inset-0 flex flex-col items-center justify-center gap-y-2 text-nowrap bg-black/50 px-4 opacity-0 transition
-       group-hover:opacity-100 group-hover:duration-300'>
+        group-hover:opacity-100 group-hover:duration-300'>
           <Button color='lightGray' size='wide' onClick={() => setIsModalOpen(true)}>
             상세보기
           </Button>
