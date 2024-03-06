@@ -1,4 +1,4 @@
-export type { IHelperPost, IHelperBoard, IHelperBoardDetail } from './interfaces/helper';
+export type { IHelperBoardPost, IHelperBoard, IHelperBoardDetail } from './interfaces/helper';
 export type { IHunterBoard, IHunterPost, IHunterBoardDetail } from './interfaces/hunter';
 export type { INoticePost } from './interfaces/notice';
 
