@@ -15,7 +15,7 @@ const Navbar = () => {
         <div className='flex h-full items-center justify-between'>
           {/* nav logo */}
           <Link href='/'>
-            <p className={`${fugaz.className} text-[28px] pt-1`}>Mapleland PP</p>
+            <p className={`${fugaz.className} pt-1 text-[28px]`}>Mapleland PP</p>
           </Link>
           {/* discord channel button */}
           <div className='absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transform items-center'>
@@ -30,15 +30,19 @@ const Navbar = () => {
             <Link href='/helper-board'>잠쩔</Link>
             <Link href='/hunter-board'>겹사 의뢰</Link>
             <Link href='/notice'>공지사항</Link>
-            <Link href='/board-write'>
-              <Button color='main' size='sm'>
-                + 새 글
+            
+            {/* TODO: 로그인시 새글 등록 뜨게하고 로그아웃시 안뜨게 수정 */}
+            <div className='flex space-x-3'>
+              <Link href='/board-write'>
+                <Button color='main' size='sm'>
+                  + 새 글
+                </Button>
+              </Link>
+              <Button size='sm' color='discord'>
+                <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15} />
+                로그인
               </Button>
-            </Link>
-            <Button size='sm' color='discord'>
-              <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15} />
-              로그인
-            </Button>
+            </div>
           </div>
         </div>
       </Inner>

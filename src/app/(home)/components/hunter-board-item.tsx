@@ -2,7 +2,9 @@ import Badge from '@/components/ui/badge';
 import Button from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import InlineProfile from '@/components/ui/inline-profile';
+import clsx from 'clsx';
 import * as React from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 
 interface IHunterBoardItemProps {
   boardId: number;
@@ -17,6 +19,7 @@ interface IHunterBoardItemProps {
   cost: number;
   type: string;
   nickname: string;
+  complete: boolean;
 }
 
 const HunterBoardItem: React.FunctionComponent<IHunterBoardItemProps> = ({
@@ -31,8 +34,11 @@ const HunterBoardItem: React.FunctionComponent<IHunterBoardItemProps> = ({
   title,
   cost,
   type,
-  nickname
+  nickname,
+  complete
 }) => {
+  const router = useRouter();
+
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const addCommasToCost = (cost: number | undefined) => {
@@ -44,10 +50,25 @@ const HunterBoardItem: React.FunctionComponent<IHunterBoardItemProps> = ({
 
   return (
     <li className='group relative flex w-full list-none flex-col justify-center gap-1 rounded-xl bg-tableBackground px-4 py-4'>
+      {/* if complete */}
+      {complete && (
+        <div className='absolute inset-0 z-[30] flex items-center justify-center bg-black/60 text-2xl font-bold text-white'>
+          완료
+        </div>
+      )}
 
       {/* mouse hover content */}
-      <div className='absolute inset-0 flex items-center justify-center gap-x-2 rounded-xl bg-black/60 px-4 opacity-0 transition-all duration-300 group-hover:opacity-100'>
-        <Button color='lightGray' size='sm' onClick={() => console.log('helper board:', 'board id:', boardId, 'discord id:', discordId)}>
+      <div
+        className={clsx(
+          complete ? 'disabled' : 'group-hover:opacity-100',
+          'absolute inset-0 flex items-center justify-center gap-x-2 rounded-xl bg-black/60 px-4 opacity-0 transition-all duration-300 '
+        )}>
+        <Button
+          color='lightGray'
+          size='sm'
+          onClick={() =>
+            console.log('helper board:', 'board id:', boardId, 'discord id:', discordId)
+          }>
           상세보기
         </Button>
         <Button
@@ -63,7 +84,7 @@ const HunterBoardItem: React.FunctionComponent<IHunterBoardItemProps> = ({
           color='discord'
           size='sm'
           onClick={() => {
-            // TODO : Discord Chat
+            // TODO: 겹사 보드에도 user_id 필요
             console.log('helper board:', 'board id:', boardId, 'discord id:', discordId);
           }}>
           <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={20} />
@@ -81,7 +102,7 @@ const HunterBoardItem: React.FunctionComponent<IHunterBoardItemProps> = ({
           discordNickName={profileName}
         />
         {/* 날짜, 조회수 */}
-        <div className='flex flex-grow items-center justify-end text-xs text-[#aeaeae] gap-3'>
+        <div className='flex flex-grow items-center justify-end gap-3 text-xs text-[#aeaeae]'>
           {date.toString().split('T')[0]}
           <div className='flex items-center gap-x-1'>
             <Icon src='/svgs/eyes.svg' alt='eyes' size={12} />

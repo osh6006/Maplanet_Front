@@ -2,6 +2,7 @@ import Button from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import InlineProfile from '@/components/ui/inline-profile';
 import * as React from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 
 interface IHunterMesoBoardItemProps {
   boardId: number;
@@ -22,6 +23,8 @@ const HunterMesoBoardItem: React.FunctionComponent<IHunterMesoBoardItemProps> = 
   manner,
   cost
 }) => {
+  const router = useRouter();
+
   const addCommasToCost = (cost: number | undefined) => {
     if (cost === undefined) return 0;
     return cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -33,7 +36,15 @@ const HunterMesoBoardItem: React.FunctionComponent<IHunterMesoBoardItemProps> = 
   //   return addCommasToCost(dividedCost);
   // };
 
-  console.log('hunter meso board:', 'board id:', boardId, 'user id:', userId, 'discord id:', discordId);
+  console.log(
+    'hunter meso board:',
+    'board id:',
+    boardId,
+    'user id:',
+    userId,
+    'discord id:',
+    discordId
+  );
   // 쩔, 겹사 보드
   return (
     <li className='flex h-[94px] w-full list-none items-center justify-between gap-1 rounded-xl bg-tableBackground px-[17px]'>
@@ -42,12 +53,18 @@ const HunterMesoBoardItem: React.FunctionComponent<IHunterMesoBoardItemProps> = 
 
       <div className='flex gap-2'>
         {/* 현상금 */}
-        <div className='flex items-center mr-5'>
+        <div className='mr-5 flex items-center'>
           <span className='mr-[7px] text-xl font-bold text-[#EBFF00]'>{addCommasToCost(cost)}</span>
           <span className='text-xs'>메소</span>
         </div>
         {/* 버튼 */}
-        <Button color='lightGray' size='sm'>
+        <Button
+          color='lightGray'
+          size='sm'
+          onClick={() => {
+            console.log('userId', userId);
+            router.push(`/profile/${userId}`);
+          }}>
           프로필 보기
         </Button>
         <Button color='discord' size='sm'>

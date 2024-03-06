@@ -49,7 +49,7 @@ const Button: React.FunctionComponent<IButtonProps> = ({
       {...props}>
       {children}
       {/* hover after content */}
-      <div className={clsx(isHovered ? 'animate-button-hover' : '', 'absolute left-[-55px] top-[-50px] h-[155px] w-[50px] origin-top rotate-[35deg] bg-white blur-md opacity-20 transition-all duration-[500ms] ease-in-out after:content-[""]')}></div>
+      <div className={clsx(isHovered ? 'animate-button-hover' : '', 'absolute left-[-55px] top-[-50px] h-[155px] w-[50px] origin-top rotate-[35deg] bg-white blur-md opacity-20 transition-all duration-[400ms] ease-in-out after:content-[""]')}></div>
     </button>
   );
 };

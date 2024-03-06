@@ -4,6 +4,7 @@ import Icon from '@/components/ui/icon';
 import InlineProfile from '@/components/ui/inline-profile';
 import clsx from 'clsx';
 import * as React from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 
 interface IHelperBoardItemProps {
   boardId: number;
@@ -21,6 +22,7 @@ interface IHelperBoardItemProps {
   map: string;
   time: number;
   job: string;
+  complete: boolean;
 }
 
 const HelperBoardItem: React.FunctionComponent<IHelperBoardItemProps> = ({
@@ -38,8 +40,11 @@ const HelperBoardItem: React.FunctionComponent<IHelperBoardItemProps> = ({
   type,
   map,
   time,
-  job
+  job,
+  complete
 }) => {
+  const router = useRouter();
+
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const addCommasToCost = (cost: number | undefined) => {
@@ -54,9 +59,33 @@ const HelperBoardItem: React.FunctionComponent<IHelperBoardItemProps> = ({
       className={clsx(
         'group relative flex w-full list-none flex-col justify-center gap-1 rounded-xl bg-tableBackground px-4 py-4'
       )}>
+      {/* if complete */}
+      {complete && (
+        <div className='absolute inset-0 z-[30] flex items-center justify-center bg-black/60 text-2xl font-bold text-white'>
+          완료
+        </div>
+      )}
+
       {/* mouse hover content */}
-      <div className='absolute inset-0 flex items-center justify-center gap-x-2 rounded-xl bg-black/60 px-4 opacity-0 transition-all duration-300 group-hover:opacity-100'>
-        <Button color='lightGray' size='sm' onClick={() => console.log('helper board:', 'board id:', boardId, 'user id:', userId, 'discord id:', discordId)}>
+      <div
+        className={clsx(
+          complete ? 'disabled' : 'group-hover:opacity-100',
+          'absolute inset-0 flex items-center justify-center gap-x-2 rounded-xl bg-black/60 px-4 opacity-0 transition-all duration-300 '
+        )}>
+        <Button
+          color='lightGray'
+          size='sm'
+          onClick={() =>
+            console.log(
+              'helper board:',
+              'board id:',
+              boardId,
+              'user id:',
+              userId,
+              'discord id:',
+              discordId
+            )
+          }>
           상세보기
         </Button>
         <Button
@@ -64,11 +93,10 @@ const HelperBoardItem: React.FunctionComponent<IHelperBoardItemProps> = ({
           size='sm'
           onClick={() => {
             // TODO : Move Profile
-            console.log('helper board:', 'board id:', boardId, 'user id:', userId, 'discord id:', discordId);
+            console.log('user id:', userId);
+            router.push(`/profile/${userId}`);
           }}
-          className={clsx(
-            'button relative overflow-hidden  '
-          )}>
+          className={clsx('button relative overflow-hidden')}>
           프로필 보기
         </Button>
         <Button
@@ -76,7 +104,15 @@ const HelperBoardItem: React.FunctionComponent<IHelperBoardItemProps> = ({
           size='sm'
           onClick={() => {
             // TODO : Discord Chat
-            console.log('helper board:', 'board id:', boardId, 'user id:', userId, 'discord id:', discordId);
+            console.log(
+              'helper board:',
+              'board id:',
+              boardId,
+              'user id:',
+              userId,
+              'discord id:',
+              discordId
+            );
           }}
           className='relative z-20 overflow-hidden'>
           <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={20} />

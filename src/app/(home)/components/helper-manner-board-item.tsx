@@ -2,6 +2,7 @@ import Button from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import InlineProfile from '@/components/ui/inline-profile';
 import * as React from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 
 interface IHelperMannerBoardItemProps {
   boardId: number;
@@ -22,7 +23,17 @@ const HelperMannerBoardItem: React.FunctionComponent<IHelperMannerBoardItemProps
   manner,
   cost
 }) => {
-  console.log('helper manner board:', 'board id:', boardId, 'user id:', userId, 'discord id:', discordId);
+  const router = useRouter();
+
+  console.log(
+    'helper manner board:',
+    'board id:',
+    boardId,
+    'user id:',
+    userId,
+    'discord id:',
+    discordId
+  );
   // 쩔, 겹사 보드
   return (
     <li className='flex h-[94px] w-full list-none items-center justify-between gap-1 rounded-xl bg-tableBackground px-[17px]'>
@@ -31,7 +42,13 @@ const HelperMannerBoardItem: React.FunctionComponent<IHelperMannerBoardItemProps
 
       {/* 버튼 */}
       <div className='flex gap-2'>
-        <Button color='lightGray' size='sm'>
+        <Button
+          color='lightGray'
+          size='sm'
+          onClick={() => {
+            console.log('userId', userId);
+            router.push(`/profile/${userId}`);
+          }}>
           프로필 보기
         </Button>
         <Button color='discord' size='sm'>
