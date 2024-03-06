@@ -18,8 +18,6 @@ export async function getHelperBoardData(page?: string, searchType?: string, val
   }
 
   if (searchType && value) {
-    console.log(`${SERVER_URL}/board1/search?page=${page}&${searchType}=${value}`);
-
     const res = await fetch(
       `${SERVER_URL}/board1/search?page=${page}&${searchType}=${value}` as string,
       {

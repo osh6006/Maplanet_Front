@@ -18,8 +18,6 @@ export async function getHunterBoardData(page?: string, searchType?: string, val
   }
 
   if (searchType && value) {
-    console.log(`${SERVER_URL}/board2/search?page=${page}&${searchType}=${value}`);
-
     const res = await fetch(
       `${SERVER_URL}/board2/search?page=${page}&${searchType}=${value}` as string,
       {

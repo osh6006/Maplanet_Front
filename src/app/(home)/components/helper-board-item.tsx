@@ -39,7 +39,6 @@ const HelperBoardItem: React.FunctionComponent<IHelperBoardItemProps> = ({
     return cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
-  console.log('board id:', id);
   // 쩔, 겹사 보드
   return (
     <li className='flex w-full list-none flex-col justify-center gap-1 rounded-xl bg-tableBackground px-4 py-4'>

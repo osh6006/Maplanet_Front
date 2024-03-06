@@ -1,13 +1,23 @@
 'use client';
 
+import dayjs from 'dayjs';
 import { useState } from 'react';
+
 import Icon from '@/components/ui/icon';
 import Badge from '@/components/ui/badge';
 import clsx from 'clsx';
+import { INotice } from '@/types';
 
-interface INoticeCardProps {}
+dayjs.locale('ko');
 
-const NoticeCard: React.FunctionComponent<INoticeCardProps> = () => {
+interface INoticeCardProps extends INotice {}
+
+const NoticeCard: React.FunctionComponent<INoticeCardProps> = ({
+  category,
+  title,
+  writer,
+  created_at
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggleOpen = () => {
@@ -21,13 +31,13 @@ const NoticeCard: React.FunctionComponent<INoticeCardProps> = () => {
         className='flex w-full cursor-pointer items-center justify-between rounded-md bg-tableBackground px-4 py-5 hover:bg-tableBackground/80 '>
         <div className='flex items-center gap-x-5'>
           <Badge size='card' className='bg-emerald-800'>
-            업데이트
+            {category}
           </Badge>
-          <p>메이플래닛 베타 서비스 중 입니다.</p>
+          <p>{title}</p>
         </div>
         <div className='flex items-center gap-x-5'>
-          <div>관리자</div>
-          <time>2024-12-12</time>
+          <div>{writer}</div>
+          <time>{dayjs(created_at).format('YYYY년 MM월 DD일')}</time>
           <Icon
             size={15}
             src='/svgs/triangle.svg'

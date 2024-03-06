@@ -22,8 +22,6 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
     '/images/option-bg-3.png'
   ];
 
-  console.log(data);
-
   return (
     // 헤더와 푸터를 제외한 메인
     <Inner>
