@@ -1,4 +1,7 @@
+import { IHunterBoardPost } from '@/types';
+
 const SERVER_URL = process.env.SERVER_URL;
+const CLIENT_SEVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
 export async function getHunterBoardData(page?: string, searchType?: string, value?: string) {
   if (!searchType) {
@@ -30,5 +33,22 @@ export async function getHunterBoardData(page?: string, searchType?: string, val
     }
 
     return res.json();
+  }
+}
+
+export async function postHunterBoard(boardData: IHunterBoardPost) {
+  try {
+    const res = await fetch(`${CLIENT_SEVER_URL}/board2/post`, {
+      method: 'POST',
+      body: JSON.stringify(boardData),
+      headers: {
+        'content-type': 'application/json'
+      }
+    });
+    if (!res.ok) {
+      throw new Error('Failed to PostHelperBoard');
+    }
+  } catch (error) {
+    throw new Error('Failed to PostHelperBoard : ', error!);
   }
 }
