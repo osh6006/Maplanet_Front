@@ -3,6 +3,7 @@ import Icon from '@/components/ui/icon';
 import InlineProfile from '@/components/ui/inline-profile';
 import * as React from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 interface IHunterMesoBoardItemProps {
   boardId: number;
@@ -58,10 +59,12 @@ const HunterMesoBoardItem: React.FunctionComponent<IHunterMesoBoardItemProps> = 
           }}>
           프로필 보기
         </Button>
-        <Button color='discord' size='sm'>
-          <Icon src='/svgs/discord-icon.svg' alt='discord-icon' size={12}></Icon>
-          <span>1:1 대화</span>
-        </Button>
+        <Link href={`https://discord.com/users/${discordId}`} target='_blanck'>
+          <Button color='discord' size='sm' className='relative z-20 overflow-hidden'>
+            <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={12} />
+            1:1 대화
+          </Button>
+        </Link>
       </div>
     </li>
   );

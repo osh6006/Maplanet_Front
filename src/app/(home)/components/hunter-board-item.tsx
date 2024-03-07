@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import HunterBoardModal from '@/components/modal/board/hunter-board-modal';
+import Link from 'next/link';
 
 interface IHunterBoardItemProps {
   boardId: number;
@@ -61,7 +62,7 @@ const HunterBoardItem: React.FunctionComponent<IHunterBoardItemProps> = ({
           onClose={() => setIsModalOpen(false)}
         />
       ) : null}
-      
+
       <li className='group relative flex w-full list-none flex-col justify-center gap-1 rounded-xl bg-tableBackground px-4 py-4'>
         {/* if complete */}
         {complete && (
@@ -88,16 +89,15 @@ const HunterBoardItem: React.FunctionComponent<IHunterBoardItemProps> = ({
             }}>
             프로필 보기
           </Button>
-          <Button
-            color='discord'
-            size='sm'
-            onClick={() => {
-              // TODO: 겹사 보드에도 user_id 필요
-              console.log('helper board:', 'board id:', boardId, 'discord id:', discordId);
-            }}>
-            <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={20} />
-            1:1 대화
-          </Button>
+          <Link href={`https://discord.com/users/${discordId}`} target='_blanck'>
+            <Button
+              color='discord'
+              size='sm'
+              className='relative z-20 overflow-hidden'>
+              <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={20} />
+              1:1 대화
+            </Button>
+          </Link>
         </div>
 
         {/* 첫번째 내용 */}
