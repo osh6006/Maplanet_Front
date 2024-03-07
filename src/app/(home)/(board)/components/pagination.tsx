@@ -14,13 +14,22 @@ const Pagination: React.FunctionComponent<IPaginationProps> = ({ totalPost, item
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const totalPages = Math.ceil(totalPost / 5);
+
+  const totalPages = Math.ceil(totalPost / 8);
   const currentPage = Number(searchParams.get('page')) || 1;
+  const pageGroup = Math.ceil(currentPage / itemsPerPage);
 
-  let firstNum = Math.max(1, currentPage - Math.floor(itemsPerPage / 2));
-  let lastNum = Math.min(totalPages, firstNum + itemsPerPage - 1);
+  let lastNumber = pageGroup * itemsPerPage;
 
-  let pageArr = Array.from({  length: lastNum - firstNum + 1 }, (_, index) => firstNum + index);
+  if (lastNumber > totalPages) {
+    lastNumber = totalPages;
+  }
+
+  let firstNumber = (pageGroup - 1) * itemsPerPage + 1;
+
+  let pageArr = Array.from({ length: lastNumber - firstNumber + 1 }, (_, index) => {
+    if (firstNumber + index > 0) return firstNumber + index;
+  });
 
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams);
@@ -45,9 +54,9 @@ const Pagination: React.FunctionComponent<IPaginationProps> = ({ totalPost, item
   return (
     <div className='relative mt-8 flex items-center'>
       <p className='absolute'>
-        등록된 쩔 게시글 <strong>{totalPost}</strong>개
+        등록된 게시글 <strong>{totalPost}</strong>개
       </p>
-      <div className='flex items-center gap-x-2 text-xs mx-auto'>
+      <div className='mx-auto flex items-center gap-x-2 text-xs'>
         <button type='button' onClick={() => handlePrevPage()} disabled={currentPage <= 1}>
           이전
         </button>
@@ -56,7 +65,7 @@ const Pagination: React.FunctionComponent<IPaginationProps> = ({ totalPost, item
             <li key={i}>
               <button
                 type='button'
-                onClick={() => handlePageButton(el)}
+                onClick={() => handlePageButton(el!)}
                 className={clsx(
                   'flex aspect-square h-[20px] w-[20px] cursor-pointer items-center justify-center rounded-full  p-1 text-xs',
                   currentPage === el ? 'bg-main' : ''

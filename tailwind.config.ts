@@ -37,7 +37,9 @@ const config: Config = {
       },
       animation: {
         'slide-in-left': 'slide-in-left 20s infinite linear',
-        'button-hover': 'button-hover 2s infinite running'
+        'button-hover': 'button-hover 2s infinite running',
+        loading: 'loading 1.1s infinite',
+        jump: 'loading 1.2s infinite'
       },
       keyframes: {
         'slide-in-left': {
@@ -47,8 +49,29 @@ const config: Config = {
         'button-hover': {
           '0%': { transform: 'translateX(0) rotate(35deg)' },
           '100%': { transform: 'translateX(500px) rotate(35deg)' }
+        },
+        loading: {
+          '0%,100%': {
+            transform: 'translateY(-25%)',
+            animationTimingFunction: 'cubic-bezier(0.8,0,1,1)'
+          },
+          '50%': {
+            transform: 'none',
+            animationTimingFunction: 'cubic-bezier(0,0,0.2,1)'
+          }
+        },
+        jump: {
+          '0%, 20%, 50%, 80%, 100%': {
+            transform: 'translateY(0)'
+          },
+          ' 40%': {
+            transform: 'translateY(-10px)'
+          },
+          '60%': {
+            transform: 'translateY(-5px)'
+          }
         }
-      },
+      }
     }
   },
   plugins: []
