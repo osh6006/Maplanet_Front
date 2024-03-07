@@ -6,7 +6,7 @@ const CLIENT_SEVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 export async function getHunterBoardData(page?: string, searchType?: string, value?: string) {
   if (!searchType) {
     const res = await fetch(`${SERVER_URL}/board2?page=${page}` as string, {
-      cache: 'force-cache'
+      cache: 'no-store'
     });
 
     if (!res.ok) {
@@ -21,7 +21,7 @@ export async function getHunterBoardData(page?: string, searchType?: string, val
     const res = await fetch(
       `${SERVER_URL}/board2/search?page=${page}&${searchType}=${value}` as string,
       {
-        cache: 'force-cache'
+        cache: 'no-store'
       }
     );
 

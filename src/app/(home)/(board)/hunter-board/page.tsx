@@ -33,7 +33,7 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
 
   const hunterBoardData: IHunterBoard[] = fetchData.board2Data;
   const searchBoardData: IHunterBoard[] = fetchData.search2Data;
-  const totalBoardCount = fetchData.getBoard2Count;
+  const totalBoardCount = fetchData.totalCount;
 
   return (
     <main>
@@ -54,7 +54,7 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
               <HunterCard {...el} key={el.board2_id} badges={[el.place_theif_nickname]} />
             ))}
           </div>
-          <Pagination totalPost={totalBoardCount || 0} itemsPerPage={5} />
+          <Pagination totalPost={totalBoardCount || 0} itemsPerPage={5} pagePerItem={12} />
         </div>
       </Suspense>
     </main>

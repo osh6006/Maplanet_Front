@@ -6,16 +6,21 @@ import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 interface IPaginationProps {
   totalPost: number;
   itemsPerPage: number;
+  pagePerItem: number;
 }
 
-const Pagination: React.FunctionComponent<IPaginationProps> = ({ totalPost, itemsPerPage }) => {
+const Pagination: React.FunctionComponent<IPaginationProps> = ({
+  totalPost,
+  itemsPerPage,
+  pagePerItem
+}) => {
   // TODO : query string 으로 pagination
 
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const totalPages = Math.ceil(totalPost / 8);
+  const totalPages = Math.ceil(totalPost / pagePerItem);
   const currentPage = Number(searchParams.get('page')) || 1;
   const pageGroup = Math.ceil(currentPage / itemsPerPage);
 

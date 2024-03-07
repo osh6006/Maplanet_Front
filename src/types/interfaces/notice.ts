@@ -8,6 +8,7 @@ export interface INotice {
   notice_id: number;
   administrator_id: number;
   title: string;
+  content: string;
   category: string;
   writer: string;
   view_count: number;

@@ -20,7 +20,7 @@ const NoticePage: React.FunctionComponent<INoticePageProps> = async ({
 }) => {
   // featch notice data
   const fetchData: INotice[] = (await getNotice(searchParams?.page || '1')).noticeData || [];
-  const totalNotice = (await getNotice(searchParams?.page || '1')).noticeCount || 1;
+  const totalNotice = (await getNotice(searchParams?.page || '1')).totalCount || 1;
 
   return (
     <main className='space-y-5'>
@@ -36,7 +36,7 @@ const NoticePage: React.FunctionComponent<INoticePageProps> = async ({
           </div>
           <NoticeList noticeList={fetchData || []} />
           <div className='flex w-full items-center justify-center'>
-            <NoticePageNation itemsPerPage={5} totalPost={totalNotice} />
+            <NoticePageNation itemsPerPage={5} totalPost={totalNotice} pagePerItem={8} />
           </div>
         </Suspense>
       </Inner>

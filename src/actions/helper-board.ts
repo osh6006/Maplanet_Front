@@ -3,10 +3,14 @@ import { IHelperBoardPost } from '@/types';
 const SERVER_URL = process.env.SERVER_URL;
 const CLIENT_SEVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
-export async function getHelperBoardData(page?: string, searchType?: string, value?: string) {
+export async function getHelperBoardData(
+  page?: number | string,
+  searchType?: string,
+  value?: string
+) {
   if (!searchType) {
     const res = await fetch(`${SERVER_URL}/board1?page=${page}` as string, {
-      cache: 'force-cache'
+      cache: 'no-store'
     });
 
     if (!res.ok) {
@@ -14,6 +18,7 @@ export async function getHelperBoardData(page?: string, searchType?: string, val
       throw new Error('Failed to getHelperBoardData');
     }
 
+    console.log(res.json);
     return res.json();
   }
 
@@ -21,7 +26,7 @@ export async function getHelperBoardData(page?: string, searchType?: string, val
     const res = await fetch(
       `${SERVER_URL}/board1/search?page=${page}&${searchType}=${value}` as string,
       {
-        cache: 'force-cache'
+        cache: 'no-store'
       }
     );
 
@@ -36,7 +41,7 @@ export async function getHelperBoardData(page?: string, searchType?: string, val
 
 export async function getHelperBoardDetail(id: number) {
   const res = await fetch(`${SERVER_URL}/board1/detail/${id}` as string, {
-    cache: 'force-cache'
+    cache: 'no-store'
   });
 
   if (!res.ok) {

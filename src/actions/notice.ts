@@ -3,7 +3,7 @@ const SERVER_URL = process.env.SERVER_URL;
 export async function getNotice(page?: string) {
   try {
     const res = await fetch(`${SERVER_URL}/notice?page=${page}` as string, {
-      cache: 'force-cache'
+      cache: 'no-store'
     });
 
     if (!res.ok) {

@@ -16,6 +16,7 @@ const NoticeCard: React.FunctionComponent<INoticeCardProps> = ({
   category,
   title,
   writer,
+  content,
   created_at
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,10 +49,7 @@ const NoticeCard: React.FunctionComponent<INoticeCardProps> = ({
       </li>
       {isOpen ? (
         <div className='w-1/2 px-10 py-10 leading-10'>
-          <p>
-            안녕하세요 메이플래닛 운영진입니다 2월14일 부로 메이플래닛 베타서비스를 진행하고
-            있습니다. 디스코드 건의사항 채널에 많은 의견 남겨주시면 감사하겠습니다.
-          </p>
+          <p>{content}</p>
         </div>
       ) : null}
     </>
