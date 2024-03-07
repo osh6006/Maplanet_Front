@@ -39,7 +39,10 @@ const Navbar = () => {
                   + 새 글
                 </Button>
               </Link>
-              <Link href={'https://maplanet.store/auth/discord'}>
+              <Link
+                href={
+                  'https://discord.com/oauth2/authorize?client_id=1207737873063739452&redirect_uri=http%3A%2F%2F13.209.210.215%3A3000%2Fauth%2Fdiscord&response_type=code&scope=identify'
+                }>
                 <Button size='sm' color='discord'>
                   <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15} />
                   로그인

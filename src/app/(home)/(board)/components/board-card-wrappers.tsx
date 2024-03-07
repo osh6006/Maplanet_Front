@@ -1,5 +1,4 @@
 import Button from '@/components/ui/button';
-import Icon from '@/components/ui/icon';
 import Link from 'next/link';
 
 export const BoardCardCompleate = () => {
@@ -14,13 +13,15 @@ export const BoardCardCompleate = () => {
 };
 
 interface IBoardCardHoverButtonsProps {
-  setIsModalOpen: () => void;
   discordId: string;
+  profileId: number;
+  setIsModalOpen: () => void;
 }
 
 export const BoardCardHoverButtons = ({
   setIsModalOpen,
-  discordId
+  discordId,
+  profileId
 }: IBoardCardHoverButtonsProps) => {
   return (
     <div
@@ -29,16 +30,11 @@ group-hover:opacity-100 group-hover:duration-300'>
       <Button color='lightGray' size='wide' onClick={setIsModalOpen}>
         상세보기
       </Button>
-
-      <Button
-        color='lightGray'
-        size='wide'
-        onClick={() => {
-          // TODO : Move Profile
-          console.log('asdf');
-        }}>
-        프로필 보기
-      </Button>
+      <Link href={`profile/${profileId}`} className='w-full'>
+        <Button color='lightGray' size='wide'>
+          프로필 보기
+        </Button>
+      </Link>
       <Link href={`discord://discord.com/users/${discordId}`} target='_blanck' className='w-full'>
         <Button color='discord' size='wide'>
           1:1 대화
