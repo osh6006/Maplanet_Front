@@ -1,13 +1,14 @@
+import { INotice } from '@/types';
 import NoticeCard from './notice-card';
 
-interface INoticeListProps {}
+interface INoticeListProps {
+  noticeList: INotice[];
+}
 
-const NoticeList: React.FunctionComponent<INoticeListProps> = ({}) => {
+const NoticeList: React.FunctionComponent<INoticeListProps> = ({ noticeList }) => {
   return (
     <ul className='flex flex-col gap-y-2'>
-      {[1, 2, 3, 4, 5, 6, 7].map((el) => (
-        <NoticeCard key={el} />
-      ))}
+      {noticeList?.map((el) => <NoticeCard {...el} key={el.notice_id} />)}
     </ul>
   );
 };

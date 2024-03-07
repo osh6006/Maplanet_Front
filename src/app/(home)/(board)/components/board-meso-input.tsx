@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import { Controller } from 'react-hook-form';
 
@@ -17,7 +19,6 @@ const BoardMesoInput: React.FunctionComponent<IBoardMesoInputProps> = ({
   control,
   rules,
   name,
-  defaultValue,
   disabled
 }) => {
   return (
@@ -25,12 +26,13 @@ const BoardMesoInput: React.FunctionComponent<IBoardMesoInputProps> = ({
       name={name}
       control={control}
       rules={rules}
-      defaultValue={defaultValue}
       disabled={disabled}
-      render={({ field: { value, name, onChange }, fieldState: { error, invalid } }) => {
+      render={({ field: { value, name, onChange, disabled }, fieldState: { error, invalid } }) => {
         const handleReset = () => {
           onChange('');
         };
+
+        const newDisabled = value === '협의 가능' || disabled;
 
         return (
           <div className='flex-col '>
@@ -39,19 +41,21 @@ const BoardMesoInput: React.FunctionComponent<IBoardMesoInputProps> = ({
               <div className='space-y-4'>
                 <Input
                   name={name}
+                  disabled={newDisabled}
                   type='text'
                   value={value || ''}
                   invalid={invalid}
                   onChange={onChange}
-                  placeholder='(만) 메소'
+                  placeholder='메소'
                   icon={
                     <div className='flex items-center gap-x-1'>
-                      <span className=' items-center text-[15px] text-black'>(만) 메소</span>
+                      <Icon src='/svgs/money.svg' alt='x' size={20} />
                       <button
+                        disabled={newDisabled}
                         type='button'
                         onClick={() => handleReset()}
                         className={clsx(value ? 'block' : 'hidden')}>
-                        <Icon src='/svgs/x.svg' alt='money' size={15} />
+                        <Icon src='/svgs/x.svg' alt='x' size={15} />
                       </button>
                     </div>
                   }
@@ -62,7 +66,9 @@ const BoardMesoInput: React.FunctionComponent<IBoardMesoInputProps> = ({
                     color='gray'
                     type='button'
                     onClick={() => {
-                      onChange(Number(value || 0) + 100);
+                      if (!newDisabled) {
+                        onChange(Number(value || 0) + 1000000);
+                      }
                     }}>
                     +100만
                   </Button>
@@ -71,7 +77,9 @@ const BoardMesoInput: React.FunctionComponent<IBoardMesoInputProps> = ({
                     color='gray'
                     type='button'
                     onClick={() => {
-                      onChange(Number(value || 0) + 50);
+                      if (!newDisabled) {
+                        onChange(Number(value || 0) + 500000);
+                      }
                     }}>
                     +50만
                   </Button>
@@ -80,7 +88,9 @@ const BoardMesoInput: React.FunctionComponent<IBoardMesoInputProps> = ({
                     color='gray'
                     type='button'
                     onClick={() => {
-                      onChange(Number(value || 0) + 10);
+                      if (!newDisabled) {
+                        onChange(Number(value || 0) + 100000);
+                      }
                     }}>
                     +10만
                   </Button>
@@ -89,21 +99,32 @@ const BoardMesoInput: React.FunctionComponent<IBoardMesoInputProps> = ({
                     color='gray'
                     type='button'
                     onClick={() => {
-                      onChange(Number(value || 0) + 5);
+                      if (!newDisabled) {
+                        onChange(Number(value || 0) + 50000);
+                      }
                     }}>
                     +5만
                   </Button>
                   <Button
                     size='xs'
-                    color='gray'
+                    color={newDisabled ? 'main' : 'gray'}
                     type='button'
                     onClick={() => {
-                      // TODO : state를 통해 disabled
+                      if (newDisabled) {
+                        onChange('');
+                      } else {
+                        onChange('협의 가능');
+                      }
                     }}>
-                    협의 가능
+                    {newDisabled ? '협의 가능' : '협의 가능'}
                   </Button>
                 </div>
               </div>
+            </div>
+            <div className='mt-2'>
+              {newDisabled ? (
+                <p className='text-right text-yellow'>협의 가능을 선택하셨습니다. </p>
+              ) : null}
             </div>
             <div className='mt-2'>
               {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}

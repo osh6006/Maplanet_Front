@@ -36,15 +36,6 @@ const HunterMesoBoardItem: React.FunctionComponent<IHunterMesoBoardItemProps> = 
   //   return addCommasToCost(dividedCost);
   // };
 
-  console.log(
-    'hunter meso board:',
-    'board id:',
-    boardId,
-    'user id:',
-    userId,
-    'discord id:',
-    discordId
-  );
   // 쩔, 겹사 보드
   return (
     <li className='flex h-[94px] w-full list-none items-center justify-between gap-1 rounded-xl bg-tableBackground px-[17px]'>

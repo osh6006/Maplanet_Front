@@ -4,22 +4,23 @@ import Label from '@/components/ui/label';
 import Select from '@/components/ui/select';
 import FormErrorMessage from '@/components/ui/form-error-message';
 
-import { IHelperPost, Job } from '@/types';
+import { IHelperBoardPost, Job } from '@/types';
 
 import { filterJobList } from '@/util/util';
 
 interface IBoardSelectProps {
-  control: Control<IHelperPost, any, IHelperPost>;
+  control: Control<IHelperBoardPost, any, IHelperBoardPost>;
   name: string;
   label: string;
   placeholder: string;
   rules?:
     | Omit<
-        RegisterOptions<IHelperPost, keyof IHelperPost>,
+        RegisterOptions<IHelperBoardPost, keyof IHelperBoardPost>,
         'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'
       >
     | undefined;
   jobWatch: string | null;
+  disabled: boolean;
 }
 
 const BoardSelect: React.FunctionComponent<IBoardSelectProps> = ({
@@ -28,14 +29,15 @@ const BoardSelect: React.FunctionComponent<IBoardSelectProps> = ({
   name,
   placeholder,
   rules,
-  jobWatch
+  jobWatch,
+  disabled
 }) => {
   return (
     <Controller
-      name={name as keyof IHelperPost}
+      name={name as keyof IHelperBoardPost}
       control={control}
       rules={rules}
-      disabled={!jobWatch ? true : false}
+      disabled={!jobWatch ? true : false || disabled}
       render={({ field: { value, onChange, name, disabled }, fieldState: { error, invalid } }) => {
         // 사용자가 체크박스로 1차 직업을 변경하는 경우 자동으로 2차 직업의 첫번째 값으로 변경
         let newValue = value;

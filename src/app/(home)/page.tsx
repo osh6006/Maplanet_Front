@@ -32,7 +32,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
             <span className='mr-5 tracking-widest text-[#d6d6d6]'>메 이 플 랜 드</span>
             <span className='tracking-widest text-[#d6d6d6]'>커 뮤 니 티</span>
           </div>
-          <div className='mt-2 mb-5'>
+          <div className='mb-5 mt-2'>
             <Image src='/svgs/main-logo.svg' alt='logo' height={50} width={350} />
           </div>
         </div>

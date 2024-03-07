@@ -1,5 +1,5 @@
-export interface IHelperPost {
-  meso: string;
+export interface IHelperBoardPost {
+  meso: string | null;
   title: string;
   maple_nickname: string;
   hunting_ground: string;
