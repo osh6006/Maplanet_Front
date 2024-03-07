@@ -6,7 +6,7 @@ interface SWRResponse {
   isLoading: boolean;
 }
 
-function MainpageFetcher(): SWRResponse {
+function GetHomeData(): SWRResponse {
   // SWR내의 에러는 API서버에서 내려온 에러를 의미
   const { data, error } = useSWR(`/main`);
   return {
@@ -16,4 +16,4 @@ function MainpageFetcher(): SWRResponse {
   };
 }
 
-export default MainpageFetcher;
+export default GetHomeData;
