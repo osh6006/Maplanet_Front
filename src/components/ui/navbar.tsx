@@ -39,17 +39,13 @@ const Navbar = () => {
                   + 새 글
                 </Button>
               </Link>
-              <Button size='sm' color='discord'>
-                <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15} />
-                로그인
-              </Button>
+              <Link href={'https://maplanet.store/auth/discord'}>
+                <Button size='sm' color='discord'>
+                  <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15} />
+                  로그인
+                </Button>
+              </Link>
             </div>
-            <Link href={'https://maplanet.store/auth/discord'}>
-              <Button size='sm' color='discord'>
-                <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15} />
-                로그인
-              </Button>
-            </Link>
           </div>
         </div>
       </Inner>
