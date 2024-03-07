@@ -2,9 +2,11 @@ import Button from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import InlineProfile from '@/components/ui/inline-profile';
 import * as React from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 
 interface IHelperMannerBoardItemProps {
-  id: number;
+  boardId: number;
+  userId: number;
   discordId: string;
   profileImg: string;
   profileName: string;
@@ -13,13 +15,16 @@ interface IHelperMannerBoardItemProps {
 }
 
 const HelperMannerBoardItem: React.FunctionComponent<IHelperMannerBoardItemProps> = ({
-  id,
+  boardId,
+  userId,
   discordId,
   profileImg,
   profileName,
   manner,
   cost
 }) => {
+  const router = useRouter();
+
   // 쩔, 겹사 보드
   return (
     <li className='flex h-[94px] w-full list-none items-center justify-between gap-1 rounded-xl bg-tableBackground px-[17px]'>
@@ -28,10 +33,16 @@ const HelperMannerBoardItem: React.FunctionComponent<IHelperMannerBoardItemProps
 
       {/* 버튼 */}
       <div className='flex gap-2'>
-        <Button color='main' size='xs'>
+        <Button
+          color='lightGray'
+          size='sm'
+          onClick={() => {
+            console.log('userId', userId);
+            router.push(`/profile/${userId}`);
+          }}>
           프로필 보기
         </Button>
-        <Button color='discord' size='xs'>
+        <Button color='discord' size='sm'>
           <Icon src='/svgs/discord-icon.svg' alt='discord-icon' size={12}></Icon>
           <span>1:1 대화</span>
         </Button>
