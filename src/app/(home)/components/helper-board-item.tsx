@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import HelperBoardModal from '@/components/modal/board/helper-board-modal';
+import Link from 'next/link';
 
 interface IHelperBoardItemProps {
   boardId: number;
@@ -98,25 +99,15 @@ const HelperBoardItem: React.FunctionComponent<IHelperBoardItemProps> = ({
             className={clsx('button relative overflow-hidden')}>
             프로필 보기
           </Button>
-          <Button
-            color='discord'
-            size='sm'
-            onClick={() => {
-              // TODO : Discord Chat
-              console.log(
-                'helper board:',
-                'board id:',
-                boardId,
-                'user id:',
-                userId,
-                'discord id:',
-                discordId
-              );
-            }}
-            className='relative z-20 overflow-hidden'>
-            <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={20} />
-            1:1 대화
-          </Button>
+          <Link href={`https://discord.com/users/${discordId}`} target='_blanck'>
+            <Button
+              color='discord'
+              size='sm'
+              className='relative z-20 overflow-hidden'>
+              <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={20} />
+              1:1 대화
+            </Button>
+          </Link>
         </div>
 
         {/* 첫번째 내용 */}
