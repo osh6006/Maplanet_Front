@@ -1,4 +1,5 @@
 'use client';
+import { discordLogin } from '@/actions/auth';
 
 import Icon from './icon';
 import Inner from './inner';
@@ -30,7 +31,7 @@ const Navbar = () => {
             <Link href='/helper-board'>잠쩔</Link>
             <Link href='/hunter-board'>겹사 의뢰</Link>
             <Link href='/notice'>공지사항</Link>
-            
+
             {/* TODO: 로그인시 새글 등록 뜨게하고 로그아웃시 안뜨게 수정 */}
             <div className='flex space-x-3'>
               <Link href='/board-write'>
@@ -38,10 +39,12 @@ const Navbar = () => {
                   + 새 글
                 </Button>
               </Link>
-              <Button size='sm' color='discord'>
-                <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15} />
-                로그인
-              </Button>
+              <Link href={'https://maplanet.store/auth/discord'}>
+                <Button size='sm' color='discord'>
+                  <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15} />
+                  로그인
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

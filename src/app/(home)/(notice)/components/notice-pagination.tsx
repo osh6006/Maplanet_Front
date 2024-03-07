@@ -12,18 +12,27 @@ const NoticePageNation: React.FunctionComponent<INoticePageNationProps> = ({
   totalPost,
   itemsPerPage
 }) => {
-  // TODO : query string 으로 NoticePageNation
+  // TODO : query string 으로 pagination
 
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const totalPages = Math.ceil(totalPost / 5);
+
+  const totalPages = Math.ceil(totalPost / 8);
   const currentPage = Number(searchParams.get('page')) || 1;
+  const pageGroup = Math.ceil(currentPage / itemsPerPage);
 
-  let firstNum = Math.max(1, currentPage - Math.floor(itemsPerPage / 2));
-  let lastNum = Math.min(totalPages, firstNum + itemsPerPage - 1);
+  let lastNumber = pageGroup * itemsPerPage;
 
-  let pageArr = Array.from({ length: lastNum - firstNum + 1 }, (_, index) => firstNum + index);
+  if (lastNumber > totalPages) {
+    lastNumber = totalPages;
+  }
+
+  let firstNumber = (pageGroup - 1) * itemsPerPage + 1;
+
+  let pageArr = Array.from({ length: lastNumber - firstNumber + 1 }, (_, index) => {
+    if (firstNumber + index > 0) return firstNumber + index;
+  });
 
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams);
@@ -46,8 +55,8 @@ const NoticePageNation: React.FunctionComponent<INoticePageNationProps> = ({
   };
 
   return (
-    <div className='mt-8 flex justify-between '>
-      <div className='flex items-center gap-x-2 text-xs'>
+    <div className='relative mt-8 flex items-center'>
+      <div className='mx-auto flex items-center gap-x-2 text-xs'>
         <button type='button' onClick={() => handlePrevPage()} disabled={currentPage <= 1}>
           이전
         </button>
@@ -56,7 +65,7 @@ const NoticePageNation: React.FunctionComponent<INoticePageNationProps> = ({
             <li key={i}>
               <button
                 type='button'
-                onClick={() => handlePageButton(el)}
+                onClick={() => handlePageButton(el!)}
                 className={clsx(
                   'flex aspect-square h-[20px] w-[20px] cursor-pointer items-center justify-center rounded-full  p-1 text-xs',
                   currentPage === el ? 'bg-main' : ''

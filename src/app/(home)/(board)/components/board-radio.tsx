@@ -9,7 +9,7 @@ import {
 import Radio from '@/components/ui/radio';
 import FormErrorMessage from '@/components/ui/form-error-message';
 
-import { IHelperPost } from '@/types';
+import { IHelperBoardPost } from '@/types';
 import Label from '@/components/ui/label';
 
 interface IBoardRadioProps extends UseControllerProps<FieldValues> {
@@ -27,13 +27,15 @@ const BoardRadio: React.FunctionComponent<IBoardRadioProps> = ({
   name,
   rules,
   label,
-  options
+  options,
+  disabled
 }) => {
   return (
     <Controller
-      name={name as keyof IHelperPost}
+      name={name as keyof IHelperBoardPost}
       control={control}
       rules={rules}
+      disabled={disabled}
       render={({ field: { onChange, name }, fieldState: { error } }) => {
         return (
           <div className='space-y-2'>
@@ -48,6 +50,7 @@ const BoardRadio: React.FunctionComponent<IBoardRadioProps> = ({
                     value={el.value}
                     onChange={onChange}
                     key={el.value}
+                    disabled={disabled}
                   />
                 ))}
               </div>

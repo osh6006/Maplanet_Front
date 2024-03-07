@@ -51,8 +51,7 @@ const HunterBoardItem: React.FunctionComponent<IHunterBoardItemProps> = ({
     return cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
-  console.log('hunter board:', 'board id:', boardId, 'discord id:', discordId);
-
+  // 쩔, 겹사 보드
   return (
     <>
       {isModalOpen ? (

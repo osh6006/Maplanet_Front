@@ -16,8 +16,8 @@ export interface IHunterBoard {
   updated_at: string;
 }
 
-export interface IHunterPost {
-  meso: number;
+export interface IHunterBoardPost {
+  meso: number | null | string;
   report_kind: string;
   title: string;
   request_nickname: string;
