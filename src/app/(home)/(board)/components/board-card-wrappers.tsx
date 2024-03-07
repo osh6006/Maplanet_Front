@@ -1,5 +1,6 @@
 import Button from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import Link from 'next/link';
 
 export const BoardCardCompleate = () => {
   return (
@@ -38,16 +39,11 @@ group-hover:opacity-100 group-hover:duration-300'>
         }}>
         프로필 보기
       </Button>
-      <Button
-        color='discord'
-        size='wide'
-        onClick={() => {
-          // TODO : Move Profile
-          console.log('asdf');
-        }}>
-        <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={20} />
-        1:1 대화
-      </Button>
+      <Link href={`discord://discord.com/users/${discordId}`} target='_blanck' className='w-full'>
+        <Button color='discord' size='wide'>
+          1:1 대화
+        </Button>
+      </Link>
     </div>
   );
 };

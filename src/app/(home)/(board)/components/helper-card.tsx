@@ -43,20 +43,20 @@ const HelperCard: React.FunctionComponent<IHelperCardProps> = ({
 
   return (
     <>
-        {isModalOpen ? (
-          <HelperBoardModal
-            boardId={board1_id}
-            isOpen={isModalOpen}
-            onClose={() => setIsModalOpen(false)}
-          />
-        ) : null}
+      {isModalOpen ? (
+        <HelperBoardModal
+          boardId={board1_id}
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
+      ) : null}
       <li
         className='group relative h-full w-full flex-col justify-between overflow-hidden rounded-3xl bg-[#161616] p-8 transition-all sm:flex
   sm:w-[320px]'>
         {complete ? (
           <BoardCardCompleate />
         ) : (
-          <BoardCardHoverButtons discordId='' setIsModalOpen={onOpen} />
+          <BoardCardHoverButtons discordId={discord_id} setIsModalOpen={onOpen} />
         )}
 
         <div className='flex w-full items-center justify-between '>

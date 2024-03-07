@@ -57,7 +57,7 @@ const HunterCard: React.FunctionComponent<IHelperCardProps> = ({
         {complete ? (
           <BoardCardCompleate />
         ) : (
-          <BoardCardHoverButtons discordId='' setIsModalOpen={onOpen} />
+          <BoardCardHoverButtons discordId={discord_id} setIsModalOpen={onOpen} />
         )}
 
         <div className='flex w-full items-center justify-between '>
