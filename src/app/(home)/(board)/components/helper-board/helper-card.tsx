@@ -41,8 +41,6 @@ const HelperCard: React.FunctionComponent<IHelperCardProps> = ({
     setIsModalOpen(true);
   };
 
-  console.log(props.view_count);
-
   return (
     <>
       {isModalOpen ? (

@@ -15,7 +15,7 @@ const sizes = {
   md: 'text-base px-3 py-2',
   lg: 'text-lg px-4 py-2',
   xl: 'text-xl px-4 py-2',
-  wide: 'w-full px-1 py-2',
+  wide: 'w-full text-sm px-1 py-2 sm:text-base',
   card: 'w-full text-sm px-2 py-2 sm:text-xs'
 };
 
@@ -39,7 +39,7 @@ const Button: React.FunctionComponent<IButtonProps> = ({
   return (
     <button
       className={clsx(
-        'shadow-[inset_0_0_20px_rgba(255,255,255,0)] duration-200 hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.1)]',
+        'whitespace-nowrap text-sm  shadow-[inset_0_0_20px_rgba(255,255,255,0)] duration-200 hover:shadow-[inset_0_0_20px_rgba(255,255,255,0.1)]',
         'relative z-20 flex transform select-none items-center justify-center gap-2 overflow-hidden rounded-md text-lg font-semibold transition-all active:scale-95',
         disabled ? 'pointer-events-none border-transparent bg-slate-500 text-white' : '',
         color ? colors[color] : '',

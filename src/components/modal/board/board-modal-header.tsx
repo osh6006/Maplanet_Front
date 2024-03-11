@@ -20,10 +20,10 @@ const BoardModalHeader: React.FunctionComponent<IPostModalHeaderProps> = ({
   report_count
 }) => {
   return (
-    <div className='flex justify-center gap-y-2'>
+    <div className='flex flex-col justify-center gap-y-2 sm:flex-row'>
       <div className='flex flex-1 items-center gap-x-4'>
         <Avatar imgUrl={filterImageUrl(discord_image!)} size={40} />
-        <div className='flex flex-col gap-x-2'>
+        <div className='flex gap-x-2 sm:flex-col'>
           <h1 className='text-xl'>{discord_global_name}</h1>
           <div className='flex items-center gap-x-3'>
             <div className='flex items-center gap-x-1'>

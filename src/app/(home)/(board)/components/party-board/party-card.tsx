@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 import Icon from '@/components/ui/icon';
 import InlineProfile from '@/components/ui/inline-profile';
 import { filterImageUrl } from '@/util/util';
+import PartyBoardModal from '@/components/modal/board/party-board-modal';
 
 interface IPartyCardProps extends IPartyBoard {
   badges?: string[];
@@ -23,6 +24,7 @@ const PartyCard: React.FunctionComponent<IPartyCardProps> = ({
   manner_count,
   report_count,
   discord_global_name,
+  board4_id,
   ...props
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,6 +35,13 @@ const PartyCard: React.FunctionComponent<IPartyCardProps> = ({
 
   return (
     <>
+      {isModalOpen ? (
+        <PartyBoardModal
+          boardId={board4_id}
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
+      ) : null}
       <li
         className='group relative h-full w-full flex-col justify-between overflow-hidden rounded-3xl bg-[#161616] p-8 transition-all sm:flex
   sm:w-[320px]'>
