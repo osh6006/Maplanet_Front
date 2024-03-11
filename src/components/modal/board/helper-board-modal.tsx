@@ -25,7 +25,7 @@ const HelperBoardModal: React.FunctionComponent<IHelperBoardModalProps> = ({
   // data fetching using swr
   const { data, error, isLoading } = useSWR<IHelperBoardDetail>(`/board1/detail/${boardId}`);
 
-  if (isLoading) {
+  if (true) {
     return (
       <Modal isOpen={isOpen} onClose={onClose}>
         <Loading size={100} />

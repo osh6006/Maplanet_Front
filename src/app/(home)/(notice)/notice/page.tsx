@@ -5,8 +5,10 @@ import Link from 'next/link';
 import Inner from '@/components/ui/inner';
 import Button from '@/components/ui/button';
 import Banner from '@/components/ui/banner';
+import Loading from '@/components/ui/loading';
 import NoticeList from '../components/notice-list';
 import NoticePageNation from '../components/notice-pagination';
+
 import { INotice } from '@/types';
 
 interface INoticePageProps {}
@@ -26,7 +28,12 @@ const NoticePage: React.FunctionComponent<INoticePageProps> = async ({
     <main className='space-y-5'>
       <Banner title='공지사항' />
       <Inner>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={
+            <div className='flex h-[500px] items-center justify-center'>
+              <Loading size={100} />
+            </div>
+          }>
           <div className='mb-4 flex w-full justify-end'>
             <Link href={'/notice-write'}>
               <Button color='main' size='sm'>

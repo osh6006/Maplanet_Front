@@ -21,8 +21,6 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
 
   const { data, isLoading, error } = GetHomeData();
 
-  console.log(data);
-
   let categoryData = [];
 
   if (category === '쩔') {
@@ -35,14 +33,14 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
     categoryData = data.board2HighMesoData;
   }
 
-  if (isLoading) return <Spinner />;
+  // if (isLoading) return <Spinner />;
   if (error) return <div>에러가 발생했습니다.</div>;
 
   return (
     <div>
       {/* 카테고리 제목 컴포넌트*/}
       <div
-        className={clsx(  
+        className={clsx(
           isHovered ? 'bg-black/60' : '',
           'relative flex h-[70px] w-full items-center justify-between overflow-hidden rounded-xl bg-black px-[20px] py-[22px] transition-all duration-200'
         )}

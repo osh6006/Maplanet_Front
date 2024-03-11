@@ -26,7 +26,11 @@ const Modal: React.FunctionComponent<IModalProps> = ({ children, onClose, isOpen
           <div
             className='fixed inset-0 z-[5000] flex items-center justify-center bg-black/65 px-10'
             onClick={onClose}>
-            <div className='relative min-w-[370px] max-w-2xl rounded-md bg-tableBackground px-12 py-16'>
+            <div
+              className='relative min-w-[370px] max-w-2xl rounded-md bg-tableBackground px-12 py-16'
+              onClick={(e) => {
+                e.stopPropagation();
+              }}>
               <button className='absolute right-5 top-5 flex w-full justify-end' onClick={onClose}>
                 <Icon size={25} src='/svgs/x.svg' alt='X' priority />
               </button>

@@ -2,19 +2,22 @@
 
 import Icon from '@/components/ui/icon';
 import Inner from '@/components/ui/inner';
-import GetHomeData from '@/actions/home';
-import Spinner from '@/components/ui/spinner';
 import Board from './components/board';
 import Image from 'next/image';
+import Loading from '@/components/ui/loading';
+import GetHomeData from '@/actions/home';
 
 interface IHomePageProps {}
 
 const HomePage: React.FunctionComponent<IHomePageProps> = () => {
   const { data, isLoading, error } = GetHomeData();
 
-  console.log(data);
-
-  if (isLoading) return <Spinner />;
+  if (isLoading)
+    return (
+      <div className='flex h-[500px] items-center justify-center'>
+        <Loading size={100} />
+      </div>
+    );
 
   if (error) return <div>에러가 발생했습니다.</div>;
 

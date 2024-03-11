@@ -4,6 +4,7 @@ import { getHunterBoardData } from '@/actions/hunter-board';
 import Sort from '../components/sort';
 import Search from '../components/search';
 import Banner from '@/components/ui/banner';
+import Loading from '@/components/ui/loading';
 import Pagination from '../components/pagination';
 import HunterCard from '../components/hunter-card';
 
@@ -38,7 +39,12 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
   return (
     <main>
       <Banner title='겹사 의뢰' imgUrl='/images/banner.png' />
-      <Suspense>
+      <Suspense
+        fallback={
+          <div className='flex h-[500px] items-center justify-center'>
+            <Loading size={100} />
+          </div>
+        }>
         <div className='mx-auto max-w-[500px] sm:max-w-[670px] lg:max-w-[1000px] xl:max-w-[1440px] xl:px-20'>
           <div className='mt-8 flex w-full flex-col justify-between gap-y-4 px-10 sm:flex-row sm:px-0'>
             <Sort options={sortOptions} />

@@ -37,18 +37,10 @@ export const discordLogin = async () => {
 
 export const discordLoginTest = async (code: string) => {
   try {
-    const data = {
-      client_id: DISCORD_CLIENT_ID,
-      client_secret: DISCORD_CLIENT_SECRET,
-      grant_type: 'authorization_code',
-      code: code,
-      redirect_uri: `https://maplanet.store/discord/auth/login`,
-      scope: 'identify, email'
-    };
-
+    // 백엔드와 통신
     const response = await fetch('https://maplanet.store/auth/discord', {
       method: 'POST',
-      body: JSON.stringify(data)
+      body: JSON.stringify(code)
     });
 
     const responseData = await response.json();
