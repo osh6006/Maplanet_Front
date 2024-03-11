@@ -1,5 +1,4 @@
 import { IWoodCutterBoardDetail } from '@/types';
-import * as React from 'react';
 import useSWR from 'swr';
 import Modal from '../modal';
 import BoardModalHeader from './board-modal-header';

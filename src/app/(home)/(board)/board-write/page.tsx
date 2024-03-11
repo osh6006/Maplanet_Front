@@ -6,7 +6,7 @@ import { useState } from 'react';
 import HelperBoardForm from '../components/helper-board/helper-board-form';
 import HunterBoardForm from '../components/hunter-board/hunter-board-form';
 
-export type TWirteType = 'helperBoard' | 'hunterBoard';
+export type TWirteType = 'helperBoard' | 'hunterBoard' | 'woodCutterBoard' | 'partyBoard';
 
 interface IWriteProps {}
 
@@ -18,7 +18,7 @@ const WritePage: React.FunctionComponent<IWriteProps> = ({}) => {
   };
 
   return (
-    <main className='w-full py-12'>
+    <main className='w-full'>
       <Inner>
         <div className='mt-4'>
           <WriteTypeSelector writeType={writeType} setWriteType={handleWriteType} />

@@ -39,12 +39,17 @@ const config: Config = {
         'slide-in-left': 'slide-in-left 20s infinite linear',
         'button-hover': 'button-hover 2s infinite running',
         loading: 'loading 1.1s infinite',
-        jump: 'loading 1.2s infinite'
+        jump: 'loading 1.2s infinite',
+        actSlideRight: 'slideRight 0.2s forwards'
       },
       keyframes: {
         'slide-in-left': {
           '0%': { transform: 'translateX(65%)' },
           '100%': { transform: 'translateX(-65%)' }
+        },
+        slideRight: {
+          from: { left: '0px' },
+          to: { left: '40px' }
         },
         'button-hover': {
           '0%': { transform: 'translateX(0) rotate(35deg)' },

@@ -83,24 +83,6 @@ const HelperBoardForm: React.FunctionComponent<IHelperBoardFormProps> = () => {
               }
             }}
           />
-          <BoardInput
-            control={control}
-            name='hunting_ground'
-            label='사냥터'
-            placeholder='사냥터를 입력해 주세요'
-            disabled={isLoading}
-            rules={{
-              required: '사냥터는 필수로 입력해야 합니다.',
-              minLength: {
-                message: '최소 5글자 이상 입력해야 합니다.',
-                value: 2
-              },
-              maxLength: {
-                message: '20글자 이상은 입력이 불가합니다.',
-                value: 12
-              }
-            }}
-          />
 
           <BoardInput
             control={control}
@@ -168,18 +150,6 @@ const HelperBoardForm: React.FunctionComponent<IHelperBoardFormProps> = () => {
             disabled={isLoading}
             placeholder='서브 직업을 선택해 주세요'
             rules={{ required: '서브 직업을 선택해 주세요' }}
-          />
-
-          <BoardRadio
-            control={control}
-            name='progress_kind'
-            label='쩔 종류'
-            rules={{ required: '파티 종류를 선택해 주세요' }}
-            disabled={isLoading}
-            options={[
-              { id: '잠쩔', label: '잠쩔', value: '잠쩔' },
-              { id: '심쩔', label: '심쩔', value: '심쩔' }
-            ]}
           />
 
           <BoardRadio
