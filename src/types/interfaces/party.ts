@@ -28,7 +28,7 @@ export interface IPartyBoard {
   manner_count: number;
   report_count: number;
   created_at: string;
-  update_at: string;
+  updated_at: string;
 }
 
 export interface IPartyBoardDeatil {

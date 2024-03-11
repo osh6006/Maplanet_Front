@@ -7,6 +7,9 @@ import { IPartyBoard } from '@/types';
 import Sort from '../components/sort';
 import Search from '../components/search';
 import { partyBoardFilters, sortOptions } from '@/data/board';
+import Pagination from '../components/pagination';
+import PartyCard from '../components/party-board/party-card';
+import { getPartyBoardData } from '@/actions/party-board';
 
 interface IPartyBoardPageProps {}
 
@@ -22,15 +25,15 @@ const PartyBoardPage: React.FunctionComponent<IPartyBoardPageProps> = async ({
 }) => {
   // TODO : Fetch Data from server
 
-  // const fetchData = await getHelperBoardData(
-  //   searchParams?.page || 1,
-  //   searchParams?.searchType,
-  //   searchParams?.value
-  // );
+  const fetchData = await getPartyBoardData(
+    searchParams?.page || 1,
+    searchParams?.searchType,
+    searchParams?.value
+  );
 
-  // const helperBoardData: IPartyBoard[] = fetchData.board1Data;
-  // const searchBoardData: IPartyBoard[] = fetchData.search1Data;
-  // const totalBoardCount = fetchData.totalCount;
+  const partyBoardData: IPartyBoard[] = fetchData.board1Data;
+  const searchBoardData: IPartyBoard[] = fetchData.search4Data;
+  const totalBoardCount = fetchData.totalCount;
 
   return (
     <main>
@@ -46,6 +49,24 @@ const PartyBoardPage: React.FunctionComponent<IPartyBoardPageProps> = async ({
             <Sort options={sortOptions} />
             <Search filters={partyBoardFilters} />
           </div>
+          <ul className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+            {partyBoardData?.map((el) => (
+              <PartyCard
+                key={el.board4_id}
+                {...el}
+                badges={[el.progress_time, el.hunting_ground, `${el.recruit_people_count}명 모집`]}
+              />
+            ))}
+            {searchBoardData?.map((el) => (
+              <PartyCard
+                key={el.board4_id}
+                {...el}
+                badges={[el.progress_time, el.hunting_ground, `${el.recruit_people_count}명 모집`]}
+              />
+            ))}
+          </ul>
+
+          <Pagination totalPost={totalBoardCount} itemsPerPage={5} pagePerItem={12} />
         </div>
       </Suspense>
     </main>

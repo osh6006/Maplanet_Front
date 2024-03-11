@@ -1,6 +1,5 @@
 'use client';
 
-import clsx from 'clsx';
 import { useState } from 'react';
 import { IWoodCutterBoard } from '@/types';
 import { BoardCardCompleate, BoardCardHoverButtons } from '../board-card-wrappers';
