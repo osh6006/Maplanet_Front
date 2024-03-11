@@ -2,7 +2,7 @@
 import clsx from 'clsx';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { IHelperPost, Job } from '@/types';
+import { IHelperBoardPost, Job } from '@/types';
 
 import Icon from '@/components/ui/icon';
 import Input from '@/components/ui/input';
@@ -17,9 +17,9 @@ import PostBanner from '@/components/ui/banner';
 import Inner from '@/components/ui/inner';
 
 const TestCompPage: React.FunctionComponent<any> = ({}) => {
-  const { control, handleSubmit, watch } = useForm<IHelperPost>();
+  const { control, handleSubmit, watch } = useForm<IHelperBoardPost>();
 
-  const onSubmit: SubmitHandler<IHelperPost> = (data) => {
+  const onSubmit: SubmitHandler<IHelperBoardPost> = (data) => {
     console.log(data);
   };
 

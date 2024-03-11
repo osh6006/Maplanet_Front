@@ -5,6 +5,7 @@ import Modal from '../modal';
 import BoardModalHeader from './board-modal-header';
 import { BoardDD, BoardDL, BoardDT } from './board-modal-body';
 import Badge from '@/components/ui/badge';
+import Loading from '@/components/ui/loading';
 
 interface IWoodCutterBoardModalProps {
   isOpen: boolean;
@@ -18,31 +19,31 @@ const WoodCutterBoardModal: React.FunctionComponent<IWoodCutterBoardModalProps> 
   boardId
 }) => {
   // data fetching using swr
-  //   const { data, error, isLoading } = useSWR<IWoodCutterBoardDetail>(`/board3/detail/${boardId}`);
+  const { data, error, isLoading } = useSWR<IWoodCutterBoardDetail>(`/board3/detail/${boardId}`);
 
-  //   if (isLoading) {
-  //     return (
-  //       <Modal isOpen={isOpen} onClose={onClose}>
-  //         <Loading size={100} />
-  //       </Modal>
-  //     );
-  //   }
+  if (isLoading) {
+    return (
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <Loading size={100} />
+      </Modal>
+    );
+  }
 
-  //   if (error) {
-  //     return <div>서버 에러!</div>;
-  //   }
+  if (error) {
+    return <div>서버 에러!</div>;
+  }
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div onClick={(e) => e.stopPropagation()}>
+      <div onClick={(e) => e.stopPropagation()} className=''>
         {/* Header */}
         <div className='flex flex-col gap-4'>
           <BoardModalHeader
-            discord_id={'a132123'}
-            discord_image={''}
-            discord_global_name={'지발돈좀'}
-            manner_count={13}
-            report_count={44}
+            discord_id={data?.discord_id!}
+            discord_image={data?.discord_image!}
+            discord_global_name={data?.discord_global_name!}
+            manner_count={data?.manner_count!}
+            report_count={data?.report_count!}
           />
 
           <hr className='my-5' />
@@ -59,37 +60,34 @@ const WoodCutterBoardModal: React.FunctionComponent<IWoodCutterBoardModalProps> 
             </BoardDL>
             <BoardDL>
               <BoardDT>메소</BoardDT>
-              <BoardDD>{40000}</BoardDD>
+              <BoardDD>{data?.meso}</BoardDD>
             </BoardDL>
             <BoardDL>
               <BoardDT>사냥터</BoardDT>
-              <BoardDD>{'죽은 나무의 숲'}</BoardDD>
+              <BoardDD>{data?.hunting_ground}</BoardDD>
             </BoardDL>
             <BoardDL>
               <BoardDT>직업</BoardDT>
-              <BoardDD>{'클레릭'}</BoardDD>
+              <BoardDD>{data?.sub_job}</BoardDD>
             </BoardDL>
             <BoardDL>
               <BoardDT>레벨</BoardDT>
-              <BoardDD>{55}</BoardDD>
+              <BoardDD>{data?.level}</BoardDD>
             </BoardDL>
             <BoardDL>
               <BoardDT>메이플 닉네임</BoardDT>
-              <BoardDD>{'메이플 닉넴'}</BoardDD>
+              <BoardDD>{data?.maple_nickname}</BoardDD>
             </BoardDL>
 
             <BoardDL>
               <BoardDT>시간</BoardDT>
-              <BoardDD>{'5 시간'}</BoardDD>
+              <BoardDD>{data?.progress_time}</BoardDD>
             </BoardDL>
           </div>
         </div>
 
         <div className='mt-4 rounded-lg bg-[#494949] px-5 py-5 text-base leading-7'>
-          <p>
-            1 시간당 메소 50만에 4시간 해드립니다. 사기 절대 없고, 매너지수 보시면 알겠지만
-            메크로같은거 안돌립니다. 1 시간당 메소 150만에 4시간 해드립니다. 사기 절대 없고,{' '}
-          </p>
+          <p>{data?.title}</p>
         </div>
       </div>
     </Modal>

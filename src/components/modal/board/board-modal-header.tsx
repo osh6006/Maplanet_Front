@@ -20,11 +20,14 @@ const BoardModalHeader: React.FunctionComponent<IPostModalHeaderProps> = ({
   report_count
 }) => {
   return (
-    <div className='flex flex-col justify-center gap-y-2 sm:flex-row'>
-      <div className='flex flex-1 items-center gap-x-4'>
-        <Avatar imgUrl={filterImageUrl(discord_image!)} size={40} />
-        <div className='flex gap-x-2 sm:flex-col'>
+    <div className='flex flex-col items-center justify-center gap-y-4'>
+      <div className='flex w-full flex-1 items-center justify-between  gap-x-4'>
+        <div className='flex items-center gap-x-2'>
+          <Avatar imgUrl={filterImageUrl(discord_image!)} size={40} />
           <h1 className='text-xl'>{discord_global_name}</h1>
+        </div>
+
+        <div className='flex gap-x-2 '>
           <div className='flex items-center gap-x-3'>
             <div className='flex items-center gap-x-1'>
               <Icon src={'/svgs/maple.svg'} alt='manner' size={15} />
@@ -40,7 +43,7 @@ const BoardModalHeader: React.FunctionComponent<IPostModalHeaderProps> = ({
         </div>
       </div>
 
-      <div className='flex flex-1 items-center justify-between gap-x-2'>
+      <div className='flex w-full flex-1 items-center justify-between gap-x-2'>
         <Link
           href={`discord://discord.com/users/${discord_id}`}
           target='_blanck'

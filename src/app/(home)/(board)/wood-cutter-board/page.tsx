@@ -32,10 +32,8 @@ const WoodCutterBoardPage: React.FunctionComponent<IWoodCutterBoardPageProps> = 
   );
 
   const woodCutterBoardData: IWoodCutterBoard[] = fetchData.board3Data;
-  const searchBoardData: IWoodCutterBoard[] = fetchData.search1Data;
+  const searchBoardData: IWoodCutterBoard[] = fetchData.search3Data;
   const totalBoardCount = fetchData.totalCount;
-
-  console.log('wood', woodCutterBoardData);
 
   return (
     <main>
@@ -53,55 +51,28 @@ const WoodCutterBoardPage: React.FunctionComponent<IWoodCutterBoardPageProps> = 
           </div>
 
           <ul className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-            {[1, 2, 3, 4, 5, 6]?.map((el) => (
+            {woodCutterBoardData?.map((el) => (
               <WoodCutterCard
-                key={el}
-                level={60}
-                board3_id={11}
-                user_id={15}
-                discord_id={'12312332'}
-                meso={800000}
-                title={'죽숲 1시간당 50만 메소에 합니다'}
-                hunting_ground={'따뜻한 모래밭'}
-                sub_job={'위자드(썬,콜)'}
-                progress_time={'4 시간'}
-                discord_global_name='디스코드 닉네임 테스트'
-                discord_image=''
-                view_count={49}
-                complete={false}
-                created_at='2024-02-28T15:46:22.964Z'
-                updated_at='2024-03-05T01:30:40.000Z'
-                report_count={5}
-                manner_count={15}
+                key={el.board3_id}
+                {...el}
+                badges={[
+                  el.sub_job,
+                  el.progress_time + ' 시간',
+                  el.hunting_ground,
+                  'Lv .' + el.level
+                ]}
+              />
+            ))}
+            {searchBoardData?.map((el) => (
+              <WoodCutterCard
+                key={el.board3_id}
+                {...el}
                 badges={['300000', '스피어맨', '4시간', '죽은 나무의 숲', 'Lv. 60']}
               />
             ))}
-            {/* {[1, 2, 3, 4, 5, 6]?.map((el) => (
-              <WoodCutterCard
-                key={el}
-                level={60}
-                board3_id={11}
-                user_id={15}
-                discord_id={'12312332'}
-                meso={800000}
-                title={'잠쩔해드려요'}
-                hunting_ground={'따뜻한 모래밭'}
-                sub_job={'위자드(썬,콜)'}
-                progress_time={'4 시간'}
-                discord_global_name='디스코드 닉네임 테스트'
-                discord_image=''
-                view_count={49}
-                complete={false}
-                created_at='2024-02-28T15:46:22.964Z'
-                updated_at='2024-03-05T01:30:40.000Z'
-                report_count={5}
-                manner_count={15}
-                badges={['300000', '스피어맨', '4시간', '죽은 나무의 숲', 'Lv. 60']}
-              />
-            ))} */}
           </ul>
 
-          <Pagination totalPost={123} itemsPerPage={5} pagePerItem={12} />
+          <Pagination totalPost={totalBoardCount} itemsPerPage={5} pagePerItem={12} />
         </div>
       </Suspense>
     </main>

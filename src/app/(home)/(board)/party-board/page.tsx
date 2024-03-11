@@ -31,7 +31,7 @@ const PartyBoardPage: React.FunctionComponent<IPartyBoardPageProps> = async ({
     searchParams?.value
   );
 
-  const partyBoardData: IPartyBoard[] = fetchData.board1Data;
+  const partyBoardData: IPartyBoard[] = fetchData.board4Data;
   const searchBoardData: IPartyBoard[] = fetchData.search4Data;
   const totalBoardCount = fetchData.totalCount;
 
