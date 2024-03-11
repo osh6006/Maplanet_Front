@@ -4,32 +4,32 @@ import clsx from 'clsx';
 import dayjs from 'dayjs';
 import { useState } from 'react';
 
-import { BoardCardCompleate, BoardCardHoverButtons } from './board-card-wrappers';
+import { BoardCardCompleate, BoardCardHoverButtons } from '../board-card-wrappers';
 import Badge from '@/components/ui/badge';
 
-import { IHelperBoard } from '@/types';
+import { IHunterBoard } from '@/types';
 import Icon from '@/components/ui/icon';
 import InlineProfile from '@/components/ui/inline-profile';
 import { filterImageUrl } from '@/util/util';
-import HelperBoardModal from '@/components/modal/board/helper-board-modal';
+import HunterBoardModal from '@/components/modal/board/hunter-board-modal';
 
 dayjs.locale('ko');
 
-interface IHelperCardProps extends IHelperBoard {
+interface IHelperCardProps extends IHunterBoard {
   badges?: string[];
 }
 
-const HelperCard: React.FunctionComponent<IHelperCardProps> = ({
-  board1_id,
+const HunterCard: React.FunctionComponent<IHelperCardProps> = ({
+  board2_id,
   discord_id,
   title,
   discord_image,
   discord_global_name,
   meso,
-  hunting_ground,
+  place_theif_nickname,
   manner_count,
   report_count,
-  progress_kind,
+  report_kind,
   complete,
   created_at,
   badges,
@@ -41,13 +41,11 @@ const HelperCard: React.FunctionComponent<IHelperCardProps> = ({
     setIsModalOpen(true);
   };
 
-  console.log(props.view_count);
-
   return (
     <>
       {isModalOpen ? (
-        <HelperBoardModal
-          boardId={board1_id}
+        <HunterBoardModal
+          boardId={board2_id}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
         />
@@ -66,8 +64,10 @@ const HelperCard: React.FunctionComponent<IHelperCardProps> = ({
         )}
 
         <div className='flex w-full items-center justify-between '>
-          <Badge className={clsx(progress_kind === '잠쩔' ? 'bg-main' : 'bg-violet')} size='card'>
-            {progress_kind}
+          <Badge
+            className={clsx(report_kind === '인기도 하락' ? 'bg-main' : 'bg-violet')}
+            size='card'>
+            {report_kind}
           </Badge>
           <time className='font-medium text-gray-400'>
             {dayjs(created_at).format('YYYY년 MM월 DD일')}
@@ -103,4 +103,4 @@ const HelperCard: React.FunctionComponent<IHelperCardProps> = ({
   );
 };
 
-export default HelperCard;
+export default HunterCard;

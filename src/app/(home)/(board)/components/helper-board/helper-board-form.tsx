@@ -2,13 +2,13 @@
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import BoardInput from './board-input';
+import BoardInput from '../board-input';
 import Button from '@/components/ui/button';
-import BoardMesoInput from './board-meso-input';
+import BoardMesoInput from '../board-meso-input';
 
 import { IHelperBoardPost } from '@/types';
-import BoardRadio from './board-radio';
-import BoardSelect from './board-select';
+import BoardRadio from '../board-radio';
+import BoardSelect from '../board-select';
 import usePost from '@/hooks/use-post';
 import { postHelperBoard } from '@/actions/helper-board';
 import { useRouter } from 'next/navigation';

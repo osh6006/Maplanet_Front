@@ -7,7 +7,7 @@ import Search from '../components/search';
 import Banner from '@/components/ui/banner';
 import Loading from '@/components/ui/loading';
 import Pagination from '../components/pagination';
-import HelperCard from '../components/helper-card';
+import HelperCard from '../components/helper-board/helper-card';
 
 import { IHelperBoard } from '@/types';
 
@@ -34,6 +34,8 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
   const helperBoardData: IHelperBoard[] = fetchData.board1Data;
   const searchBoardData: IHelperBoard[] = fetchData.search1Data;
   const totalBoardCount = fetchData.totalCount;
+
+  console.log(helperBoardData);
 
   return (
     <main>

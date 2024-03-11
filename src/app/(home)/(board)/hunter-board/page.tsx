@@ -6,7 +6,7 @@ import Search from '../components/search';
 import Banner from '@/components/ui/banner';
 import Loading from '@/components/ui/loading';
 import Pagination from '../components/pagination';
-import HunterCard from '../components/hunter-card';
+import HunterCard from '../components/hunter-board/hunter-card';
 
 import { IHunterBoard } from '@/types';
 

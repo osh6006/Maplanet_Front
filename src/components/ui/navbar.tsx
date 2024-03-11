@@ -35,7 +35,9 @@ const Navbar = () => {
           {/* nav links */}
           <div className='flex items-center space-x-7 whitespace-nowrap text-lg'>
             <Link href='/helper-board'>잠쩔</Link>
-            <Link href='/hunter-board'>겹사 의뢰</Link>
+            <Link href='/hunter-board'>겹사</Link>
+            <Link href='/party-board'>파티</Link>
+            <Link href='/wood-cutter-board'>나무꾼</Link>
             <Link href='/notice'>공지사항</Link>
 
             {/* TODO: 로그인시 새글 등록 뜨게하고 로그아웃시 안뜨게 수정 */}

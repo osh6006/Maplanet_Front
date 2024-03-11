@@ -3,8 +3,8 @@
 import Inner from '@/components/ui/inner';
 import WriteTypeSelector from '../components/write-type-selector';
 import { useState } from 'react';
-import HelperBoardForm from '../components/helper-board-form';
-import HunterBoardForm from '../components/hunter-board-form';
+import HelperBoardForm from '../components/helper-board/helper-board-form';
+import HunterBoardForm from '../components/hunter-board/hunter-board-form';
 
 export type TWirteType = 'helperBoard' | 'hunterBoard';
 
