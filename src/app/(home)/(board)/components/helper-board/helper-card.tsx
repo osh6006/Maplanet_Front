@@ -26,10 +26,8 @@ const HelperCard: React.FunctionComponent<IHelperCardProps> = ({
   discord_image,
   discord_global_name,
   meso,
-  hunting_ground,
   manner_count,
   report_count,
-  progress_kind,
   complete,
   created_at,
   badges,
@@ -64,8 +62,8 @@ const HelperCard: React.FunctionComponent<IHelperCardProps> = ({
         )}
 
         <div className='flex w-full items-center justify-between '>
-          <Badge className={clsx(progress_kind === '잠쩔' ? 'bg-main' : 'bg-violet')} size='card'>
-            {progress_kind}
+          <Badge className={clsx('bg-violet')} size='card'>
+            심쩔
           </Badge>
           <time className='font-medium text-gray-400'>
             {dayjs(created_at).format('YYYY년 MM월 DD일')}

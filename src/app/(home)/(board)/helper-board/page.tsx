@@ -57,14 +57,14 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
               <HelperCard
                 key={el.board1_id}
                 {...el}
-                badges={[el.hunting_ground, el.progress_time + ' 시간', el.sub_job]}
+                badges={[el.progress_time + ' 시간', el.sub_job]}
               />
             ))}
             {searchBoardData?.map((el) => (
               <HelperCard
                 key={el.board1_id}
                 {...el}
-                badges={[el.hunting_ground, el.progress_time + ' 시간', el.sub_job]}
+                badges={[el.progress_time + ' 시간', el.sub_job]}
               />
             ))}
           </ul>

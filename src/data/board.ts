@@ -15,11 +15,6 @@ export const helperBoardFilters = [
     imgUrl: ''
   },
   {
-    value: 'searchHuntingGround',
-    name: '사냥터',
-    imgUrl: ''
-  },
-  {
     value: 'searchLevel',
     name: '레벨',
     imgUrl: ''
@@ -30,13 +25,8 @@ export const helperBoardFilters = [
     imgUrl: ''
   },
   {
-    value: 'searchProgressKind',
-    name: '진행 상태',
-    imgUrl: ''
-  },
-  {
     value: 'searchProgressTime',
-    name: '진행 시간',
+    name: '퀘스트 시간',
     imgUrl: ''
   },
   {

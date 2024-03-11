@@ -57,13 +57,8 @@ const HelperBoardModal: React.FunctionComponent<IHelperBoardModalProps> = ({
             <BoardDL>
               <BoardDT>퀘스트 종류</BoardDT>
               <BoardDD>
-                <Badge
-                  className={clsx(
-                    'max-w-14 ',
-                    data?.progress_kind === '잠쩔' ? 'bg-main' : 'bg-violet'
-                  )}
-                  size='card'>
-                  {data?.progress_kind}
+                <Badge className={clsx('max-w-14 bg-violet')} size='card'>
+                  심쩔
                 </Badge>
               </BoardDD>
             </BoardDL>
@@ -71,10 +66,7 @@ const HelperBoardModal: React.FunctionComponent<IHelperBoardModalProps> = ({
               <BoardDT>메소</BoardDT>
               <BoardDD>{data?.meso}</BoardDD>
             </BoardDL>
-            <BoardDL>
-              <BoardDT>사냥터</BoardDT>
-              <BoardDD>{data?.hunting_ground}</BoardDD>
-            </BoardDL>
+
             <BoardDL>
               <BoardDT>직업</BoardDT>
               <BoardDD>{data?.sub_job}</BoardDD>

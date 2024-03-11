@@ -9,6 +9,7 @@ import Search from '../components/search';
 import { sortOptions, woodCutterBoardFilters } from '@/data/board';
 import WoodCutterCard from '../components/wood-cutter-board/wood-cutter-card';
 import Pagination from '../components/pagination';
+import { getWoodCutterBoardData } from '@/actions/wood-cutter-board';
 
 interface IWoodCutterBoardPageProps {}
 
@@ -24,15 +25,17 @@ const WoodCutterBoardPage: React.FunctionComponent<IWoodCutterBoardPageProps> = 
 }) => {
   // TODO : Fetch Data from server
 
-  // const fetchData = await getHelperBoardData(
-  //   searchParams?.page || 1,
-  //   searchParams?.searchType,
-  //   searchParams?.value
-  // );
+  const fetchData = await getWoodCutterBoardData(
+    searchParams?.page || 1,
+    searchParams?.searchType,
+    searchParams?.value
+  );
 
-  // const helperBoardData: IWoodCutterBoard[] = fetchData.board1Data;
-  // const searchBoardData: IWoodCutterBoard[] = fetchData.search1Data;
-  // const totalBoardCount = fetchData.totalCount;
+  const woodCutterBoardData: IWoodCutterBoard[] = fetchData.board3Data;
+  const searchBoardData: IWoodCutterBoard[] = fetchData.search1Data;
+  const totalBoardCount = fetchData.totalCount;
+
+  console.log('wood', woodCutterBoardData);
 
   return (
     <main>

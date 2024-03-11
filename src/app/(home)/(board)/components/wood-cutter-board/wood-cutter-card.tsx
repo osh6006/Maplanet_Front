@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 import Icon from '@/components/ui/icon';
 import InlineProfile from '@/components/ui/inline-profile';
 import { filterImageUrl } from '@/util/util';
+import WoodCutterBoardModal from '@/components/modal/board/wood-cutter-board-modal';
 dayjs.locale('ko');
 
 interface IWoodCutterCardProps extends IWoodCutterBoard {
@@ -25,6 +26,7 @@ const WoodCutterCard: React.FunctionComponent<IWoodCutterCardProps> = ({
   manner_count,
   report_count,
   discord_global_name,
+  board3_id,
   ...props
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,6 +37,13 @@ const WoodCutterCard: React.FunctionComponent<IWoodCutterCardProps> = ({
 
   return (
     <>
+      {isModalOpen ? (
+        <WoodCutterBoardModal
+          boardId={board3_id}
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
+      ) : null}
       <li
         className='group relative h-full w-full flex-col justify-between overflow-hidden rounded-3xl bg-[#161616] p-8 transition-all sm:flex
   sm:w-[320px]'>
