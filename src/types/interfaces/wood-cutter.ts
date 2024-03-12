@@ -1,6 +1,6 @@
-export interface IWoodCutterPost {
+export interface IWoodCutterBoardPost {
   title: string;
-  meso: number;
+  meso: number | string;
   main_job: string;
   sub_job: string;
   progress_time: string;
@@ -14,7 +14,7 @@ export interface IWoodCutterBoard {
   user_id: number;
   discord_id: string;
   title: string;
-  meso: number;
+  meso: number | string;
   sub_job: string;
   progress_time: string;
   hunting_ground: string;
@@ -34,7 +34,7 @@ export interface IWoodCutterBoardDetail {
   user_id: number;
   discord_id: string;
   title: string;
-  meso: number;
+  meso: number | string;
   sub_job: string;
   progress_time: string;
   hunting_ground: string;

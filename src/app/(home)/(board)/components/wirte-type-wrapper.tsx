@@ -26,7 +26,7 @@ const WriteTypeWrapper: React.FunctionComponent<IWriteTypeWrapperProps> = ({
       )}>
       <div
         className={clsx(
-          'absolute h-full w-full -translate-x-[40px] border-b-4 border-main',
+          'absolute h-full w-full -translate-x-[40px] border-b-2 border-main',
           selectedWriteType === writeType ? 'animate-actSlideRight' : 'hidden'
         )}
       />

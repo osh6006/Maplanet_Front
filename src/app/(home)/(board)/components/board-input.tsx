@@ -3,12 +3,14 @@ import { Controller, FieldValues, UseControllerProps } from 'react-hook-form';
 import Input from '@/components/ui/input';
 import Label from '@/components/ui/label';
 import FormErrorMessage from '@/components/ui/form-error-message';
+import Icon from '@/components/ui/icon';
 
 interface IBoardInputProps extends UseControllerProps<FieldValues> {
   control: any;
   label: string;
   icon?: React.ReactNode;
   placeholder: string;
+  type?: string;
 }
 
 const BoardInput: React.FunctionComponent<IBoardInputProps> = ({
@@ -18,7 +20,8 @@ const BoardInput: React.FunctionComponent<IBoardInputProps> = ({
   placeholder,
   rules,
   disabled,
-  icon
+  icon,
+  type
 }) => {
   return (
     <Controller
@@ -33,7 +36,7 @@ const BoardInput: React.FunctionComponent<IBoardInputProps> = ({
             <div className='flex-1 space-y-2'>
               <Input
                 name='title'
-                type='text'
+                type={type || 'text'}
                 value={(value as string) || ''}
                 invalid={invalid}
                 onChange={onChange}
