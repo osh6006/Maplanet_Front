@@ -59,7 +59,7 @@ const Select: React.FunctionComponent<ISelectProps> = ({
       </button>
 
       {isOpen && (
-        <ul className='absolute right-0 z-10 mt-2 w-full overflow-hidden rounded-md border bg-transparent bg-white'>
+        <ul className='absolute right-0 z-30 mt-2 w-full overflow-hidden rounded-md border bg-transparent bg-white'>
           {options?.map((option) => (
             <li
               key={option?.value}

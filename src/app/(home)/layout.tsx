@@ -8,14 +8,12 @@ interface IHomeLayoutProps {
 
 const HomeLayout: React.FunctionComponent<IHomeLayoutProps> = ({ children }) => {
   return (
-    <>
-        <Navbar />
-        <Notification />
-          <div className='flex flex-col items-center justify-between pb-[50px] pt-[100px] '>
-            {children}
-          </div>
-        <Footer />
-    </>
+    <div className='relative h-full'>
+      <Navbar />
+      <Notification />
+      <div className='flex flex-col items-center justify-between pt-[100px] '>{children}</div>
+      <Footer />
+    </div>
   );
 };
 

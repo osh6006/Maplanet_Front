@@ -9,7 +9,7 @@ const notoSansKR = Noto_Sans_KR({
 
 export const metadata: Metadata = {
   title: '메랜피플',
-  description: '메이플랜드 커뮤니티 사이트',
+  description: '메이플랜드 커뮤니티 사이트'
 };
 
 export default function RootLayout({
@@ -19,7 +19,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
-      <body className={`${notoSansKR.className} overflow-x-hidden bg-background text-white`}>
+      <body
+        className={`${notoSansKR.className} h-[100dvh] overflow-x-hidden bg-background text-white`}>
         <SWRProvider>{children}</SWRProvider>
         <div id='modal-root'></div>
       </body>
