@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <body
-        className={`${notoSansKR.className} h-[100dvh] overflow-x-hidden bg-background text-white`}>
+        className={`${notoSansKR.className} h-[100dvh] overflow-y-auto overflow-x-hidden bg-background text-white`}>
         <SWRProvider>{children}</SWRProvider>
         <div id='modal-root'></div>
       </body>

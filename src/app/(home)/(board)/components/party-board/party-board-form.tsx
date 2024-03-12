@@ -7,6 +7,10 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import BoardInput from '../board-input';
 import BoardTimeInput from '../board-time-input';
 import BoardRadio from '../board-radio';
+import Button from '@/components/ui/button';
+import BoardFloorInput from './board-floor-input';
+import Label from '@/components/ui/label';
+import BoardFloors from './board-floors';
 
 interface IPartyBoardFormProps {}
 
@@ -161,6 +165,13 @@ const PartyBoardForm: React.FunctionComponent<IPartyBoardFormProps> = ({}) => {
             }}
             icon={<span className=' items-center text-[15px] font-semibold text-black'>명</span>}
           />
+          <BoardFloors control={control} />
+        </div>
+        <div></div>
+        <div className='mt-4'>
+          <Button size='wide' color='main' disabled={isLoading}>
+            등록하기
+          </Button>
         </div>
       </form>
     </>

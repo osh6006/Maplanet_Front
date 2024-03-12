@@ -12,6 +12,7 @@ import BoardSelect from '../board-select';
 import usePost from '@/hooks/use-post';
 import { postHelperBoard } from '@/actions/helper-board';
 import { useRouter } from 'next/navigation';
+import BoardTimeInput from '../board-time-input';
 
 interface IHelperBoardFormProps {}
 
@@ -150,6 +151,28 @@ const HelperBoardForm: React.FunctionComponent<IHelperBoardFormProps> = () => {
             disabled={isLoading}
             placeholder='서브 직업을 선택해 주세요'
             rules={{ required: '서브 직업을 선택해 주세요' }}
+          />
+
+          <BoardTimeInput
+            control={control}
+            name='progress_time'
+            disabled={isLoading}
+            rules={{
+              required: '시간은 필수로 입력해야 합니다.',
+              pattern: {
+                value: /^[0-9]*$/,
+                message: '숫자만 입력 가능합니다.'
+              },
+              max: {
+                message: '20 시간 이상은 입력이 불가능 합니다.',
+                value: 20
+              },
+
+              min: {
+                message: '최소 1 이상이어야 합니다. ',
+                value: 1
+              }
+            }}
           />
 
           <BoardRadio

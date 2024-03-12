@@ -146,3 +146,12 @@ export const sortOptions = [
     icon: undefined
   }
 ];
+
+export const partyFloorNames = [
+  'first_floor',
+  'second_floor',
+  'third_floor',
+  'fourth_floor',
+  'fifth_floor',
+  'sixth_floor'
+];

@@ -3,7 +3,6 @@ import { Controller, FieldValues, UseControllerProps } from 'react-hook-form';
 import Input from '@/components/ui/input';
 import Label from '@/components/ui/label';
 import FormErrorMessage from '@/components/ui/form-error-message';
-import Icon from '@/components/ui/icon';
 
 interface IBoardInputProps extends UseControllerProps<FieldValues> {
   control: any;

@@ -25,7 +25,7 @@ const WritePage: React.FunctionComponent<IWriteProps> = ({}) => {
         <div className='mt-8'>
           <WriteTypeSelector writeType={writeType} setWriteType={handleWriteType} />
         </div>
-        <hr className='my-8' />
+        <hr className='my-12' />
         {writeType === 'helperBoard' ? <HelperBoardForm /> : null}
         {writeType === 'hunterBoard' ? <HunterBoardForm /> : null}
         {writeType === 'partyBoard' ? <PartyBoardForm /> : null}

@@ -9,6 +9,7 @@ import BoardInput from '../board-input';
 import BoardRadio from '../board-radio';
 import BoardSelect from '../board-select';
 import BoardTimeInput from '../board-time-input';
+import Button from '@/components/ui/button';
 
 interface IWoodCutterBoardFormProps {}
 
@@ -190,6 +191,13 @@ const WoodCutterBoardForm: React.FunctionComponent<IWoodCutterBoardFormProps> = 
             }}
             icon={<span className=' items-center text-[15px] font-semibold text-black'>LV</span>}
           />
+        </div>
+
+        <div></div>
+        <div className='mt-12'>
+          <Button size='wide' color='main' disabled={isLoading}>
+            등록하기
+          </Button>
         </div>
       </form>
     </>
