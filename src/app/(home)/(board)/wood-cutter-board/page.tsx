@@ -11,6 +11,7 @@ import WoodCutterCard from '../components/wood-cutter-board/wood-cutter-card';
 
 import { IWoodCutterBoard } from '@/types';
 import BoardResult from '../components/board-result';
+import { fetchBoardData } from '@/actions/common';
 
 interface IWoodCutterBoardPageProps {}
 
@@ -26,15 +27,23 @@ const WoodCutterBoardPage: React.FunctionComponent<IWoodCutterBoardPageProps> = 
 }) => {
   // TODO : Fetch Data from server
 
-  const fetchData = await getWoodCutterBoardData(
-    searchParams?.page || 1,
-    searchParams?.searchType,
-    searchParams?.value
-  );
+  const fetchData = await fetchBoardData<{
+    board3Data?: IWoodCutterBoard[];
+    search3Data?: IWoodCutterBoard[];
+    totalCount?: number;
+  }>({
+    url: '/board3',
+    page: searchParams?.page || '1',
+    searchType: searchParams?.searchType,
+    value: searchParams?.value,
+    option: {
+      cache: 'no-store'
+    }
+  });
 
-  const woodCutterBoardData: IWoodCutterBoard[] = fetchData.board3Data;
-  const searchBoardData: IWoodCutterBoard[] = fetchData.search3Data;
-  const totalBoardCount = fetchData.totalCount;
+  const woodCutterBoardData = fetchData?.board3Data || [];
+  const searchBoardData = fetchData?.search3Data || [];
+  const totalBoardCount = fetchData?.totalCount || 0;
 
   return (
     <main>
@@ -50,28 +59,6 @@ const WoodCutterBoardPage: React.FunctionComponent<IWoodCutterBoardPageProps> = 
             <Sort options={sortOptions} />
             <Search filters={woodCutterBoardFilters} />
           </div>
-
-          <ul className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-            {woodCutterBoardData?.map((el) => (
-              <WoodCutterCard
-                key={el.board3_id}
-                {...el}
-                badges={[
-                  el.sub_job,
-                  el.progress_time + ' 시간',
-                  el.hunting_ground,
-                  'Lv .' + el.level
-                ]}
-              />
-            ))}
-            {searchBoardData?.map((el) => (
-              <WoodCutterCard
-                key={el.board3_id}
-                {...el}
-                badges={['300000', '스피어맨', '4시간', '죽은 나무의 숲', 'Lv. 60']}
-              />
-            ))}
-          </ul>
 
           <BoardResult.Wrapper>
             <BoardResult.List

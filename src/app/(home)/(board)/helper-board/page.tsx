@@ -11,6 +11,7 @@ import BoardResult from '../components/board-result';
 import HelperCard from '../components/helper-board/helper-card';
 
 import { IHelperBoard } from '@/types';
+import { fetchBoardData } from '@/actions/common';
 
 interface IHelperBoardPageProps {}
 
@@ -26,15 +27,23 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
 }) => {
   // TODO : fetch data using searchParams
 
-  const fetchData = await getHelperBoardData(
-    searchParams?.page || 1,
-    searchParams?.searchType,
-    searchParams?.value
-  );
+  const fetchData = await fetchBoardData<{
+    board1Data?: IHelperBoard[];
+    search1Data?: IHelperBoard[];
+    totalCount?: number;
+  }>({
+    url: '/board1',
+    page: searchParams?.page || '1',
+    searchType: searchParams?.searchType,
+    value: searchParams?.value,
+    option: {
+      cache: 'no-store'
+    }
+  });
 
-  const helperBoardData: IHelperBoard[] = fetchData.board1Data;
-  const searchBoardData: IHelperBoard[] = fetchData.search1Data;
-  const totalBoardCount = fetchData.totalCount;
+  const helperBoardData = fetchData?.board1Data || [];
+  const searchBoardData = fetchData?.search1Data || [];
+  const totalBoardCount = fetchData?.totalCount || 0;
 
   return (
     <main>

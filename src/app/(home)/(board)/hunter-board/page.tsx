@@ -12,6 +12,7 @@ import { IHunterBoard } from '@/types';
 
 import { hunterBoardFilters, sortOptions } from '@/data/board';
 import BoardResult from '../components/board-result';
+import { fetchBoardData } from '@/actions/common';
 
 interface IHelperBoardPageProps {}
 
@@ -27,15 +28,23 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
 }) => {
   // TODO : fetch data using searchParams
 
-  const fetchData = await getHunterBoardData(
-    searchParams?.page || '1',
-    searchParams?.searchType,
-    searchParams?.value
-  );
+  const fetchData = await fetchBoardData<{
+    board2Data?: IHunterBoard[];
+    search2Data?: IHunterBoard[];
+    totalCount?: number;
+  }>({
+    url: '/board2',
+    page: searchParams?.page || '1',
+    searchType: searchParams?.searchType,
+    value: searchParams?.value,
+    option: {
+      cache: 'no-store'
+    }
+  });
 
-  const hunterBoardData: IHunterBoard[] = fetchData.board2Data;
-  const searchBoardData: IHunterBoard[] = fetchData.search2Data;
-  const totalBoardCount = fetchData.totalCount;
+  const hunterBoardData = fetchData?.board2Data || [];
+  const searchBoardData = fetchData?.search2Data || [];
+  const totalBoardCount = fetchData?.totalCount || 0;
 
   return (
     <main>

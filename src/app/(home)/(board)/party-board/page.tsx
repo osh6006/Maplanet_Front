@@ -11,6 +11,7 @@ import Pagination from '../components/pagination';
 import PartyCard from '../components/party-board/party-card';
 import { getPartyBoardData } from '@/actions/party-board';
 import BoardResult from '../components/board-result';
+import { fetchBoardData } from '@/actions/common';
 
 interface IPartyBoardPageProps {}
 
@@ -26,15 +27,23 @@ const PartyBoardPage: React.FunctionComponent<IPartyBoardPageProps> = async ({
 }) => {
   // TODO : Fetch Data from server
 
-  const fetchData = await getPartyBoardData(
-    searchParams?.page || 1,
-    searchParams?.searchType,
-    searchParams?.value
-  );
+  const fetchData = await fetchBoardData<{
+    board4Data?: IPartyBoard[];
+    search4Data?: IPartyBoard[];
+    totalCount?: number;
+  }>({
+    url: '/board4',
+    page: searchParams?.page || '1',
+    searchType: searchParams?.searchType,
+    value: searchParams?.value,
+    option: {
+      cache: 'no-store'
+    }
+  });
 
-  const partyBoardData: IPartyBoard[] = fetchData.board4Data;
-  const searchBoardData: IPartyBoard[] = fetchData.search4Data;
-  const totalBoardCount = fetchData.totalCount;
+  const partyBoardData = fetchData?.board4Data || [];
+  const searchBoardData = fetchData?.search4Data || [];
+  const totalBoardCount = fetchData?.totalCount || 0;
 
   return (
     <main>
@@ -50,22 +59,6 @@ const PartyBoardPage: React.FunctionComponent<IPartyBoardPageProps> = async ({
             <Sort options={sortOptions} />
             <Search filters={partyBoardFilters} />
           </div>
-          <ul className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-            {partyBoardData?.map((el) => (
-              <PartyCard
-                key={el.board4_id}
-                {...el}
-                badges={[el.progress_time, el.hunting_ground, `${el.recruit_people_count}명 모집`]}
-              />
-            ))}
-            {searchBoardData?.map((el) => (
-              <PartyCard
-                key={el.board4_id}
-                {...el}
-                badges={[el.progress_time, el.hunting_ground, `${el.recruit_people_count}명 모집`]}
-              />
-            ))}
-          </ul>
 
           <BoardResult.Wrapper>
             <BoardResult.List

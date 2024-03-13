@@ -20,7 +20,7 @@ interface ISearchProps {
 }
 
 const Search: React.FunctionComponent<ISearchProps> = ({ filters }) => {
-  const { replace } = useRouter();
+  const { replace, push } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -51,7 +51,7 @@ const Search: React.FunctionComponent<ISearchProps> = ({ filters }) => {
       params.set('page', '1');
       params.set('searchType', data.key);
       params.set('value', data.value);
-      replace(`${pathname}?${params.toString()}`);
+      push(`${pathname}?${params.toString()}`);
     }
   };
 
