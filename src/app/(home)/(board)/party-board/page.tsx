@@ -10,6 +10,7 @@ import { partyBoardFilters, sortOptions } from '@/data/board';
 import Pagination from '../components/pagination';
 import PartyCard from '../components/party-board/party-card';
 import { getPartyBoardData } from '@/actions/party-board';
+import BoardResult from '../components/board-result';
 
 interface IPartyBoardPageProps {}
 
@@ -66,6 +67,43 @@ const PartyBoardPage: React.FunctionComponent<IPartyBoardPageProps> = async ({
             ))}
           </ul>
 
+          <BoardResult.Wrapper>
+            <BoardResult.List
+              list={partyBoardData || []}
+              render={(board) => {
+                return (
+                  <BoardResult.Item key={board.board4_id}>
+                    <PartyCard
+                      {...board}
+                      badges={[
+                        board.progress_time,
+                        board.hunting_ground,
+                        `${board.recruit_people_count}명 모집`
+                      ]}
+                    />
+                  </BoardResult.Item>
+                );
+              }}
+            />
+
+            <BoardResult.List
+              list={searchBoardData || []}
+              render={(board) => {
+                return (
+                  <BoardResult.Item key={board.board4_id}>
+                    <PartyCard
+                      {...board}
+                      badges={[
+                        board.progress_time,
+                        board.hunting_ground,
+                        `${board.recruit_people_count}명 모집`
+                      ]}
+                    />
+                  </BoardResult.Item>
+                );
+              }}
+            />
+          </BoardResult.Wrapper>
           <Pagination totalPost={totalBoardCount} itemsPerPage={5} pagePerItem={12} />
         </div>
       </Suspense>

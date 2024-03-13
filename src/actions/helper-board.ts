@@ -58,7 +58,8 @@ export async function postHelperBoard(boardData: IHelperBoardPost) {
       method: 'POST',
       body: JSON.stringify(boardData),
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        Authorization: `${process.env.NEXT_PUBLIC_TEMP_ACCESS_TOKEN}`
       }
     });
     if (!res.ok) {

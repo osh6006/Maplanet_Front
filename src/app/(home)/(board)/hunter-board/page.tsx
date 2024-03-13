@@ -11,6 +11,7 @@ import HunterCard from '../components/hunter-board/hunter-card';
 import { IHunterBoard } from '@/types';
 
 import { hunterBoardFilters, sortOptions } from '@/data/board';
+import BoardResult from '../components/board-result';
 
 interface IHelperBoardPageProps {}
 
@@ -51,15 +52,30 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
             <Search filters={hunterBoardFilters} />
           </div>
 
-          <div className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-            {hunterBoardData?.map((el) => (
-              <HunterCard {...el} key={el.board2_id} badges={[el.place_theif_nickname]} />
-            ))}
+          <BoardResult.Wrapper>
+            <BoardResult.List
+              list={hunterBoardData || []}
+              render={(board) => {
+                return (
+                  <BoardResult.Item key={board.board2_id}>
+                    <HunterCard {...board} badges={[board.place_theif_nickname]} />
+                  </BoardResult.Item>
+                );
+              }}
+            />
 
-            {searchBoardData?.map((el) => (
-              <HunterCard {...el} key={el.board2_id} badges={[el.place_theif_nickname]} />
-            ))}
-          </div>
+            <BoardResult.List
+              list={searchBoardData || []}
+              render={(board) => {
+                return (
+                  <BoardResult.Item key={board.board2_id}>
+                    <HunterCard {...board} badges={[board.place_theif_nickname]} />
+                  </BoardResult.Item>
+                );
+              }}
+            />
+          </BoardResult.Wrapper>
+
           <Pagination totalPost={totalBoardCount || 0} itemsPerPage={5} pagePerItem={12} />
         </div>
       </Suspense>

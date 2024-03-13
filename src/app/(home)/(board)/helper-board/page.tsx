@@ -7,6 +7,7 @@ import Search from '../components/search';
 import Banner from '@/components/ui/banner';
 import Loading from '@/components/ui/loading';
 import Pagination from '../components/pagination';
+import BoardResult from '../components/board-result';
 import HelperCard from '../components/helper-board/helper-card';
 
 import { IHelperBoard } from '@/types';
@@ -35,8 +36,6 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
   const searchBoardData: IHelperBoard[] = fetchData.search1Data;
   const totalBoardCount = fetchData.totalCount;
 
-  console.log(helperBoardData);
-
   return (
     <main>
       <Banner title='쩔 게시판' imgUrl='/images/banner.png' />
@@ -52,22 +51,33 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
             <Search filters={helperBoardFilters} />
           </div>
 
-          <ul className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-            {helperBoardData?.map((el) => (
-              <HelperCard
-                key={el.board1_id}
-                {...el}
-                badges={[el.progress_time + ' 시간', el.sub_job]}
-              />
-            ))}
-            {searchBoardData?.map((el) => (
-              <HelperCard
-                key={el.board1_id}
-                {...el}
-                badges={[el.progress_time + ' 시간', el.sub_job]}
-              />
-            ))}
-          </ul>
+          <BoardResult.Wrapper>
+            <BoardResult.List
+              list={helperBoardData || []}
+              render={(board) => {
+                return (
+                  <BoardResult.Item key={board.board1_id}>
+                    <HelperCard
+                      {...board}
+                      badges={[board.sub_job, board.progress_time + ' 시간']}
+                    />
+                  </BoardResult.Item>
+                );
+              }}
+            />
+
+            <BoardResult.List
+              list={searchBoardData || []}
+              render={(board) => {
+                return (
+                  <BoardResult.Item key={board.board1_id}>
+                    <HelperCard {...board} />
+                  </BoardResult.Item>
+                );
+              }}
+            />
+          </BoardResult.Wrapper>
+
           <Pagination totalPost={totalBoardCount || 0} itemsPerPage={5} pagePerItem={12} />
         </div>
       </Suspense>

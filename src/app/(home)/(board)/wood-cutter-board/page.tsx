@@ -1,15 +1,16 @@
 import { Suspense } from 'react';
+import { getWoodCutterBoardData } from '@/actions/wood-cutter-board';
+import { sortOptions, woodCutterBoardFilters } from '@/data/board';
 
-import Banner from '@/components/ui/banner';
-import Loading from '@/components/ui/loading';
-
-import { IWoodCutterBoard } from '@/types';
 import Sort from '../components/sort';
 import Search from '../components/search';
-import { sortOptions, woodCutterBoardFilters } from '@/data/board';
-import WoodCutterCard from '../components/wood-cutter-board/wood-cutter-card';
+import Banner from '@/components/ui/banner';
+import Loading from '@/components/ui/loading';
 import Pagination from '../components/pagination';
-import { getWoodCutterBoardData } from '@/actions/wood-cutter-board';
+import WoodCutterCard from '../components/wood-cutter-board/wood-cutter-card';
+
+import { IWoodCutterBoard } from '@/types';
+import BoardResult from '../components/board-result';
 
 interface IWoodCutterBoardPageProps {}
 
@@ -71,6 +72,46 @@ const WoodCutterBoardPage: React.FunctionComponent<IWoodCutterBoardPageProps> = 
               />
             ))}
           </ul>
+
+          <BoardResult.Wrapper>
+            <BoardResult.List
+              list={woodCutterBoardData || []}
+              render={(board) => {
+                return (
+                  <BoardResult.Item key={board.board3_id}>
+                    <WoodCutterCard
+                      {...board}
+                      badges={[
+                        board.sub_job,
+                        board.progress_time + ' 시간',
+                        board.hunting_ground,
+                        'Lv .' + board.level
+                      ]}
+                    />
+                  </BoardResult.Item>
+                );
+              }}
+            />
+
+            <BoardResult.List
+              list={searchBoardData || []}
+              render={(board) => {
+                return (
+                  <BoardResult.Item key={board.board3_id}>
+                    <WoodCutterCard
+                      {...board}
+                      badges={[
+                        board.sub_job,
+                        board.progress_time + ' 시간',
+                        board.hunting_ground,
+                        'Lv .' + board.level
+                      ]}
+                    />
+                  </BoardResult.Item>
+                );
+              }}
+            />
+          </BoardResult.Wrapper>
 
           <Pagination totalPost={totalBoardCount} itemsPerPage={5} pagePerItem={12} />
         </div>
