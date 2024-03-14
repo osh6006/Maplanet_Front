@@ -20,7 +20,7 @@ const WritePage: React.FunctionComponent<IWriteProps> = ({}) => {
   };
 
   return (
-    <main className='w-full'>
+    <main className='w-full '>
       <Inner>
         <div className='mt-8'>
           <WriteTypeSelector writeType={writeType} setWriteType={handleWriteType} />

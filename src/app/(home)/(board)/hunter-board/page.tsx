@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import { getHunterBoardData } from '@/actions/hunter-board';
 
 import Sort from '../components/sort';
 import Search from '../components/search';

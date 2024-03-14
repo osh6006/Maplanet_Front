@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { postHunterBoard } from '@/actions/hunter-board';
 
 import BoardInput from '../board-input';
 import BoardRadio from '../board-radio';
@@ -22,24 +21,24 @@ const HunterBoardForm: React.FunctionComponent<IHunterBoardFormProps> = ({}) => 
 
   const onSubmit: SubmitHandler<IHunterBoardPost> = async (data) => {
     setIsLoading(true);
-    try {
-      if (data.meso === '협의 가능') {
-        const newData = { ...data, meso: null };
-        // TODO : fetch New Data
-        await postHunterBoard(newData);
-        setIsLoading(false);
-      } else {
-        // TODO : fetch data
-        await postHunterBoard(data);
-        setIsLoading(false);
-      }
+    // try {
+    //   if (data.meso === '협의 가능') {
+    //     const newData = { ...data, meso: null };
+    //     // TODO : fetch New Data
+    //     await postHunterBoard(newData);
+    //     setIsLoading(false);
+    //   } else {
+    //     // TODO : fetch data
+    //     await postHunterBoard(data);
+    //     setIsLoading(false);
+    //   }
 
-      router.back();
-    } catch (error) {
-      setIsError(true);
-    } finally {
-      setIsLoading(false);
-    }
+    //   router.back();
+    // } catch (error) {
+    //   setIsError(true);
+    // } finally {
+    //   setIsLoading(false);
+    // }
   };
 
   return (

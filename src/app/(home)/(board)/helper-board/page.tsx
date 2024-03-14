@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import { getHelperBoardData } from '@/actions/helper-board';
 import { helperBoardFilters, sortOptions } from '@/data/board';
 
 import Sort from '../components/sort';

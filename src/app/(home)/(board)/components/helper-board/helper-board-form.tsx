@@ -1,5 +1,7 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import { postBoardData } from '@/actions/common';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import BoardInput from '../board-input';
@@ -10,34 +12,51 @@ import { IHelperBoardPost } from '@/types';
 import BoardRadio from '../board-radio';
 import BoardSelect from '../board-select';
 import usePost from '@/hooks/use-post';
-import { postHelperBoard } from '@/actions/helper-board';
-import { useRouter } from 'next/navigation';
 import BoardTimeInput from '../board-time-input';
+import toast from 'react-hot-toast';
+import Icon from '@/components/ui/icon';
+import { useEffect } from 'react';
 
 interface IHelperBoardFormProps {}
 
 const HelperBoardForm: React.FunctionComponent<IHelperBoardFormProps> = () => {
-  const { control, handleSubmit, watch } = useForm<IHelperBoardPost>();
-  const { isLoading, setIsLoading, isError, setIsError } = usePost();
   const router = useRouter();
+
+  const { isLoading, setIsLoading, isError, setIsError } = usePost();
+  const { control, handleSubmit, watch } = useForm<IHelperBoardPost>();
 
   const onSubmit: SubmitHandler<IHelperBoardPost> = async (data) => {
     setIsLoading(true);
+
+    let result;
+
     try {
       if (data.meso === '협의 가능') {
         const newData = { ...data, meso: null };
         // TODO : fetch New Data
-        await postHelperBoard(newData);
-        setIsLoading(false);
+        result = await postBoardData<IHelperBoardPost>({
+          url: '/board1',
+          data: newData
+        });
       } else {
         // TODO : fetch data
-        await postHelperBoard(data);
-        setIsLoading(false);
+        result = await postBoardData<IHelperBoardPost>({
+          url: '/board1',
+          data: data
+        });
       }
 
-      router.back();
+      if (result) {
+        setIsError(false);
+        toast.success('성공적으로 글을 등록하였습니다.');
+        router.back();
+      } else {
+        setIsError(true);
+        toast.error('서버에서 에러가 발생하여 등록을 실패하였습니다.');
+      }
     } catch (error) {
       setIsError(true);
+      toast.error('서버에서 에러가 발생하여 등록을 실패하였습니다.');
     } finally {
       setIsLoading(false);
     }
@@ -48,11 +67,14 @@ const HelperBoardForm: React.FunctionComponent<IHelperBoardFormProps> = () => {
   return (
     <>
       {isError ? (
-        <div className='mb-10 flex h-28 w-full items-center justify-center rounded-md border-2 border-red'>
+        <div className='relative mb-10 flex h-28 w-full items-center justify-center rounded-md border-2 border-red'>
           서버에서 에러가 발생하였습니다! 잠시 후 다시 시도해 주세요
+          <button className='absolute right-3 top-2' onClick={() => setIsError(false)}>
+            <Icon alt='xIcon' size={25} src='/svgs/x.svg' />
+          </button>
         </div>
       ) : null}
-      <form onSubmit={handleSubmit(onSubmit)} className='grid grid-cols-2 gap-x-8'>
+      <form onSubmit={handleSubmit(onSubmit)} className=' grid grid-cols-2 gap-x-8'>
         <div className='flex flex-col gap-y-8'>
           <BoardMesoInput
             name='meso'
@@ -188,7 +210,7 @@ const HelperBoardForm: React.FunctionComponent<IHelperBoardFormProps> = () => {
           />
           <div className='mt-5'>
             <Button size='wide' color='main' disabled={isLoading}>
-              등록하기
+              {isLoading ? '등록중...' : '등록하기'}
             </Button>
           </div>
         </div>

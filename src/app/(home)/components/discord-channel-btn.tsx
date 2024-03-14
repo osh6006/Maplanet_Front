@@ -7,7 +7,7 @@ interface IDiscordChannelBtnProps {}
 const DiscordChannelBtn: React.FunctionComponent<IDiscordChannelBtnProps> = ({}) => {
   return (
     <Link href={'https://discord.gg/BMnenQcNff'} target='_blank'>
-      <button className='fixed bottom-8 right-4 flex items-center justify-center gap-x-2 rounded-full bg-discord px-4 py-3 transition-all active:scale-95'>
+      <button className='fixed bottom-8 right-4 z-20 flex items-center justify-center gap-x-2 rounded-full bg-discord px-4 py-3 transition-all active:scale-95'>
         <Icon alt='discord' src='/svgs/discord-icon.svg' size={20} />
         <span>메랜 피플 채널</span>
         <Icon src={'/svgs/link.svg'} alt='link' size={15} />
