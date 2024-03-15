@@ -66,7 +66,13 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
           render={(board) => {
             return (
               <BoardResult.Item key={board.board1_id}>
-                <HelperCard {...board} />
+                <HelperCard
+                  {...board}
+                  badges={[
+                    board.sub_job,
+                    board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간'
+                  ]}
+                />
               </BoardResult.Item>
             );
           }}

@@ -5,12 +5,12 @@ export interface IPartyBoardPost {
   progress_time: number;
   parking: boolean;
   recruit_people_count: number;
-  first_floor: string;
-  second_floor: string;
-  third_floor: string;
-  fourth_floor: string;
-  fifth_floor: string;
-  sixth_floor: string;
+  first_floor: string | null;
+  second_floor: string | null;
+  third_floor: string | null;
+  fourth_floor: string | null;
+  fifth_floor: string | null;
+  sixth_floor: string | null;
 }
 
 export interface IPartyBoard {
@@ -19,7 +19,7 @@ export interface IPartyBoard {
   discord_id: string;
   title: string;
   hunting_ground: string;
-  progress_time: string;
+  progress_time: number;
   recruit_people_count: number;
   discord_global_name: string;
   discord_image: string;
@@ -38,7 +38,7 @@ export interface IPartyBoardDeatil {
   title: string;
   maple_nickname: string;
   hunting_ground: string;
-  progress_time: string;
+  progress_time: number;
   parking: boolean;
   recruit_people_count: number;
   first_floor: string;

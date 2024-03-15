@@ -58,7 +58,7 @@ const PartyBoardPage: React.FunctionComponent<IPartyBoardPageProps> = async ({
                 <PartyCard
                   {...board}
                   badges={[
-                    board.progress_time,
+                    board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + ' 시간',
                     board.hunting_ground,
                     `${board.recruit_people_count}명 모집`
                   ]}
@@ -76,7 +76,7 @@ const PartyBoardPage: React.FunctionComponent<IPartyBoardPageProps> = async ({
                 <PartyCard
                   {...board}
                   badges={[
-                    board.progress_time,
+                    board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + ' 시간',
                     board.hunting_ground,
                     `${board.recruit_people_count}명 모집`
                   ]}

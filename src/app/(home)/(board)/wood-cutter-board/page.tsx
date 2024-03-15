@@ -78,7 +78,7 @@ const WoodCutterBoardPage: React.FunctionComponent<IWoodCutterBoardPageProps> = 
                   {...board}
                   badges={[
                     board.sub_job,
-                    board.progress_time + ' 시간',
+                    board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간',
                     board.hunting_ground,
                     'Lv .' + board.level
                   ]}
