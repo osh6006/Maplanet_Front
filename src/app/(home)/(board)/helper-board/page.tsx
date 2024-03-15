@@ -12,6 +12,8 @@ import HelperCard from '../components/helper-board/helper-card';
 import { IHelperBoard } from '@/types';
 import { fetchBoardData } from '@/actions/common';
 
+export const dynamic = 'force-dynamic';
+
 interface IHelperBoardPageProps {}
 
 const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({

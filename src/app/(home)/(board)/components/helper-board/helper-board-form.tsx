@@ -29,27 +29,28 @@ const HelperBoardForm: React.FunctionComponent<IHelperBoardFormProps> = () => {
     setIsLoading(true);
 
     let result;
+    let parsingData = { ...data };
+
+    if (data.meso === '협의 가능') {
+      parsingData = { ...parsingData, meso: 0 };
+    }
+
+    if (data.progress_time === '협의 가능') {
+      parsingData = { ...parsingData, progress_time: 0 };
+    }
 
     try {
-      if (data.meso === '협의 가능') {
-        const newData = { ...data, meso: null };
-        // TODO : fetch New Data
-        result = await postBoardData<IHelperBoardPost>({
-          url: '/board1',
-          data: newData
-        });
-      } else {
-        // TODO : fetch data
-        result = await postBoardData<IHelperBoardPost>({
-          url: '/board1',
-          data: data
-        });
-      }
+      // TODO : fetch New Data
+      result = await postBoardData<IHelperBoardPost>({
+        url: '/board1',
+        data: parsingData
+      });
 
       if (result) {
         setIsError(false);
         toast.success('성공적으로 글을 등록하였습니다.');
         router.back();
+        // router.refresh();
       } else {
         setIsError(true);
         toast.error('서버에서 에러가 발생하여 등록을 실패하였습니다.');
@@ -181,15 +182,10 @@ const HelperBoardForm: React.FunctionComponent<IHelperBoardFormProps> = () => {
             disabled={isLoading}
             rules={{
               required: '시간은 필수로 입력해야 합니다.',
-              pattern: {
-                value: /^[0-9]*$/,
-                message: '숫자만 입력 가능합니다.'
-              },
               max: {
                 message: '20 시간 이상은 입력이 불가능 합니다.',
                 value: 20
               },
-
               min: {
                 message: '최소 1 이상이어야 합니다. ',
                 value: 1

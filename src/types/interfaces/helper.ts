@@ -1,5 +1,5 @@
 export interface IHelperBoardPost {
-  meso: string | null;
+  meso: number | string | null;
   title: string;
   maple_nickname: string;
   hunting_ground: string;
@@ -7,7 +7,7 @@ export interface IHelperBoardPost {
   main_job: string;
   sub_job: string;
   progress_kind: string;
-  progress_time: number;
+  progress_time: number | string | null;
   position: boolean;
 }
 
