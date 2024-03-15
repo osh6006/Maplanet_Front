@@ -1,15 +1,10 @@
 import { Suspense } from 'react';
 
-import Sort from '../components/ui/sort';
-import Search from '../components/ui/search';
-import Banner from '@/components/ui/banner';
-import Loading from '@/components/ui/loading';
 import Pagination from '../components/ui/pagination';
 import HunterCard from '../components/ui/hunter-card';
 
 import { IHunterBoard } from '@/types';
 
-import { hunterBoardFilters, sortOptions } from '@/data/board';
 import BoardResult from '../components/ui/board-result';
 import { fetchBoardData } from '@/actions/common';
 

@@ -32,7 +32,7 @@ const BoardMesoInput: React.FunctionComponent<IBoardMesoInputProps> = ({
           onChange('');
         };
 
-        const newDisabled = value === '협의 가능' || disabled;
+        const newDisabled = value === null || disabled;
 
         return (
           <div className='flex-col '>
@@ -113,10 +113,10 @@ const BoardMesoInput: React.FunctionComponent<IBoardMesoInputProps> = ({
                       if (newDisabled) {
                         onChange('');
                       } else {
-                        onChange('협의 가능');
+                        onChange(null);
                       }
                     }}>
-                    {newDisabled ? '협의 가능' : '협의 가능'}
+                    협의 가능
                   </Button>
                 </div>
               </div>
