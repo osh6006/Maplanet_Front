@@ -15,6 +15,8 @@ import { fetchBoardData } from '@/actions/common';
 
 interface IHelperBoardPageProps {}
 
+export const dynamic = 'force-dynamic';
+
 const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
   searchParams
 }: {
@@ -46,48 +48,32 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
   const totalBoardCount = fetchData?.totalCount || 0;
 
   return (
-    <main>
-      <Banner title='겹사 의뢰' imgUrl='/images/banner.png' />
-      <Suspense
-        fallback={
-          <div className='flex h-[500px] items-center justify-center'>
-            <Loading size={100} />
-          </div>
-        }>
-        <div className='mx-auto max-w-[500px] sm:max-w-[670px] lg:max-w-[1000px] xl:max-w-[1440px] xl:px-20'>
-          <div className='mt-8 flex w-full flex-col justify-between gap-y-4 px-10 sm:flex-row sm:px-0'>
-            <Sort options={sortOptions} />
-            <Search filters={hunterBoardFilters} />
-          </div>
+    <Suspense fallback={<div>Loading..</div>}>
+      <BoardResult.Wrapper>
+        <BoardResult.List
+          list={hunterBoardData || []}
+          render={(board) => {
+            return (
+              <BoardResult.Item key={board.board2_id}>
+                <HunterCard {...board} badges={[board.place_theif_nickname]} />
+              </BoardResult.Item>
+            );
+          }}
+        />
 
-          <BoardResult.Wrapper>
-            <BoardResult.List
-              list={hunterBoardData || []}
-              render={(board) => {
-                return (
-                  <BoardResult.Item key={board.board2_id}>
-                    <HunterCard {...board} badges={[board.place_theif_nickname]} />
-                  </BoardResult.Item>
-                );
-              }}
-            />
-
-            <BoardResult.List
-              list={searchBoardData || []}
-              render={(board) => {
-                return (
-                  <BoardResult.Item key={board.board2_id}>
-                    <HunterCard {...board} badges={[board.place_theif_nickname]} />
-                  </BoardResult.Item>
-                );
-              }}
-            />
-          </BoardResult.Wrapper>
-
-          <Pagination totalPost={totalBoardCount || 0} itemsPerPage={5} pagePerItem={12} />
-        </div>
-      </Suspense>
-    </main>
+        <BoardResult.List
+          list={searchBoardData || []}
+          render={(board) => {
+            return (
+              <BoardResult.Item key={board.board2_id}>
+                <HunterCard {...board} badges={[board.place_theif_nickname]} />
+              </BoardResult.Item>
+            );
+          }}
+        />
+      </BoardResult.Wrapper>
+      <Pagination totalPost={totalBoardCount || 0} itemsPerPage={5} pagePerItem={12} />
+    </Suspense>
   );
 };
 

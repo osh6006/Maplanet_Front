@@ -11,6 +11,7 @@ import BoardMesoInput from '../board-meso-input';
 import usePost from '@/hooks/use-post';
 
 import { IHunterBoardPost } from '@/types';
+import { postBoardData } from '@/actions/common';
 
 interface IHunterBoardFormProps {}
 
@@ -21,24 +22,29 @@ const HunterBoardForm: React.FunctionComponent<IHunterBoardFormProps> = ({}) => 
 
   const onSubmit: SubmitHandler<IHunterBoardPost> = async (data) => {
     setIsLoading(true);
-    // try {
-    //   if (data.meso === '협의 가능') {
-    //     const newData = { ...data, meso: null };
-    //     // TODO : fetch New Data
-    //     await postHunterBoard(newData);
-    //     setIsLoading(false);
-    //   } else {
-    //     // TODO : fetch data
-    //     await postHunterBoard(data);
-    //     setIsLoading(false);
-    //   }
 
-    //   router.back();
-    // } catch (error) {
-    //   setIsError(true);
-    // } finally {
-    //   setIsLoading(false);
-    // }
+    let result;
+    let parsingData = { ...data };
+
+    if (data.meso === '협의 가능') {
+      parsingData = { ...parsingData, meso: 0 };
+    }
+
+    try {
+      if (data.meso === '협의 가능') {
+        // TODO : fetch New Data
+        await postBoardData({
+          url: '/board2',
+          data: parsingData
+        });
+        setIsLoading(false);
+      }
+      router.back();
+    } catch (error) {
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

@@ -1,3 +1,5 @@
+import toast from 'react-hot-toast';
+
 const SERVER_URL = process.env.SERVER_URL;
 const CLIENT_SEVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
@@ -74,8 +76,7 @@ export async function postBoardData<T>({
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data),
-      credentials: 'include',
-      cache: 'no-store'
+      credentials: 'include'
     });
 
     if (!res.ok) {

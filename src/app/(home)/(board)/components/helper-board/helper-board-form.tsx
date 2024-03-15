@@ -15,7 +15,6 @@ import usePost from '@/hooks/use-post';
 import BoardTimeInput from '../board-time-input';
 import toast from 'react-hot-toast';
 import Icon from '@/components/ui/icon';
-import { useEffect } from 'react';
 
 interface IHelperBoardFormProps {}
 
