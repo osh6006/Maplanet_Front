@@ -20,14 +20,12 @@ const NoticePage: React.FunctionComponent<INoticePageProps> = async ({
   const totalNotice = (await getNotice(searchParams?.page || '1')).totalCount || 1;
 
   return (
-    <Inner>
-      <Suspense fallback={<div>loading..</div>}>
-        <NoticeList noticeList={fetchData || []} />
-        <div className='flex w-full items-center justify-center'>
-          <NoticePageNation itemsPerPage={5} totalPost={totalNotice} pagePerItem={8} />
-        </div>
-      </Suspense>
-    </Inner>
+    <Suspense fallback={<div>loading..</div>}>
+      <NoticeList noticeList={fetchData || []} />
+      <div className='flex w-full items-center justify-center'>
+        <NoticePageNation itemsPerPage={5} totalPost={totalNotice} pagePerItem={8} />
+      </div>
+    </Suspense>
   );
 };
 
