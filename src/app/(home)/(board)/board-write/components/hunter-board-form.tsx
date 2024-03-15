@@ -1,6 +1,9 @@
 'use client';
 
+import toast from 'react-hot-toast';
+import usePost from '@/hooks/use-post';
 import { useRouter } from 'next/navigation';
+import { postBoardData } from '@/actions/common';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import BoardInput from './board-input';
@@ -8,11 +11,7 @@ import BoardRadio from './board-radio';
 import Button from '@/components/ui/button';
 import BoardMesoInput from './board-meso-input';
 
-import usePost from '@/hooks/use-post';
-
 import { IHunterBoardPost } from '@/types';
-import { postBoardData } from '@/actions/common';
-import toast from 'react-hot-toast';
 
 interface IHunterBoardFormProps {}
 
@@ -28,7 +27,7 @@ const HunterBoardForm: React.FunctionComponent<IHunterBoardFormProps> = ({}) => 
 
     let parsingData = { ...data };
 
-    if (data.meso === '협의 가능') {
+    if (data.meso === null) {
       parsingData = { ...parsingData, meso: 0 };
     }
 
