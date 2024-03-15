@@ -24,8 +24,12 @@ const RootProvider: React.FunctionComponent<IProvidersProps> = ({ children }) =>
 
           // Default options for specific types
           success: {
-            duration: 3000,
-            icon: '😎'
+            style: {
+              display: 'flex',
+              maxWidth: '1000px',
+              alignItems: 'center'
+            },
+            duration: 3000
           },
           error: {
             style: {

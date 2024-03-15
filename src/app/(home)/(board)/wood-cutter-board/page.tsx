@@ -1,16 +1,14 @@
 import { Suspense } from 'react';
-import { sortOptions, woodCutterBoardFilters } from '@/data/board';
 import { fetchBoardData } from '@/actions/common';
 
-import Sort from '../components/ui/sort';
-import Search from '../components/ui/search';
-import Banner from '@/components/ui/banner';
 import Loading from '@/components/ui/loading';
 import Pagination from '../components/ui/pagination';
 import BoardResult from '../components/ui/board-result';
 import WoodCutterCard from '../components/ui/wood-cutter-card';
 
 import { IWoodCutterBoard } from '@/types';
+
+export const dynamic = 'force-dynamic';
 
 interface IWoodCutterBoardPageProps {}
 
@@ -61,7 +59,7 @@ const WoodCutterBoardPage: React.FunctionComponent<IWoodCutterBoardPageProps> = 
                   {...board}
                   badges={[
                     board.sub_job,
-                    board.progress_time + ' 시간',
+                    board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간',
                     board.hunting_ground,
                     'Lv .' + board.level
                   ]}

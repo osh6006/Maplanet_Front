@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { postBoardData } from '@/actions/common';
@@ -15,7 +14,6 @@ import BoardRadio from './board-radio';
 import BoardSelect from './board-select';
 import usePost from '@/hooks/use-post';
 import BoardTimeInput from './board-time-input';
-import Icon from '@/components/ui/icon';
 
 interface IHelperBoardFormProps {}
 

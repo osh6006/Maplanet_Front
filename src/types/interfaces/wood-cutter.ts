@@ -3,7 +3,7 @@ export interface IWoodCutterBoardPost {
   meso: number | string;
   main_job: string;
   sub_job: string;
-  progress_time: string;
+  progress_time: number;
   hunting_ground: string;
   level: number;
   maple_nickname: string;
@@ -16,7 +16,7 @@ export interface IWoodCutterBoard {
   title: string;
   meso: number | string;
   sub_job: string;
-  progress_time: string;
+  progress_time: number;
   hunting_ground: string;
   level: number;
   discord_global_name: string;
@@ -36,7 +36,7 @@ export interface IWoodCutterBoardDetail {
   title: string;
   meso: number | string;
   sub_job: string;
-  progress_time: string;
+  progress_time: number;
   hunting_ground: string;
   level: number;
   maple_nickname: string;

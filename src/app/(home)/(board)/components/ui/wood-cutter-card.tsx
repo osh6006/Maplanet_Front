@@ -35,8 +35,6 @@ const WoodCutterCard: React.FunctionComponent<IWoodCutterCardProps> = ({
     setIsModalOpen(true);
   };
 
-  console.log(badges);
-
   return (
     <>
       {isModalOpen ? (
@@ -70,7 +68,7 @@ const WoodCutterCard: React.FunctionComponent<IWoodCutterCardProps> = ({
       <div className='mb-4 mt-3 flex flex-wrap items-center gap-2'>
         <Badge size='card' className='bg-lightGray text-yellow'>
           <Icon src='/svgs/money.svg' size={20} alt='meso' />
-          {meso}
+          {meso === 0 ? '협의 가능' : meso}
         </Badge>
         {badges?.map((el) =>
           el ? (
