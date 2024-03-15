@@ -1,12 +1,12 @@
 'use client';
 
 import Inner from '@/components/ui/inner';
-import WriteTypeSelector from '../components/write-type-selector';
+import WriteTypeSelector from './components/write-type-selector';
 import { useState } from 'react';
-import HelperBoardForm from '../components/helper-board/helper-board-form';
-import HunterBoardForm from '../components/hunter-board/hunter-board-form';
-import PartyBoardForm from '../components/party-board/party-board-form';
-import WoodCutterBoardForm from '../components/wood-cutter-board/wood-cutter-board-form';
+import HelperBoardForm from './components/helper-board-form';
+import HunterBoardForm from './components/hunter-board-form';
+import PartyBoardForm from './components/party-board-form';
+import WoodCutterBoardForm from './components/wood-cutter-board-form';
 
 export type TWirteType = 'helperBoard' | 'hunterBoard' | 'woodCutterBoard' | 'partyBoard';
 

@@ -4,11 +4,11 @@ import { fetchBoardData } from '@/actions/common';
 import Banner from '@/components/ui/banner';
 import Loading from '@/components/ui/loading';
 
-import Sort from '../components/sort';
-import Search from '../components/search';
-import Pagination from '../components/pagination';
-import BoardResult from '../components/board-result';
-import PartyCard from '../components/party-board/party-card';
+import Sort from '../components/ui/sort';
+import Search from '../components/ui/search';
+import Pagination from '../components/ui/pagination';
+import BoardResult from '../components/ui/board-result';
+import PartyCard from '../components/ui/party-card';
 import { partyBoardFilters, sortOptions } from '@/data/board';
 
 import { IPartyBoard } from '@/types';

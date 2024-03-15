@@ -1,6 +1,6 @@
 'use client';
 
-import { TWirteType } from '../board-write/page';
+import { TWirteType } from '../page';
 import WriteTypeWrapper from './wirte-type-wrapper';
 
 interface IWriteTypeSelectorProps {

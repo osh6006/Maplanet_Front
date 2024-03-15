@@ -1,8 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import PostCard from '../../(board)/components/post-card';
-import Pagination from '../../(board)/components/pagination';
+import PostCard from '../../(board)/components/ui/post-card';
+import Pagination from '../../(board)/components/ui/pagination';
 import { useSearchParams } from 'next/navigation';
 
 interface IProfilePostsProps {
@@ -18,7 +18,7 @@ const ProfilePosts: React.FunctionComponent<IProfilePostsProps> = ({ board, id }
   console.log(
     `현재 ${board} 게시판과 ${id} 유저의 게시글, searchParams: ${searchParams}, page: ${page}`
   );
-  
+
   const renderPostCards = () => {
     // 잠쩔 게시판일 경우
     if (board === 'helper') {

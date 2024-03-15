@@ -3,10 +3,10 @@
 import { useRouter } from 'next/navigation';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import BoardInput from '../board-input';
-import BoardRadio from '../board-radio';
+import BoardInput from './board-input';
+import BoardRadio from './board-radio';
 import Button from '@/components/ui/button';
-import BoardMesoInput from '../board-meso-input';
+import BoardMesoInput from './board-meso-input';
 
 import usePost from '@/hooks/use-post';
 

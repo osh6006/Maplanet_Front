@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { TWirteType } from '../board-write/page';
+import { TWirteType } from '../page';
 
 interface IWriteTypeWrapperProps {
   writeType: TWirteType;
@@ -14,8 +14,6 @@ const WriteTypeWrapper: React.FunctionComponent<IWriteTypeWrapperProps> = ({
   selectedWriteType,
   name
 }) => {
-  console.log(selectedWriteType, writeType);
-
   return (
     <div
       onClick={() => setWriteType(writeType)}

@@ -1,11 +1,11 @@
 import { Suspense } from 'react';
 
-import Pagination from '../components/pagination';
-import BoardResult from '../components/board-result';
-import HelperCard from '../components/helper-board/helper-card';
+import BoardResult from '../components/ui/board-result';
+import HelperCard from '../components/ui/helper-card';
 
 import { IHelperBoard } from '@/types';
 import { fetchBoardData } from '@/actions/common';
+import Pagination from '../components/ui/pagination';
 
 export const dynamic = 'force-dynamic';
 

@@ -2,13 +2,13 @@ import { Suspense } from 'react';
 import { sortOptions, woodCutterBoardFilters } from '@/data/board';
 import { fetchBoardData } from '@/actions/common';
 
-import Sort from '../components/sort';
-import Search from '../components/search';
+import Sort from '../components/ui/sort';
+import Search from '../components/ui/search';
 import Banner from '@/components/ui/banner';
 import Loading from '@/components/ui/loading';
-import Pagination from '../components/pagination';
-import BoardResult from '../components/board-result';
-import WoodCutterCard from '../components/wood-cutter-board/wood-cutter-card';
+import Pagination from '../components/ui/pagination';
+import BoardResult from '../components/ui/board-result';
+import WoodCutterCard from '../components/ui/wood-cutter-card';
 
 import { IWoodCutterBoard } from '@/types';
 

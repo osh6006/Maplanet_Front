@@ -1,7 +1,7 @@
-import Sort from '../components/sort';
-import Search from '../components/search';
+import Sort from '../components/ui/sort';
+import Search from '../components/ui/search';
 import Banner from '@/components/ui/banner';
-import BoardInner from '../components/board-inner';
+import BoardInner from '../components/ui/board-inner';
 
 import { partyBoardFilters, sortOptions } from '@/data/board';
 

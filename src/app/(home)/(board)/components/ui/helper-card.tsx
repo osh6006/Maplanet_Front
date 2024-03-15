@@ -1,30 +1,36 @@
 'use client';
 
-import { useState } from 'react';
-import { IPartyBoard } from '@/types';
-import { BoardCardCompleate, BoardCardHoverButtons } from '../board-card-wrappers';
-import Badge from '@/components/ui/badge';
+import clsx from 'clsx';
 import dayjs from 'dayjs';
+import { useState } from 'react';
+
+import { BoardCardCompleate, BoardCardHoverButtons } from './board-card-wrappers';
+import Badge from '@/components/ui/badge';
+
+import { IHelperBoard } from '@/types';
 import Icon from '@/components/ui/icon';
 import InlineProfile from '@/components/ui/inline-profile';
 import { filterImageUrl } from '@/util/util';
-import PartyBoardModal from '@/components/modal/board/party-board-modal';
+import HelperBoardModal from '@/components/modal/board/helper-board-modal';
 
-interface IPartyCardProps extends IPartyBoard {
+dayjs.locale('ko');
+
+interface IHelperCardProps extends IHelperBoard {
   badges?: string[];
 }
 
-const PartyCard: React.FunctionComponent<IPartyCardProps> = ({
-  complete,
+const HelperCard: React.FunctionComponent<IHelperCardProps> = ({
+  board1_id,
   discord_id,
-  created_at,
-  badges,
   title,
   discord_image,
+  discord_global_name,
+  meso,
   manner_count,
   report_count,
-  discord_global_name,
-  board4_id,
+  complete,
+  created_at,
+  badges,
   ...props
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,8 +42,8 @@ const PartyCard: React.FunctionComponent<IPartyCardProps> = ({
   return (
     <>
       {isModalOpen ? (
-        <PartyBoardModal
-          boardId={board4_id}
+        <HelperBoardModal
+          boardId={board1_id}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
         />
@@ -52,10 +58,9 @@ const PartyCard: React.FunctionComponent<IPartyCardProps> = ({
           setIsModalOpen={onOpen}
         />
       )}
-
       <div className='flex w-full items-center justify-between '>
-        <Badge className={'bg-main'} size='card'>
-          {'파티 구인'}
+        <Badge className={clsx('bg-violet')} size='card'>
+          심쩔
         </Badge>
         <time className='font-medium text-gray-400'>
           {dayjs(created_at).format('YYYY년 MM월 DD일')}
@@ -64,6 +69,10 @@ const PartyCard: React.FunctionComponent<IPartyCardProps> = ({
 
       <h1 className='my-6 text-xl font-semibold'>{title}</h1>
       <div className='mb-4 mt-3 flex flex-wrap items-center gap-2'>
+        <Badge size='card' className='bg-lightGray text-yellow'>
+          <Icon src='/svgs/money.svg' size={20} alt='meso' />
+          {meso}
+        </Badge>
         {badges?.map((el) => (
           <Badge size='card' key={el} className='bg-lightGray '>
             {el}
@@ -86,4 +95,4 @@ const PartyCard: React.FunctionComponent<IPartyCardProps> = ({
   );
 };
 
-export default PartyCard;
+export default HelperCard;

@@ -1,38 +1,32 @@
 'use client';
 
-import clsx from 'clsx';
-import dayjs from 'dayjs';
 import { useState } from 'react';
-
-import { BoardCardCompleate, BoardCardHoverButtons } from '../board-card-wrappers';
+import { IWoodCutterBoard } from '@/types';
+import { BoardCardCompleate, BoardCardHoverButtons } from './board-card-wrappers';
 import Badge from '@/components/ui/badge';
-
-import { IHunterBoard } from '@/types';
+import dayjs from 'dayjs';
 import Icon from '@/components/ui/icon';
 import InlineProfile from '@/components/ui/inline-profile';
 import { filterImageUrl } from '@/util/util';
-import HunterBoardModal from '@/components/modal/board/hunter-board-modal';
-
+import WoodCutterBoardModal from '@/components/modal/board/wood-cutter-board-modal';
 dayjs.locale('ko');
 
-interface IHelperCardProps extends IHunterBoard {
+interface IWoodCutterCardProps extends IWoodCutterBoard {
   badges?: string[];
 }
 
-const HunterCard: React.FunctionComponent<IHelperCardProps> = ({
-  board2_id,
+const WoodCutterCard: React.FunctionComponent<IWoodCutterCardProps> = ({
+  complete,
   discord_id,
+  created_at,
+  meso,
+  badges,
   title,
   discord_image,
-  discord_global_name,
-  meso,
-  place_theif_nickname,
   manner_count,
   report_count,
-  report_kind,
-  complete,
-  created_at,
-  badges,
+  discord_global_name,
+  board3_id,
   ...props
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,11 +35,13 @@ const HunterCard: React.FunctionComponent<IHelperCardProps> = ({
     setIsModalOpen(true);
   };
 
+  console.log(badges);
+
   return (
     <>
       {isModalOpen ? (
-        <HunterBoardModal
-          boardId={board2_id}
+        <WoodCutterBoardModal
+          boardId={board3_id}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
         />
@@ -62,10 +58,8 @@ const HunterCard: React.FunctionComponent<IHelperCardProps> = ({
       )}
 
       <div className='flex w-full items-center justify-between '>
-        <Badge
-          className={clsx(report_kind === '인기도 하락' ? 'bg-main' : 'bg-violet')}
-          size='card'>
-          {report_kind}
+        <Badge className={'bg-main'} size='card'>
+          {'나무꾼'}
         </Badge>
         <time className='font-medium text-gray-400'>
           {dayjs(created_at).format('YYYY년 MM월 DD일')}
@@ -78,11 +72,13 @@ const HunterCard: React.FunctionComponent<IHelperCardProps> = ({
           <Icon src='/svgs/money.svg' size={20} alt='meso' />
           {meso}
         </Badge>
-        {badges?.map((el) => (
-          <Badge size='card' key={el} className='bg-lightGray '>
-            {el}
-          </Badge>
-        ))}
+        {badges?.map((el) =>
+          el ? (
+            <Badge size='card' key={el} className='bg-lightGray '>
+              {el}
+            </Badge>
+          ) : null
+        )}
       </div>
       <div className='mt-6 flex items-center justify-between '>
         <InlineProfile
@@ -100,4 +96,4 @@ const HunterCard: React.FunctionComponent<IHelperCardProps> = ({
   );
 };
 
-export default HunterCard;
+export default WoodCutterCard;

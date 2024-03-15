@@ -1,27 +1,28 @@
 'use client';
 
 import usePost from '@/hooks/use-post';
-import { IWoodCutterBoardPost } from '@/types';
+import { IPartyBoardPost } from '@/types';
 import { useRouter } from 'next/navigation';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import BoardMesoInput from '../board-meso-input';
-import BoardInput from '../board-input';
-import BoardRadio from '../board-radio';
-import BoardSelect from '../board-select';
-import BoardTimeInput from '../board-time-input';
+import BoardInput from './board-input';
+import BoardTimeInput from './board-time-input';
+import BoardRadio from './board-radio';
 import Button from '@/components/ui/button';
+import BoardFloorInput from './board-floor-input';
+import Label from '@/components/ui/label';
+import BoardFloors from './board-floors';
 
-interface IWoodCutterBoardFormProps {}
+interface IPartyBoardFormProps {}
 
-const WoodCutterBoardForm: React.FunctionComponent<IWoodCutterBoardFormProps> = (props) => {
-  const { control, handleSubmit, watch } = useForm<IWoodCutterBoardPost>();
+const PartyBoardForm: React.FunctionComponent<IPartyBoardFormProps> = ({}) => {
+  const { control, handleSubmit } = useForm<IPartyBoardPost>();
   const { isLoading, setIsLoading, isError, setIsError } = usePost();
   const router = useRouter();
 
-  const onSubmit: SubmitHandler<IWoodCutterBoardPost> = async (data) => {
+  const onSubmit: SubmitHandler<IPartyBoardPost> = async (data) => {
     setIsLoading(true);
     try {
-      if (data.meso === '협의 가능') {
+      if (data.progress_time === '협의 가능') {
         const newData = { ...data, meso: null };
         // TODO : fetch New Data
         setIsLoading(false);
@@ -38,8 +39,6 @@ const WoodCutterBoardForm: React.FunctionComponent<IWoodCutterBoardFormProps> = 
     }
   };
 
-  const jobWatch = watch('main_job') || null;
-
   return (
     <>
       {isError ? (
@@ -49,19 +48,6 @@ const WoodCutterBoardForm: React.FunctionComponent<IWoodCutterBoardFormProps> = 
       ) : null}
       <form onSubmit={handleSubmit(onSubmit)} className='grid grid-cols-2 gap-x-8'>
         <div className='flex flex-col gap-y-8'>
-          <BoardMesoInput
-            name='meso'
-            control={control}
-            disabled={isLoading}
-            rules={{
-              required: '메소는 필수로 입력해야 합니다.',
-              pattern: {
-                value: /^[0-9]*$|^협의 가능$/,
-                message: '숫자만 입력 가능합니다.'
-              }
-            }}
-          />
-
           <BoardInput
             control={control}
             name='title'
@@ -75,7 +61,7 @@ const WoodCutterBoardForm: React.FunctionComponent<IWoodCutterBoardFormProps> = 
                 value: 5
               },
               maxLength: {
-                message: '30글자 이상은 입력이 불가합니다.',
+                message: '50글자 이상은 입력이 불가합니다.',
                 value: 30
               }
             }}
@@ -104,44 +90,19 @@ const WoodCutterBoardForm: React.FunctionComponent<IWoodCutterBoardFormProps> = 
             control={control}
             name='hunting_ground'
             label='사냥터'
-            disabled={isLoading}
             placeholder='사냥터를 입력해 주세요'
+            disabled={isLoading}
             rules={{
-              required: '제목은 필수로 입력해야 합니다.',
+              required: '사냥터는 필수로 입력해야 합니다.',
               minLength: {
-                message: '최소 5글자 이상 입력해야 합니다.',
-                value: 5
+                message: '최소 2글자 이상 입력해야 합니다.',
+                value: 2
               },
               maxLength: {
                 message: '20글자 이상은 입력이 불가합니다.',
-                value: 20
+                value: 12
               }
             }}
-          />
-        </div>
-        <div className='flex flex-col gap-y-8'>
-          <BoardRadio
-            control={control}
-            name='main_job'
-            label='직업'
-            disabled={isLoading}
-            rules={{ required: '직업을 선택해 주세요' }}
-            options={[
-              { id: '전사', label: '전사', value: '전사' },
-              { id: '마법사', label: '마법사', value: '마법사' },
-              { id: '도적', label: '도적', value: '도적' },
-              { id: '궁수', label: '궁수', value: '궁수' }
-            ]}
-          />
-
-          <BoardSelect
-            control={control}
-            jobWatch={jobWatch}
-            label='서브 직업'
-            name='sub_job'
-            disabled={isLoading}
-            placeholder='서브 직업을 선택해 주세요'
-            rules={{ required: '서브 직업을 선택해 주세요' }}
           />
 
           <BoardTimeInput
@@ -166,11 +127,24 @@ const WoodCutterBoardForm: React.FunctionComponent<IWoodCutterBoardFormProps> = 
             }}
           />
 
+          <BoardRadio
+            control={control}
+            name='main_job'
+            label='주차'
+            disabled={isLoading}
+            rules={{ required: '주차 여부를 선택해 주세요' }}
+            options={[
+              { id: '주차 가능', label: '주차 가능', value: 'true' },
+              { id: '주차 불가', label: '주차 불가', value: '' }
+            ]}
+          />
+        </div>
+        <div className='flex flex-col gap-y-8'>
           <BoardInput
             control={control}
-            name='level'
-            label='레벨'
-            placeholder='레벨을 입력해 주세요'
+            name='recruit_people_count'
+            label='모집 인원'
+            placeholder='모집 인원 수'
             disabled={isLoading}
             type='number'
             rules={{
@@ -189,12 +163,12 @@ const WoodCutterBoardForm: React.FunctionComponent<IWoodCutterBoardFormProps> = 
                 value: 10
               }
             }}
-            icon={<span className=' items-center text-[15px] font-semibold text-black'>LV</span>}
+            icon={<span className=' items-center text-[15px] font-semibold text-black'>명</span>}
           />
+          <BoardFloors control={control} />
         </div>
-
         <div></div>
-        <div className='mt-12'>
+        <div className='mt-4'>
           <Button size='wide' color='main' disabled={isLoading}>
             등록하기
           </Button>
@@ -204,4 +178,4 @@ const WoodCutterBoardForm: React.FunctionComponent<IWoodCutterBoardFormProps> = 
   );
 };
 
-export default WoodCutterBoardForm;
+export default PartyBoardForm;

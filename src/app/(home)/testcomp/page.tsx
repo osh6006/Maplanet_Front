@@ -12,7 +12,7 @@ import Select from '@/components/ui/select';
 import Button from '@/components/ui/button';
 import FormErrorMessage from '@/components/ui/form-error-message';
 import { filterJobList } from '@/util/util';
-import PostCard from '@/app/(home)/(board)/components/post-card';
+import PostCard from '@/app/(home)/(board)/components/ui/post-card';
 import PostBanner from '@/components/ui/banner';
 import Inner from '@/components/ui/inner';
 

@@ -1,16 +1,16 @@
 import { Suspense } from 'react';
 
-import Sort from '../components/sort';
-import Search from '../components/search';
+import Sort from '../components/ui/sort';
+import Search from '../components/ui/search';
 import Banner from '@/components/ui/banner';
 import Loading from '@/components/ui/loading';
-import Pagination from '../components/pagination';
-import HunterCard from '../components/hunter-board/hunter-card';
+import Pagination from '../components/ui/pagination';
+import HunterCard from '../components/ui/hunter-card';
 
 import { IHunterBoard } from '@/types';
 
 import { hunterBoardFilters, sortOptions } from '@/data/board';
-import BoardResult from '../components/board-result';
+import BoardResult from '../components/ui/board-result';
 import { fetchBoardData } from '@/actions/common';
 
 interface IHelperBoardPageProps {}
