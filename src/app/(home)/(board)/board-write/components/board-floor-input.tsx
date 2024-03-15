@@ -1,10 +1,11 @@
 'use client';
 import { useState } from 'react';
 import TagsInput from 'react-tagsinput';
-import './board-floor.css';
 import { Controller } from 'react-hook-form';
 import Label from '@/components/ui/label';
 import FormErrorMessage from '@/components/ui/form-error-message';
+
+import './board-floor.css';
 
 interface IBoardFloorInputProps {
   control: any;
@@ -36,7 +37,7 @@ const BoardFloorInput: React.FunctionComponent<IBoardFloorInputProps> = ({
         // disabled={disabled}
         render={({ field: { value, onChange, name }, fieldState: { error, invalid } }) => {
           return (
-            <div className='flex justify-between gap-x-4'>
+            <div className='flex justify-between gap-x-4 '>
               <Label name={name} label={label} required className='' />
               <div className='flex-1 space-y-2'>
                 <TagsInput

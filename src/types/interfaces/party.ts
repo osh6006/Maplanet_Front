@@ -2,7 +2,7 @@ export interface IPartyBoardPost {
   title: string;
   maple_nickname: string;
   hunting_ground: string;
-  progress_time: string;
+  progress_time: number;
   parking: boolean;
   recruit_people_count: number;
   first_floor: string;

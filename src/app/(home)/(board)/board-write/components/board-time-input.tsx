@@ -20,7 +20,7 @@ const BoardTimeInput: React.FunctionComponent<IBoardTimeInputProps> = ({
       rules={rules}
       disabled={disabled}
       render={({ field: { value, name, onChange, disabled }, fieldState: { error, invalid } }) => {
-        const newDisabled = value === '협의 가능' || disabled;
+        const newDisabled = value === null || disabled;
 
         return (
           <div className='flex-col'>
@@ -45,10 +45,10 @@ const BoardTimeInput: React.FunctionComponent<IBoardTimeInputProps> = ({
                       if (newDisabled) {
                         onChange('');
                       } else {
-                        onChange('협의 가능');
+                        onChange(null);
                       }
                     }}>
-                    {newDisabled ? '협의 가능' : '협의 가능'}
+                    협의 가능
                   </Button>
                 </div>
               </div>

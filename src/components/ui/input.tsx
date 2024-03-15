@@ -18,8 +18,8 @@ export default function Input({ name, type, icon, invalid, labelRequired, ...pro
       <input
         id={name}
         className={clsx(
-          `w-full rounded-md border px-4 py-2 pr-6 text-sm font-semibold text-black placeholder-gray-400 shadow-sm focus:border-main focus:outline-none 
-        focus:ring-2 focus:ring-main` + props.className
+          `w-full rounded-md border px-4 py-2 pr-6 text-sm font-semibold text-black placeholder-gray-400 shadow-sm ring-main focus:border-main focus:outline-none 
+        focus:ring-4 focus:ring-main` + props.className
         )}
         type={type}
         {...props}
