@@ -5,8 +5,6 @@ import BoardInner from '../components/ui/board-inner';
 
 import { helperBoardFilters, sortOptions } from '@/data/board';
 
-export const dynamic = 'force-dynamic';
-
 interface IHelperboardLayoutProps {
   children: React.ReactNode;
 }

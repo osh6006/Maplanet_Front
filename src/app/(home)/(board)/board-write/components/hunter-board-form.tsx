@@ -39,6 +39,7 @@ const HunterBoardForm: React.FunctionComponent<IHunterBoardFormProps> = ({}) => 
         });
         setIsLoading(false);
       }
+
       router.back();
     } catch (error) {
       setIsError(true);

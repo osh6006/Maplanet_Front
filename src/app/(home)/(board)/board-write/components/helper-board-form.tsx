@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { postBoardData } from '@/actions/common';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -13,7 +15,6 @@ import BoardRadio from './board-radio';
 import BoardSelect from './board-select';
 import usePost from '@/hooks/use-post';
 import BoardTimeInput from './board-time-input';
-import toast from 'react-hot-toast';
 import Icon from '@/components/ui/icon';
 
 interface IHelperBoardFormProps {}
@@ -24,10 +25,11 @@ const HelperBoardForm: React.FunctionComponent<IHelperBoardFormProps> = () => {
   const { isLoading, setIsLoading, isError, setIsError } = usePost();
   const { control, handleSubmit, watch } = useForm<IHelperBoardPost>();
 
+  if (isError) throw new Error('Something Error');
+
   const onSubmit: SubmitHandler<IHelperBoardPost> = async (data) => {
     setIsLoading(true);
 
-    let result;
     let parsingData = { ...data };
 
     if (data.meso === '협의 가능') {
@@ -38,28 +40,21 @@ const HelperBoardForm: React.FunctionComponent<IHelperBoardFormProps> = () => {
       parsingData = { ...parsingData, progress_time: 0 };
     }
 
-    try {
-      // TODO : fetch New Data
-      result = await postBoardData<IHelperBoardPost>({
-        url: '/board1',
-        data: parsingData
-      });
+    // TODO : fetch New Data
+    const result = await postBoardData<IHelperBoardPost>({
+      url: '/board1',
+      data: parsingData
+    });
 
-      if (result) {
-        setIsError(false);
-        toast.success('성공적으로 글을 등록하였습니다.');
-        router.back();
-        // router.refresh();
-      } else {
-        setIsError(true);
-        toast.error('서버에서 에러가 발생하여 등록을 실패하였습니다.');
-      }
-    } catch (error) {
-      setIsError(true);
+    if (result && !result.isError) {
+      toast.success(result.message);
+      router.push('/helper-board');
+    } else {
+      setIsError(result?.message!);
       toast.error('서버에서 에러가 발생하여 등록을 실패하였습니다.');
-    } finally {
-      setIsLoading(false);
     }
+
+    setIsLoading(false);
   };
 
   const jobWatch = watch('main_job') || null;

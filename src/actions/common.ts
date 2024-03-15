@@ -64,10 +64,7 @@ interface IBoardDetailFetchParam<T> extends ICommonFetchParam {
 export async function postBoardData<T>({
   url,
   data
-}: IBoardDetailFetchParam<T>): Promise<boolean | undefined> {
-  console.log(data);
-  console.log(url);
-
+}: IBoardDetailFetchParam<T>): Promise<{ isError: boolean; message: string } | undefined> {
   try {
     const res = await fetch(`https://maplanet.store${url}/post` as string, {
       method: 'POST',
@@ -80,12 +77,29 @@ export async function postBoardData<T>({
     });
 
     if (!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
-      throw new Error(`Sent the data to "${url}/post" url, but an error seems to have occurred.`);
+      return {
+        isError: true,
+        message: `Sent the data to "${url}/post" url, but an error seems to have occurred.`
+      };
     }
 
-    return true;
+    const result = await res.json();
+
+    if (result.status === 400) {
+      return {
+        isError: true,
+        message: `Sent the data to "${url}/post" url, but an error seems to have occurred.`
+      };
+    }
+
+    return {
+      isError: false,
+      message: `등록에 성공 하였습니다.`
+    };
   } catch (error) {
-    throw new Error(`Sent the data to "${url}/post" url, but an error seems to have occurred.`);
+    return {
+      isError: true,
+      message: `Sent the data to "${url}/post" url, but an error seems to have occurred.`
+    };
   }
 }

@@ -1,6 +1,5 @@
 'use client';
 
-import Inner from '@/components/ui/inner';
 import WriteTypeSelector from './components/write-type-selector';
 import { useState } from 'react';
 import HelperBoardForm from './components/helper-board-form';
@@ -20,18 +19,16 @@ const WritePage: React.FunctionComponent<IWriteProps> = ({}) => {
   };
 
   return (
-    <main className='w-full '>
-      <Inner>
-        <div className='mt-8'>
-          <WriteTypeSelector writeType={writeType} setWriteType={handleWriteType} />
-        </div>
-        <hr className='my-12' />
-        {writeType === 'helperBoard' ? <HelperBoardForm /> : null}
-        {writeType === 'hunterBoard' ? <HunterBoardForm /> : null}
-        {writeType === 'partyBoard' ? <PartyBoardForm /> : null}
-        {writeType === 'woodCutterBoard' ? <WoodCutterBoardForm /> : null}
-      </Inner>
-    </main>
+    <>
+      <div className='mt-8'>
+        <WriteTypeSelector writeType={writeType} setWriteType={handleWriteType} />
+      </div>
+      <hr className='my-12' />
+      {writeType === 'helperBoard' ? <HelperBoardForm /> : null}
+      {writeType === 'hunterBoard' ? <HunterBoardForm /> : null}
+      {writeType === 'partyBoard' ? <PartyBoardForm /> : null}
+      {writeType === 'woodCutterBoard' ? <WoodCutterBoardForm /> : null}
+    </>
   );
 };
 
