@@ -1,6 +1,6 @@
 'use client';
 
-import { getCookies } from 'cookies-next';
+import { getCookie } from 'cookies-next';
 
 import Image from 'next/image';
 import Board from './components/board';
@@ -19,7 +19,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
   const [cookie, setCookie] = useState<any>();
 
   useEffect(() => {
-    const test = getCookies();
+    const test = getCookie('Authorization');
     setCookie(test);
   }, []);
 
