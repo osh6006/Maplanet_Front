@@ -1,60 +1,74 @@
-import { hunterBoardFilters, sortOptions } from '@/data/board';
-
-import Sort from '../components/sort';
-import Search from '../components/search';
-
-import Pagination from '../components/pagination';
-import PostCard from '@/app/(home)/(board)/components/post-card';
-import Banner from '@/components/ui/banner';
 import { Suspense } from 'react';
 
+import Pagination from '../components/ui/pagination';
+import HunterCard from '../components/ui/hunter-card';
+
+import { IHunterBoard } from '@/types';
+
+import BoardResult from '../components/ui/board-result';
+import { fetchBoardData } from '@/actions/common';
+
 interface IHelperBoardPageProps {}
+
+export const dynamic = 'force-dynamic';
 
 const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
   searchParams
 }: {
   searchParams?: {
-    query?: string;
     page?: string;
+    query?: string;
+    value?: string;
+    searchType?: string;
   };
 }) => {
   // TODO : fetch data using searchParams
 
-  return (
-    <main>
-      <Banner title='겹사 의뢰' imgUrl='/images/banner.png' />
-      <Suspense>
-        <div className='mx-auto max-w-[500px] sm:max-w-[670px] lg:max-w-[1000px] xl:max-w-[1440px] xl:px-20'>
-          <div className='mt-8 flex w-full flex-col justify-between gap-y-4 px-10 sm:flex-row sm:px-0'>
-            <Sort options={sortOptions} />
-            <Search filters={hunterBoardFilters} />
-          </div>
+  const fetchData = await fetchBoardData<{
+    board2Data?: IHunterBoard[];
+    search2Data?: IHunterBoard[];
+    totalCount?: number;
+  }>({
+    url: '/board2',
+    page: searchParams?.page || '1',
+    searchType: searchParams?.searchType,
+    value: searchParams?.value,
+    option: {
+      cache: 'no-store'
+    }
+  });
 
-          <div className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((el) => (
-              <PostCard
-                type='잠쩔'
-                date='2024-04-12'
-                title='1시간당 메소 150만에 4시간 해드립니다.'
-                meso='100,000,000'
-                subjob='스피어 맨'
-                map='죽은 나무의 숲 4'
-                time='4시간'
-                badges={['타락파워전사']}
-                discordNickName='축지법 아저씨'
-                manner={44}
-                unManner={2}
-                view={20}
-                avatarUrl=''
-                completed={false}
-                key={el}
-              />
-            ))}
-          </div>
-          <Pagination totalPost={123} itemsPerPage={5} />
-        </div>
-      </Suspense>
-    </main>
+  const hunterBoardData = fetchData?.board2Data || [];
+  const searchBoardData = fetchData?.search2Data || [];
+  const totalBoardCount = fetchData?.totalCount || 0;
+
+  return (
+    <Suspense fallback={<div>Loading..</div>}>
+      <BoardResult.Wrapper>
+        <BoardResult.List
+          list={hunterBoardData || []}
+          render={(board) => {
+            return (
+              <BoardResult.Item key={board.board2_id}>
+                <HunterCard {...board} badges={[board.place_theif_nickname]} />
+              </BoardResult.Item>
+            );
+          }}
+        />
+
+        <BoardResult.List
+          list={searchBoardData || []}
+          render={(board) => {
+            return (
+              <BoardResult.Item key={board.board2_id}>
+                <HunterCard {...board} badges={[board.place_theif_nickname]} />
+              </BoardResult.Item>
+            );
+          }}
+        />
+      </BoardResult.Wrapper>
+      <Pagination totalPost={totalBoardCount || 0} itemsPerPage={5} pagePerItem={12} />
+    </Suspense>
   );
 };
 

@@ -1,169 +1,166 @@
+'use client';
+
 import * as React from 'react';
 import Link from 'next/link';
 import Icon from '@/components/ui/icon';
-import BoardItem from './board-item';
+import Spinner from '@/components/ui/spinner';
+import GetHomeData from '@/actions/home';
+import HelperBoardItem from './helper-board-item';
+import HunterBoardItem from './hunter-board-item';
+import HelperMannerBoardItem from './helper-manner-board-item';
+import HunterMesoBoardItem from './hunter-meso-board-item';
+import clsx from 'clsx';
 
 interface IBoardProps {
   category: string;
-  bgImage: string;
+  // bgImage: string;
 }
 
-// dummy data
-const data = [
-  {
-    category: '쩔',
-    items: [
-      {
-        id: 1,
-        profile: '쩔',
-        date: '2022-01-01',
-        title: 'title 1',
-        cost: 1500000,
-        type: ['잠쩔', '심쩔'],
-        map: 'map'
-      },
-      {
-        id: 2,
-        profile: '쩔',
-        date: '2022-01-01',
-        title: 'title 2',
-        cost: 1500000,
-        type: ['잠쩔', '심쩔'],
-        map: 'map'
-      },
-      {
-        id: 3,
-        profile: '쩔',
-        date: '2022-01-01',
-        title: 'title 3',
-        cost: 1500000,
-        type: ['잠쩔', '심쩔'],
-        map: 'map'
-      }
-    ]
-  },
-  {
-    category: '겹사',
-    items: [
-      {
-        id: 1,
-        profile: '겹사',
-        date: '2022-01-01',
-        title: 'title 4',
-        cost: 1500000000,
-        type: ['잠쩔', '심쩔'],
-        map: 'map'
-      },
-      {
-        id: 2,
-        profile: '겹사',
-        date: '2022-01-01',
-        title: 'title 5',
-        cost: 1500000,
-        type: ['잠쩔', '심쩔'],
-        map: 'map'
-      },
-      {
-        id: 3,
-        profile: '겹사',
-        date: '2022-01-01',
-        title: 'title 6',
-        cost: 1500000,
-        type: ['잠쩔', '심쩔'],
-        map: 'map'
-      }
-    ]
-  },
-  {
-    category: '쩔 매너 유저',
-    items: [
-      {
-        id: 1,
-        profile: '쩔 매너 유저',
-        date: '2022-01-01',
-        title: 'title 7',
-        type: ['잠쩔', '심쩔'],
-        map: 'map'
-      },
-      {
-        id: 2,
-        profile: '쩔 매너 유저',
-        date: '2022-01-01',
-        title: 'title 8',
-        type: ['잠쩔', '심쩔'],
-        map: 'map'
-      },
-      {
-        id: 3,
-        profile: '쩔 매너 유저',
-        date: '2022-01-01',
-        title: 'title 9',
-        type: ['잠쩔', '심쩔'],
-        map: 'map'
-      }
-    ]
-  },
-  {
-    category: '현상 수배',
-    items: [
-      {
-        id: 1,
-        profile: '현상 수배',
-        date: '2022-01-01',
-        title: 'title 10',
-        cost: 15000000000,
-        type: ['잠쩔', '심쩔'],
-        map: 'map'
-      },
-      {
-        id: 2,
-        profile: '현상 수배',
-        date: '2022-01-01',
-        title: 'title 11',
-        cost: 1500000,
-        type: ['잠쩔', '심쩔'],
-        map: 'map'
-      },
-      {
-        id: 3,
-        profile: '현상 수배',
-        date: '2022-01-01',
-        title: 'title 12',
-        cost: 1500000,
-        type: ['잠쩔', '심쩔'],
-        map: 'map'
-      }
-    ]
+const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
+  const [isHovered, setIsHovered] = React.useState(false);
+
+  const { data, isLoading, error } = GetHomeData();
+
+  let categoryData = [];
+
+  if (category === '쩔') {
+    categoryData = data.board1Data;
+  } else if (category === '겹사') {
+    categoryData = data.board2Data;
+  } else if (category === '쩔 매너 유저') {
+    categoryData = data.board1MannerData;
+  } else if (category === '현상 수배') {
+    categoryData = data.board2HighMesoData;
   }
-];
-const Board: React.FunctionComponent<IBoardProps> = ({ category, bgImage }) => {
-  const filteredData = data.filter((item) => item.category === category);
+
+  // if (isLoading) return <Spinner />;
+  if (error) return <div>에러가 발생했습니다.</div>;
 
   return (
     <div>
       {/* 카테고리 제목 컴포넌트*/}
       <div
-        className={`relative flex h-[70px] w-full items-center justify-between overflow-hidden rounded-xl px-[13px] py-[22px]`}
-        style={{
-          backgroundImage: `url(${bgImage})`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          width: 'auto',
-          height: 'auto'
-        }}>
-        <span className='absolute inset-0 z-0 bg-black/60'></span>
+        className={clsx(
+          isHovered ? 'bg-black/60' : '',
+          'relative flex h-[70px] w-full items-center justify-between overflow-hidden rounded-xl bg-black px-[20px] py-[22px] transition-all duration-200'
+        )}
+        style={
+          {
+            // backgroundImage: `url(${bgImage})`,
+            // backgroundPosition: 'center',
+            // backgroundSize: 'cover',
+            // backgroundRepeat: 'no-repeat',
+            // width: 'auto',
+            // height: 'auto'
+          }
+        }>
+        {/* <span className='absolute inset-0 z-0 bg-black/60'></span> */}
         <span className='z-[1] text-[20px] font-bold'>{category}</span>
-        <Link href='/' className='z-[1]'>
-          <Icon src='/svgs/plus.svg' alt='plus' size={24} />
+        <Link
+          href={category === '쩔' ? '/helper-board' : category === '겹사' ? '/hunter-board' : '#'}
+          className='z-[1]'
+          style={{ display: category !== '쩔' && category !== '겹사' ? 'none' : 'block' }}>
+          <div
+            className='flex h-10 w-10 items-center justify-center'
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}>
+            <Icon
+              src='/svgs/plus-large.svg'
+              alt='plus'
+              size={24}
+              className={clsx(
+                isHovered
+                  ? 'scale-90 transition-all duration-200'
+                  : 'scale-100 transition-all duration-200'
+              )}
+            />
+          </div>
         </Link>
       </div>
 
       {/* 아이템 리스트 컴포넌트*/}
       <ul className='mt-[17px] flex  flex-col justify-around gap-[13px]'>
-        {filteredData[0].items.map((item) => {
-          return <BoardItem key={item.id} category={category} {...item} />;
-        })}
+        {category === '쩔' &&
+          categoryData?.map((item: any, index: any) => {
+            return (
+              <HelperBoardItem
+                key={index}
+                boardId={item.board1_id}
+                userId={item.user_id}
+                discordId={item.discord_id}
+                profileImg={item.discord_image}
+                profileName={item.discord_global_name}
+                manner={item.manner_count}
+                report={item.report_count}
+                date={item.created_at}
+                view={item.view_count}
+                title={item.title}
+                cost={item.meso}
+                type={item.progress_kind}
+                map={item.hunting_ground}
+                time={item.progress_time}
+                job={item.sub_job}
+                complete={item.complete}
+                {...item}
+              />
+            );
+          })}
+
+        {category === '겹사' &&
+          categoryData?.map((item: any, index: any) => {
+            return (
+              <HunterBoardItem
+                key={index}
+                boardId={item.board2_id}
+                discordId={item.discord_id}
+                profileImg={item.discord_image}
+                profileName={item.discord_global_name}
+                manner={item.manner_count}
+                report={item.report_count}
+                date={item.created_at}
+                view={item.view_count}
+                title={item.title}
+                cost={item.meso}
+                type={item.report_kind}
+                nickname={item.place_theif_nickname}
+                complete={item.complete}
+                {...item}
+              />
+            );
+          })}
+
+        {category === '쩔 매너 유저' &&
+          categoryData?.map((item: any, index: any) => {
+            return (
+              <HelperMannerBoardItem
+                key={index}
+                boardId={item.board1_id}
+                userId={item.user_id}
+                discordId={item.discord_id}
+                profileImg={item.discord_image}
+                profileName={item.discord_global_name}
+                manner={item.manner_count}
+                {...item}
+              />
+            );
+          })}
+
+        {category === '현상 수배' &&
+          categoryData?.map((item: any, index: any) => {
+            return (
+              <HunterMesoBoardItem
+                key={index}
+                boardId={item.board2_id}
+                userId={item.user_id}
+                discordId={item.discord_id}
+                profileImg={item.discord_image}
+                profileName={item.discord_global_name}
+                manner={item.manner_count}
+                cost={item.meso}
+                {...item}
+              />
+            );
+          })}
       </ul>
     </div>
   );

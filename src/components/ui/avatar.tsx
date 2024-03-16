@@ -8,7 +8,15 @@ interface IAvatarProps {
 }
 
 const Avatar: React.FunctionComponent<IAvatarProps> = ({ imgUrl, size }) => {
-  return <Image alt='avatar' src={imgUrl} height={size} width={size} className='rounded-full' />;
+  return (
+    <Image
+      alt='avatar'
+      src={imgUrl || '/images/maple.webp'}
+      height={size}
+      width={size}
+      className='rounded-full'
+    />
+  );
 };
 
 export default Avatar;
