@@ -37,7 +37,7 @@ const WoodCutterBoardForm: React.FunctionComponent<IWoodCutterBoardFormProps> = 
 
     // TODO : fetch New Data
     const result = await postBoardData<IWoodCutterBoardPost>({
-      url: '/board3',
+      url: '/board3/post',
       data: parsingData
     });
 

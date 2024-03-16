@@ -66,7 +66,7 @@ export async function postBoardData<T>({
   data
 }: IBoardDetailFetchParam<T>): Promise<{ isError: boolean; message: string } | undefined> {
   try {
-    const res = await fetch(`https://maplanet.store${url}/post` as string, {
+    const res = await fetch(`https://maplanet.store${url}` as string, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TEMP_ACCESS_TOKEN}`,

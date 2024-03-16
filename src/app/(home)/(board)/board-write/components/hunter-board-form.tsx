@@ -33,7 +33,7 @@ const HunterBoardForm: React.FunctionComponent<IHunterBoardFormProps> = ({}) => 
 
     // TODO : fetch New Data
     const result = await postBoardData({
-      url: '/board2',
+      url: '/board2/post',
       data: parsingData
     });
 

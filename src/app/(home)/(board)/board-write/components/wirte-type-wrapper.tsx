@@ -1,22 +1,36 @@
 import clsx from 'clsx';
 import { TWirteType } from '../page';
 
+import { usePathname, useSearchParams, useRouter } from 'next/navigation';
+
 interface IWriteTypeWrapperProps {
   writeType: TWirteType;
   selectedWriteType: TWirteType;
-  setWriteType: (type: TWirteType) => void;
   name: string;
 }
 
 const WriteTypeWrapper: React.FunctionComponent<IWriteTypeWrapperProps> = ({
   writeType,
-  setWriteType,
   selectedWriteType,
   name
 }) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const createPageURL = (type: string) => {
+    const params = new URLSearchParams(searchParams);
+    params.set('writeType', type);
+    return `${pathname}?${params.toString()}`;
+  };
+
+  const handleWriteType = (type: string) => {
+    router.push(createPageURL(type));
+  };
+
   return (
     <div
-      onClick={() => setWriteType(writeType)}
+      onClick={() => handleWriteType(writeType)}
       className={clsx(
         `group relative flex h-[80px] flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-tableBackground px-4 text-2xl font-semibold
       shadow-md hover:text-main`,

@@ -40,7 +40,7 @@ const HelperBoardForm: React.FunctionComponent<IHelperBoardFormProps> = () => {
 
     // TODO : fetch New Data
     const result = await postBoardData<IHelperBoardPost>({
-      url: '/board1',
+      url: '/board1/post',
       data: parsingData
     });
 

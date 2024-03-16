@@ -38,7 +38,7 @@ const PartyBoardForm: React.FunctionComponent<IPartyBoardFormProps> = ({}) => {
     console.log(parsingData);
 
     const result = await postBoardData({
-      url: '/board4',
+      url: '/board4/post',
       data: parsingData
     });
 
@@ -193,23 +193,23 @@ const PartyBoardForm: React.FunctionComponent<IPartyBoardFormProps> = ({}) => {
 
 function filterFloor(boardData: IPartyBoardPost) {
   if (!boardData.second_floor) {
-    boardData.second_floor = '';
+    boardData.second_floor = null;
   }
 
   if (!boardData.third_floor) {
-    boardData.third_floor = '';
+    boardData.third_floor = null;
   }
 
   if (!boardData.fourth_floor) {
-    boardData.fourth_floor = '';
+    boardData.fourth_floor = null;
   }
 
   if (!boardData.fifth_floor) {
-    boardData.fifth_floor = '';
+    boardData.fifth_floor = null;
   }
 
   if (!boardData.sixth_floor) {
-    boardData.sixth_floor = '';
+    boardData.sixth_floor = null;
   }
 
   return boardData;

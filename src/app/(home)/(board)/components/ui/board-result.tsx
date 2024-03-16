@@ -6,9 +6,11 @@ interface IBoardResultWrapper {
 
 const BoardResultWrapper = ({ children }: IBoardResultWrapper) => {
   return (
-    <ul className='mt-8 grid grid-cols-1 place-items-center gap-7 px-4 sm:mx-0 sm:grid-cols-2 sm:px-0 lg:grid-cols-3 xl:grid-cols-4'>
-      {children}
-    </ul>
+    <div className='flex flex-1 flex-col justify-between'>
+      <ul className='mt-8 grid grid-cols-1 place-items-center gap-7 px-4 sm:mx-0 sm:grid-cols-2 sm:px-0 lg:grid-cols-3 xl:grid-cols-4'>
+        {children}
+      </ul>
+    </div>
   );
 };
 
