@@ -1,3 +1,5 @@
+import { cookies } from 'next/headers';
+
 import Icon from './icon';
 import Inner from './inner';
 import Link from 'next/link';
@@ -7,6 +9,9 @@ import { Fugaz_One } from 'next/font/google';
 const fugaz = Fugaz_One({ subsets: ['latin'], weight: ['400'] });
 
 const Navbar = () => {
+  const cookieStore = cookies();
+  const auth = cookieStore.get('Authorization');
+
   return (
     <nav className='fixed z-50 flex h-[60px] w-full bg-black px-10 text-white xl:px-0'>
       <Inner>
@@ -31,12 +36,18 @@ const Navbar = () => {
                   + 새 글
                 </Button>
               </Link>
-              <Link href={'https://maplanet.store/auth/discord'}>
-                <Button size='sm' color='discord'>
-                  <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15} />
-                  로그인
+              {auth ? (
+                <Button color='main' size='sm'>
+                  로그인 완료
                 </Button>
-              </Link>
+              ) : (
+                <Link href={'https://maplanet.store/auth/discord'}>
+                  <Button size='sm' color='discord'>
+                    <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15} />
+                    로그인
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
         </div>

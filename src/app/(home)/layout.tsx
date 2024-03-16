@@ -3,8 +3,6 @@ import Footer from '@/components/ui/footer';
 import Notification from '@/components/ui/notification';
 import DiscordChannelBtn from './components/discord-channel-btn';
 
-import { cookies } from 'next/headers';
-
 interface IHomeLayoutProps {
   children: React.ReactNode;
 }
@@ -12,13 +10,6 @@ interface IHomeLayoutProps {
 export const dynamic = 'force-dynamic';
 
 const HomeLayout: React.FunctionComponent<IHomeLayoutProps> = ({ children }) => {
-  const cookieStore = cookies();
-  const cookie = cookieStore.get('Authorization');
-
-  if (cookie) {
-    console.log('서버사이드 쿠키 :', cookie);
-  }
-
   return (
     <div className='relative h-full'>
       <Navbar />
