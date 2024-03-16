@@ -28,10 +28,10 @@ const ProfilePosts: React.FunctionComponent<IProfilePostsProps> = ({ board, id }
           date='2024-04-12'
           title='1시간당 메소 150만에 4시간 해드립니다.'
           meso='100,000,000'
-          subjob='스피어 맨'
-          map='죽은 나무의 숲 4'
-          time='4시간'
           discordNickName='축지법 아저씨'
+          id={el}
+          boardType='board1'
+          mapleNickName='asdfafsd'
           badges={['죽은 나무의 숲 4', '4 시간', '스피어 맨']}
           manner={44}
           unManner={2}
@@ -45,14 +45,14 @@ const ProfilePosts: React.FunctionComponent<IProfilePostsProps> = ({ board, id }
     } else if (board === 'hunter') {
       return [1, 2, 3, 4, 5, 6, 7, 8].map((el) => (
         <PostCard
-          type='인기도하락'
+          type='잠쩔'
           date='2024-04-12'
-          title='타락파워전사 인기도 하락.'
+          title='1시간당 메소 150만에 4시간 해드립니다.'
           meso='100,000,000'
-          subjob='스피어 맨'
-          map='죽은 나무의 숲 4'
-          time='4시간'
           discordNickName='축지법 아저씨'
+          id={el}
+          boardType='board1'
+          mapleNickName='asdfafsd'
           badges={['죽은 나무의 숲 4', '4 시간', '스피어 맨']}
           manner={44}
           unManner={2}
@@ -69,7 +69,7 @@ const ProfilePosts: React.FunctionComponent<IProfilePostsProps> = ({ board, id }
       <ul className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-5 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
         {renderPostCards()}
       </ul>
-      <Pagination totalPost={123} itemsPerPage={5} />
+      <Pagination totalPost={123} itemsPerPage={5} pagePerItem={12} />
     </div>
   );
 };
