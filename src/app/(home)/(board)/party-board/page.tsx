@@ -43,12 +43,7 @@ const PartyBoardPage: React.FunctionComponent<IPartyBoardPageProps> = async ({
   const totalBoardCount = fetchData?.totalCount || 0;
 
   return (
-    <Suspense
-      fallback={
-        <div className='flex h-[500px] items-center justify-center'>
-          <Loading size={100} />
-        </div>
-      }>
+    <Suspense fallback={<div>Loading..</div>}>
       <BoardResult.Wrapper>
         <BoardResult.List
           list={partyBoardData || []}
