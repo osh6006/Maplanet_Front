@@ -3,19 +3,10 @@ import Inner from './inner';
 import Link from 'next/link';
 import Button from './button';
 import { Fugaz_One } from 'next/font/google';
-import { cookies, headers } from 'next/headers';
 
 const fugaz = Fugaz_One({ subsets: ['latin'], weight: ['400'] });
 
 const Navbar = () => {
-  const headersList = headers();
-  const cookieStore = cookies();
-  const header = headersList.get('Authorization');
-  const cookie = cookieStore.get('Authorization');
-
-  console.log('Header : ', header);
-  console.log('Cookie : ', cookie);
-
   return (
     <nav className='fixed z-50 flex h-[60px] w-full bg-black px-10 text-white xl:px-0'>
       <Inner>

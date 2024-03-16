@@ -1,7 +1,5 @@
 'use client';
 
-import Icon from '@/components/ui/icon';
-import { CookiesProvider } from 'react-cookie';
 import { Toaster } from 'react-hot-toast';
 import { SWRConfig } from 'swr';
 
@@ -41,7 +39,7 @@ const RootProvider: React.FunctionComponent<IProvidersProps> = ({ children }) =>
           }
         }}
       />
-      <CookiesProvider defaultSetOptions={{ path: '/' }}>{children}</CookiesProvider>
+      {children}
     </SWRConfig>
   );
 };

@@ -1,16 +1,23 @@
 'use client';
 
-import Icon from '@/components/ui/icon';
-import Inner from '@/components/ui/inner';
-import Board from './components/board';
 import Image from 'next/image';
-import Loading from '@/components/ui/loading';
+import Board from './components/board';
+import Icon from '@/components/ui/icon';
 import GetHomeData from '@/actions/home';
+import Inner from '@/components/ui/inner';
+import Loading from '@/components/ui/loading';
+import { getCookie, getCookies, setCookie } from 'cookies-next';
 
 interface IHomePageProps {}
 
 const HomePage: React.FunctionComponent<IHomePageProps> = () => {
   const { data, isLoading, error } = GetHomeData();
+
+  const cookie = getCookie('Authorization');
+  const cookies = getCookies();
+
+  console.log('Cookie : ', cookie);
+  console.log('Cookies!', cookies);
 
   if (isLoading)
     return (
@@ -25,7 +32,6 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
   // const bgImage = ['/images/option-bg-1.png', '/images/option-bg-3.png', '/images/option-bg-1.png', '/images/option-bg-3.png'];
 
   return (
-    // 헤더와 푸터를 제외한 메인
     <Inner>
       <main className='relative flex w-full flex-col items-center justify-between text-white'>
         {/* 로고 배너*/}
