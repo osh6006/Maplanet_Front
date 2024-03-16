@@ -168,13 +168,13 @@ const PartyBoardForm: React.FunctionComponent<IPartyBoardFormProps> = ({}) => {
               message: '숫자만 입력 가능합니다.'
             },
             min: {
-              message: '최소 1명 이상 모집해야 합니다.',
-              value: 1
+              message: '최소 2명 이상 모집해야 합니다.',
+              value: 2
             },
 
             max: {
               message: '10명 초과로는 구하실 수 없습니다.',
-              value: 10
+              value: 6
             }
           }}
           icon={<span className=' items-center text-[15px] font-semibold text-black'>명</span>}
@@ -193,23 +193,23 @@ const PartyBoardForm: React.FunctionComponent<IPartyBoardFormProps> = ({}) => {
 
 function filterFloor(boardData: IPartyBoardPost) {
   if (!boardData.second_floor) {
-    boardData.second_floor = null;
+    boardData.second_floor = '';
   }
 
   if (!boardData.third_floor) {
-    boardData.third_floor = null;
+    boardData.third_floor = '';
   }
 
   if (!boardData.fourth_floor) {
-    boardData.fourth_floor = null;
+    boardData.fourth_floor = '';
   }
 
   if (!boardData.fifth_floor) {
-    boardData.fifth_floor = null;
+    boardData.fifth_floor = '';
   }
 
   if (!boardData.sixth_floor) {
-    boardData.sixth_floor = null;
+    boardData.sixth_floor = '';
   }
 
   return boardData;
