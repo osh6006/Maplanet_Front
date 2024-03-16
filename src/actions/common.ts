@@ -1,7 +1,8 @@
-import toast from 'react-hot-toast';
+'use server';
+
+import { cookies } from 'next/headers';
 
 const SERVER_URL = process.env.SERVER_URL;
-const CLIENT_SEVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
 interface ICommonFetchParam {
   url: string;
@@ -65,8 +66,11 @@ export async function postBoardData<T>({
   url,
   data
 }: IBoardDetailFetchParam<T>): Promise<{ isError: boolean; message: string } | undefined> {
+  const cookieStore = cookies();
+  const cookie = cookieStore.get('Authorization');
+
   try {
-    const res = await fetch(`https://maplanet.store${url}` as string, {
+    const res = await fetch(`${SERVER_URL}${url}` as string, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TEMP_ACCESS_TOKEN}`,

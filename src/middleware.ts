@@ -1,27 +1,19 @@
 import { RequestCookies, ResponseCookies } from 'next/dist/compiled/@edge-runtime/cookies';
 import { NextRequest, NextResponse } from 'next/server';
 
-// This function can be marked `async` if using `await` inside
-export function middleware(request: NextRequest) {
-  const res = NextResponse.next({
-    request: {
-      headers: new Headers(request.headers)
-    }
-  });
-  const cookie = request.cookies.get('Authorization')?.value;
+export async function middleware(req: NextRequest) {
+  const code = req.cookies.get('code')?.value;
 
-  if (cookie) {
-    const res = NextResponse.redirect(request.url);
-    applySetCookie(request, res);
+  if (!code) {
+    const res = NextResponse.redirect(req.url);
+    res.cookies.set('code', 'code value');
+    applySetCookie(req, res);
     return res;
   }
-
-  return res;
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
-  matcher: '/'
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']
 };
 
 function applySetCookie(req: NextRequest, res: NextResponse): void {

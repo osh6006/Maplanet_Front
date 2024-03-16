@@ -16,7 +16,7 @@ const HomeLayout: React.FunctionComponent<IHomeLayoutProps> = ({ children }) => 
   const cookie = cookieStore.get('Authorization');
 
   if (cookie) {
-    console.log('쿠키가 연결됨 쿠키 이름은 :', cookie);
+    console.log('서버사이드 쿠키 :', cookie);
   }
 
   return (
