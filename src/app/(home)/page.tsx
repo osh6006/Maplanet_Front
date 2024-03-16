@@ -24,6 +24,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
   }, []);
 
   console.log('클라이언트 사이드 모든 쿠키 : ', cookie);
+  console.log('클라이언트 사이드 모든 쿠키2 : ', getCookie('Authorization'));
 
   if (isLoading)
     return (
