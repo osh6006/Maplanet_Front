@@ -17,7 +17,6 @@ const HomeLayout: React.FunctionComponent<IHomeLayoutProps> = ({ children }) => 
 
   if (cookie) {
     console.log('쿠키가 연결됨 쿠키 이름은 :', cookie);
-    localStorage.set(cookie.name, cookie.value);
   }
 
   return (

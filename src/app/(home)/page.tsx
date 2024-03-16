@@ -1,23 +1,29 @@
 'use client';
 
+import { getCookies } from 'cookies-next';
+
 import Image from 'next/image';
 import Board from './components/board';
 import Icon from '@/components/ui/icon';
 import GetHomeData from '@/actions/home';
 import Inner from '@/components/ui/inner';
 import Loading from '@/components/ui/loading';
-import { getCookie, getCookies, setCookie } from 'cookies-next';
+import { useEffect, useState } from 'react';
 
 interface IHomePageProps {}
 
+export const dynamic = 'force-dynamic';
+
 const HomePage: React.FunctionComponent<IHomePageProps> = () => {
   const { data, isLoading, error } = GetHomeData();
+  const [cookie, setCookie] = useState<any>();
 
-  const cookie = getCookie('Authorization');
-  const cookies = getCookies();
+  useEffect(() => {
+    const test = getCookies();
+    setCookie(test);
+  }, []);
 
-  console.log('Cookie : ', cookie);
-  console.log('Cookies!', cookies);
+  console.log('클라이언트 사이드 모든 쿠키 : ', cookie);
 
   if (isLoading)
     return (
