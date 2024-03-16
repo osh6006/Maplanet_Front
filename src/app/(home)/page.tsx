@@ -8,22 +8,12 @@ import Icon from '@/components/ui/icon';
 import GetHomeData from '@/actions/home';
 import Inner from '@/components/ui/inner';
 import Loading from '@/components/ui/loading';
-import { useEffect, useState } from 'react';
 
 interface IHomePageProps {}
 
-export const dynamic = 'force-dynamic';
-
 const HomePage: React.FunctionComponent<IHomePageProps> = () => {
   const { data, isLoading, error } = GetHomeData();
-  const [cookie, setCookie] = useState<any>();
 
-  useEffect(() => {
-    const test = getCookie('Authorization');
-    setCookie(test);
-  }, []);
-
-  console.log('클라이언트 사이드 모든 쿠키 : ', cookie);
   console.log('클라이언트 사이드 모든 쿠키2 : ', getCookie('Authorization'));
 
   if (isLoading)
