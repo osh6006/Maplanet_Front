@@ -2,11 +2,11 @@ import { RequestCookies, ResponseCookies } from 'next/dist/compiled/@edge-runtim
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function middleware(req: NextRequest) {
-  const code = req.cookies.get('code')?.value;
+  const code = req.cookies.get('Authorization')?.value;
 
-  if (!code) {
+  if (code) {
     const res = NextResponse.redirect(req.url);
-    res.cookies.set('code', 'code value');
+    res.cookies.set('Authorization', code);
     applySetCookie(req, res);
     return res;
   }
