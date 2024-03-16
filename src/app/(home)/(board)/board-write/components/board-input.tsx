@@ -9,6 +9,7 @@ interface IBoardInputProps extends UseControllerProps<FieldValues> {
   label: string;
   icon?: React.ReactNode;
   placeholder: string;
+  type?: string;
 }
 
 const BoardInput: React.FunctionComponent<IBoardInputProps> = ({
@@ -18,7 +19,8 @@ const BoardInput: React.FunctionComponent<IBoardInputProps> = ({
   placeholder,
   rules,
   disabled,
-  icon
+  icon,
+  type
 }) => {
   return (
     <Controller
@@ -33,7 +35,7 @@ const BoardInput: React.FunctionComponent<IBoardInputProps> = ({
             <div className='flex-1 space-y-2'>
               <Input
                 name='title'
-                type='text'
+                type={type || 'text'}
                 value={(value as string) || ''}
                 invalid={invalid}
                 onChange={onChange}

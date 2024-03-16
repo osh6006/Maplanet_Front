@@ -9,7 +9,7 @@ import { IHelperBoardPost, Job } from '@/types';
 import { filterJobList } from '@/util/util';
 
 interface IBoardSelectProps {
-  control: Control<IHelperBoardPost, any, IHelperBoardPost>;
+  control: any;
   name: string;
   label: string;
   placeholder: string;

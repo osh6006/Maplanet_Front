@@ -1,5 +1,5 @@
 export interface IHelperBoardPost {
-  meso: string | null;
+  meso: number | string | null;
   title: string;
   maple_nickname: string;
   hunting_ground: string;
@@ -7,7 +7,7 @@ export interface IHelperBoardPost {
   main_job: string;
   sub_job: string;
   progress_kind: string;
-  progress_time: number;
+  progress_time: number | string | null;
   position: boolean;
 }
 
@@ -17,9 +17,7 @@ export interface IHelperBoard {
   discord_id: string;
   meso: number;
   title: string;
-  hunting_ground: string;
   sub_job: string;
-  progress_kind: string;
   progress_time: number;
   discord_global_name: string;
   discord_image: string;
@@ -38,10 +36,8 @@ export interface IHelperBoardDetail {
   meso: number;
   title: string;
   maple_nickname: string;
-  hunting_ground: string;
   level: number;
   sub_job: string;
-  progress_kind: string;
   progress_time: number;
   position: boolean;
   discord_global_name: string;
