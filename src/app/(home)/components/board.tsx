@@ -5,11 +5,14 @@ import Link from 'next/link';
 import Icon from '@/components/ui/icon';
 import Spinner from '@/components/ui/spinner';
 import GetHomeData from '@/actions/home';
-import HelperBoardItem from './helper-board-item';
-import HunterBoardItem from './hunter-board-item';
-import HelperMannerBoardItem from './helper-manner-board-item';
-import HunterMesoBoardItem from './hunter-meso-board-item';
 import clsx from 'clsx';
+import { IHelperBoard, IHunterBoard } from '@/types';
+import { IWoodBoard } from '@/types/interfaces/wood';
+import { IPartyBoard } from '@/types/interfaces/party';
+import Board1Item from './board1-item';
+import Board2Item from './board2-item';
+import Board3Item from './board3-item';
+import Board4Item from './board4-item';
 
 interface IBoardProps {
   category: string;
@@ -25,17 +28,18 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
 
   let categoryData = [];
 
-  if (category === '쩔') {
+  if (category === '심쩔') {
     categoryData = data.board1Data;
   } else if (category === '겹사') {
     categoryData = data.board2Data;
-  } else if (category === '쩔 매너 유저') {
-    categoryData = data.board1MannerData;
-  } else if (category === '현상 수배') {
-    categoryData = data.board2HighMesoData;
+  } else if (category === '나무꾼') {
+    categoryData = data.board3Data;
+  } else if (category === '파티 모집') {
+    categoryData = data.board4Data;
   }
 
   if (isLoading) return <Spinner />;
+
   if (error) return <div>에러가 발생했습니다.</div>;
 
   return (
@@ -58,10 +62,11 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
         }>
         {/* <span className='absolute inset-0 z-0 bg-black/60'></span> */}
         <span className='z-[1] text-[20px] font-bold'>{category}</span>
+        {/* TODO: 링크 연결 */}
         <Link
-          href={category === '쩔' ? '/helper-board' : category === '겹사' ? '/hunter-board' : '#'}
+          href={category === '심쩔' ? '/helper-board' : category === '겹사' ? '/hunter-board' : category === '나무꾼' ? '/wood-cutter-board' : category === '파티 모집' ? '/party-board' : '#'}
           className='z-[1]'
-          style={{ display: category !== '쩔' && category !== '겹사' ? 'none' : 'block' }}>
+          style={{ display: category !== '심쩔' && category !== '겹사' && category !== '나무꾼' && category !== '파티 모집' ? 'none' : 'block' }}>
           <div
             className='flex h-10 w-10 items-center justify-center'
             onMouseEnter={() => setIsHovered(true)}
@@ -82,83 +87,41 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
 
       {/* 아이템 리스트 컴포넌트*/}
       <ul className='mt-[17px] flex  flex-col justify-around gap-[13px]'>
-        {category === '쩔' &&
-          categoryData?.map((item: any, index: any) => {
+        {category === '심쩔' &&
+          categoryData.map((item: IHelperBoard, index: number) => {
             return (
-              <HelperBoardItem
+              <Board1Item
                 key={index}
-                boardId={item.board1_id}
-                userId={item.user_id}
-                discordId={item.discord_id}
-                profileImg={item.discord_image}
-                profileName={item.discord_global_name}
-                manner={item.manner_count}
-                report={item.report_count}
-                date={item.created_at}
-                view={item.view_count}
-                title={item.title}
-                cost={item.meso}
-                type={item.progress_kind}
-                map={item.hunting_ground}
-                time={item.progress_time}
-                job={item.sub_job}
-                complete={item.complete}
                 {...item}
               />
             );
           })}
 
         {category === '겹사' &&
-          categoryData?.map((item: any, index: any) => {
+          categoryData?.map((item: IHunterBoard, index: number) => {
             return (
-              <HunterBoardItem
+              <Board2Item
                 key={index}
-                boardId={item.board2_id}
-                discordId={item.discord_id}
-                profileImg={item.discord_image}
-                profileName={item.discord_global_name}
-                manner={item.manner_count}
-                report={item.report_count}
-                date={item.created_at}
-                view={item.view_count}
-                title={item.title}
-                cost={item.meso}
-                type={item.report_kind}
-                nickname={item.place_theif_nickname}
-                complete={item.complete}
                 {...item}
               />
             );
           })}
 
-        {category === '쩔 매너 유저' &&
-          categoryData?.map((item: any, index: any) => {
+        {category === '나무꾼' &&
+          categoryData?.map((item: IWoodBoard, index: number) => {
             return (
-              <HelperMannerBoardItem
+              <Board3Item
                 key={index}
-                boardId={item.board1_id}
-                userId={item.user_id}
-                discordId={item.discord_id}
-                profileImg={item.discord_image}
-                profileName={item.discord_global_name}
-                manner={item.manner_count}
                 {...item}
               />
             );
           })}
 
-        {category === '현상 수배' &&
-          categoryData?.map((item: any, index: any) => {
+        {category === '파티 모집' &&
+          categoryData?.map((item: IPartyBoard, index: number) => {
             return (
-              <HunterMesoBoardItem
+              <Board4Item
                 key={index}
-                boardId={item.board2_id}
-                userId={item.user_id}
-                discordId={item.discord_id}
-                profileImg={item.discord_image}
-                profileName={item.discord_global_name}
-                manner={item.manner_count}
-                cost={item.meso}
                 {...item}
               />
             );

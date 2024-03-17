@@ -3,20 +3,21 @@
 import * as React from 'react';
 import ProfileBanner from '../../components/profile-banner';
 import ProfilePosts from '../../components/profile-posts';
-import Inner from '@/components/ui/inner';
 import clsx from 'clsx';
 
-interface IProfileProps {
+interface IUserProfileProps {
   params: { id: number };
+  searchParams: { page: number };
 }
 
-const Profile: React.FunctionComponent<IProfileProps> = ({ params: { id } }) => {
+const UserProfile: React.FunctionComponent<IUserProfileProps> = ({ params, searchParams }) => {
   const [currentBoard, setCurrentBoard] = React.useState<string>('helper');
-  
+
   return (
     <div className='w-full'>
       {/* 프로필 배너 */}
-      <ProfileBanner />
+      <ProfileBanner type='user' board={currentBoard} userId={params.id} page={searchParams.page} />
+      
       <div className='mx-auto max-w-[500px] sm:max-w-[670px] lg:max-w-[1000px] xl:max-w-[1440px] xl:px-[60px]'>
         <div className='flex items-center justify-center'>
           <span className='pb-[15px] pt-[30px] text-[28px] font-bold'>작성 게시글</span>
@@ -36,10 +37,14 @@ const Profile: React.FunctionComponent<IProfileProps> = ({ params: { id } }) => 
         </div>
 
         {/* 프로필 게시글 */}
-        <ProfilePosts board={currentBoard} id={id} />
+        <ProfilePosts
+          board={currentBoard}
+          userId={params.id}
+          page={searchParams.page}
+        />
       </div>
     </div>
   );
 };
 
-export default Profile;
+export default UserProfile;

@@ -20,19 +20,9 @@ interface IHelperCardProps extends IHelperBoard {
 }
 
 const HelperCard: React.FunctionComponent<IHelperCardProps> = ({
-  board1_id,
-  discord_id,
-  title,
-  discord_image,
-  discord_global_name,
-  meso,
-  hunting_ground,
-  manner_count,
-  report_count,
-  progress_kind,
-  complete,
-  created_at,
-  badges,
+complete,
+board1_id,
+
   ...props
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

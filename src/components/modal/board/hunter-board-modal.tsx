@@ -17,6 +17,7 @@ interface IHunterBoardModalProps {
   boardId: number;
 }
 
+
 const HunterBoardModal: React.FunctionComponent<IHunterBoardModalProps> = ({
   isOpen,
   onClose,

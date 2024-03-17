@@ -1,37 +1,25 @@
 'use client';
 
-import Icon from '@/components/ui/icon';
 import Inner from '@/components/ui/inner';
-import GetHomeData from '@/actions/home';
-import Spinner from '@/components/ui/spinner';
 import Board from './components/board';
 import Image from 'next/image';
+import GetHomeData from '@/actions/home';
+import Spinner from '@/components/ui/spinner';
 
-interface IHomePageProps {}
-
-const HomePage: React.FunctionComponent<IHomePageProps> = () => {
-  const { data, isLoading, error } = GetHomeData();
-
-  console.log(data);
+const HomePage: React.FC = () => {
+  const { data, error, isLoading } = GetHomeData();
 
   if (isLoading) return <Spinner />;
 
-  if (error) return <div>에러가 발생했습니다.</div>;
+  if (error) return <div>에러가 발생했습니다</div>;
 
-  const category = ['쩔', '겹사', '쩔 매너 유저', '현상 수배'];
-  // const bgImage = ['/images/option-bg-1.png', '/images/option-bg-3.png', '/images/option-bg-1.png', '/images/option-bg-3.png'];
-
+  const category = ['심쩔', '겹사', '나무꾼', '파티 모집'];
   return (
     // 헤더와 푸터를 제외한 메인
     <Inner>
       <main className='relative flex w-full flex-col items-center justify-between text-white'>
         {/* 로고 배너*/}
         <div className='my-[40px] flex flex-col items-center gap-4'>
-          <Icon src='/images/pig.png' alt='logo' size={150} />
-          <div>
-            <span className='mr-5 tracking-widest text-[#d6d6d6]'>메 이 플 랜 드</span>
-            <span className='tracking-widest text-[#d6d6d6]'>커 뮤 니 티</span>
-          </div>
           <div className='mb-5 mt-2'>
             <Image src='/svgs/main-logo.svg' alt='logo' height={50} width={350} />
           </div>
@@ -54,8 +42,8 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
 
         {/* 메인 컨텐츠 부분 */}
         <div className='grid w-full grid-cols-2 grid-rows-2 gap-10'>
-          {category.map((item, index) => {
-            return <Board key={index} category={item} />;
+          {category.map((category, index) => {
+            return <Board key={index} category={category} />;
           })}
         </div>
       </main>

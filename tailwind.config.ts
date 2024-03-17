@@ -37,7 +37,7 @@ const config: Config = {
       },
       animation: {
         'slide-in-left': 'slide-in-left 20s infinite linear',
-        'button-hover': 'button-hover 2s infinite running',
+        'button-hover': 'buttonHover 2s infinite running',
         loading: 'loading 1.1s infinite',
         jump: 'loading 1.2s infinite'
       },
@@ -46,7 +46,7 @@ const config: Config = {
           '0%': { transform: 'translateX(65%)' },
           '100%': { transform: 'translateX(-65%)' }
         },
-        'button-hover': {
+        buttonHover: {
           '0%': { transform: 'translateX(0) rotate(35deg)' },
           '100%': { transform: 'translateX(500px) rotate(35deg)' }
         },

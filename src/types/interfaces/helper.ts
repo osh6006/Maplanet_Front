@@ -17,9 +17,7 @@ export interface IHelperBoard {
   discord_id: string;
   meso: number;
   title: string;
-  hunting_ground: string;
   sub_job: string;
-  progress_kind: string;
   progress_time: number;
   discord_global_name: string;
   discord_image: string;
@@ -27,8 +25,8 @@ export interface IHelperBoard {
   complete: boolean;
   created_at: string;
   updated_at: string;
-  report_count: number;
   manner_count: number;
+  report_count: number;
 }
 
 export interface IHelperBoardDetail {

@@ -18,13 +18,13 @@ interface IPostCardProps {
   type: string;
   date: string;
   title: string;
-  meso: string;
+  meso: string | number;
   manner: number;
   unManner: number;
   view: number;
   avatarUrl: string;
   completed: boolean;
-  boardType: BoardType;
+  boardType: BoardType | string;
   mapleNickName?: string;
   discordNickName?: string;
   badges?: string[];

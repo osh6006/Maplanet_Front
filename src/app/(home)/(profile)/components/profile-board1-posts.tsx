@@ -3,24 +3,21 @@
 import * as React from 'react';
 import PostCard from '../../(board)/components/post-card';
 import Pagination from '../../(board)/components/pagination';
-import { IBoard1Data, IBoard2Data, IBoard3Data, IBoard4Data } from '@/types/interfaces/profile';
+import { IBoard1Data } from '@/types/interfaces/profile';
 import ProfileCard from './profile-card';
 import GetProfileData from '@/actions/profile';
 import Spinner from '@/components/ui/spinner';
 
-interface IProfilePostsProps {
+interface IProfileBoard1PostsProps {
   board: string;
   userId: number;
   page: number;
 }
 
-const ProfilePosts: React.FunctionComponent<IProfilePostsProps> = ({ board, userId, page }) => {
+const ProfileBoard1Posts: React.FunctionComponent<IProfileBoard1PostsProps> = ({ board, userId, page }) => {
   const { data, isLoading, error } = GetProfileData(board, userId, page) as {
     data: {
       board1Profile: IBoard1Data[];
-      board2Profile: IBoard2Data[];
-      board3Profile: IBoard3Data[];
-      board4Profile: IBoard4Data[];
       totalCount: number;
     };
     isLoading: boolean;
@@ -47,9 +44,10 @@ const ProfilePosts: React.FunctionComponent<IProfilePostsProps> = ({ board, user
         <div className='mt-20 text-center text-[#d3d3d3]'>작성된 게시글이 없습니다.</div>
       )}
 
+      
       <Pagination totalPost={data.totalCount} itemsPerPage={12} />
     </div>
   );
 };
 
-export default ProfilePosts;
+export default ProfileBoard1Posts;
