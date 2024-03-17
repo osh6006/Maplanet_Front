@@ -1,12 +1,11 @@
 'use client';
 
 import * as React from 'react';
-import PostCard from '../../(board)/components/post-card';
-import Pagination from '../../(board)/components/pagination';
 import { IBoard1Data } from '@/types/interfaces/profile';
 import ProfileCard from './profile-card';
 import GetProfileData from '@/actions/profile';
 import Spinner from '@/components/ui/spinner';
+import Pagination from '../../(board)/components/ui/pagination';
 
 interface IProfileBoard1PostsProps {
   board: string;
@@ -45,7 +44,7 @@ const ProfileBoard1Posts: React.FunctionComponent<IProfileBoard1PostsProps> = ({
       )}
 
       
-      <Pagination totalPost={data.totalCount} itemsPerPage={12} />
+      <Pagination totalPost={data.totalCount} itemsPerPage={5} pagePerItem={12}/>
     </div>
   );
 };

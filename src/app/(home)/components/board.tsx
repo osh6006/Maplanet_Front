@@ -125,6 +125,7 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
             );
           })}
       </ul>
+      
     </div>
   );
 };

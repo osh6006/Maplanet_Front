@@ -1,12 +1,11 @@
 'use client';
 
 import * as React from 'react';
-import PostCard from '../../(board)/components/post-card';
-import Pagination from '../../(board)/components/pagination';
 import { IBoard3Data } from '@/types/interfaces/profile';
 import ProfileCard from './profile-card';
 import GetProfileData from '@/actions/profile';
 import Spinner from '@/components/ui/spinner';
+import Pagination from '../../(board)/components/ui/pagination';
 
 interface IProfileBoard3PostsProps {
   board: string;
@@ -14,7 +13,11 @@ interface IProfileBoard3PostsProps {
   page: number;
 }
 
-const ProfileBoard3Posts: React.FunctionComponent<IProfileBoard3PostsProps> = ({ board, userId, page }) => {
+const ProfileBoard3Posts: React.FunctionComponent<IProfileBoard3PostsProps> = ({
+  board,
+  userId,
+  page
+}) => {
   const { data, isLoading, error } = GetProfileData(board, userId, page) as {
     data: {
       board3Profile: IBoard3Data[];
@@ -27,7 +30,6 @@ const ProfileBoard3Posts: React.FunctionComponent<IProfileBoard3PostsProps> = ({
   if (isLoading) return <Spinner />;
 
   if (error) return <div>에러가 발생했습니다.</div>;
-
 
   return (
     <div className='w-full bg-[#222]'>
@@ -44,7 +46,7 @@ const ProfileBoard3Posts: React.FunctionComponent<IProfileBoard3PostsProps> = ({
         <div className='mt-20 text-center text-[#d3d3d3]'>작성된 게시글이 없습니다.</div>
       )}
 
-      <Pagination totalPost={data.totalCount} itemsPerPage={12} />
+      <Pagination totalPost={data.totalCount} itemsPerPage={5} pagePerItem={12} />
     </div>
   );
 };
