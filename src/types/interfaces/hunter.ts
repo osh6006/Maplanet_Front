@@ -10,10 +10,10 @@ export interface IHunterBoard {
   discord_image: string;
   view_count: number;
   complete: boolean;
+  created_at: string; 
+  updated_at: string; 
   manner_count: number;
   report_count: number;
-  created_at: string;
-  updated_at: string;
 }
 
 export interface IHunterBoardPost {
