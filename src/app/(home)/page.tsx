@@ -1,15 +1,5 @@
 'use client';
 
-<<<<<<< HEAD
-import Inner from '@/components/ui/inner';
-import Board from './components/board';
-import Image from 'next/image';
-import GetHomeData from '@/actions/home';
-import Spinner from '@/components/ui/spinner';
-
-const HomePage: React.FC = () => {
-  const { data, error, isLoading } = GetHomeData();
-=======
 import Image from 'next/image';
 import Board from './components/board';
 import Icon from '@/components/ui/icon';
@@ -25,7 +15,6 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
   const { data, isLoading, error } = GetHomeData();
 
   console.log('클라이언트 사이드 모든 쿠키 : ', getCookies());
->>>>>>> develop
 
   if (isLoading)
     return (
