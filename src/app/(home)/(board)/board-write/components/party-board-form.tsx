@@ -12,7 +12,7 @@ import Button from '@/components/ui/button';
 import BoardTimeInput from './board-time-input';
 
 import { IPartyBoardPost } from '@/types';
-import { postBoardData } from '@/actions/common';
+import { postBoardData } from '@/actions/board';
 
 interface IPartyBoardFormProps {}
 

@@ -1,7 +1,5 @@
-import { Suspense } from 'react';
 import { getNotice } from '@/actions/notice';
 
-import Inner from '@/components/ui/inner';
 import NoticeList from '../components/notice-list';
 import NoticePageNation from '../components/notice-pagination';
 

@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { fetchBoardData } from '@/actions/common';
+import { fetchBoardData } from '@/actions/board';
 
 import Loading from '@/components/ui/loading';
 import Pagination from '../components/ui/pagination';

@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 import usePost from '@/hooks/use-post';
 import { useRouter } from 'next/navigation';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { postBoardData } from '@/actions/common';
+import { postBoardData } from '@/actions/board';
 
 import { INoticePost } from '@/types';
 import NoticeInput from './notice-input';

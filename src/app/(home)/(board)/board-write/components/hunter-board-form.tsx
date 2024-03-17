@@ -3,7 +3,7 @@
 import toast from 'react-hot-toast';
 import usePost from '@/hooks/use-post';
 import { useRouter } from 'next/navigation';
-import { postBoardData } from '@/actions/common';
+import { postBoardData } from '@/actions/board';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import BoardInput from './board-input';

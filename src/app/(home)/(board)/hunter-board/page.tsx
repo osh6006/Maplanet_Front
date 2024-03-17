@@ -6,7 +6,7 @@ import HunterCard from '../components/ui/hunter-card';
 import { IHunterBoard } from '@/types';
 
 import BoardResult from '../components/ui/board-result';
-import { fetchBoardData } from '@/actions/common';
+import { fetchBoardData } from '@/actions/board';
 
 interface IHelperBoardPageProps {}
 

@@ -14,7 +14,7 @@ interface IHomePageProps {}
 const HomePage: React.FunctionComponent<IHomePageProps> = () => {
   const { data, isLoading, error } = GetHomeData();
 
-  console.log('클라이언트 사이드 모든 쿠키2 : ', getCookies());
+  console.log('클라이언트 사이드 모든 쿠키 : ', getCookies());
 
   if (isLoading)
     return (
