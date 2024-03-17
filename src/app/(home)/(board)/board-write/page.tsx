@@ -1,5 +1,3 @@
-'use client';
-
 import PartyBoardForm from './components/party-board-form';
 import HelperBoardForm from './components/helper-board-form';
 import HunterBoardForm from './components/hunter-board-form';

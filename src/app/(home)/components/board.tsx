@@ -1,9 +1,8 @@
 'use client';
 
-import * as React from 'react';
 import Link from 'next/link';
+import { useState } from 'react';
 import Icon from '@/components/ui/icon';
-import Spinner from '@/components/ui/spinner';
 import GetHomeData from '@/actions/home';
 import HelperBoardItem from './helper-board-item';
 import HunterBoardItem from './hunter-board-item';
@@ -17,7 +16,7 @@ interface IBoardProps {
 }
 
 const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
-  const [isHovered, setIsHovered] = React.useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const { data, isLoading, error } = GetHomeData();
 

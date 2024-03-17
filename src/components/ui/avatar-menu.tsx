@@ -4,12 +4,14 @@ import useOutsideClick from '@/hooks/use-outside-click';
 import Avatar from './avatar';
 import clsx from 'clsx';
 import { logOut } from '@/actions/auth';
+import { useRouter } from 'next/navigation';
 
 interface IAvatarMenuProps {
   userCookie: string;
 }
 
 const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({ userCookie }) => {
+  const router = useRouter();
   const { isOpen, ref, setIsOpen } = useOutsideClick();
   const [nickName, avatarUrl] = userCookie.split(',');
 

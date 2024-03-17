@@ -10,11 +10,11 @@ interface IHomeLayoutProps {
 
 export const dynamic = 'force-dynamic';
 
-const cookieStore = cookies();
-const auth = cookieStore.get('Authorization');
-const user = cookieStore.get('userInfo');
-
 const HomeLayout: React.FunctionComponent<IHomeLayoutProps> = ({ children }) => {
+  const cookieStore = cookies();
+  const auth = cookieStore.get('Authorization');
+  const user = cookieStore.get('userInfo');
+
   return (
     <div className='relative h-full'>
       <Navbar accessToken={auth?.value} userInfo={user?.value} />
