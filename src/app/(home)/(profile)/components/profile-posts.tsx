@@ -1,12 +1,11 @@
 'use client';
 
 import * as React from 'react';
-import PostCard from '../../(board)/components/post-card';
-import Pagination from '../../(board)/components/pagination';
 import { IBoard1Data, IBoard2Data, IBoard3Data, IBoard4Data } from '@/types/interfaces/profile';
 import ProfileCard from './profile-card';
 import GetProfileData from '@/actions/profile';
 import Spinner from '@/components/ui/spinner';
+import Pagination from '../../(board)/components/ui/pagination';
 
 interface IProfilePostsProps {
   board: string;
@@ -47,7 +46,7 @@ const ProfilePosts: React.FunctionComponent<IProfilePostsProps> = ({ board, user
         <div className='mt-20 text-center text-[#d3d3d3]'>작성된 게시글이 없습니다.</div>
       )}
 
-      <Pagination totalPost={data.totalCount} itemsPerPage={12} />
+      <Pagination totalPost={data.totalCount} itemsPerPage={5} pagePerItem={12} />
     </div>
   );
 };

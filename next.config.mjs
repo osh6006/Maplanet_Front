@@ -18,7 +18,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'discord.com',
         port: '',
-        pathname: '/assets/**'
+        pathname: '/**'
       }
     ]
   }

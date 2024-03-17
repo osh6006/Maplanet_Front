@@ -1,5 +1,6 @@
 'use client';
 
+<<<<<<< HEAD
 import Inner from '@/components/ui/inner';
 import Board from './components/board';
 import Image from 'next/image';
@@ -8,14 +9,35 @@ import Spinner from '@/components/ui/spinner';
 
 const HomePage: React.FC = () => {
   const { data, error, isLoading } = GetHomeData();
+=======
+import Image from 'next/image';
+import Board from './components/board';
+import Icon from '@/components/ui/icon';
+import GetHomeData from '@/actions/home';
+import Inner from '@/components/ui/inner';
+import Loading from '@/components/ui/loading';
 
-  if (isLoading) return <Spinner />;
+import { getCookies } from 'cookies-next';
+
+interface IHomePageProps {}
+
+const HomePage: React.FunctionComponent<IHomePageProps> = () => {
+  const { data, isLoading, error } = GetHomeData();
+
+  console.log('클라이언트 사이드 모든 쿠키 : ', getCookies());
+>>>>>>> develop
+
+  if (isLoading)
+    return (
+      <div className='flex h-[500px] items-center justify-center'>
+        <Loading size={100} />
+      </div>
+    );
 
   if (error) return <div>에러가 발생했습니다</div>;
 
   const category = ['심쩔', '겹사', '나무꾼', '파티 모집'];
   return (
-    // 헤더와 푸터를 제외한 메인
     <Inner>
       <main className='relative flex w-full flex-col items-center justify-between text-white'>
         {/* 로고 배너*/}

@@ -20,7 +20,6 @@ export interface IHunterBoardPost {
   meso: number | null | string;
   report_kind: string;
   title: string;
-  request_nickname: string;
   place_theif_nickname: string;
 }
 

@@ -7,7 +7,7 @@ interface INoticeListProps {
 
 const NoticeList: React.FunctionComponent<INoticeListProps> = ({ noticeList }) => {
   return (
-    <ul className='flex flex-col gap-y-2'>
+    <ul className='flex flex-col gap-y-4'>
       {noticeList?.map((el) => <NoticeCard {...el} key={el.notice_id} />)}
     </ul>
   );

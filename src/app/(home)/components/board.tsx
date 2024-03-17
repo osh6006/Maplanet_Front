@@ -1,9 +1,8 @@
 'use client';
 
-import * as React from 'react';
 import Link from 'next/link';
+import { useState } from 'react';
 import Icon from '@/components/ui/icon';
-import Spinner from '@/components/ui/spinner';
 import GetHomeData from '@/actions/home';
 import clsx from 'clsx';
 import { IHelperBoard, IHunterBoard } from '@/types';
@@ -13,6 +12,7 @@ import Board1Item from './board1-item';
 import Board2Item from './board2-item';
 import Board3Item from './board3-item';
 import Board4Item from './board4-item';
+import Spinner from '@/components/ui/spinner';
 
 interface IBoardProps {
   category: string;
@@ -20,11 +20,9 @@ interface IBoardProps {
 }
 
 const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
-  const [isHovered, setIsHovered] = React.useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const { data, isLoading, error } = GetHomeData();
-
-  console.log(data);
 
   let categoryData = [];
 
@@ -46,7 +44,7 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
     <div>
       {/* 카테고리 제목 컴포넌트*/}
       <div
-        className={clsx(  
+        className={clsx(
           isHovered ? 'bg-black/60' : '',
           'relative flex h-[70px] w-full items-center justify-between overflow-hidden rounded-xl bg-black px-[20px] py-[22px] transition-all duration-200'
         )}

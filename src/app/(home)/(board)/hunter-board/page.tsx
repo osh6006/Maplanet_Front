@@ -1,17 +1,16 @@
 import { Suspense } from 'react';
-import { getHunterBoardData } from '@/actions/hunter-board';
 
-import Sort from '../components/sort';
-import Search from '../components/search';
-import Banner from '@/components/ui/banner';
-import Pagination from '../components/pagination';
-import HunterCard from '../components/hunter-card';
+import Pagination from '../components/ui/pagination';
+import HunterCard from '../components/ui/hunter-card';
 
 import { IHunterBoard } from '@/types';
 
-import { hunterBoardFilters, sortOptions } from '@/data/board';
+import BoardResult from '../components/ui/board-result';
+import { fetchBoardData } from '@/actions/board';
 
 interface IHelperBoardPageProps {}
+
+export const dynamic = 'force-dynamic';
 
 const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
   searchParams
@@ -25,39 +24,51 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
 }) => {
   // TODO : fetch data using searchParams
 
-  const fetchData = await getHunterBoardData(
-    searchParams?.page || '1',
-    searchParams?.searchType,
-    searchParams?.value
-  );
+  const fetchData = await fetchBoardData<{
+    board2Data?: IHunterBoard[];
+    search2Data?: IHunterBoard[];
+    totalCount?: number;
+  }>({
+    url: '/board2',
+    page: searchParams?.page || '1',
+    searchType: searchParams?.searchType,
+    value: searchParams?.value,
+    option: {
+      cache: 'no-store'
+    }
+  });
 
-  const hunterBoardData: IHunterBoard[] = fetchData.board2Data;
-  const searchBoardData: IHunterBoard[] = fetchData.search2Data;
-  const totalBoardCount = fetchData.getBoard2Count;
+  const hunterBoardData = fetchData?.board2Data || [];
+  const searchBoardData = fetchData?.search2Data || [];
+  const totalBoardCount = fetchData?.totalCount || 0;
 
   return (
-    <main>
-      <Banner title='겹사 의뢰' imgUrl='/images/banner.png' />
-      <Suspense>
-        <div className='mx-auto max-w-[500px] sm:max-w-[670px] lg:max-w-[1000px] xl:max-w-[1440px] xl:px-20'>
-          <div className='mt-8 flex w-full flex-col justify-between gap-y-4 px-10 sm:flex-row sm:px-0'>
-            <Sort options={sortOptions} />
-            <Search filters={hunterBoardFilters} />
-          </div>
+    <Suspense fallback={<div>Loading..</div>}>
+      <BoardResult.Wrapper>
+        <BoardResult.List
+          list={hunterBoardData || []}
+          render={(board) => {
+            return (
+              <BoardResult.Item key={board.board2_id}>
+                <HunterCard {...board} badges={[board.place_theif_nickname]} />
+              </BoardResult.Item>
+            );
+          }}
+        />
 
-          <div className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-            {hunterBoardData?.map((el) => (
-              <HunterCard {...el} key={el.board2_id} badges={[el.place_theif_nickname]} />
-            ))}
-
-            {searchBoardData?.map((el) => (
-              <HunterCard {...el} key={el.board2_id} badges={[el.place_theif_nickname]} />
-            ))}
-          </div>
-          <Pagination totalPost={totalBoardCount || 0} itemsPerPage={5} />
-        </div>
-      </Suspense>
-    </main>
+        <BoardResult.List
+          list={searchBoardData || []}
+          render={(board) => {
+            return (
+              <BoardResult.Item key={board.board2_id}>
+                <HunterCard {...board} badges={[board.place_theif_nickname]} />
+              </BoardResult.Item>
+            );
+          }}
+        />
+      </BoardResult.Wrapper>
+      <Pagination totalPost={totalBoardCount || 0} itemsPerPage={5} pagePerItem={12} />
+    </Suspense>
   );
 };
 

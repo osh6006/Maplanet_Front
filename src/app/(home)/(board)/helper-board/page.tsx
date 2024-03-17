@@ -1,14 +1,13 @@
 import { Suspense } from 'react';
-import { getHelperBoardData } from '@/actions/helper-board';
-import { helperBoardFilters, sortOptions } from '@/data/board';
 
-import Sort from '../components/sort';
-import Banner from '@/components/ui/banner';
-import Search from '../components/search';
-import Pagination from '../components/pagination';
-import HelperCard from '../components/helper-card';
+import BoardResult from '../components/ui/board-result';
+import HelperCard from '../components/ui/helper-card';
 
 import { IHelperBoard } from '@/types';
+import { fetchBoardData } from '@/actions/board';
+import Pagination from '../components/ui/pagination';
+
+export const dynamic = 'force-dynamic';
 
 interface IHelperBoardPageProps {}
 
@@ -24,46 +23,63 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
 }) => {
   // TODO : fetch data using searchParams
 
-  const fetchData = await getHelperBoardData(
-    searchParams?.page || '1',
-    searchParams?.searchType,
-    searchParams?.value
-  );
+  const fetchData = await fetchBoardData<{
+    board1Data?: IHelperBoard[];
+    search1Data?: IHelperBoard[];
+    totalCount?: number;
+  }>({
+    url: '/board1',
+    page: searchParams?.page || '1',
+    searchType: searchParams?.searchType,
+    value: searchParams?.value,
+    option: {
+      cache: 'no-store'
+    }
+  });
 
-  const helperBoardData: IHelperBoard[] = fetchData.board1Data;
-  const searchBoardData: IHelperBoard[] = fetchData.search1Data;
-  const totalBoardCount = fetchData.getBoardCount;
+  const helperBoardData = fetchData?.board1Data || [];
+  const searchBoardData = fetchData?.search1Data || [];
+  const totalBoardCount = fetchData?.totalCount || 0;
 
   return (
-    <main>
-      <Banner title='쩔 게시판' imgUrl='/images/banner.png' />
-      <Suspense fallback={<div>loading...</div>}>
-        <div className='mx-auto max-w-[500px] sm:max-w-[670px] lg:max-w-[1000px] xl:max-w-[1440px] xl:px-20'>
-          <div className='mt-8 flex w-full flex-col justify-between gap-y-4 px-10 sm:flex-row sm:px-0'>
-            <Sort options={sortOptions} />
-            <Search filters={helperBoardFilters} />
-          </div>
+    <Suspense fallback={<div>loading...</div>}>
+      <BoardResult.Wrapper>
+        <BoardResult.List
+          list={helperBoardData || []}
+          render={(board) => {
+            return (
+              <BoardResult.Item key={board.board1_id}>
+                <HelperCard
+                  {...board}
+                  badges={[
+                    board.sub_job,
+                    board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간'
+                  ]}
+                />
+              </BoardResult.Item>
+            );
+          }}
+        />
 
-          <ul className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-7 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-            {helperBoardData?.map((el) => (
-              <HelperCard
-                key={el.board1_id}
-                {...el}
-                badges={[el.hunting_ground, el.progress_time + ' 시간', el.sub_job]}
-              />
-            ))}
-            {searchBoardData?.map((el) => (
-              <HelperCard
-                key={el.board1_id}
-                {...el}
-                badges={[el.hunting_ground, el.progress_time + ' 시간', el.sub_job]}
-              />
-            ))}
-          </ul>
-          <Pagination totalPost={totalBoardCount || 0} itemsPerPage={5} />
-        </div>
-      </Suspense>
-    </main>
+        <BoardResult.List
+          list={searchBoardData || []}
+          render={(board) => {
+            return (
+              <BoardResult.Item key={board.board1_id}>
+                <HelperCard
+                  {...board}
+                  badges={[
+                    board.sub_job,
+                    board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간'
+                  ]}
+                />
+              </BoardResult.Item>
+            );
+          }}
+        />
+      </BoardResult.Wrapper>
+      <Pagination totalPost={totalBoardCount || 0} itemsPerPage={5} pagePerItem={12} />
+    </Suspense>
   );
 };
 
