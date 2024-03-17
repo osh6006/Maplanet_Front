@@ -65,7 +65,9 @@ interface IBoardDetailFetchParam<T> extends ICommonFetchParam {
 export async function postBoardData<T>({
   url,
   data
-}: IBoardDetailFetchParam<T>): Promise<{ isError: boolean; message: string } | undefined> {
+}: IBoardDetailFetchParam<T>): Promise<
+  { isError: boolean; message: string; error?: any } | undefined
+> {
   const cookieStore = cookies();
   const cookie = cookieStore.get('Authorization');
 
@@ -81,29 +83,29 @@ export async function postBoardData<T>({
     });
 
     if (!res.ok) {
+      const result = await res.json();
+
+      console.log(result);
+
       return {
         isError: true,
-        message: `Sent the data to "${url}/post" url, but an error seems to have occurred.`
+        message:
+          result.message || `Sent the data to "${url}" url, but an error seems to have occurred.`,
+        error: result.error
       };
     }
 
     const result = await res.json();
 
-    if (result.status === 400) {
-      return {
-        isError: true,
-        message: `Sent the data to "${url}/post" url, but an error seems to have occurred.`
-      };
-    }
-
     return {
       isError: false,
-      message: `등록에 성공 하였습니다.`
+      message: result.msg || `등록에 성공 하였습니다.`
     };
   } catch (error) {
     return {
       isError: true,
-      message: `Sent the data to "${url}/post" url, but an error seems to have occurred.`
+      message: `Sent the data to "${url}/post" url, but an error seems to have occurred.`,
+      error: error
     };
   }
 }

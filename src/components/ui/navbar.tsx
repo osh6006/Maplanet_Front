@@ -1,17 +1,20 @@
-import { cookies } from 'next/headers';
+'use client';
 
 import Icon from './icon';
 import Inner from './inner';
 import Link from 'next/link';
 import Button from './button';
 import { Fugaz_One } from 'next/font/google';
+import AvatarMenu from './avatar-menu';
 
 const fugaz = Fugaz_One({ subsets: ['latin'], weight: ['400'] });
 
-const Navbar = () => {
-  const cookieStore = cookies();
-  const auth = cookieStore.get('Authorization');
+interface INavbarProps {
+  userInfo?: string;
+  accessToken?: string;
+}
 
+const Navbar: React.FunctionComponent<INavbarProps> = ({ accessToken, userInfo }) => {
   return (
     <nav className='fixed z-50 flex h-[60px] w-full bg-black px-10 text-white xl:px-0'>
       <Inner>
@@ -31,15 +34,8 @@ const Navbar = () => {
 
             {/* TODO: 로그인시 새글 등록 뜨게하고 로그아웃시 안뜨게 수정 */}
             <div className='flex space-x-3'>
-              <Link href='/board-write'>
-                <Button color='main' size='sm'>
-                  + 새 글
-                </Button>
-              </Link>
-              {auth ? (
-                <Button color='main' size='sm'>
-                  로그인 완료
-                </Button>
+              {accessToken ? (
+                <AvatarMenu userCookie={userInfo || ''} />
               ) : (
                 <Link href={'https://maplanet.store/auth/discord'}>
                   <Button size='sm' color='discord'>
@@ -48,6 +44,11 @@ const Navbar = () => {
                   </Button>
                 </Link>
               )}
+              <Link href='/board-write'>
+                <Button color='main' size='sm'>
+                  + 새 글
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

@@ -20,7 +20,7 @@ const HunterBoardForm: React.FunctionComponent<IHunterBoardFormProps> = ({}) => 
   const { control, handleSubmit } = useForm<IHunterBoardPost>();
   const { isLoading, setIsLoading, error, setError } = usePost();
 
-  if (error) throw new Error(error + '');
+  // if (error) throw new Error(error + '');
 
   const onSubmit: SubmitHandler<IHunterBoardPost> = async (data) => {
     setIsLoading(true);
@@ -42,6 +42,7 @@ const HunterBoardForm: React.FunctionComponent<IHunterBoardFormProps> = ({}) => 
       router.push('/hunter-board');
     } else {
       setError(result?.message!);
+      console.log(result?.error);
       toast.error(result?.message!);
     }
 
@@ -100,24 +101,6 @@ const HunterBoardForm: React.FunctionComponent<IHunterBoardFormProps> = ({}) => 
           { id: '겹사', label: '겹사', value: '겹사' },
           { id: '인기도 하락', label: '인기도 하락', value: '인기도 하락' }
         ]}
-      />
-      <BoardInput
-        control={control}
-        disabled={isLoading}
-        name='request_nickname'
-        label='의뢰인 닉네임'
-        placeholder='메이플 랜드 닉네임을 입력해 주세요'
-        rules={{
-          required: '의뢰인 닉네임 필수로 입력해야 합니다.',
-          minLength: {
-            message: '최소 2글자 이상 입력해야 합니다.',
-            value: 2
-          },
-          maxLength: {
-            message: '12글자 이상은 입력이 불가합니다.',
-            value: 12
-          }
-        }}
       />
 
       <BoardInput

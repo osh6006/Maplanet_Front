@@ -10,7 +10,7 @@ const Notification: React.FunctionComponent<INotificationProps> = () => {
   const { data, error, isLoading } = GetHomeData();
 
   return (
-    <div className='fixed top-[60px] z-50 h-[40px] w-full overflow-hidden bg-[#CE98B1]'>
+    <div className='fixed top-[60px] z-40 h-[40px] w-full overflow-hidden bg-[#CE98B1]'>
       <div className='flex h-[40px] animate-slide-in-left items-center justify-center space-x-4'>
         {isLoading ? (
           <div>데이터를 불러오는 중...</div>

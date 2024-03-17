@@ -1,7 +1,5 @@
 'use client';
 
-import { getCookie } from 'cookies-next';
-
 import Image from 'next/image';
 import Board from './components/board';
 import Icon from '@/components/ui/icon';
@@ -9,12 +7,14 @@ import GetHomeData from '@/actions/home';
 import Inner from '@/components/ui/inner';
 import Loading from '@/components/ui/loading';
 
+import { getCookies } from 'cookies-next';
+
 interface IHomePageProps {}
 
 const HomePage: React.FunctionComponent<IHomePageProps> = () => {
   const { data, isLoading, error } = GetHomeData();
 
-  console.log('클라이언트 사이드 모든 쿠키2 : ', getCookie('Authorization'));
+  console.log('클라이언트 사이드 모든 쿠키2 : ', getCookies());
 
   if (isLoading)
     return (
