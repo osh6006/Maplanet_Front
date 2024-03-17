@@ -21,6 +21,7 @@ export async function logOut() {
     credentials: 'include'
   });
 
+  console.log(SERVER_URL);
   console.log(await result.json());
 
   // if (hasTokenCookie) {
