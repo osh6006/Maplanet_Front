@@ -1,6 +1,7 @@
 'use server';
 
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 const SERVER_URL = process.env.SERVER_URL;
 
@@ -29,5 +30,5 @@ export async function logOut() {
     cookies().delete('userInfo');
   }
 
-  // redirect('/');
+  redirect('/');
 }
