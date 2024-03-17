@@ -18,7 +18,7 @@ export function middleware(request: NextRequest) {
 
   if (UserInfoCookie) {
     response.cookies.set({
-      name: 'Authorization',
+      name: 'userInfo',
       value: UserInfoCookie.value
     });
   }
