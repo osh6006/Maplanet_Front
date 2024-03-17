@@ -21,7 +21,10 @@ const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({ userCookie }) =
 
   const handleLogout = async () => {
     // TODO : 쿠키 삭제 후 리다이렉트
-    logOut();
+
+    console.log('click');
+
+    await logOut();
   };
 
   return (

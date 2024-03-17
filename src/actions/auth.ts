@@ -13,15 +13,16 @@ export async function logOut() {
   const hasUserInfoCookie = cookiesList.has('userInfo');
   const accessToken = cookiesList.has('Authorization');
 
-  await fetch(`${SERVER_URL}/auth/logout` as string, {
+  const result = await fetch(`${SERVER_URL}/auth/logout`, {
     method: 'DELETE',
     headers: {
-      Authorization: `${accessToken}`,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      Authorization: `${accessToken}`
     },
-    body: '',
     credentials: 'include'
   });
+
+  console.log(await result.json());
 
   // if (hasTokenCookie) {
   //   cookies().delete('Authorization');
