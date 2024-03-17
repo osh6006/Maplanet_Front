@@ -43,12 +43,8 @@ const WoodCutterBoardPage: React.FunctionComponent<IWoodCutterBoardPageProps> = 
   const totalBoardCount = fetchData?.totalCount || 0;
 
   return (
-    <Suspense
-      fallback={
-        <div className='flex h-[500px] items-center justify-center'>
-          <Loading size={100} />
-        </div>
-      }>
+    <>
+      ㅌ
       <BoardResult.Wrapper>
         <BoardResult.List
           list={woodCutterBoardData || []}
@@ -89,7 +85,7 @@ const WoodCutterBoardPage: React.FunctionComponent<IWoodCutterBoardPageProps> = 
         />
       </BoardResult.Wrapper>
       <Pagination totalPost={totalBoardCount} itemsPerPage={5} pagePerItem={12} />
-    </Suspense>
+    </>
   );
 };
 

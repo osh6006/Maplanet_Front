@@ -42,7 +42,7 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
   const totalBoardCount = fetchData?.totalCount || 0;
 
   return (
-    <Suspense fallback={<div>loading...</div>}>
+    <>
       <BoardResult.Wrapper>
         <BoardResult.List
           list={helperBoardData || []}
@@ -79,7 +79,7 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
         />
       </BoardResult.Wrapper>
       <Pagination totalPost={totalBoardCount || 0} itemsPerPage={5} pagePerItem={12} />
-    </Suspense>
+    </>
   );
 };
 

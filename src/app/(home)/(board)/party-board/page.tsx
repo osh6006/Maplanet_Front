@@ -43,7 +43,7 @@ const PartyBoardPage: React.FunctionComponent<IPartyBoardPageProps> = async ({
   const totalBoardCount = fetchData?.totalCount || 0;
 
   return (
-    <Suspense fallback={<div>Loading..</div>}>
+    <>
       <BoardResult.Wrapper>
         <BoardResult.List
           list={partyBoardData || []}
@@ -82,7 +82,7 @@ const PartyBoardPage: React.FunctionComponent<IPartyBoardPageProps> = async ({
         />
       </BoardResult.Wrapper>
       <Pagination totalPost={totalBoardCount} itemsPerPage={5} pagePerItem={12} />
-    </Suspense>
+    </>
   );
 };
 
