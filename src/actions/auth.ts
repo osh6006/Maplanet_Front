@@ -1,7 +1,6 @@
 'use server';
 
 import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
 
 const SERVER_URL = process.env.SERVER_URL;
 
@@ -16,7 +15,7 @@ export async function logOut() {
   await fetch(`${SERVER_URL}/auth/logout` as string, {
     method: 'DELETE',
     headers: {
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TEMP_ACCESS_TOKEN}`,
+      Authorization: `${accessToken}`,
       'Content-Type': 'application/json'
     },
     credentials: 'include'
