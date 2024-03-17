@@ -1,8 +1,10 @@
+'use server';
+
 const SERVER_URL = process.env.SERVER_URL;
 
 export async function getNotice(page?: string) {
   try {
-    const res = await fetch(`${SERVER_URL}?page=${page}` as string, {
+    const res = await fetch(`${SERVER_URL}/notice?page=${page}` as string, {
       cache: 'no-store'
     });
 
@@ -12,6 +14,7 @@ export async function getNotice(page?: string) {
     }
     return res.json();
   } catch (error) {
+    console.log(error);
     throw new Error('Failed to getNotice');
   }
 }

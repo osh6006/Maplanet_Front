@@ -14,8 +14,8 @@ const NoticePage: React.FunctionComponent<INoticePageProps> = async ({
     page?: string;
   };
 }) => {
-  const fetchData: INotice[] = (await getNotice(searchParams?.page || '1')).noticeData || [];
-  const totalNotice = (await getNotice(searchParams?.page || '1')).totalCount || 1;
+  const fetchData: INotice[] = (await getNotice(searchParams?.page || '1'))?.noticeData || [];
+  const totalNotice = (await getNotice(searchParams?.page || '1'))?.totalCount || 1;
 
   return (
     <>

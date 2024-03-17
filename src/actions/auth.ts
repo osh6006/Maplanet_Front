@@ -19,16 +19,17 @@ export async function logOut() {
       Authorization: `${accessToken}`,
       'Content-Type': 'application/json'
     },
+    body: '',
     credentials: 'include'
   });
 
-  if (hasTokenCookie) {
-    cookies().delete('Authorization');
-  }
+  // if (hasTokenCookie) {
+  //   cookies().delete('Authorization');
+  // }
 
-  if (hasUserInfoCookie) {
-    cookies().delete('userInfo');
-  }
+  // if (hasUserInfoCookie) {
+  //   cookies().delete('userInfo');
+  // }
 
-  redirect('/');
+  // redirect('/');
 }
