@@ -9,19 +9,5 @@ export function middleware(request: NextRequest) {
 
   const response = NextResponse.next();
 
-  if (AuthCookie) {
-    response.cookies.set({
-      name: 'Authorization',
-      value: AuthCookie.value
-    });
-  }
-
-  if (UserInfoCookie) {
-    response.cookies.set({
-      name: 'userInfo',
-      value: UserInfoCookie.value
-    });
-  }
-
   return response;
 }

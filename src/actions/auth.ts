@@ -30,5 +30,5 @@ export async function logOut() {
     cookies().delete('userInfo');
   }
 
-  redirect('/');
+  // redirect('/');
 }
