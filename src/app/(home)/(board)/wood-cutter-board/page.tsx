@@ -44,7 +44,6 @@ const WoodCutterBoardPage: React.FunctionComponent<IWoodCutterBoardPageProps> = 
 
   return (
     <>
-      ㅌ
       <BoardResult.Wrapper>
         <BoardResult.List
           list={woodCutterBoardData || []}

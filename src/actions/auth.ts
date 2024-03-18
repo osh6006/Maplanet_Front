@@ -11,6 +11,8 @@ export async function logOut() {
   const hasTokenCookie = cookiesList.has('Authorization');
   const accessToken = cookiesList.get('Authorization');
 
+  console.log('현재 엑세스 토큰 : ', accessToken);
+
   if (hasTokenCookie) {
     const result = await fetch(`https://maplanet.store/auth/logout`, {
       method: 'DELETE',
@@ -19,9 +21,11 @@ export async function logOut() {
       }
     });
 
-    console.log(SERVER_URL);
-    console.log(await result.json());
+    console.log('요청 서버 URL : ', SERVER_URL);
+    console.log('요청 결과 : ', await result.json());
   }
+
+  console.log('요청 후 엑세스 토큰 : ', accessToken);
 
   // if (hasTokenCookie) {
   //   cookies().delete('Authorization');

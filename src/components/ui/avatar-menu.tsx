@@ -23,17 +23,17 @@ const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({ userCookie }) =
     // TODO : 쿠키 삭제 후 리다이렉트
     // console.log('click');
 
-    const result = await fetch(`https://maplanet.store/auth/logout`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `asdf`
-      },
-      body: ''
-    });
+    // const result = await fetch(`https://maplanet.store/auth/logout`, {
+    //   method: 'DELETE',
+    //   headers: {
+    //     Authorization: `asdf`
+    //   },
+    //   body: ''
+    // });
 
-    console.log(await result.json());
+    // console.log(await result.json());
 
-    // await logOut();
+    await logOut();
   };
 
   return (
