@@ -9,7 +9,7 @@ export async function logIn() {}
 export async function logOut() {
   const cookiesList = cookies();
   const hasTokenCookie = cookiesList.has('Authorization');
-  const accessToken = cookiesList.get('Authorization');
+  const accessToken = cookiesList.get('Authorization')?.value;
 
   console.log('현재 엑세스 토큰 : ', accessToken);
 
