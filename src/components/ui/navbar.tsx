@@ -1,9 +1,13 @@
+'use client';
+
 import Icon from './icon';
 import Inner from './inner';
 import Link from 'next/link';
 import Button from './button';
 import { Fugaz_One } from 'next/font/google';
 import AvatarMenu from './avatar-menu';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 const fugaz = Fugaz_One({ subsets: ['latin'], weight: ['400'] });
 
@@ -13,6 +17,12 @@ interface INavbarProps {
 }
 
 const Navbar: React.FunctionComponent<INavbarProps> = ({ accessToken, userInfo }) => {
+  const router = useRouter();
+  const handleNewPostBtn = () => {
+    // if (accessToken) router.push('/board-write');
+    toast.error('로그인을 해주세요!');
+  };
+
   return (
     <nav className='fixed z-50 flex h-[60px] w-full bg-black px-10 text-white xl:px-0'>
       <Inner>
@@ -42,11 +52,9 @@ const Navbar: React.FunctionComponent<INavbarProps> = ({ accessToken, userInfo }
                   </Button>
                 </Link>
               )}
-              <Link href='/board-write'>
-                <Button color='main' size='sm'>
-                  + 새 글
-                </Button>
-              </Link>
+              <Button color='main' size='sm' onClick={handleNewPostBtn}>
+                + 새 글
+              </Button>
             </div>
           </div>
         </div>
