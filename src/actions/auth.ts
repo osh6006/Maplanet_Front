@@ -22,10 +22,8 @@ export async function logOut() {
     });
 
     console.log('요청 서버 URL : ', SERVER_URL);
-    console.log('요청 결과 : ', await result.json());
+    console.log('요청 후 엑세스 토큰 : ', accessToken);
   }
-
-  console.log('요청 후 엑세스 토큰 : ', accessToken);
 
   // if (hasTokenCookie) {
   //   cookies().delete('Authorization');
