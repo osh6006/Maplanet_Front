@@ -71,11 +71,13 @@ export async function postBoardData<T>({
   const cookieStore = cookies();
   const cookie = cookieStore.get('Authorization');
 
+  console.log(cookie?.value);
+
   try {
     const res = await fetch(`${SERVER_URL}${url}` as string, {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_TEMP_ACCESS_TOKEN}`,
+        Authorization: `${cookie?.value}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data),

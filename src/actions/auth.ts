@@ -9,20 +9,19 @@ export async function logIn() {}
 export async function logOut() {
   const cookiesList = cookies();
   const hasTokenCookie = cookiesList.has('Authorization');
-  const hasUserInfoCookie = cookiesList.has('userInfo');
-  const accessToken = cookiesList.has('Authorization');
+  const accessToken = cookiesList.get('Authorization');
 
-  const result = await fetch(`${SERVER_URL}/auth/logout`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `${accessToken}`
-    },
-    credentials: 'include'
-  });
+  if (hasTokenCookie) {
+    const result = await fetch(`https://maplanet.store/auth/logout`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `${accessToken}`
+      }
+    });
 
-  console.log(SERVER_URL);
-  console.log(await result.json());
+    console.log(SERVER_URL);
+    console.log(await result.json());
+  }
 
   // if (hasTokenCookie) {
   //   cookies().delete('Authorization');
