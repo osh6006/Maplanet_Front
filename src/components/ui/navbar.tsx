@@ -19,8 +19,8 @@ interface INavbarProps {
 const Navbar: React.FunctionComponent<INavbarProps> = ({ accessToken, userInfo }) => {
   const router = useRouter();
   const handleNewPostBtn = () => {
-    // if (accessToken) router.push('/board-write');
-    toast.error('로그인을 해주세요!');
+    if (accessToken) router.push('/board-write');
+    else toast.error('로그인을 해주세요!');
   };
 
   return (
