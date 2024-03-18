@@ -21,19 +21,14 @@ const InlineProfile: React.FunctionComponent<IInlineProfileProps> = ({
         <Avatar imgUrl={imgUrl || '/svgs/snail.svg'} size={30} />
         <p>{discordNickName}</p>
       </div>
-
-      {manner && (
-        <div className='flex items-center gap-x-1'>
-          <Icon src={'/svgs/maple.svg'} alt='manner' size={15} />
-          <p>{manner}</p>
-        </div>
-      )}
-      {unManner && (
-        <div className='flex items-center gap-x-1'>
-          <Icon src={'/svgs/un-manner.svg'} alt='unmanner' size={15} />
-          <p>{unManner}</p>
-        </div>
-      )}
+      <div className='flex items-center gap-x-1'>
+        <Icon src={'/svgs/maple.svg'} alt='manner' size={15} />
+        <p>{manner || 0}</p>
+      </div>
+      <div className='flex items-center gap-x-1'>
+        <Icon src={'/svgs/un-manner.svg'} alt='unmanner' size={15} />
+        <p>{unManner || 0}</p>
+      </div>
     </div>
   );
 };

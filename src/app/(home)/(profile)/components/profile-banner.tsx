@@ -9,8 +9,7 @@ import Link from 'next/link';
 import Spinner from '@/components/ui/spinner';
 import GetProfileData from '@/actions/profile';
 import { IBoard1ProfileResponse, IUserProfileData } from '@/types/interfaces/profile';
-import MannerCount from '@/actions/manner-count';
-
+import { MannerCount } from '@/actions/manner-count';
 
 interface IProfileBannerProps {
   type: string;
@@ -25,17 +24,15 @@ const ProfileBanner: React.FunctionComponent<IProfileBannerProps> = ({ board, us
     isLoading: boolean;
     error: any;
   };
-  
+
   if (isLoading) return <Spinner></Spinner>;
 
   if (error) return <div>에러가 발생했습니다.</div>;
 
-  console.log(data);
-
-  function mannerIncreaseOrDecrease(userId: number) {
+  const mannerIncreaseOrDecrease = async (userId: number) => {
     console.log('userId:', userId);
-    MannerCount(userId);
-  }
+    await MannerCount(userId);
+  };
   return (
     <div className='flex h-[193px] items-center bg-[#000]'>
       <Inner>
@@ -76,7 +73,10 @@ const ProfileBanner: React.FunctionComponent<IProfileBannerProps> = ({ board, us
                 1:1 대화
               </Link>
             </Button>
-            <Button color='lightGray' size='wide' onClick={() => mannerIncreaseOrDecrease(userId)}>
+            <Button
+              color='lightGray'
+              size='wide'
+              onClick={async () => await mannerIncreaseOrDecrease(userId)}>
               매너 추천
             </Button>
             <Button color='lightGray' size='wide'>
