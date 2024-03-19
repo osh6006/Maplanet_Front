@@ -15,45 +15,47 @@ export const logOut = async () => {
 
   console.log('현재 엑세스 토큰 : ', accessToken);
 
-  // if (hasTokenCookie) {
-  //   console.log('asdf');
+  try {
+    if (hasTokenCookie) {
+      console.log('asdf');
 
-  //   const result = await fetch(`https://maplanet.store/auth/logout`, {
-  //     method: 'POST',
-  //     headers: {
-  //       Authorization: `${accessToken}`
-  //     }
-  //   });
+      const result = await fetch(`https://maplanet.store/auth/logout`, {
+        method: 'POST',
+        headers: {
+          Authorization: `${accessToken}`
+        }
+      });
 
-  //   console.log('요청 서버 URL : ', SERVER_URL);
-  //   console.log('요청 결과 : ', await result.json());
-  //   console.log('요청 후 엑세스 토큰 : ', accessToken);
-  // }
+      console.log('요청 서버 URL : ', SERVER_URL);
+      console.log('요청 결과 : ', result.status);
+      console.log('요청 후 엑세스 토큰 : ', accessToken);
 
-  if (hasTokenCookie) {
-    cookies().set({
-      name: 'Authorization',
-      maxAge: 0,
-      path: '/',
-      domain: 'maplanet.store',
-      sameSite: 'none',
-      secure: true,
-      value: ''
-    });
+      if (result.status === 201) {
+        cookies().set({
+          name: 'Authorization',
+          maxAge: 0,
+          path: '/',
+          domain: 'maplanet.store',
+          sameSite: 'none',
+          secure: true,
+          value: ''
+        });
+
+        cookies().set({
+          name: 'userInfo',
+          maxAge: 0,
+          path: '/',
+          domain: 'maplanet.store',
+          sameSite: 'none',
+          secure: true,
+          value: ''
+        });
+      }
+    }
+
+    console.log('삭제 후 엑세스 토큰 : ', accessToken);
+    redirect('/');
+  } catch (error) {
+    console.log(error);
   }
-
-  if (hasUserInfoCookie) {
-    cookies().set({
-      name: 'userInfo',
-      maxAge: 0,
-      path: '/',
-      domain: 'maplanet.store',
-      sameSite: 'none',
-      secure: true,
-      value: ''
-    });
-  }
-
-  console.log('삭제 후 엑세스 토큰 : ', accessToken);
-  redirect('/');
 };
