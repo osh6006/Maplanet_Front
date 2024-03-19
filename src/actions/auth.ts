@@ -15,20 +15,20 @@ export const logOut = async () => {
 
   console.log('현재 엑세스 토큰 : ', accessToken);
 
-  if (hasTokenCookie) {
-    console.log('asdf');
+  // if (hasTokenCookie) {
+  //   console.log('asdf');
 
-    const result = await fetch(`https://maplanet.store/auth/logout`, {
-      method: 'POST',
-      headers: {
-        Authorization: `${accessToken}`
-      }
-    });
+  //   const result = await fetch(`https://maplanet.store/auth/logout`, {
+  //     method: 'POST',
+  //     headers: {
+  //       Authorization: `${accessToken}`
+  //     }
+  //   });
 
-    console.log('요청 서버 URL : ', SERVER_URL);
-    console.log('요청 결과 : ', await result.json());
-    console.log('요청 후 엑세스 토큰 : ', accessToken);
-  }
+  //   console.log('요청 서버 URL : ', SERVER_URL);
+  //   console.log('요청 결과 : ', await result.json());
+  //   console.log('요청 후 엑세스 토큰 : ', accessToken);
+  // }
 
   if (hasTokenCookie) {
     cookies().set({
@@ -54,5 +54,6 @@ export const logOut = async () => {
     });
   }
 
+  console.log('삭제 후 엑세스 토큰 : ', accessToken);
   redirect('/');
 };
