@@ -1,12 +1,13 @@
 'use server';
 
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 const SERVER_URL = process.env.SERVER_URL;
 
 export async function logIn() {}
 
-export async function logOut() {
+export const logOut = async () => {
   const cookiesList = cookies();
   const hasTokenCookie = cookiesList.has('Authorization');
   const hasUserInfoCookie = cookiesList.has('userInfo');
@@ -30,12 +31,28 @@ export async function logOut() {
   }
 
   if (hasTokenCookie) {
-    cookies().delete('Authorization');
+    cookies().set({
+      name: 'Authorization',
+      maxAge: 0,
+      path: '/',
+      domain: 'maplanet.store',
+      sameSite: 'none',
+      secure: true,
+      value: ''
+    });
   }
 
   if (hasUserInfoCookie) {
-    cookies().delete('userInfo');
+    cookies().set({
+      name: 'userInfo',
+      maxAge: 0,
+      path: '/',
+      domain: 'maplanet.store',
+      sameSite: 'none',
+      secure: true,
+      value: ''
+    });
   }
 
-  // redirect('/');
-}
+  redirect('/');
+};
