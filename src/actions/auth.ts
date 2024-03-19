@@ -29,13 +29,13 @@ export async function logOut() {
     console.log('요청 후 엑세스 토큰 : ', accessToken);
   }
 
-  // if (hasTokenCookie) {
-  //   cookies().delete('Authorization');
-  // }
+  if (hasTokenCookie) {
+    cookies().delete('Authorization');
+  }
 
-  // if (hasUserInfoCookie) {
-  //   cookies().delete('userInfo');
-  // }
+  if (hasUserInfoCookie) {
+    cookies().delete('userInfo');
+  }
 
   // redirect('/');
 }

@@ -18,7 +18,6 @@ const RootProvider: React.FunctionComponent<IProvidersProps> = ({ children }) =>
         containerStyle={{}}
         toastOptions={{
           // Define default options
-          position: 'top-right',
 
           // Default options for specific types
           success: {

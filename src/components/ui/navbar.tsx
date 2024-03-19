@@ -1,9 +1,12 @@
+'use client';
+
 import Icon from './icon';
 import Inner from './inner';
 import Link from 'next/link';
 import Button from './button';
 import { Fugaz_One } from 'next/font/google';
 import AvatarMenu from './avatar-menu';
+import toast from 'react-hot-toast';
 
 const fugaz = Fugaz_One({ subsets: ['latin'], weight: ['400'] });
 
@@ -43,7 +46,12 @@ const Navbar: React.FunctionComponent<INavbarProps> = ({ accessToken, userInfo }
                 </Link>
               )}
               <Link href='/board-write'>
-                <Button color='main' size='sm'>
+                <Button
+                  color='main'
+                  size='sm'
+                  onClick={() => {
+                    if (!accessToken) toast.error('로그인을 해주세요!');
+                  }}>
                   + 새 글
                 </Button>
               </Link>
