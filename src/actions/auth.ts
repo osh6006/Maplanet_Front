@@ -18,14 +18,14 @@ export async function logOut() {
     console.log('asdf');
 
     const result = await fetch(`https://maplanet.store/auth/logout`, {
-      method: 'DELETE',
+      method: 'POST',
       headers: {
         Authorization: `${accessToken}`
       }
     });
 
     console.log('요청 서버 URL : ', SERVER_URL);
-    console.log('요청 결과 : ', result.headers);
+    console.log('요청 결과 : ', await result.json());
     console.log('요청 후 엑세스 토큰 : ', accessToken);
   }
 
