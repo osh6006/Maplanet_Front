@@ -42,10 +42,13 @@ export const logOut = async () => {
           secure: true,
           value: ''
         });
-
-        return redirect('/auth');
       }
     }
+
+    cookiesList.delete('Authorization');
+    cookiesList.delete('userInfo');
+
+    redirect('/');
   } catch (error) {
     console.log(error);
     throw new Error('Log Out Error!' + error);
