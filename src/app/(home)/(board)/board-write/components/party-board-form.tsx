@@ -146,7 +146,7 @@ const PartyBoardForm: React.FunctionComponent<IPartyBoardFormProps> = ({}) => {
           disabled={isLoading}
           rules={{ required: '주차 여부를 선택해 주세요' }}
           options={[
-            { id: '주차 가능', label: '주차 가능', value: 'true' },
+            { id: '주차 가능', label: '주차 필수', value: 'true' },
             { id: '주차 불가', label: '주차 불가', value: 'false' }
           ]}
         />
