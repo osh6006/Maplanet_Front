@@ -44,8 +44,6 @@ export const logOut = async () => {
         });
       }
     }
-
-    redirect('/');
   } catch (error) {
     console.log(error);
     throw new Error('Log Out Error!' + error);

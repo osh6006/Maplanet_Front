@@ -40,6 +40,7 @@ const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({ userCookie }) =
     // console.log(await result.json());
 
     await logOut();
+    router.push('/');
   };
 
   if (!render) return null;
