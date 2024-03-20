@@ -89,7 +89,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
           </div>
         )}
         <div className='flex w-full items-center justify-between '>
-          <Badge className={clsx(type === '잠쩔' ? 'bg-main' : 'bg-violet')} size='card'>
+          <Badge className={clsx('bg-main')} size='card'>
             {type}
           </Badge>
           <time className='font-medium text-gray-400'>

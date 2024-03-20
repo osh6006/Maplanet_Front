@@ -17,7 +17,7 @@ const UserProfile: React.FunctionComponent<IUserProfileProps> = ({ params, searc
     <div className='w-full'>
       {/* 프로필 배너 */}
       <ProfileBanner type='user' board={currentBoard} userId={params.id} page={searchParams.page} />
-      
+
       <div className='mx-auto max-w-[500px] sm:max-w-[670px] lg:max-w-[1000px] xl:max-w-[1440px] xl:px-[60px]'>
         <div className='flex items-center justify-center'>
           <span className='pb-[15px] pt-[30px] text-[28px] font-bold'>작성 게시글</span>
@@ -26,7 +26,7 @@ const UserProfile: React.FunctionComponent<IUserProfileProps> = ({ params, searc
           <button
             className={clsx(currentBoard === 'helper' ? 'font-bold text-[#fff]' : '')}
             onClick={() => setCurrentBoard('helper')}>
-            쩔
+            심쩔
           </button>
           <span className='pb-[1px]'>|</span>
           <button
@@ -37,11 +37,7 @@ const UserProfile: React.FunctionComponent<IUserProfileProps> = ({ params, searc
         </div>
 
         {/* 프로필 게시글 */}
-        <ProfilePosts
-          board={currentBoard}
-          userId={params.id}
-          page={searchParams.page}
-        />
+        <ProfilePosts board={currentBoard} userId={params.id} page={searchParams.page} />
       </div>
     </div>
   );

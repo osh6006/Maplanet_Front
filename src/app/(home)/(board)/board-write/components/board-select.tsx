@@ -62,7 +62,7 @@ const BoardSelect: React.FunctionComponent<IBoardSelectProps> = ({
             </div>
             {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}
             <span className='w-full text-right text-yellow'>
-              *모든 쩔은 2차 전직부터 가능합니다.
+              *모든 심쩔은 2차 전직부터 가능합니다.
             </span>
           </>
         );

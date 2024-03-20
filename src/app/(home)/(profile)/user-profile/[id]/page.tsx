@@ -58,7 +58,7 @@ const UserProfile: React.FunctionComponent<IUserProfileProps> = () => {
               setCurrentBoard('board1');
               router.push(createPageURL(1));
             }}>
-            쩔
+            심쩔
           </button>
           <span className='pb-[1px]'>|</span>
           <button

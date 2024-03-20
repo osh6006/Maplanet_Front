@@ -12,7 +12,7 @@ interface IHelperboardLayoutProps {
 const HelperboardLayout: React.FunctionComponent<IHelperboardLayoutProps> = ({ children }) => {
   return (
     <main>
-      <Banner title='쩔 게시판' imgUrl='/images/banner.png' />
+      <Banner title='심쩔 게시판' imgUrl='/images/banner.png' />
       <BoardInner>
         <div className='mt-8 flex flex-col justify-between gap-y-4 sm:flex-row'>
           <Sort options={sortOptions} />
