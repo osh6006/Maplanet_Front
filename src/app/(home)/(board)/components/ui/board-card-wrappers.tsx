@@ -30,7 +30,7 @@ group-hover:opacity-100 group-hover:duration-300'>
       <Button color='lightGray' size='wide' onClick={setIsModalOpen}>
         상세보기
       </Button>
-      <Link href={`profile/${profileId}`} className='w-full'>
+      <Link href={`user-profile/${profileId}`} className='w-full'>
         <Button color='lightGray' size='wide'>
           프로필 보기
         </Button>
