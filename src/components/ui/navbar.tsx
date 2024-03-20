@@ -1,3 +1,5 @@
+'use client';
+
 import Icon from './icon';
 import Inner from './inner';
 import Link from 'next/link';
@@ -49,7 +51,6 @@ const Navbar: React.FunctionComponent<INavbarProps> = ({ accessToken, userInfo }
                   color='main'
                   size='sm'
                   onClick={() => {
-                    'use server';
                     if (!accessToken) toast.error('로그인을 해주세요!');
                   }}>
                   + 새 글

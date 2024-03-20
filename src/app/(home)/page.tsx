@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Board from './components/board';
-import Icon from '@/components/ui/icon';
 import GetHomeData from '@/actions/home';
 import Inner from '@/components/ui/inner';
 import Loading from '@/components/ui/loading';
