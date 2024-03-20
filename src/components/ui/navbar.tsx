@@ -9,6 +9,7 @@ import AvatarMenu from './avatar-menu';
 import toast from 'react-hot-toast';
 
 const fugaz = Fugaz_One({ subsets: ['latin'], weight: ['400'] });
+const DISCORD_LINK = process.env.NEXT_PUBLIC_DISCORD_LOGIN_LINK;
 
 interface INavbarProps {
   userInfo?: string;
@@ -38,7 +39,7 @@ const Navbar: React.FunctionComponent<INavbarProps> = ({ accessToken, userInfo }
               {accessToken ? (
                 <AvatarMenu userCookie={userInfo || ''} />
               ) : (
-                <Link href={'https://maplanet.store/auth/discord'}>
+                <Link href={DISCORD_LINK || '#'}>
                   <Button size='sm' color='discord'>
                     <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15} />
                     로그인

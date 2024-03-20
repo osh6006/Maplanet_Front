@@ -4,6 +4,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 const SERVER_URL = process.env.SERVER_URL;
+const COOKIE_DEKETE_DOMAIN = process.env.COOKIE_DEKETE_DOMAIN;
 
 export async function logIn() {}
 
@@ -27,7 +28,7 @@ export const logOut = async () => {
           name: 'Authorization',
           maxAge: 0,
           path: '/',
-          domain: 'maplanet.store',
+          domain: COOKIE_DEKETE_DOMAIN,
           sameSite: 'none',
           secure: true,
           value: ''
@@ -37,7 +38,7 @@ export const logOut = async () => {
           name: 'userInfo',
           maxAge: 0,
           path: '/',
-          domain: 'maplanet.store',
+          domain: COOKIE_DEKETE_DOMAIN,
           sameSite: 'none',
           secure: true,
           value: ''
