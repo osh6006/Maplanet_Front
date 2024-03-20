@@ -5,6 +5,7 @@ import Avatar from './avatar';
 import clsx from 'clsx';
 import { logOut } from '@/actions/auth';
 import { useRouter } from 'next/navigation';
+import Router from 'next/router';
 
 interface IAvatarMenuProps {
   userCookie: string;
@@ -17,6 +18,7 @@ const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({ userCookie }) =
 
   const handleMyProfile = () => {
     // TODO : 내 프로필로 이동
+    router.push(`/my-profile/${user_id}?page=1`);
   };
 
   const handleLogout = async () => {

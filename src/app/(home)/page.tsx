@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 import Board from './components/board';
 import Icon from '@/components/ui/icon';
@@ -11,8 +9,8 @@ import { getCookies } from 'cookies-next';
 
 interface IHomePageProps {}
 
-const HomePage: React.FunctionComponent<IHomePageProps> = () => {
-  const { data, isLoading, error } = GetHomeData();
+const HomePage: React.FunctionComponent<IHomePageProps> = async () => {
+  const { data, isLoading, error } = await GetHomeData();
 
   console.log('클라이언트 사이드 모든 쿠키 : ', getCookies());
 

@@ -11,14 +11,16 @@ interface IProfileBoard2PostsProps {
   board: string;
   userId: number;
   page: number;
+  type: 'my' | 'user';
 }
 
 const ProfileBoard2Posts: React.FunctionComponent<IProfileBoard2PostsProps> = ({
   board,
   userId,
-  page
+  page,
+  type
 }) => {
-  const { data, isLoading, error } = GetProfileData(board, userId, page) as {
+  const { data, isLoading, error } = GetProfileData(type, board, userId, page) as {
     data: {
       board2Profile: IBoard2Data[];
       totalCount: number;

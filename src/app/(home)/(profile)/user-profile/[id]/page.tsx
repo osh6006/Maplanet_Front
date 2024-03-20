@@ -34,13 +34,13 @@ const UserProfile: React.FunctionComponent<IUserProfileProps> = () => {
 
   const renderPosts = () => {
     if (currentBoard === 'board1') {
-      return <ProfileBoard1Posts board={currentBoard} userId={userId} page={page} />;
+      return <ProfileBoard1Posts type='user' board={currentBoard} userId={userId} page={page} />;
     } else if (currentBoard === 'board2') {
-      return <ProfileBoard2Posts board={currentBoard} userId={userId} page={page} />;
+      return <ProfileBoard2Posts type='user' board={currentBoard} userId={userId} page={page} />;
     } else if (currentBoard === 'board3') {
-      return <ProfileBoard3Posts board={currentBoard} userId={userId} page={page} />;
+      return <ProfileBoard3Posts type='user' board={currentBoard} userId={userId} page={page} />;
     } else if (currentBoard === 'board4') {
-      return <ProfileBoard4Posts board={currentBoard} userId={userId} page={page} />;
+      return <ProfileBoard4Posts type='user' board={currentBoard} userId={userId} page={page} />;
     }
   };
 

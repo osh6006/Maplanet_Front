@@ -10,32 +10,40 @@ import Spinner from '@/components/ui/spinner';
 import GetProfileData from '@/actions/profile';
 import { IBoard1ProfileResponse, IUserProfileData } from '@/types/interfaces/profile';
 import MannerCount from '@/actions/manner-count';
-
+import ReportCount from '@/actions/report';
+import { useOptimistic } from 'react'
 
 interface IProfileBannerProps {
-  type: string;
+  type: 'my'|'user';
   board: string;
   userId: number;
   page: number;
 }
 
-const ProfileBanner: React.FunctionComponent<IProfileBannerProps> = ({ board, userId, page }) => {
-  const { data, isLoading, error } = GetProfileData(board, userId, page) as {
+const ProfileBanner: React.FunctionComponent<IProfileBannerProps> = ({ board, userId, page, type }) => {
+  const { data, isLoading, error } = GetProfileData(type, board, userId, page) as {
     data: IBoard1ProfileResponse;
     isLoading: boolean;
     error: any;
   };
-  
+
+  console.log('banner', data);
+
   if (isLoading) return <Spinner></Spinner>;
 
   if (error) return <div>에러가 발생했습니다.</div>;
 
-  console.log(data);
-
   function mannerIncreaseOrDecrease(userId: number) {
     console.log('userId:', userId);
+    alert('매너추천');
     MannerCount(userId);
   }
+
+  function reportIncreaseOrDecrease(userId: number) {
+    console.log('userId:', userId);
+    ReportCount(userId);
+  }
+
   return (
     <div className='flex h-[193px] items-center bg-[#000]'>
       <Inner>
@@ -66,7 +74,7 @@ const ProfileBanner: React.FunctionComponent<IProfileBannerProps> = ({ board, us
             </div>
           </div>
 
-          <div className='flex w-[200px] flex-col items-center justify-center gap-y-2 text-nowrap px-4'>
+          {type === 'user' ? <div className='flex w-[200px] flex-col items-center justify-center gap-y-2 text-nowrap px-4'>
             <Button color='discord' size='wide'>
               <Link
                 href={`discord://discord.com/users/${data.userProfile.discord_id}`}
@@ -79,10 +87,11 @@ const ProfileBanner: React.FunctionComponent<IProfileBannerProps> = ({ board, us
             <Button color='lightGray' size='wide' onClick={() => mannerIncreaseOrDecrease(userId)}>
               매너 추천
             </Button>
-            <Button color='lightGray' size='wide'>
+            <Button color='lightGray' size='wide' onClick={() => reportIncreaseOrDecrease(userId)}>
               유저 신고하기
             </Button>
-          </div>
+          </div> : null}
+          
         </div>
       </Inner>
     </div>
