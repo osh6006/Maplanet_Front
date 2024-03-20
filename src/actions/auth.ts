@@ -11,7 +11,6 @@ export async function logIn() {}
 export const logOut = async () => {
   const cookiesList = cookies();
   const hasTokenCookie = cookiesList.has('Authorization');
-  const hasUserInfoCookie = cookiesList.has('userInfo');
   const accessToken = cookiesList.get('Authorization')?.value;
 
   try {
@@ -43,10 +42,10 @@ export const logOut = async () => {
           secure: true,
           value: ''
         });
+
+        return redirect('/');
       }
     }
-
-    redirect('/');
   } catch (error) {
     console.log(error);
     throw new Error('Log Out Error!' + error);
