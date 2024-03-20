@@ -30,8 +30,6 @@ const UserProfile: React.FunctionComponent<IUserProfileProps> = () => {
     return `${pathname}?${params.toString()}`;
   };
 
-  console.log('params:', userId, 'searchParams:', page);
-
   const renderPosts = () => {
     if (currentBoard === 'board1') {
       return <ProfileBoard1Posts board={currentBoard} userId={userId} page={page} />;
@@ -90,7 +88,7 @@ const UserProfile: React.FunctionComponent<IUserProfileProps> = () => {
             파티 모집
           </button>
         </div>
-        
+
         {/* 게시글 */}
         {renderPosts()}
       </div>

@@ -31,7 +31,6 @@ export async function fetchBoardData<T>({
         throw new Error(`Sent the data to "${url}" url, but an error seems to have occurred.`);
       }
 
-      console.log(res.json);
       return res.json();
     }
 
@@ -71,8 +70,6 @@ export async function postBoardData<T>({
   const cookieStore = cookies();
   const cookie = cookieStore.get('Authorization');
 
-  console.log(cookie?.value);
-
   try {
     const res = await fetch(`${SERVER_URL}${url}` as string, {
       method: 'POST',
@@ -86,8 +83,6 @@ export async function postBoardData<T>({
 
     if (!res.ok) {
       const result = await res.json();
-
-      console.log(result);
 
       return {
         isError: true,

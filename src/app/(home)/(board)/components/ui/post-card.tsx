@@ -74,7 +74,6 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
               size='wide'
               onClick={() => {
                 // TODO : Move Profile
-                console.log('asdf');
               }}>
               프로필 보기
             </Button>
@@ -83,7 +82,6 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
               size='wide'
               onClick={() => {
                 // TODO : Move Profile
-                console.log('asdf');
               }}>
               <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={20} />
               1:1 대화
@@ -124,7 +122,6 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
             size='wide'
             onClick={() => {
               // TODO : Move Profile
-              console.log('asdf');
             }}>
             프로필 보기
           </Button>
@@ -133,7 +130,6 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
             size='wide'
             onClick={() => {
               // TODO : Move Profile
-              console.log('asdf');
             }}>
             <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={20} />
             1:1 대화

@@ -15,9 +15,6 @@ const HomeLayout: React.FunctionComponent<IHomeLayoutProps> = ({ children }) => 
   const accessToken = cookieStore.get('Authorization')?.value;
   const userInfo = cookieStore.get('userInfo')?.value;
 
-  console.log('리다이렉트 후 토큰 : ', accessToken);
-  console.log('리다이렉트 후 토큰2 : ', userInfo);
-
   return (
     <div className='relative h-full'>
       <Navbar accessToken={accessToken} userInfo={userInfo} />

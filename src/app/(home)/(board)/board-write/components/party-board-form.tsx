@@ -35,8 +35,6 @@ const PartyBoardForm: React.FunctionComponent<IPartyBoardFormProps> = ({}) => {
 
     parsingData = filterFloor(parsingData);
 
-    console.log(parsingData);
-
     const result = await postBoardData({
       url: '/board4/post',
       data: parsingData

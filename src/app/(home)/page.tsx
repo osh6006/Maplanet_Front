@@ -13,8 +13,6 @@ interface IHomePageProps {}
 const HomePage: React.FunctionComponent<IHomePageProps> = () => {
   const { data, isLoading, error } = GetHomeData();
 
-  console.log('클라이언트 사이드 모든 쿠키 : ', getCookies());
-
   if (isLoading)
     return (
       <div className='flex h-[500px] items-center justify-center'>
