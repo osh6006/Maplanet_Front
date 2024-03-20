@@ -45,9 +45,6 @@ export const logOut = async () => {
       }
     }
 
-    cookiesList.delete('Authorization');
-    cookiesList.delete('userInfo');
-
     redirect('/');
   } catch (error) {
     console.log(error);

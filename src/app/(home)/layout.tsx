@@ -12,15 +12,15 @@ export const dynamic = 'force-dynamic';
 
 const HomeLayout: React.FunctionComponent<IHomeLayoutProps> = ({ children }) => {
   const cookieStore = cookies();
-  const auth = cookieStore.get('Authorization');
-  const user = cookieStore.get('userInfo');
+  const accessToken = cookieStore.get('Authorization')?.value;
+  const userInfo = cookieStore.get('userInfo')?.value;
 
-  console.log('리다이렉트 후 토큰 : ', auth);
-  console.log('리다이렉트 후 토큰2 : ', user);
+  console.log('리다이렉트 후 토큰 : ', accessToken);
+  console.log('리다이렉트 후 토큰2 : ', userInfo);
 
   return (
     <div className='relative h-full'>
-      <Navbar accessToken={auth?.value} userInfo={user?.value} />
+      <Navbar accessToken={accessToken} userInfo={userInfo} />
       <Notification />
       <div className='flex min-h-[calc(100dvh-110px)] flex-col items-center justify-between pt-[100px] '>
         {children}
