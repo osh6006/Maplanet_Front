@@ -16,7 +16,7 @@ export const logOut = async () => {
 
   try {
     if (hasTokenCookie) {
-      const result = await fetch(`https://maplanet.store/auth/logout`, {
+      const result = await fetch(`${SERVER_URL}/auth/logout`, {
         method: 'POST',
         headers: {
           Authorization: `${accessToken}`
