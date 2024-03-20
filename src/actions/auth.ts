@@ -43,7 +43,7 @@ export const logOut = async () => {
           value: ''
         });
 
-        return redirect('/');
+        return redirect('/auth');
       }
     }
   } catch (error) {
