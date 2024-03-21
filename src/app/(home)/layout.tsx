@@ -1,7 +1,7 @@
 import Navbar from '@/components/ui/navbar';
 import Footer from '@/components/ui/footer';
 import Notification from '@/components/ui/notification';
-import EdgeButtons from './components/discord-channel-btn';
+import EdgeButtons from './components/edge-buttons';
 import { cookies } from 'next/headers';
 
 interface IHomeLayoutProps {
