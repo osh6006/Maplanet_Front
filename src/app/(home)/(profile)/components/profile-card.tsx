@@ -10,9 +10,11 @@ import InlineProfile from '@/components/ui/inline-profile';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ko';
 import clsx from 'clsx';
-import { BoardType } from '@/types';
-import HelperBoardModal from '@/components/modal/board/helper-board-modal';
 import Link from 'next/link';
+import PartyBoardModal from '@/components/modal/board/party-board-modal';
+import HelperBoardModal from '@/components/modal/board/helper-board-modal';
+import HunterBoardModal from '@/components/modal/board/hunter-board-modal';
+import WoodCutterBoardModal from '@/components/modal/board/wood-cutter-board-modal';
 dayjs.locale('ko');
 
 interface IProfileCard {
@@ -71,7 +73,15 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
   return (
     <>
       {isModalOpen ? (
-        <HelperBoardModal boardId={id} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        type === 'board1' ? (
+          <HelperBoardModal boardId={id} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        ) : type === 'board2' ? (
+          <HunterBoardModal boardId={id} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        ) : type === 'board3' ? (
+          <WoodCutterBoardModal boardId={id} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        ) : type === 'board4' ?(
+          <PartyBoardModal boardId={id} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        ) : null
       ) : null}
 
       <div

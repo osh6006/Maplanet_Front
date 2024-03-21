@@ -8,6 +8,7 @@ import Badge from '@/components/ui/badge';
 import { IWoodBoard } from '@/types/interfaces/wood';
 import HelperBoardModal from '@/components/modal/board/helper-board-modal';
 import clsx from 'clsx';
+import WoodCutterBoardModal from '@/components/modal/board/wood-cutter-board-modal';
 
 interface IBoard3ItemProps extends IWoodBoard {}
 
@@ -48,7 +49,7 @@ const Board3Item: React.FunctionComponent<IBoard3ItemProps> = ({
   return (
     <>
     {isModalOpen ? (
-      <HelperBoardModal
+      <WoodCutterBoardModal
         boardId={board3_id}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

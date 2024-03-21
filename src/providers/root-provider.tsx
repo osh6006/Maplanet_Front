@@ -10,7 +10,8 @@ interface IProvidersProps {
 const RootProvider: React.FunctionComponent<IProvidersProps> = ({ children }) => {
   const url = process.env.NEXT_PUBLIC_SERVER_URL;
 
-  const fetcher = (path: string) => fetch(`${url}${path}`).then((res) => res.json());
+  const fetcher = (path: string) =>
+    fetch(`${url}${path}`).then((res) => res.json());
 
   return (
     <SWRConfig value={{ fetcher }}>

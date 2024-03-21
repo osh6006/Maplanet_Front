@@ -2,13 +2,13 @@
 
 import * as React from 'react';
 import ProfileBanner from '../../components/profile-banner';
-import ProfilePosts from '../../components/profile-posts';
 import clsx from 'clsx';
 import { useParams, usePathname, useSearchParams, useRouter } from 'next/navigation';
 import ProfileBoard1Posts from '../../components/profile-board1-posts';
 import ProfileBoard2Posts from '../../components/profile-board2-posts';
 import ProfileBoard3Posts from '../../components/profile-board3-posts';
 import ProfileBoard4Posts from '../../components/profile-board4-posts';
+
 
 interface IUserProfileProps {
   params: { id: number };
@@ -17,6 +17,7 @@ interface IUserProfileProps {
 
 const UserProfile: React.FunctionComponent<IUserProfileProps> = () => {
   const [currentBoard, setCurrentBoard] = React.useState<string>('board1');
+
   const params = useParams();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -34,13 +35,13 @@ const UserProfile: React.FunctionComponent<IUserProfileProps> = () => {
 
   const renderPosts = () => {
     if (currentBoard === 'board1') {
-      return <ProfileBoard1Posts type='user' board={currentBoard} userId={userId} page={page} />;
+      return <ProfileBoard1Posts board={currentBoard} userId={userId} page={page} />;
     } else if (currentBoard === 'board2') {
-      return <ProfileBoard2Posts type='user' board={currentBoard} userId={userId} page={page} />;
+      return <ProfileBoard2Posts board={currentBoard} userId={userId} page={page} />;
     } else if (currentBoard === 'board3') {
-      return <ProfileBoard3Posts type='user' board={currentBoard} userId={userId} page={page} />;
+      return <ProfileBoard3Posts board={currentBoard} userId={userId} page={page} />;
     } else if (currentBoard === 'board4') {
-      return <ProfileBoard4Posts type='user' board={currentBoard} userId={userId} page={page} />;
+      return <ProfileBoard4Posts board={currentBoard} userId={userId} page={page} />;
     }
   };
 
@@ -49,6 +50,7 @@ const UserProfile: React.FunctionComponent<IUserProfileProps> = () => {
       {/* 프로필 배너 */}
       <ProfileBanner type='user' board={currentBoard} userId={userId} page={page} />
 
+      
       <div className='mx-auto max-w-[500px] sm:max-w-[670px] lg:max-w-[1000px] xl:max-w-[1440px] xl:px-[60px] '>
         <div className='flex items-center justify-center'>
           <span className='pb-[15px] pt-[30px] text-[28px] font-bold'>작성 게시글</span>
@@ -90,7 +92,7 @@ const UserProfile: React.FunctionComponent<IUserProfileProps> = () => {
             파티 모집
           </button>
         </div>
-        
+
         {/* 게시글 */}
         {renderPosts()}
       </div>

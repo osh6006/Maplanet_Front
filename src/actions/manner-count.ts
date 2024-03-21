@@ -16,7 +16,7 @@ export default async function MannerCount(user_id: number) {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `${accessToken?.value}`,
-      }
+      } 
     });
 
     if (!res.ok) {

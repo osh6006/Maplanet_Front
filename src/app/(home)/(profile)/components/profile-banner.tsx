@@ -8,10 +8,9 @@ import * as React from 'react';
 import Link from 'next/link';
 import Spinner from '@/components/ui/spinner';
 import GetProfileData from '@/actions/profile';
-import { IBoard1ProfileResponse, IUserProfileData } from '@/types/interfaces/profile';
+import { IBoard1ProfileResponse } from '@/types/interfaces/profile';
 import MannerCount from '@/actions/manner-count';
 import ReportCount from '@/actions/report';
-import { useOptimistic } from 'react'
 
 interface IProfileBannerProps {
   type: 'my'|'user';
@@ -21,7 +20,7 @@ interface IProfileBannerProps {
 }
 
 const ProfileBanner: React.FunctionComponent<IProfileBannerProps> = ({ board, userId, page, type }) => {
-  const { data, isLoading, error } = GetProfileData(type, board, userId, page) as {
+  const { data, isLoading, error } = GetProfileData(board, userId, page) as {
     data: IBoard1ProfileResponse;
     isLoading: boolean;
     error: any;
@@ -35,7 +34,6 @@ const ProfileBanner: React.FunctionComponent<IProfileBannerProps> = ({ board, us
 
   function mannerIncreaseOrDecrease(userId: number) {
     console.log('userId:', userId);
-    alert('매너추천');
     MannerCount(userId);
   }
 

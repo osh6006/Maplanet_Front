@@ -1,35 +1,22 @@
-'use client';
-
 import * as React from 'react';
 import { IBoard1Data } from '@/types/interfaces/profile';
 import ProfileCard from './profile-card';
-import GetProfileData from '@/actions/profile';
-import Spinner from '@/components/ui/spinner';
 import Pagination from '../../(board)/components/ui/pagination';
+import { GetMyProfileData } from '@/actions/my-profile';
 
-interface IProfileBoard1PostsProps {
+interface IMyProfileBoard1PostsProps {
   board: string;
-  userId: number;
   page: number;
 }
 
-const ProfileBoard1Posts: React.FunctionComponent<IProfileBoard1PostsProps> = ({
+const MyProfileBoard1Posts: React.FunctionComponent<IMyProfileBoard1PostsProps> = async ({
   board,
-  userId,
   page
 }) => {
-  const { data, isLoading, error } = GetProfileData(board, userId, page) as {
-    data: {
-      board1Profile: IBoard1Data[];
-      totalCount: number;
-    };
-    isLoading: boolean;
-    error: any;
+  const data = (await GetMyProfileData(board, page)) as {
+    board1Profile: IBoard1Data[];
+    totalCount: number;
   };
-
-  if (isLoading) return <Spinner />;
-
-  if (error) return <div>에러가 발생했습니다.</div>;
 
   return (
     <div className='w-full bg-[#222]'>
@@ -43,12 +30,13 @@ const ProfileBoard1Posts: React.FunctionComponent<IProfileBoard1PostsProps> = ({
           ))}
         </ul>
       ) : (
-        <div className='mt-20 text-center text-[#d3d3d3]'>작성된 게시글이 없습니다.</div>
+        <div className='my-32 text-center text-[#d3d3d3]'>작성된 게시글이 없습니다.</div>
       )}
 
+      {/* pagination */}
       <Pagination totalPost={data.totalCount} itemsPerPage={5} pagePerItem={12} />
     </div>
   );
 };
 
-export default ProfileBoard1Posts;
+export default MyProfileBoard1Posts;

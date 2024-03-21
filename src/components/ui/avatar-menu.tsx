@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { logOut } from '@/actions/auth';
 import { useRouter } from 'next/navigation';
 import Router from 'next/router';
+import Link from 'next/link';
 
 interface IAvatarMenuProps {
   userCookie: string;
@@ -18,7 +19,8 @@ const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({ userCookie }) =
 
   const handleMyProfile = () => {
     // TODO : 내 프로필로 이동
-    router.push(`/my-profile/${user_id}?page=1`);
+    console.log('push to my profile')
+    router.push(`/my-profile?page=1&board=board1`);
   };
 
   const handleLogout = async () => {
@@ -49,9 +51,11 @@ const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({ userCookie }) =
       <Avatar imgUrl={avatarUrl} size={30} />
       {isOpen ? (
         <ul className='absolute left-0 z-[60] mt-10 min-w-[150px] rounded-md bg-white px-2 py-2 text-sm text-black shadow-md'>
-          <li className='w-full rounded-sm p-1 transition-all hover:bg-main hover:text-white'>
-            내 프로필
-          </li>
+            <li
+              onClick={handleMyProfile}
+              className='w-full rounded-sm p-1 transition-all hover:bg-main hover:text-white'>
+              내 프로필
+            </li>
           <li
             onClick={handleLogout}
             className='w-full rounded-sm p-1 transition-all hover:bg-main hover:text-white'>

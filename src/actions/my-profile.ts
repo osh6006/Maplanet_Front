@@ -1,50 +1,29 @@
-import {
-  IBoard1ProfileResponse,
-  IBoard2ProfileResponse,
-  IBoard3ProfileResponse,
-  IBoard4ProfileResponse
-} from '@/types/interfaces/profile';
+'use server';
 
-import useSWR from 'swr';
+import { cookies } from 'next/headers';
 
-// export async function getProfileData(board: string, userId: number, page: number) {
-//   try {
-//     const res = await fetch(`${SERVER_URL}/userprofile/${board}/${userId}?page=${page}` as string, {
-//       cache: 'force-cache'
-//     });
-//     if (!res.ok) {
-//       // This will activate the closest `error.js` Error Boundary
-//       throw new Error('Failed to get user profile banner data');
-//     }
-//     const data = await res.json();
-//     return data;
-//   } catch (error) {
-//     throw new Error('Failed to get user profile banner data');
-//   }
-// }
+const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
-interface SWRResponse {
-  data: any;
-  error: any;
-  isLoading: boolean;
+export async function GetMyProfileData(board: string, page: number) {
+  const cookiesList = cookies();
+  const accessToken = cookiesList.get('Authorization');
+
+  try {
+    const res = await fetch(`${SERVER_URL}/myprofile/${board}?page=${page}` as string, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `${accessToken?.value}`,
+      },
+    });
+    if (!res.ok) {
+      throw new Error('Failed to get user profile banner data');
+    }
+
+    const data = await res.json();
+
+    return data;
+  } catch (error) {
+    throw new Error('Failed to get user profile banner data');
+  }
 }
-
-function GetMyProfileData(board: string, page: number): SWRResponse {
-  // SWR내의 에러는 API서버에서 내려온 에러를 의미
-  const { data, error } = useSWR<
-    | IBoard1ProfileResponse
-    | IBoard2ProfileResponse
-    | IBoard3ProfileResponse
-    | IBoard4ProfileResponse
-  >(`/myprofile/${board}?page=${page}`);
-
-  return {
-    data,
-    error,
-    isLoading: !error && !data
-  };
-}
-
-
-
-export default GetMyProfileData;

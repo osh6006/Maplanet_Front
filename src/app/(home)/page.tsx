@@ -1,16 +1,28 @@
+'use client';
+
 import Image from 'next/image';
 import Board from './components/board';
 import Icon from '@/components/ui/icon';
-import GetHomeData from '@/actions/home';
 import Inner from '@/components/ui/inner';
 import Loading from '@/components/ui/loading';
 
 import { getCookies } from 'cookies-next';
+import GetHomeData from '@/actions/home';
 
 interface IHomePageProps {}
 
-const HomePage: React.FunctionComponent<IHomePageProps> = async () => {
-  const { data, isLoading, error } = await GetHomeData();
+const HomePage: React.FunctionComponent<IHomePageProps> = () => {
+  const { data, isLoading, error } = GetHomeData() as {
+    data: {
+      visitorsData: {
+        total_visitors: number;
+        today_visitors: number;
+        logged_in_user: number;
+      };
+    };
+    isLoading: boolean;
+    error: any;
+  };
 
   console.log('클라이언트 사이드 모든 쿠키 : ', getCookies());
 
@@ -37,15 +49,15 @@ const HomePage: React.FunctionComponent<IHomePageProps> = async () => {
         <div className='absolute right-0 my-[40px] flex flex-col gap-2 text-sm font-light text-[#c3c3c3]'>
           <p>
             전체 방문 유저:{' '}
-            <span className='font-normal text-[#fff]'>{data.visitorsData?.total_visitors}</span>
+            <span className='font-normal text-[#fff]'>{data.visitorsData.total_visitors}</span>
           </p>
           <p>
             오늘 방문 유저:{' '}
-            <span className='font-normal text-[#fff]'>{data.visitorsData?.today_visitors}</span>
+            <span className='font-normal text-[#fff]'>{data.visitorsData.today_visitors}</span>
           </p>
           <p>
             현재 접속 유저:{' '}
-            <span className='font-normal text-[#fff]'>{data.visitorsData?.logged_in_user}</span>
+            <span className='font-normal text-[#fff]'>{data.visitorsData.logged_in_user}</span>
           </p>
         </div>
 

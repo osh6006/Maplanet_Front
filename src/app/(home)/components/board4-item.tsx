@@ -8,6 +8,7 @@ import Badge from '@/components/ui/badge';
 import HelperBoardModal from '@/components/modal/board/helper-board-modal';
 import clsx from 'clsx';
 import { IPartyBoard } from '@/types/interfaces/party';
+import PartyBoardModal from '@/components/modal/board/party-board-modal';
 
 interface IBoard4ItemProps extends IPartyBoard {}
 
@@ -45,7 +46,7 @@ const Board4Item: React.FunctionComponent<IBoard4ItemProps> = ({
   return (
     <>
     {isModalOpen ? (
-      <HelperBoardModal
+      <PartyBoardModal
         boardId={board4_id}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
