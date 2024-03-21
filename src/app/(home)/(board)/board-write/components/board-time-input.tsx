@@ -39,11 +39,13 @@ const BoardTimeInput: React.FunctionComponent<IBoardTimeInputProps> = ({
                 <div className='flex gap-x-2'>
                   <Button
                     size='sm'
-                    color={newDisabled ? 'main' : 'gray'}
+                    color={newDisabled && value === null ? 'main' : 'gray'}
                     type='button'
                     onClick={() => {
-                      if (newDisabled) {
+                      if (newDisabled && value === null) {
                         onChange('');
+                      } else if (disabled) {
+                        return;
                       } else {
                         onChange(null);
                       }
@@ -54,7 +56,7 @@ const BoardTimeInput: React.FunctionComponent<IBoardTimeInputProps> = ({
               </div>
             </div>
             <div className='mt-2'>
-              {newDisabled ? (
+              {newDisabled && value === null ? (
                 <p className='text-right text-yellow'>시간 협의 가능을 선택하셨습니다. </p>
               ) : null}
             </div>

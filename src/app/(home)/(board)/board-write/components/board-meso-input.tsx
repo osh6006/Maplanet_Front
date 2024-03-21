@@ -107,7 +107,7 @@ const BoardMesoInput: React.FunctionComponent<IBoardMesoInputProps> = ({
                   </Button>
                   <Button
                     size='xs'
-                    color={newDisabled ? 'main' : 'gray'}
+                    color={newDisabled && value === null ? 'main' : 'gray'}
                     type='button'
                     onClick={() => {
                       if (newDisabled) {
@@ -122,7 +122,7 @@ const BoardMesoInput: React.FunctionComponent<IBoardMesoInputProps> = ({
               </div>
             </div>
             <div className='mt-2'>
-              {newDisabled ? (
+              {newDisabled && value === null ? (
                 <p className='text-right text-yellow'>협의 가능을 선택하셨습니다. </p>
               ) : null}
             </div>
