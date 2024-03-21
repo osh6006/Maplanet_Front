@@ -1,47 +1,36 @@
 // useSWR 방식
 
-import { IHelperBoard, IHunterBoard } from '@/types';
-import { IVisitorsData } from '@/types/interfaces/visitors';
-
-// const SERVER_URL = process.env.SERVER_URL;
+const SERVER_URL = process.env.SERVER_URL;
 
 import useSWR from 'swr';
 
-interface SWRResponse {
-  data: any;
-  error: any;
-  isLoading: boolean;
-}
 
-interface IHomeDataDetail {
-  board1Data: IHelperBoard[];
-  board2Data: IHunterBoard[];
-  visitorsData: IVisitorsData[];
-}
 
-function GetHomeData(): SWRResponse {
+// 자주 동적으로 업데이트를 해야되는 경우에는 useSWR을 사용하는 것이 좋다. client side rendering을 위해서
+function GetHomeData()  {
   // SWR내의 에러는 API서버에서 내려온 에러를 의미
-  const { data, error } = useSWR<IHomeDataDetail>(`/main`);
+  const { data, error, isLoading } = useSWR(`/main`);
+
   return {
     data,
     error,
-    isLoading: !error && !data
+    isLoading,
   };
 }
 
-// 일반 fetch 방식
+// 일반 fetch 방식 
 
 // interface IHomeDataProps {
 //   board1Data: IHelperBoard[];
 //   board2Data: IHunterBoard[];
+//   board3Data: IWoodBoard[];
+//   board4Data: IPartyBoard[];
 //   visitorsData: IVisitorsData[];
 // }
 
-// async function GetHomeData(): Promise<IHomeData> {
+// async function GetHomeData(): Promise<IHomeDataProps> {
 //   try {
-//     const response = await fetch(`${SERVER_URL}/main` as string, {
-//       cache: 'force-cache'
-//     });
+//     const response = await fetch(`${SERVER_URL}/main` as string, {});
 //     if (!response.ok) {
 //       throw new Error('Failed to get homepage data.');
 //     }

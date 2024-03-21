@@ -31,12 +31,7 @@ interface SWRResponse {
 
 function GetProfileData(board: string, userId: number, page: number): SWRResponse {
   // SWR내의 에러는 API서버에서 내려온 에러를 의미
-  const { data, error } = useSWR<
-    | IBoard1ProfileResponse
-    | IBoard2ProfileResponse
-    | IBoard3ProfileResponse
-    | IBoard4ProfileResponse
-  >(`/userprofile/${board}/${userId}?page=${page}`);
+  const { data, error } = useSWR(`/userprofile/${board}/${userId}?page=${page}`);
 
   return {
     data,
@@ -44,7 +39,5 @@ function GetProfileData(board: string, userId: number, page: number): SWRRespons
     isLoading: !error && !data
   };
 }
-
-
 
 export default GetProfileData;

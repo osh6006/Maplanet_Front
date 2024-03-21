@@ -31,3 +31,4 @@ export async function MannerCount(user_id: number) {
     }
   }
 }
+

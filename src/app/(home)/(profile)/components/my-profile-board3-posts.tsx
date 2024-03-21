@@ -1,35 +1,22 @@
-'use client';
-
 import * as React from 'react';
 import { IBoard3Data } from '@/types/interfaces/profile';
 import ProfileCard from './profile-card';
-import GetProfileData from '@/actions/profile';
-import Spinner from '@/components/ui/spinner';
 import Pagination from '../../(board)/components/ui/pagination';
+import { GetMyProfileData } from '@/actions/my-profile';
 
-interface IProfileBoard3PostsProps {
+interface IMyProfileBoard3PostsProps {
   board: string;
-  userId: number;
   page: number;
 }
 
-const ProfileBoard3Posts: React.FunctionComponent<IProfileBoard3PostsProps> = ({
+const MyProfileBoard3Posts: React.FunctionComponent<IMyProfileBoard3PostsProps> = async ({
   board,
-  userId,
-  page,
+  page
 }) => {
-  const { data, isLoading, error } = GetProfileData(board, userId, page) as {
-    data: {
-      board3Profile: IBoard3Data[];
-      totalCount: number;
-    };
-    isLoading: boolean;
-    error: any;
+  const data = await GetMyProfileData(board, page) as {
+    board3Profile: IBoard3Data[];
+    totalCount: number;
   };
-
-  if (isLoading) return <Spinner />;
-
-  if (error) return <div>에러가 발생했습니다.</div>;
 
   return (
     <div className='w-full bg-[#222]'>
@@ -39,16 +26,17 @@ const ProfileBoard3Posts: React.FunctionComponent<IProfileBoard3PostsProps> = ({
           {data.board3Profile.map((item, id) => (
             <li key={id}>
               <ProfileCard id={item.board3_id} type={board} {...item} />
-            </li>
+              </li>
           ))}
         </ul>
       ) : (
-        <div className='mt-20 text-center text-[#d3d3d3]'>작성된 게시글이 없습니다.</div>
+        <div className='my-32  text-center text-[#d3d3d3]'>작성된 게시글이 없습니다.</div>
       )}
 
+      {/* pagination */}
       <Pagination totalPost={data.totalCount} itemsPerPage={5} pagePerItem={12} />
     </div>
   );
 };
 
-export default ProfileBoard3Posts;
+export default MyProfileBoard3Posts;
