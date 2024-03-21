@@ -45,9 +45,9 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <body
-        className={`${notoSansKR.className} h-[100dvh] overflow-y-auto overflow-x-hidden bg-background text-white`}>
+        className={`${notoSansKR.className} h-[100dvh] overflow-x-hidden overflow-y-hidden bg-background text-white`}>
         <RootProvider>{children}</RootProvider>
-        <div id='modal-root'></div>
+        <div id='modal-root' className='h-full w-full' />
       </body>
     </html>
   );

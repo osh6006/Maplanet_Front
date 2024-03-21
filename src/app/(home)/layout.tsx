@@ -1,7 +1,7 @@
 import Navbar from '@/components/ui/navbar';
 import Footer from '@/components/ui/footer';
 import Notification from '@/components/ui/notification';
-import DiscordChannelBtn from './components/discord-channel-btn';
+import EdgeButtons from './components/discord-channel-btn';
 import { cookies } from 'next/headers';
 
 interface IHomeLayoutProps {
@@ -16,14 +16,14 @@ const HomeLayout: React.FunctionComponent<IHomeLayoutProps> = ({ children }) => 
   const userInfo = cookieStore.get('userInfo')?.value;
 
   return (
-    <div className='relative h-full'>
+    <div className='relative h-full overflow-y-auto overflow-x-hidden'>
       <Navbar accessToken={accessToken} userInfo={userInfo} />
       <Notification />
-      <div className='flex min-h-[calc(100dvh-110px)] flex-col items-center justify-between pt-[100px] '>
+      <div className='flex min-h-[calc(100dvh-110px)] flex-col items-center justify-between pt-[100px]'>
         {children}
       </div>
       <Footer />
-      <DiscordChannelBtn />
+      <EdgeButtons />
     </div>
   );
 };

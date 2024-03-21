@@ -34,7 +34,9 @@ const PartyBoardModal: React.FunctionComponent<IPartyBoardModalProps> = ({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div onClick={(e) => e.stopPropagation()} className='flex flex-col px-10'>
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className='flex max-h-[600px] flex-col overflow-y-auto px-10'>
         {/* Header */}
         <div className='flex flex-col gap-4 '>
           <BoardModalHeader

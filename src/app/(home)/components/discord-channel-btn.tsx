@@ -9,9 +9,9 @@ interface IDiscordChannelBtnProps {}
 const KAKAO_HREF = process.env.NEXT_PUBLIC_DISCORD_CHANNEL_URL;
 const DISCORD_HREF = process.env.NEXT_PUBLIC_DISCORD_CHANNEL_URL;
 
-const DiscordChannelBtn: React.FunctionComponent<IDiscordChannelBtnProps> = ({}) => {
+const EdgeButtons: React.FunctionComponent<IDiscordChannelBtnProps> = ({}) => {
   return (
-    <div className='fixed bottom-8 right-4 flex flex-col items-end gap-y-4'>
+    <div className='fixed bottom-8 right-10 flex flex-col items-end gap-y-4'>
       <SNSButton
         alt='discord'
         href={DISCORD_HREF || '#'}
@@ -23,7 +23,7 @@ const DiscordChannelBtn: React.FunctionComponent<IDiscordChannelBtnProps> = ({})
       <SNSButton
         alt='kakao'
         href={DISCORD_HREF || '#'}
-        title={'메랜 피플 채널'}
+        title={'메랜 피플 오픈 카톡'}
         imageUrl='/svgs/kakao.svg'
         color='bg-kakao text-black'
       />
@@ -31,4 +31,4 @@ const DiscordChannelBtn: React.FunctionComponent<IDiscordChannelBtnProps> = ({})
   );
 };
 
-export default DiscordChannelBtn;
+export default EdgeButtons;
