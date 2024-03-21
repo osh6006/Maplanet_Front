@@ -163,6 +163,7 @@ const HelperBoardForm: React.FunctionComponent<IHelperBoardFormProps> = () => {
           disabled={isLoading}
           placeholder='서브 직업을 선택해 주세요'
           rules={{ required: '서브 직업을 선택해 주세요' }}
+          alert={'*모든 심쩔은 2차 전직부터 가능합니다.'}
         />
 
         <BoardTimeInput

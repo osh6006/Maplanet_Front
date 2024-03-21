@@ -21,6 +21,7 @@ interface IBoardSelectProps {
     | undefined;
   jobWatch: string | null;
   disabled: boolean;
+  alert?: string;
 }
 
 const BoardSelect: React.FunctionComponent<IBoardSelectProps> = ({
@@ -30,7 +31,8 @@ const BoardSelect: React.FunctionComponent<IBoardSelectProps> = ({
   placeholder,
   rules,
   jobWatch,
-  disabled
+  disabled,
+  alert
 }) => {
   return (
     <Controller
@@ -61,9 +63,7 @@ const BoardSelect: React.FunctionComponent<IBoardSelectProps> = ({
               </div>
             </div>
             {error ? <FormErrorMessage>{error.message}</FormErrorMessage> : null}
-            <span className='w-full text-right text-yellow'>
-              *모든 심쩔은 2차 전직부터 가능합니다.
-            </span>
+            <span className='w-full text-right text-yellow'>{alert}</span>
           </>
         );
       }}
