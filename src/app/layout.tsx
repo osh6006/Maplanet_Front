@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Noto_Sans_KR } from 'next/font/google';
 
 import RootProvider from '../providers/root-provider';
+import { Analytics } from '@vercel/analytics/react';
 
 import './globals.css';
 
@@ -26,9 +27,9 @@ export const metadata: Metadata = {
     url: 'https://www.maplanet.store/',
     images: [
       {
-        url: '/favicons/favicon.png',
-        width: 800,
-        height: 600
+        url: 'https://res.cloudinary.com/dxesudkxn/image/upload/v1711033674/maple/czihquk2xsuu7rlmxio4.png',
+        width: 285,
+        height: 167
       }
     ]
   },
@@ -48,6 +49,7 @@ export default function RootLayout({
         className={`${notoSansKR.className} h-[100dvh] overflow-x-hidden overflow-y-hidden bg-background text-white`}>
         <RootProvider>{children}</RootProvider>
         <div id='modal-root' className='h-full w-full' />
+        <Analytics />
       </body>
     </html>
   );
