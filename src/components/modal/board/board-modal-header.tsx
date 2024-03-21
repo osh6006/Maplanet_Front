@@ -1,11 +1,15 @@
+'use cllient';
+
 import Avatar from '@/components/ui/avatar';
 import Button from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { filterImageUrl } from '@/util/util';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface IPostModalHeaderProps {
   discord_id: string;
+  user_id: string | number;
   discord_image: string;
   discord_global_name: string;
   manner_count: number;
@@ -17,8 +21,10 @@ const BoardModalHeader: React.FunctionComponent<IPostModalHeaderProps> = ({
   discord_global_name,
   discord_image,
   manner_count,
-  report_count
+  report_count,
+  user_id
 }) => {
+  const router = useRouter();
   return (
     <div className='flex flex-col items-center justify-center gap-y-4'>
       <div className='flex w-full flex-1 items-center justify-between  gap-x-4'>
@@ -56,8 +62,7 @@ const BoardModalHeader: React.FunctionComponent<IPostModalHeaderProps> = ({
           color='lightGray'
           size='wide'
           onClick={() => {
-            // TODO : Move Profile
-            console.log('asdf');
+            router.push(`/user-profile/${user_id}`);
           }}>
           프로필 보기
         </Button>

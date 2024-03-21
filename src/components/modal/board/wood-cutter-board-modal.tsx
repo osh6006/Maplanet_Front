@@ -43,6 +43,7 @@ const WoodCutterBoardModal: React.FunctionComponent<IWoodCutterBoardModalProps> 
             discord_global_name={data?.discord_global_name!}
             manner_count={data?.manner_count!}
             report_count={data?.report_count!}
+            user_id={data?.user_id!}
           />
 
           <hr className='my-5' />

@@ -14,6 +14,7 @@ const config: Config = {
         warning: '#D92E2E',
         complete: '#FF0000',
         discord: '#5865F2',
+        kakao: '#FEE500',
         background: '#222222',
         tableBackground: '#161616',
         lightGray: '#444',
