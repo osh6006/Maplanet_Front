@@ -171,7 +171,7 @@ const PartyBoardForm: React.FunctionComponent<IPartyBoardFormProps> = ({}) => {
             },
 
             max: {
-              message: '10명 초과로는 구하실 수 없습니다.',
+              message: '6명 초과로는 구하실 수 없습니다.',
               value: 6
             }
           }}
