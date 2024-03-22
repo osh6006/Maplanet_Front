@@ -45,7 +45,7 @@ const MobileNav: React.FunctionComponent<IMobileNavProps> = ({ userInfo, accessT
           </Link>
         )}
         {isOpen ? (
-          <div ref={ref} className='fixed inset-y-0 left-0 z-20 w-1/2 bg-background px-4'>
+          <div ref={ref} className='fixed inset-y-0 left-0 z-20 w-2/3 bg-background px-4'>
             <button className='absolute right-3 top-6' onClick={handleClose}>
               <Icon size={20} src='/svgs/x.svg' alt='menu' />
             </button>
