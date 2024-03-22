@@ -66,7 +66,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
         </div>
 
         {/* 메인 컨텐츠 부분 */}
-        <div className='grid w-full grid-cols-1 grid-rows-2 gap-4 sm:grid-cols-2 sm:gap-10'>
+        <div className='grid w-full grid-cols-1 grid-rows-2 gap-x-4 gap-y-4 sm:grid-cols-2 sm:gap-y-10'>
           {category.map((category, index) => {
             return <Board key={index} category={category} />;
           })}
