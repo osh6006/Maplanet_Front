@@ -21,7 +21,7 @@ const Navbar: React.FunctionComponent<INavbarProps> = ({ accessToken, userInfo }
       <NavInner>
         <div className='flex h-full items-center justify-center sm:justify-between'>
           {/* nav logo */}
-          <Link href='/' className=''>
+          <Link href='/' className='z-10'>
             <p className={`${fugaz.className} pt-1 text-[28px]`}>Mapleland PP</p>
           </Link>
 
