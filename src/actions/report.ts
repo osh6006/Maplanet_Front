@@ -3,8 +3,8 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-// const SERVER_URL = process.env.SERVER_URL;
-const SERVER_URL = 'http://13.209.210.215:3000';
+const SERVER_URL = process.env.SERVER_URL;
+// const SERVER_URL = 'http://13.209.210.215:3000';
 
 export default async function ReportCount(user_id: number) {
   const cookiesList = cookies();
