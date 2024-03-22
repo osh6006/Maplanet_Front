@@ -2,11 +2,9 @@
 
 import Image from 'next/image';
 import Board from './components/board';
-import Icon from '@/components/ui/icon';
 import Inner from '@/components/ui/inner';
 import Loading from '@/components/ui/loading';
 
-import { getCookies } from 'cookies-next';
 import GetHomeData from '@/actions/home';
 
 interface IHomePageProps {}

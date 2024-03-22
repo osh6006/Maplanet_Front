@@ -23,24 +23,11 @@ const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({ userCookie }) =
 
   const handleMyProfile = () => {
     // TODO : 내 프로필로 이동
-    console.log('push to my profile')
+    console.log('push to my profile');
     router.push(`/my-profile?page=1&board=board1`);
   };
 
   const handleLogout = async () => {
-    // TODO : 쿠키 삭제 후 리다이렉트
-    // console.log('click');
-
-    // const result = await fetch(`https://maplanet.store/auth/logout`, {
-    //   method: 'DELETE',
-    //   headers: {
-    //     Authorization: `asdf`
-    //   },
-    //   body: ''
-    // });
-
-    // console.log(await result.json());
-
     await logOut();
     router.push('/');
   };
@@ -57,12 +44,12 @@ const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({ userCookie }) =
       ref={ref}>
       <Avatar imgUrl={avatarUrl} size={30} />
       {isOpen ? (
-        <ul className='absolute left-0 z-[60] mt-10 min-w-[150px] rounded-md bg-white px-2 py-2 text-sm text-black shadow-md'>
-            <li
-              onClick={handleMyProfile}
-              className='w-full rounded-sm p-1 transition-all hover:bg-main hover:text-white'>
-              내 프로필
-            </li>
+        <ul className='absolute right-0 z-[60] mt-10 min-w-[150px] rounded-md bg-white px-2 py-2 text-sm text-black shadow-md sm:left-0'>
+          <li
+            onClick={handleMyProfile}
+            className='w-full rounded-sm p-1 transition-all hover:bg-main hover:text-white'>
+            내 프로필
+          </li>
           <li
             onClick={handleLogout}
             className='w-full rounded-sm p-1 transition-all hover:bg-main hover:text-white'>

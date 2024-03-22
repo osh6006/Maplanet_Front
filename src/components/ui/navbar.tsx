@@ -1,15 +1,14 @@
 'use client';
 
-import Icon from './icon';
+import { Fugaz_One } from 'next/font/google';
+
 import Inner from './inner';
 import Link from 'next/link';
-import Button from './button';
-import { Fugaz_One } from 'next/font/google';
-import AvatarMenu from './avatar-menu';
-import toast from 'react-hot-toast';
+import DesktopNav from '../navbar/desktop-nav';
+import MobileNav from '../navbar/mobile-nav';
+import NavInner from '../navbar/nav-inner';
 
 const fugaz = Fugaz_One({ subsets: ['latin'], weight: ['400'] });
-const DISCORD_LINK = process.env.NEXT_PUBLIC_DISCORD_LOGIN_LINK;
 
 interface INavbarProps {
   userInfo?: string;
@@ -18,48 +17,19 @@ interface INavbarProps {
 
 const Navbar: React.FunctionComponent<INavbarProps> = ({ accessToken, userInfo }) => {
   return (
-    <nav className='fixed z-50 flex h-[60px] w-full bg-black px-10 text-white xl:px-0'>
-      <Inner>
-        <div className='flex h-full items-center justify-between'>
+    <nav className='fixed z-50 flex h-[60px] w-full bg-black text-white xl:px-0'>
+      <NavInner>
+        <div className='flex h-full items-center justify-center sm:justify-between'>
           {/* nav logo */}
-          <Link href='/'>
+          <Link href='/' className=''>
             <p className={`${fugaz.className} pt-1 text-[28px]`}>Mapleland PP</p>
           </Link>
 
           {/* nav links */}
-          <div className='flex items-center space-x-7 whitespace-nowrap text-lg'>
-            <Link href='/helper-board'>심쩔</Link>
-            <Link href='/hunter-board'>겹사</Link>
-            <Link href='/wood-cutter-board'>나무꾼</Link>
-            <Link href='/party-board'>파티</Link>
-            <Link href='/notice'>공지사항</Link>
-
-            {/* TODO: 로그인시 새글 등록 뜨게하고 로그아웃시 안뜨게 수정 */}
-            <div className='flex space-x-3'>
-              {accessToken ? (
-                <AvatarMenu userCookie={userInfo || ''} />
-              ) : (
-                <Link href={DISCORD_LINK || '#'}>
-                  <Button size='sm' color='discord'>
-                    <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15} />
-                    로그인
-                  </Button>
-                </Link>
-              )}
-              <Link href='/board-write'>
-                <Button
-                  color='main'
-                  size='sm'
-                  onClick={() => {
-                    if (!accessToken) toast.error('로그인을 해주세요!');
-                  }}>
-                  + 새 글
-                </Button>
-              </Link>
-            </div>
-          </div>
+          <MobileNav accessToken={accessToken} userInfo={userInfo} />
+          <DesktopNav accessToken={accessToken} userInfo={userInfo} />
         </div>
-      </Inner>
+      </NavInner>
     </nav>
   );
 };
