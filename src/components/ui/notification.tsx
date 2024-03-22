@@ -19,7 +19,7 @@ const Notification: React.FunctionComponent<INotificationProps> = () => {
         ) : (
           <>
             <Icon src='/svgs/snail.svg' alt='snail' size={26} />
-            <div className='text-lg font-bold text-[#7C0747]'>
+            <div className='whitespace-nowrap text-lg font-bold text-[#7C0747]'>
               <span className='mr-5'>[공지사항]</span>
               <span>{data?.noticeData?.title}</span>
             </div>
