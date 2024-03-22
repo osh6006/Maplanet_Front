@@ -102,7 +102,7 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
       </div>
 
       {/* 아이템 리스트 컴포넌트*/}
-      <ul className='mt-[17px] flex flex-col justify-around gap-[13px]'>
+      <ul className='mt-[17px] flex flex-col justify-around gap-[13px] '>
         {category === '심쩔' &&
           categoryData.map((item: IHelperBoard, index: number) => {
             return <Board1Item key={index} {...item} />;
