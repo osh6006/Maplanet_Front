@@ -24,10 +24,10 @@ const Modal: React.FunctionComponent<IModalProps> = ({ children, onClose, isOpen
       {isClient ? (
         createPortal(
           <div
-            className='fixed inset-0 z-[5000] flex items-center justify-center  bg-black/65 '
+            className='fixed inset-0 z-[5000] flex items-center justify-center bg-black/65 '
             onClick={onClose}>
             <div
-              className='relative mx-10 max-h-[500px] w-fit min-w-[360px] max-w-2xl overflow-x-hidden overflow-y-scroll rounded-md bg-tableBackground px-10 py-16 sm:max-h-full sm:overflow-hidden sm:px-12'
+              className='relative mx-10  w-fit min-w-[360px] max-w-2xl overflow-x-hidden overflow-y-scroll rounded-md bg-tableBackground px-10 py-16 sm:max-h-full sm:overflow-hidden sm:px-12'
               onClick={(e) => {
                 e.stopPropagation();
               }}>
