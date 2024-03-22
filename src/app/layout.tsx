@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { Noto_Sans_KR } from 'next/font/google';
 
 import RootProvider from '../providers/root-provider';
-import { Analytics } from '@vercel/analytics/react';
 
 import './globals.css';
 
@@ -52,6 +53,7 @@ export default function RootLayout({
         <RootProvider>{children}</RootProvider>
         <div id='modal-root' className='h-full w-full' />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
