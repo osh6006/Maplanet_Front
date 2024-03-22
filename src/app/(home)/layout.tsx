@@ -16,7 +16,7 @@ const HomeLayout: React.FunctionComponent<IHomeLayoutProps> = ({ children }) => 
   const userInfo = cookieStore.get('userInfo')?.value;
 
   return (
-    <div className='relative h-full overflow-y-auto overflow-x-hidden'>
+    <div className='scrollbar scrollbar-thumb-lightGray scrollbar-track-background relative h-full overflow-y-auto overflow-x-hidden'>
       <Navbar accessToken={accessToken} userInfo={userInfo} />
       <Notification />
       <div className='flex min-h-[calc(100dvh-110px)] flex-col items-center justify-between pt-[100px]'>

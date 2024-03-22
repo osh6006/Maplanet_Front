@@ -36,7 +36,7 @@ const PartyBoardModal: React.FunctionComponent<IPartyBoardModalProps> = ({
     <Modal isOpen={isOpen} onClose={onClose}>
       <div
         onClick={(e) => e.stopPropagation()}
-        className='flex max-h-[600px] flex-col overflow-y-auto px-10'>
+        className='scrollbar-thin scrollbar-thumb-lightGray scrollbar-track-background flex max-h-[600px] flex-col overflow-y-auto px-10'>
         {/* Header */}
         <div className='flex flex-col gap-4 '>
           <BoardModalHeader

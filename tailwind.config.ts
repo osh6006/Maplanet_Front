@@ -80,6 +80,6 @@ const config: Config = {
       }
     }
   },
-  plugins: []
+  plugins: [require('tailwind-scrollbar')({ preferredStrategy: 'pseudoelements' })]
 };
 export default config;
