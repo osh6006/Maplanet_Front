@@ -11,9 +11,10 @@ interface IDesktopNavProps {
   accessToken?: string;
 }
 
-const DISCORD_LINK = process.env.NEXT_PUBLIC_DISCORD_LOGIN_LINK;
+const DISCORD_LINK = process.env.NEXT_PUBLIC_DISCORD_LOGIN_LINK; 
 
 const DesktopNav: React.FunctionComponent<IDesktopNavProps> = ({ accessToken, userInfo }) => {
+  
   return (
     <div className='hidden items-center gap-x-4 sm:flex'>
       <ul className='flex items-center space-x-7 whitespace-nowrap text-lg'>
@@ -43,7 +44,7 @@ const DesktopNav: React.FunctionComponent<IDesktopNavProps> = ({ accessToken, us
               if (!accessToken) toast.error('로그인을 해주세요!');
             }}>
             + 새 글
-          </Button>
+          </Button> 
         </Link>
       </div>
     </div>
