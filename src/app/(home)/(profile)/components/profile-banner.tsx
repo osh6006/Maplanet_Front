@@ -86,7 +86,7 @@ const ProfileBanner: React.FunctionComponent<IProfileBannerProps> = ({ board, us
             <Button
               color='lightGray'
               size='wide'
-              onClick={async () => await mannerIncreaseOrDecrease(userId)}>
+              onClick={() =>  mannerIncreaseOrDecrease(userId)}>
               매너 추천
             </Button>
             <Button color='lightGray' size='wide' onClick={() => reportIncreaseOrDecrease(userId)}>

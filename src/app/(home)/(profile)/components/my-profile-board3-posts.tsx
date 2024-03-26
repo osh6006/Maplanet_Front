@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IBoard3Data } from '@/types/interfaces/profile';
+import { IBoard3ProfileResponse } from '@/types/interfaces/profile';
 import ProfileCard from './profile-card';
 import Pagination from '../../(board)/components/ui/pagination';
 import { GetMyProfileData } from '@/actions/my-profile';
@@ -13,10 +13,7 @@ const MyProfileBoard3Posts: React.FunctionComponent<IMyProfileBoard3PostsProps> 
   board,
   page
 }) => {
-  const data = await GetMyProfileData(board, page) as {
-    board3Profile: IBoard3Data[];
-    totalCount: number;
-  };
+  const data = (await GetMyProfileData(board, page)) as IBoard3ProfileResponse;
 
   return (
     <div className='w-full bg-[#222]'>
@@ -25,8 +22,8 @@ const MyProfileBoard3Posts: React.FunctionComponent<IMyProfileBoard3PostsProps> 
         <ul className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-5 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
           {data.board3Profile.map((item, id) => (
             <li key={id}>
-              <ProfileCard id={item.board3_id} type={board} {...item} />
-              </li>
+              <ProfileCard board_id={item.board3_id} boardType={board} {...item} />
+            </li>
           ))}
         </ul>
       ) : (

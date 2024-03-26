@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IBoard2Data } from '@/types/interfaces/profile';
+import { IBoard2Data, IBoard2ProfileResponse } from '@/types/interfaces/profile';
 import ProfileCard from './profile-card';
 import Pagination from '../../(board)/components/ui/pagination';
 import { GetMyProfileData } from '@/actions/my-profile';
@@ -13,10 +13,7 @@ const MyProfileBoard2Posts: React.FunctionComponent<IMyProfileBoard2PostsProps> 
   board,
   page
 }) => {
-  const data = await GetMyProfileData(board, page) as {
-    board2Profile: IBoard2Data[];
-    totalCount: number;
-  };
+  const data = await GetMyProfileData(board, page) as IBoard2ProfileResponse; 
 
   return (
     <div className='w-full bg-[#222]'>
@@ -25,7 +22,7 @@ const MyProfileBoard2Posts: React.FunctionComponent<IMyProfileBoard2PostsProps> 
         <ul className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-5 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
           {data.board2Profile.map((item, id) => (
             <li key={id}>
-              <ProfileCard id={item.board2_id} type={board} {...item} />
+              <ProfileCard board_id={item.board2_id} boardType={board} {...item} />
             </li>
           ))}
         </ul>

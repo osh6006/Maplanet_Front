@@ -3,7 +3,8 @@ import Inner from '@/components/ui/inner';
 import * as React from 'react';
 import { IMyProfileData } from '@/types/interfaces/profile';
 import { filterImageUrl } from '@/util/util';
-import getMyProfileData from '@/actions/my-profile';
+import { GetMyProfileData } from '@/actions/my-profile';
+
 
 interface IMyProfileBannerProps {
   board: string;
@@ -12,7 +13,7 @@ interface IMyProfileBannerProps {
 
 const MyProfileBanner: React.FunctionComponent<IMyProfileBannerProps> = async ({ board, page }) => {
   console.log('My profile banner', board, page)
-  const data = await getMyProfileData(board, page)
+  const data = await GetMyProfileData(board, page)
   
   return (
     <div className='flex h-[193px] items-center bg-[#000]'>
