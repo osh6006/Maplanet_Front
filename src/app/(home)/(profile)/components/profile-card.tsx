@@ -16,7 +16,7 @@ import HelperBoardModal from '@/components/modal/board/helper-board-modal';
 import HunterBoardModal from '@/components/modal/board/hunter-board-modal';
 import WoodCutterBoardModal from '@/components/modal/board/wood-cutter-board-modal';
 import { usePathname } from 'next/navigation';
-import { CompleteMyPost } from '@/actions/my-profile';
+import { CompleteMyPost } from '@/actions/complete';
 dayjs.locale('ko');
 
 interface IProfileCard {
@@ -66,19 +66,15 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
   level,
   recruit_people_count
 }) => {
-  const pathName = usePathname();
-  console.log(boardType, board_id);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const pathName = usePathname();
+  console.log('pathName', pathName); // /my-profile
 
   const onOpen = () => {
     setIsModalOpen(true);
   };
 
-  const handleComplete = (boardType: string, board_id: number) => {
-    CompleteMyPost(boardType, board_id);
-  };
-
-  
   return (
     <>
       {isModalOpen ? (
@@ -124,11 +120,16 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
         pathName === '/my-profile' ? (
           <div
             className={`absolute inset-0 flex flex-col items-center justify-center gap-y-2 text-nowrap bg-black/50 px-4 opacity-0 transition
-          group-hover:opacity-100 group-hover:duration-300`}>
+      group-hover:opacity-100 group-hover:duration-300`}>
             <Button
               color='lightGray'
               size='wide'
-              onClick={() => handleComplete(boardType, board_id)}>
+              onClick={() => {
+                if (window.confirm('완료하시겠습니까?')) {
+                  console.log('boardType', boardType, 'board_id', board_id);
+                  CompleteMyPost(boardType, board_id);
+                }
+              }}>
               완료하기
             </Button>
           </div>
