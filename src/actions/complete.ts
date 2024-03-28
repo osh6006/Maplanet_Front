@@ -4,32 +4,30 @@ import { cookies } from 'next/headers';
 
 const SERVER_URL = process.env.SERVER_URL;
 
-export async function MannerCount(user_id: number) {
+export async function CompleteMyPost(boardType: string, board_id: number) {
   const cookiesList = cookies();
   const hasTokenCookie = cookiesList.has('Authorization');
   const accessToken = cookiesList.get('Authorization')?.value;
 
-  console.log('Manner count', hasTokenCookie, accessToken)
-  if (hasTokenCookie && accessToken) {
+  if (accessToken && hasTokenCookie) {
     try {
-      // PATCH 요청 보내기
-      const res = await fetch(`${SERVER_URL}/userprofile/${user_id}/manner` as string, {
+      console.log(boardType, board_id)
+
+      // https://www.maplanet.store/board1/complete/81
+      const res = await fetch(`${SERVER_URL}/${boardType}/complete/${board_id}` as string, {
         method: 'PATCH',
         headers: {
-          'Content-Type': 'application/json',
           Authorization: `${accessToken}`
         }
       });
 
-      console.log(res.json());
-      if (!res.ok) {
-        throw new Error('Failed to increase manner count1');
-      }
+      if (res.ok) console.log('complete post res status', res.status);
 
-      console.log('Manner count increased');
+      if (!res.ok) {
+        throw new Error('Failed to complete my post');
+      }
     } catch (error) {
       console.log(error);
     }
   }
 }
-

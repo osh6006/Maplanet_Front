@@ -15,11 +15,13 @@ import PartyBoardModal from '@/components/modal/board/party-board-modal';
 import HelperBoardModal from '@/components/modal/board/helper-board-modal';
 import HunterBoardModal from '@/components/modal/board/hunter-board-modal';
 import WoodCutterBoardModal from '@/components/modal/board/wood-cutter-board-modal';
+import { usePathname } from 'next/navigation';
+import { CompleteMyPost } from '@/actions/complete';
 dayjs.locale('ko');
 
 interface IProfileCard {
-  id: number;
-  type: string;
+  board_id: number;
+  boardType: string;
   user_id: number;
   discord_id: string;
   meso?: number;
@@ -42,8 +44,8 @@ interface IProfileCard {
 }
 
 const ProfileCard: React.FunctionComponent<IProfileCard> = ({
-  id,
-  type,
+  board_id,
+  boardType,
   user_id,
   discord_id,
   meso,
@@ -66,6 +68,9 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const pathName = usePathname();
+  console.log('pathName', pathName); // /my-profile
+
   const onOpen = () => {
     setIsModalOpen(true);
   };
@@ -73,21 +78,37 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
   return (
     <>
       {isModalOpen ? (
-        type === 'board1' ? (
-          <HelperBoardModal boardId={id} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-        ) : type === 'board2' ? (
-          <HunterBoardModal boardId={id} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-        ) : type === 'board3' ? (
-          <WoodCutterBoardModal boardId={id} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-        ) : type === 'board4' ?(
-          <PartyBoardModal boardId={id} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        boardType === 'board1' ? (
+          <HelperBoardModal
+            boardId={board_id}
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          />
+        ) : boardType === 'board2' ? (
+          <HunterBoardModal
+            boardId={board_id}
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          />
+        ) : boardType === 'board3' ? (
+          <WoodCutterBoardModal
+            boardId={board_id}
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          />
+        ) : boardType === 'board4' ? (
+          <PartyBoardModal
+            boardId={board_id}
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          />
         ) : null
       ) : null}
 
       <div
         className={`group relative h-[336px] w-full flex-col justify-between overflow-hidden rounded-3xl bg-[#161616] p-8 transition-all sm:flex
         sm:w-[320px] ${complete ? 'pointer-events-none' : ''}`}>
-        {/* complete 처리 */}
+        {/* 완료된 경우 */}
         {complete ? (
           <div className='absolute inset-0 z-[15] flex items-center justify-center backdrop-blur-sm'>
             <div className='relative flex h-full w-full items-center justify-center'>
@@ -95,8 +116,25 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
               <div className='absolute inset-0 bg-black/40'></div>
             </div>
           </div>
+        ) : // 내 프로필인 경우 완료하기 버튼 보이기
+        pathName === '/my-profile' ? (
+          <div
+            className={`absolute inset-0 flex flex-col items-center justify-center gap-y-2 text-nowrap bg-black/50 px-4 opacity-0 transition
+      group-hover:opacity-100 group-hover:duration-300`}>
+            <Button
+              color='lightGray'
+              size='wide'
+              onClick={() => {
+                if (window.confirm('완료하시겠습니까?')) {
+                  console.log('boardType', boardType, 'board_id', board_id);
+                  CompleteMyPost(boardType, board_id);
+                }
+              }}>
+              완료하기
+            </Button>
+          </div>
         ) : (
-          // hover content
+          // 완료 되지 않은 경우, hover content
           <div
             className={`absolute inset-0 flex flex-col items-center justify-center gap-y-2 text-nowrap bg-black/50 px-4 opacity-0 transition
             group-hover:opacity-100 group-hover:duration-300`}>
@@ -111,7 +149,10 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
                 window.open(`discord://discord.com/users/${discord_id}`, '_blank');
                 console.log('move to discord');
               }}>
-              <Link href={`discord://discord.com/users/${discord_id}`} target='_blanck' className='flex items-center gap-x-2'>
+              <Link
+                href={`discord://discord.com/users/${discord_id}`}
+                target='_blanck'
+                className='flex items-center gap-x-2'>
                 <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={20} />
                 1:1 대화
               </Link>
@@ -124,20 +165,20 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
           {/* 제목 뱃지 */}
           <Badge
             className={clsx(
-              type === 'board1' && 'bg-violet',
-              type === 'board2' && report_kind === '인기도 하락'
+              boardType === 'board1' && 'bg-violet',
+              boardType === 'board2' && report_kind === '인기도 하락'
                 ? 'bg-main'
-                : type === 'board2' && report_kind === '겹사 의뢰'
+                : boardType === 'board2' && report_kind === '겹사 의뢰'
                   ? 'bg-violet'
                   : null,
-              type === 'board3' && 'bg-main',
-              type === 'board4' && 'bg-main'
+              boardType === 'board3' && 'bg-main',
+              boardType === 'board4' && 'bg-main'
             )}
             size='card'>
-            {(type === 'board1' && '심쩔') ||
-              (type === 'board2' && report_kind) ||
-              (type === 'board3' && '나무꾼') ||
-              (type === 'board4' && '파티 모집')}
+            {(boardType === 'board1' && '심쩔') ||
+              (boardType === 'board2' && report_kind) ||
+              (boardType === 'board3' && '나무꾼') ||
+              (boardType === 'board4' && '파티 모집')}
           </Badge>
           <time className='font-medium text-gray-400'>{created_at.toString().split('T')[0]}</time>
         </div>

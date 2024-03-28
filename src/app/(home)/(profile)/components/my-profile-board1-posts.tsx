@@ -1,31 +1,27 @@
 import * as React from 'react';
-import { IBoard1Data } from '@/types/interfaces/profile';
+import { IBoard1ProfileResponse } from '@/types/interfaces/profile';
 import ProfileCard from './profile-card';
 import Pagination from '../../(board)/components/ui/pagination';
-import { GetMyProfileData } from '@/actions/my-profile';
 
 interface IMyProfileBoard1PostsProps {
-  board: string;
+  boardType: string;
   page: number;
+  data: IBoard1ProfileResponse;
 }
 
-const MyProfileBoard1Posts: React.FunctionComponent<IMyProfileBoard1PostsProps> = async ({
-  board,
-  page
+const MyProfileBoard1Posts: React.FunctionComponent<IMyProfileBoard1PostsProps> = ({
+  boardType,
+  data, 
 }) => {
-  const data = (await GetMyProfileData(board, page)) as {
-    board1Profile: IBoard1Data[];
-    totalCount: number;
-  };
 
   return (
     <div className='w-full bg-[#222]'>
       {/* 심쩔 */}
-      {board === 'board1' && data.board1Profile.length > 0 ? (
+      {boardType === 'board1' && data.board1Profile.length > 0 ? (
         <ul className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-5 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
           {data.board1Profile.map((item, id) => (
             <li key={id}>
-              <ProfileCard id={item.board1_id} type={board} {...item} />
+              <ProfileCard board_id={item.board1_id} boardType={boardType} {...item}/>
             </li>
           ))}
         </ul>

@@ -38,7 +38,7 @@ const ProfileBoard1Posts: React.FunctionComponent<IProfileBoard1PostsProps> = ({
         <ul className='mx-10 mt-4 grid grid-cols-1 place-items-center gap-5 sm:mx-0 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
           {data.board1Profile.map((item, id) => (
             <li key={id}>
-              <ProfileCard id={item.board1_id} type={board} {...item} />
+              <ProfileCard board_id={item.board1_id} boardType={board} {...item} />
             </li>
           ))}
         </ul>

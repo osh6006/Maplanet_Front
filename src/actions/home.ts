@@ -1,6 +1,4 @@
-// useSWR 방식
-
-const SERVER_URL = process.env.SERVER_URL;
+// useSWR 방식으로 데이터를 가져오는 방법
 
 import useSWR from 'swr';
 

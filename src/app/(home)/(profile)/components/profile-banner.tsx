@@ -11,6 +11,7 @@ import GetProfileData from '@/actions/profile';
 import { IBoard1ProfileResponse } from '@/types/interfaces/profile';
 import ReportCount from '@/actions/report';
 import { MannerCount } from '@/actions/manner-count';
+import { filterImageUrl } from '@/util/util';
 
 interface IProfileBannerProps {
   type: 'my'|'user';
@@ -47,7 +48,7 @@ const ProfileBanner: React.FunctionComponent<IProfileBannerProps> = ({ board, us
       <Inner>
         <div className='flex w-[50%] items-center justify-between'>
           <div className='flex'>
-            <Avatar imgUrl={data.userProfile.discord_image} size={80} />
+            <Avatar imgUrl={filterImageUrl(data.userProfile.discord_image)} size={80} />
             <div className='ml-[20px] flex  flex-col justify-center '>
               <div className='mb-2 flex items-end gap-3'>
                 <h1 className='text-[28px] font-bold'>{data.userProfile.discord_global_name}</h1>
@@ -85,7 +86,7 @@ const ProfileBanner: React.FunctionComponent<IProfileBannerProps> = ({ board, us
             <Button
               color='lightGray'
               size='wide'
-              onClick={async () => await mannerIncreaseOrDecrease(userId)}>
+              onClick={() =>  mannerIncreaseOrDecrease(userId)}>
               매너 추천
             </Button>
             <Button color='lightGray' size='wide' onClick={() => reportIncreaseOrDecrease(userId)}>
