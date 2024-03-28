@@ -23,7 +23,7 @@ const HomeLayout: React.FunctionComponent<IHomeLayoutProps> = ({ children }) => 
         {children}
       </div>
       <Footer />
-      <EdgeButtons />
+      <EdgeButtons accessToken={accessToken} />
     </div>
   );
 };

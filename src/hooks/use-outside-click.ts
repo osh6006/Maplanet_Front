@@ -13,6 +13,13 @@ export default function useOutsideClick() {
     [setIsOpen]
   );
 
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+  const handleOpen = () => {
+    setIsOpen(true);
+  };
+
   useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick);
     return () => {
@@ -20,5 +27,5 @@ export default function useOutsideClick() {
     };
   }, [handleOutsideClick]);
 
-  return { isOpen, setIsOpen, ref };
+  return { isOpen, setIsOpen, ref, handleClose, handleOpen };
 }

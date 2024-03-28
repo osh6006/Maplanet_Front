@@ -3,7 +3,7 @@
 import Banner from '@/components/ui/banner';
 import Button from '@/components/ui/button';
 import Inner from '@/components/ui/inner';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
 interface IHunterBoardLayoutProps {

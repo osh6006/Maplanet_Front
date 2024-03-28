@@ -113,21 +113,21 @@ const Board1Item: React.FunctionComponent<IBoard1ItemProps> = ({
         <div className='my-2 text-base'>{title}</div>
 
         {/* 세번째 내용 */}
-        <div className='flex gap-[5px]'>
+        <div className='flex flex-wrap gap-[5px]'>
           <Badge size='card' className='bg-lightGray'>
             <Icon src='/svgs/money.svg' alt='money' size={14} />
-            <span className='text-[12px] text-[#EBFF00]  pb-[1px]'>{addCommasToCost(meso)}</span>
+            <span className='pb-[1px] text-[12px]  text-[#EBFF00]'>{addCommasToCost(meso)}</span>
           </Badge>
           <Badge size='card' className='bg-lightGray text-[12px]'>
             <div className='flex items-center gap-1'>
               <Icon src='/svgs/time.svg' alt='time' size={12} />
-              <span className='text-[12px] pb-[1px]'>{progress_time}</span>
+              <span className='pb-[1px] text-[12px]'>{progress_time}</span>
             </div>
           </Badge>
           <Badge size='card' className='bg-lightGray text-[12px]'>
             <div className='flex items-center gap-1'>
               <Icon src='/svgs/jobs.svg' alt='jobs' size={12} />
-              <span className='text-[12px] pb-[1px]'>{sub_job}</span>
+              <span className='pb-[1px] text-[12px]'>{sub_job}</span>
             </div>
           </Badge>
         </div>

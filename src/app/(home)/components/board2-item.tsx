@@ -108,19 +108,19 @@ const Board2Item: React.FunctionComponent<IBoard2ItemProps> = ({
         <div className='my-2 text-base'>{title}</div>
 
         {/* 세번째 내용 */}
-        <div className='flex gap-[5px]'>
+        <div className='flex flex-wrap gap-[5px]'>
           <Badge size='card' className='bg-lightGray'>
             <Icon src='/svgs/money.svg' alt='money' size={14} />
-            <span className='text-[12px] pb-[1px] text-[#EBFF00]'>{addCommasToCost(meso)}</span>
+            <span className='pb-[1px] text-[12px] text-[#EBFF00]'>{addCommasToCost(meso)}</span>
           </Badge>
           <Badge size='card' className='bg-lightGray'>
             <Icon src='/svgs/hunt.svg' alt='kind' size={14} />
-            <span className='text-[12px] pb-[1px]'>{report_kind}</span>
+            <span className='pb-[1px] text-[12px]'>{report_kind}</span>
           </Badge>
           <Badge size='card' className='bg-lightGray'>
             <div className='flex items-center gap-1'>
               <Icon src='/svgs/nickname.svg' alt='map' size={12} />
-              <span className='text-[12px] pb-[1px]'>{place_theif_nickname}</span>
+              <span className='pb-[1px] text-[12px]'>{place_theif_nickname}</span>
             </div>
           </Badge>
         </div>
