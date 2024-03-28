@@ -5,16 +5,14 @@ import { IMyProfileData } from '@/types/interfaces/profile';
 import { filterImageUrl } from '@/util/util';
 import { GetMyProfileData } from '@/actions/my-profile';
 
-
 interface IMyProfileBannerProps {
   board: string;
   page: number;
 }
 
 const MyProfileBanner: React.FunctionComponent<IMyProfileBannerProps> = async ({ board, page }) => {
-  console.log('My profile banner', board, page)
-  const data = await GetMyProfileData(board, page)
-  
+  const data = await GetMyProfileData(board, page);
+
   return (
     <div className='flex h-[193px] items-center bg-[#000]'>
       <Inner>

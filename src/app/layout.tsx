@@ -2,15 +2,9 @@ import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-import { Noto_Sans_KR } from 'next/font/google';
-
 import RootProvider from '../providers/root-provider';
 
 import './globals.css';
-
-const notoSansKR = Noto_Sans_KR({
-  subsets: ['latin']
-});
 
 export const metadata: Metadata = {
   title: '메랜피플',
@@ -48,8 +42,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
-      <body
-        className={`${notoSansKR.className} h-[100dvh] overflow-x-hidden overflow-y-hidden bg-background text-white`}>
+      <head>
+        <link
+          rel='stylesheet'
+          as='style'
+          href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable-dynamic-subset.css'
+        />
+      </head>
+      <body className={`h-[100dvh] overflow-x-hidden overflow-y-hidden bg-background text-white`}>
         <RootProvider>{children}</RootProvider>
         <div id='modal-root' className='h-full w-full' />
         <Analytics />

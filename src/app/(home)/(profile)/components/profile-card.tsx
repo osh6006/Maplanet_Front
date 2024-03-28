@@ -69,7 +69,6 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const pathName = usePathname();
-  console.log('pathName', pathName); // /my-profile
 
   const onOpen = () => {
     setIsModalOpen(true);
@@ -126,7 +125,6 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
               size='wide'
               onClick={() => {
                 if (window.confirm('완료하시겠습니까?')) {
-                  console.log('boardType', boardType, 'board_id', board_id);
                   CompleteMyPost(boardType, board_id);
                 }
               }}>
@@ -147,7 +145,6 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
               size='wide'
               onClick={() => {
                 window.open(`discord://discord.com/users/${discord_id}`, '_blank');
-                console.log('move to discord');
               }}>
               <Link
                 href={`discord://discord.com/users/${discord_id}`}

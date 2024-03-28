@@ -15,7 +15,6 @@ const Pagination: React.FunctionComponent<IPaginationProps> = ({
   pagePerItem
 }) => {
   // TODO : query string 으로 pagination
-  console.log('totalpost is:', totalPost, 'itemsPerpage is:', itemsPerPage)
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
