@@ -39,7 +39,14 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
         <div className='my-10 flex w-full flex-col justify-between  sm:flex-row'>
           <div className='flex flex-1 flex-col items-center gap-4'>
             <div className='mb-5 mt-2'>
-              <Image src='/svgs/main-logo.svg' alt='logo' height={50} width={350} />
+              <Image
+                src={'/svgs/main-logo.svg'}
+                width='50'
+                height='350'
+                priority
+                alt='logo'
+                className='h-auto w-full'
+              />
             </div>
           </div>
           {/* 방문자 수 */}

@@ -8,7 +8,14 @@ interface ILoadingProps {
 const Loading: React.FunctionComponent<ILoadingProps> = ({ size }) => {
   return (
     <div className={clsx('flex flex-col items-center justify-center gap-y-4')}>
-      <Image alt='loading' src={'/images/loading.webp'} width={size} height={size} />
+      <Image
+        alt='loading'
+        src='/images/loading.webp'
+        width={size}
+        height={size}
+        priority={false}
+        className='aspect-square'
+      />
       <p className='text-lg font-bold'>Loading...</p>
     </div>
   );

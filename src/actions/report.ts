@@ -14,7 +14,7 @@ export default async function ReportCount(user_id: number) {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `${accessToken?.value}`,
+        Authorization: `${accessToken?.value}`
       },
       next: { revalidate: 0 }
     });
@@ -22,8 +22,6 @@ export default async function ReportCount(user_id: number) {
     if (!res.ok) {
       throw new Error('Failed to increase report count1');
     }
-
-    console.log('report count increased');
   } catch {
     throw new Error('Failed to increase report count2');
   }

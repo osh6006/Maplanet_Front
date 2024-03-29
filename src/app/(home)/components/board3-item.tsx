@@ -44,7 +44,6 @@ const Board3Item: React.FunctionComponent<IBoard3ItemProps> = ({
     return cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
-  console.log(level);
   // 쩔, 겹사 보드
   return (
     <>
@@ -79,8 +78,6 @@ const Board3Item: React.FunctionComponent<IBoard3ItemProps> = ({
             color='lightGray'
             size='sm'
             onClick={() => {
-              // TODO : Move Profile
-              console.log('user id:', user_id);
               router.push(`/user-profile/${user_id}?page=1`);
             }}
             className={clsx('button relative overflow-hidden')}>

@@ -9,7 +9,6 @@ export async function MannerCount(user_id: number) {
   const hasTokenCookie = cookiesList.has('Authorization');
   const accessToken = cookiesList.get('Authorization')?.value;
 
-  console.log('Manner count', hasTokenCookie, accessToken)
   if (hasTokenCookie && accessToken) {
     try {
       // PATCH 요청 보내기
@@ -21,15 +20,11 @@ export async function MannerCount(user_id: number) {
         }
       });
 
-      console.log(res.json());
       if (!res.ok) {
         throw new Error('Failed to increase manner count1');
       }
-
-      console.log('Manner count increased');
     } catch (error) {
       console.log(error);
     }
   }
 }
-

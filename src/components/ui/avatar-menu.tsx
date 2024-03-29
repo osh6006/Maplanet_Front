@@ -23,7 +23,6 @@ const AvatarMenu: React.FunctionComponent<IAvatarMenuProps> = ({ userCookie }) =
 
   const handleMyProfile = () => {
     // TODO : 내 프로필로 이동
-    console.log('push to my profile');
     router.push(`/my-profile?page=1&board=board1`);
   };
 

@@ -75,8 +75,6 @@ const Board1Item: React.FunctionComponent<IBoard1ItemProps> = ({
             color='lightGray'
             size='sm'
             onClick={() => {
-              // TODO : Move Profile
-              console.log('user id:', user_id);
               router.push(`/user-profile/${user_id}?page=1`);
             }}
             className={clsx('button relative overflow-hidden')}>

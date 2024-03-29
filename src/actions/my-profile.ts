@@ -9,8 +9,6 @@ export async function GetMyProfileData(board: string, page: number) {
   const hasTokenCookie = cookiesList.has('Authorization');
   const accessToken = cookiesList.get('Authorization');
 
-  console.log('My profile data', hasTokenCookie, accessToken);
-
   const res = await fetch(`${SERVER_URL}/myprofile/${board}?page=${page}` as string, {
     method: 'GET',
     headers: {
@@ -28,4 +26,3 @@ export async function GetMyProfileData(board: string, page: number) {
 
   return res.json();
 }
-

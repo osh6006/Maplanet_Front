@@ -14,32 +14,33 @@ import { MannerCount } from '@/actions/manner-count';
 import { filterImageUrl } from '@/util/util';
 
 interface IProfileBannerProps {
-  type: 'my'|'user';
+  type: 'my' | 'user';
   board: string;
   userId: number;
   page: number;
 }
 
-const ProfileBanner: React.FunctionComponent<IProfileBannerProps> = ({ board, userId, page, type }) => {
+const ProfileBanner: React.FunctionComponent<IProfileBannerProps> = ({
+  board,
+  userId,
+  page,
+  type
+}) => {
   const { data, isLoading, error } = GetProfileData(board, userId, page) as {
     data: IBoard1ProfileResponse;
     isLoading: boolean;
     error: any;
   };
 
-  console.log('banner', data);
-
   if (isLoading) return <Spinner></Spinner>;
 
   if (error) return <div>에러가 발생했습니다.</div>;
 
   function mannerIncreaseOrDecrease(userId: number) {
-    console.log('userId:', userId);
     MannerCount(userId);
   }
 
   function reportIncreaseOrDecrease(userId: number) {
-    console.log('userId:', userId);
     ReportCount(userId);
   }
 
@@ -73,27 +74,31 @@ const ProfileBanner: React.FunctionComponent<IProfileBannerProps> = ({ board, us
             </div>
           </div>
 
-          {type === 'user' ? <div className='flex w-[200px] flex-col items-center justify-center gap-y-2 text-nowrap px-4'>
-            <Button color='discord' size='wide'>
-              <Link
-                href={`discord://discord.com/users/${data.userProfile.discord_id}`}
-                target='_blanck'
-                className='flex items-center justify-center gap-2'>
-                <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={20} />
-                1:1 대화
-              </Link>
-            </Button>
-            <Button
-              color='lightGray'
-              size='wide'
-              onClick={() =>  mannerIncreaseOrDecrease(userId)}>
-              매너 추천
-            </Button>
-            <Button color='lightGray' size='wide' onClick={() => reportIncreaseOrDecrease(userId)}>
-              유저 신고하기
-            </Button>
-          </div> : null}
-          
+          {type === 'user' ? (
+            <div className='flex w-[200px] flex-col items-center justify-center gap-y-2 text-nowrap px-4'>
+              <Button color='discord' size='wide'>
+                <Link
+                  href={`discord://discord.com/users/${data.userProfile.discord_id}`}
+                  target='_blanck'
+                  className='flex items-center justify-center gap-2'>
+                  <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={20} />
+                  1:1 대화
+                </Link>
+              </Button>
+              <Button
+                color='lightGray'
+                size='wide'
+                onClick={() => mannerIncreaseOrDecrease(userId)}>
+                매너 추천
+              </Button>
+              <Button
+                color='lightGray'
+                size='wide'
+                onClick={() => reportIncreaseOrDecrease(userId)}>
+                유저 신고하기
+              </Button>
+            </div>
+          ) : null}
         </div>
       </Inner>
     </div>
