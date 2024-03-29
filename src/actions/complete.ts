@@ -13,7 +13,6 @@ export async function CompleteMyPost(boardType: string, board_id: number) {
     try {
       console.log(boardType, board_id)
 
-      // https://www.maplanet.store/board1/complete/81
       const res = await fetch(`${SERVER_URL}/${boardType}/complete/${board_id}` as string, {
         method: 'PATCH',
         headers: {

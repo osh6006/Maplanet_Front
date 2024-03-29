@@ -1,7 +1,6 @@
 import Avatar from '@/components/ui/avatar';
 import Inner from '@/components/ui/inner';
 import * as React from 'react';
-import { IMyProfileData } from '@/types/interfaces/profile';
 import { filterImageUrl } from '@/util/util';
 import { GetMyProfileData } from '@/actions/my-profile';
 
@@ -24,7 +23,6 @@ const MyProfileBanner: React.FunctionComponent<IMyProfileBannerProps> = async ({
             <div className='ml-[20px] flex  flex-col justify-center '>
               <div className='mb-2 flex items-end gap-3'>
                 <h1 className='text-[28px] font-bold'>{data.myProfile.discord_global_name}</h1>
-                {/* FIXME: username # 위치 물어보기 */}
                 <span className='pb-[2px]'>#{data.myProfile.discord_username}</span>
               </div>
               <div className='flex gap-x-1'>
