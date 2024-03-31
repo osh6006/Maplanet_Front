@@ -2,7 +2,6 @@ import * as React from 'react';
 import { IBoard3ProfileResponse } from '@/types/interfaces/profile';
 import ProfileCard from './profile-card';
 import Pagination from '../../(board)/components/ui/pagination';
-import { GetMyProfileData } from '@/actions/my-profile';
 
 interface IMyProfileBoard3PostsProps {
   boardType: string;

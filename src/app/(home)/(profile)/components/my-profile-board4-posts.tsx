@@ -1,8 +1,9 @@
+'use client';
+
 import * as React from 'react';
 import { IBoard4ProfileResponse } from '@/types/interfaces/profile';
 import ProfileCard from './profile-card';
 import Pagination from '../../(board)/components/ui/pagination';
-import { GetMyProfileData } from '@/actions/my-profile';
 
 interface IMyProfileBoard4PostsProps {
   boardType: string;
@@ -12,9 +13,8 @@ interface IMyProfileBoard4PostsProps {
 
 const MyProfileBoard4Posts: React.FunctionComponent<IMyProfileBoard4PostsProps> = ({
   boardType,
-  data,
+  data
 }) => {
-
   return (
     <div className='w-full bg-[#222]'>
       {/* 심쩔 */}

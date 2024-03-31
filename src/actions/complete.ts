@@ -1,29 +1,36 @@
 'use server';
 
-import { cookies } from 'next/headers';
+import { auth } from '@/libs/auth';
 
 const SERVER_URL = process.env.SERVER_URL;
 
 export async function CompleteMyPost(boardType: string, board_id: number) {
-  const cookiesList = cookies();
-  const hasTokenCookie = cookiesList.has('Authorization');
-  const accessToken = cookiesList.get('Authorization')?.value;
+  // token check
+  const { user } = auth();
 
-  if (accessToken && hasTokenCookie) {
+  if (!user) {
+    throw new Error('You must be logged in to complete a post.')
+  }
+
+  if (user) {
     try {
-      console.log(boardType, board_id)
+      console.log(boardType, board_id, user.token);
 
       const res = await fetch(`${SERVER_URL}/${boardType}/complete/${board_id}` as string, {
         method: 'PATCH',
         headers: {
-          Authorization: `${accessToken}`
-        }
+          Authorization: `${user.token}`
+        },
       });
 
-      if (res.ok) console.log('complete post res status', res.status);
+      // mutate data 
+
+      if (res.ok) {
+        console.log(res.status)
+      }
 
       if (!res.ok) {
-        throw new Error('Failed to complete my post');
+        throw new Error('Network response was not ok');
       }
     } catch (error) {
       console.log(error);

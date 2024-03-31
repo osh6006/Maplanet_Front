@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { IBoard2Data, IBoard2ProfileResponse } from '@/types/interfaces/profile';
+import { IBoard2ProfileResponse } from '@/types/interfaces/profile';
 import ProfileCard from './profile-card';
 import Pagination from '../../(board)/components/ui/pagination';
-import { GetMyProfileData } from '@/actions/my-profile';
 
 interface IMyProfileBoard2PostsProps {
   boardType: string;
@@ -14,7 +13,6 @@ const MyProfileBoard2Posts: React.FunctionComponent<IMyProfileBoard2PostsProps> 
   boardType,
   data
 }) => {
-
   return (
     <div className='w-full bg-[#222]'>
       {/* 심쩔 */}

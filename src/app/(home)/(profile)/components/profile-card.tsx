@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useOptimistic, useTransition, useEffect } from 'react';
 
 import Icon from '../../../../components/ui/icon';
 import Badge from '../../../../components/ui/badge';
@@ -17,6 +17,7 @@ import HunterBoardModal from '@/components/modal/board/hunter-board-modal';
 import WoodCutterBoardModal from '@/components/modal/board/wood-cutter-board-modal';
 import { usePathname } from 'next/navigation';
 import { CompleteMyPost } from '@/actions/complete';
+import Image from 'next/image';
 dayjs.locale('ko');
 
 interface IProfileCard {
@@ -66,6 +67,9 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
   level,
   recruit_people_count
 }) => {
+  // 상위 컴포넌트
+  const [isComplete, setIsComplete] = useState({ complete, boardType, board_id });
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const pathName = usePathname();
@@ -73,6 +77,21 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
   const onOpen = () => {
     setIsModalOpen(true);
   };
+
+  const handleCompleteToggle = async (boardType: string, board_id: number) => {
+    if (isComplete.boardType !== boardType || isComplete.board_id !== board_id) return;
+
+    if (isComplete.boardType === boardType && isComplete.board_id === board_id) {
+      try {
+        await CompleteMyPost(boardType, board_id);
+        setIsComplete((prevState) => ({ ...prevState, complete: !prevState.complete }));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  console.log('pathName', pathName);
 
   return (
     <>
@@ -106,46 +125,25 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
 
       <div
         className={`group relative h-[336px] w-full flex-col justify-between overflow-hidden rounded-3xl bg-[#161616] p-8 transition-all sm:flex
-        sm:w-[320px] ${complete ? 'pointer-events-none' : ''}`}>
-        {/* 완료된 경우 */}
-        {complete ? (
+        sm:w-[320px] ${complete && pathName.includes('/user-profile') ? 'pointer-events-none' : ''}`}>
+        {/* user profile handle complete */}
+        {complete && pathName.includes('/user-profile') && (
           <div className='absolute inset-0 z-[15] flex items-center justify-center backdrop-blur-sm'>
             <div className='relative flex h-full w-full items-center justify-center'>
               <h1 className='z-10 text-3xl font-semibold'>완료</h1>
               <div className='absolute inset-0 bg-black/40'></div>
             </div>
           </div>
-        ) : // 내 프로필인 경우 완료하기 버튼 보이기
-        pathName === '/my-profile' ? (
+        )}
+
+        {!complete && pathName.includes('/user-profile') && (
           <div
             className={`absolute inset-0 flex flex-col items-center justify-center gap-y-2 text-nowrap bg-black/50 px-4 opacity-0 transition
-      group-hover:opacity-100 group-hover:duration-300`}>
-            <Button
-              color='lightGray'
-              size='wide'
-              onClick={() => {
-                if (window.confirm('완료하시겠습니까?')) {
-                  CompleteMyPost(boardType, board_id);
-                }
-              }}>
-              완료하기
-            </Button>
-          </div>
-        ) : (
-          // 완료 되지 않은 경우, hover content
-          <div
-            className={`absolute inset-0 flex flex-col items-center justify-center gap-y-2 text-nowrap bg-black/50 px-4 opacity-0 transition
-            group-hover:opacity-100 group-hover:duration-300`}>
+          group-hover:opacity-100 group-hover:duration-300`}>
             <Button color='lightGray' size='wide' onClick={onOpen}>
               상세보기
             </Button>
-
-            <Button
-              color='discord'
-              size='wide'
-              onClick={() => {
-                window.open(`discord://discord.com/users/${discord_id}`, '_blank');
-              }}>
+            <Button color='discord' size='wide'>
               <Link
                 href={`discord://discord.com/users/${discord_id}`}
                 target='_blanck'
@@ -156,6 +154,57 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
             </Button>
           </div>
         )}
+
+        {/* my profile handle complete */}
+        {isComplete.complete &&
+          isComplete.boardType === boardType &&
+          isComplete.board_id === board_id &&
+          pathName.includes('/my-profile') && (
+            <div className='absolute inset-0 z-[15] flex items-center justify-center backdrop-blur-sm'>
+              <div className='relative flex h-full w-full items-center justify-center'>
+                <h1 className='pointer-events-none z-10 text-3xl font-semibold'>완료</h1>
+                <button
+                  className='absolute right-5 top-5 z-[50] cursor-pointer text-3xl text-white'
+                  id={`${boardType}-${board_id}`}
+                  onClick={() => {
+                    if (window.confirm('완료 취소하시겠습니까?')) {
+                      console.log(boardType, board_id);
+                      handleCompleteToggle(boardType, board_id);
+                    }
+                  }}>
+                  <Image
+                    src='/svgs/plus.svg'
+                    alt='x'
+                    width={24}
+                    height={24}
+                    style={{ transform: 'rotate(45deg)' }}
+                  />
+                </button>
+                <div className='absolute inset-0 bg-black/40'></div>
+              </div>
+            </div>
+          )}
+
+        {!isComplete.complete &&
+          isComplete.boardType === boardType &&
+          isComplete.board_id === board_id &&
+          pathName.includes('/my-profile') && (
+            <div
+              className={`absolute inset-0 flex flex-col items-center justify-center gap-y-2 text-nowrap bg-black/50 px-4 opacity-0 transition
+group-hover:opacity-100 group-hover:duration-300`}>
+              <Button
+                color='lightGray'
+                size='wide'
+                onClick={() => {
+                  if (window.confirm('완료하시겠습니까?')) {
+                    console.log(boardType, board_id);
+                    handleCompleteToggle(boardType, board_id);
+                  }
+                }}>
+                완료하기
+              </Button>
+            </div>
+          )}
 
         {/* card content */}
         <div className='flex w-full items-center justify-between '>
