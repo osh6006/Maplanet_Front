@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react';
 import MyProfileBoard1Posts from './my-profile-board1-posts';
 import MyProfileBoard2Posts from './my-profile-board2-posts';
@@ -10,26 +11,40 @@ interface IMyprofileContentProps {
   page: number;
 }
 
-const MyProfileContent: React.FunctionComponent<IMyprofileContentProps> = async ({ boardType, page }) => {
-  const data = (await GetMyProfileData(boardType, page));
+const MyProfileContent: React.FunctionComponent<IMyprofileContentProps> =  ({
+  boardType,
+  page
+}) => {
+  // const data = await GetMyProfileData(boardType, page);
+  const [data, setData] = React.useState<any>(null); // Initialize data state
 
-  const renderPosts = () => {
-    if (boardType === 'board1') {
-      return <MyProfileBoard1Posts boardType={boardType} page={page} data={data} />;
-    } else if (boardType === 'board2') {
-      return <MyProfileBoard2Posts boardType={boardType} page={page} data={data} />;
-    } else if (boardType === 'board3') {
-      return <MyProfileBoard3Posts boardType={boardType} page={page} data={data} />;
-    } else if (boardType === 'board4') {
-      return <MyProfileBoard4Posts boardType={boardType} page={page} data={data} />;
-    }
-  };
+  // Fetch data on component mount and whenever boardType or page changes
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const newData = await GetMyProfileData(boardType, page);
+      setData(newData);
+      console.log('newData', newData);
+    };
+
+    fetchData();
+  }, [boardType, page]);
 
   return (
     // category
     <div className='mx-auto max-w-[500px] sm:max-w-[670px] lg:max-w-[1000px] xl:max-w-[1440px] xl:px-[60px] '>
       {/* 게시글 */}
-      {renderPosts()}
+      {boardType === 'board1' && data && (
+        <MyProfileBoard1Posts boardType={boardType} page={page} data={data} />
+      )}
+      {boardType === 'board2' && data && (
+        <MyProfileBoard2Posts boardType={boardType} page={page} data={data} />
+      )}
+      {boardType === 'board3' && data && (
+        <MyProfileBoard3Posts boardType={boardType} page={page} data={data} />
+      )}
+      {boardType === 'board4' && data && (
+        <MyProfileBoard4Posts boardType={boardType} page={page} data={data} />
+      )}
     </div>
   );
 };

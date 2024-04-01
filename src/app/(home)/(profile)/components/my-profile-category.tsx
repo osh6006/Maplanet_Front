@@ -18,7 +18,7 @@ const MyProfileCategory: React.FunctionComponent<IMyProfileCategoryProps> = () =
     params.set('board', boardType);
     return `${pathname}?${params.toString()}`;
   };
-
+                    
   return (
     <div className='mx-auto max-w-[500px] sm:max-w-[670px] lg:max-w-[1000px] xl:max-w-[1440px] xl:px-[60px]'>
       <div className='flex items-center justify-center'>

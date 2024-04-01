@@ -67,8 +67,7 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
   level,
   recruit_people_count
 }) => {
-  // 상위 컴포넌트
-  const [isComplete, setIsComplete] = useState({ complete, boardType, board_id });
+  const [completeState, setCompleteState] = useState(complete);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -76,19 +75,6 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
 
   const onOpen = () => {
     setIsModalOpen(true);
-  };
-
-  const handleCompleteToggle = async (boardType: string, board_id: number) => {
-    if (isComplete.boardType !== boardType || isComplete.board_id !== board_id) return;
-
-    if (isComplete.boardType === boardType && isComplete.board_id === board_id) {
-      try {
-        await CompleteMyPost(boardType, board_id);
-        setIsComplete((prevState) => ({ ...prevState, complete: !prevState.complete }));
-      } catch (error) {
-        console.log(error);
-      }
-    }
   };
 
   console.log('pathName', pathName);
@@ -156,20 +142,18 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
         )}
 
         {/* my profile handle complete */}
-        {isComplete.complete &&
-          isComplete.boardType === boardType &&
-          isComplete.board_id === board_id &&
+        {completeState &&
           pathName.includes('/my-profile') && (
             <div className='absolute inset-0 z-[15] flex items-center justify-center backdrop-blur-sm'>
               <div className='relative flex h-full w-full items-center justify-center'>
                 <h1 className='pointer-events-none z-10 text-3xl font-semibold'>완료</h1>
                 <button
                   className='absolute right-5 top-5 z-[50] cursor-pointer text-3xl text-white'
-                  id={`${boardType}-${board_id}`}
                   onClick={() => {
                     if (window.confirm('완료 취소하시겠습니까?')) {
                       console.log(boardType, board_id);
-                      handleCompleteToggle(boardType, board_id);
+                      CompleteMyPost(boardType, board_id);
+                      setCompleteState(prev => !prev);
                     }
                   }}>
                   <Image
@@ -185,9 +169,8 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
             </div>
           )}
 
-        {!isComplete.complete &&
-          isComplete.boardType === boardType &&
-          isComplete.board_id === board_id &&
+        {/* server rendering */}
+        {!completeState &&
           pathName.includes('/my-profile') && (
             <div
               className={`absolute inset-0 flex flex-col items-center justify-center gap-y-2 text-nowrap bg-black/50 px-4 opacity-0 transition
@@ -198,7 +181,9 @@ group-hover:opacity-100 group-hover:duration-300`}>
                 onClick={() => {
                   if (window.confirm('완료하시겠습니까?')) {
                     console.log(boardType, board_id);
-                    handleCompleteToggle(boardType, board_id);
+                    CompleteMyPost(boardType, board_id); // server action
+                    setCompleteState(prev => !prev);
+                    // handleCompleteToggle(boardType, board_id);
                   }
                 }}>
                 완료하기

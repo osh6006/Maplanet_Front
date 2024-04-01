@@ -23,19 +23,14 @@ import useSWR from 'swr';
 //   }
 // }
 
-interface SWRResponse {
-  data: any;
-  error: any;
-  isLoading: boolean;
-}
-
-function GetProfileData(board: string, userId: number, page: number): SWRResponse {
+function GetProfileData(board: string, userId: number, page: number) {
   // SWR내의 에러는 API서버에서 내려온 에러를 의미
-  const { data, error } = useSWR(`/userprofile/${board}/${userId}?page=${page}`);
+  const { data, error, mutate } = useSWR(`/userprofile/${board}/${userId}?page=${page}`);
 
   return {
     data,
     error,
+    mutate,
     isLoading: !error && !data
   };
 }
