@@ -26,8 +26,9 @@ const ProfileBanner: React.FunctionComponent<IProfileBannerProps> = ({
   page,
   type
 }) => {
-  const { data, isLoading, error } = GetProfileData(board, userId, page) as {
+  const { data, mutate, isLoading, error } = GetProfileData(board, userId, page) as {
     data: IBoard1ProfileResponse;
+    mutate: any;
     isLoading: boolean;
     error: any;
   };
@@ -36,12 +37,14 @@ const ProfileBanner: React.FunctionComponent<IProfileBannerProps> = ({
 
   if (error) return <div>에러가 발생했습니다.</div>;
 
-  function mannerIncreaseOrDecrease(userId: number) {
-    MannerCount(userId);
+  const mannerIncreaseOrDecrease = async (userId: number) => {
+    await MannerCount(userId);
+    mutate({ ...data, manner_count : data.userProfile.manner_count })
   }
 
-  function reportIncreaseOrDecrease(userId: number) {
-    ReportCount(userId);
+  const reportIncreaseOrDecrease = async (userId: number) => {
+    await ReportCount(userId);
+    mutate({ ...data, report_count : data.userProfile.report_count })
   }
 
   return (
