@@ -101,7 +101,7 @@ const Board1Item: React.FunctionComponent<IBoard1ItemProps> = ({
           <div className='ml-2 flex flex-grow items-center justify-end gap-3 text-xs text-[#aeaeae]'>
             {created_at.toString().split('T')[0]}
             <div className='flex items-center gap-x-1'>
-              <Icon src='/svgs/eyes.svg' alt='eyes' size={12} />
+              <Icon src='/svgs/eyes.svg' alt='eyes' size={16} />
               <div className='ml-[1px]'>{view_count}</div>
             </div>
           </div>
@@ -113,18 +113,18 @@ const Board1Item: React.FunctionComponent<IBoard1ItemProps> = ({
         {/* 세번째 내용 */}
         <div className='flex flex-wrap gap-[5px]'>
           <Badge size='card' className='bg-lightGray'>
-            <Icon src='/svgs/money.svg' alt='money' size={14} />
+            <Icon src='/svgs/money.svg' alt='money' size={16} />
             <span className='pb-[1px] text-[12px]  text-[#EBFF00]'>{addCommasToCost(meso)}</span>
           </Badge>
           <Badge size='card' className='bg-lightGray text-[12px]'>
             <div className='flex items-center gap-1'>
-              <Icon src='/svgs/time.svg' alt='time' size={12} />
+              <Icon src='/svgs/time.svg' alt='time' size={16} />
               <span className='pb-[1px] text-[12px]'>{progress_time}</span>
             </div>
           </Badge>
           <Badge size='card' className='bg-lightGray text-[12px]'>
             <div className='flex items-center gap-1'>
-              <Icon src='/svgs/jobs.svg' alt='jobs' size={12} />
+              <Icon src='/svgs/jobs.svg' alt='jobs' size={16} />
               <span className='pb-[1px] text-[12px]'>{sub_job}</span>
             </div>
           </Badge>

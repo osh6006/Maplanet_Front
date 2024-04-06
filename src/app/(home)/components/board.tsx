@@ -1,18 +1,22 @@
 'use client';
 
-import Link from 'next/link';
+import clsx from 'clsx';
 import { useState } from 'react';
+
+import Link from 'next/link';
 import Icon from '@/components/ui/icon';
 import GetHomeData from '@/actions/home';
-import clsx from 'clsx';
 import { IHelperBoard, IHunterBoard } from '@/types';
 import { IWoodBoard } from '@/types/interfaces/wood';
-import { IPartyBoard } from '@/types/interfaces/party';
-import Board1Item from './board1-item';
-import Board2Item from './board2-item';
-import Board3Item from './board3-item';
-import Board4Item from './board4-item';
+import { IPartyBoard, IPartyBoardDeatil } from '@/types/interfaces/party';
+
 import Spinner from '@/components/ui/spinner';
+import HelperCard from '../(board)/components/ui/helper-card';
+import HunterCard from '../(board)/components/ui/hunter-card';
+import WoodCutterCard from '../(board)/components/ui/wood-cutter-card';
+import PartyCard from '../(board)/components/ui/party-card';
+import BoardResult from '../(board)/components/ui/board-result';
+import Loading from '@/components/ui/loading';
 
 interface IBoardProps {
   category: string;
@@ -36,7 +40,7 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
     categoryData = data.board4Data;
   }
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) return <Loading size={55} />;
 
   if (error) return <div>에러가 발생했습니다.</div>;
 
@@ -46,7 +50,7 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
       <div
         className={clsx(
           isHovered ? 'bg-black/60' : '',
-          'relative flex h-[70px] w-full items-center justify-between overflow-hidden rounded-xl bg-black px-[20px] py-[22px] transition-all duration-200'
+          'relative flex h-[70px] w-full max-w-[588px] items-center justify-between overflow-hidden rounded-xl bg-black px-[20px] py-[22px] transition-all duration-200'
         )}
         style={
           {
@@ -102,25 +106,62 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
       </div>
 
       {/* 아이템 리스트 컴포넌트*/}
-      <ul className='mt-[17px] flex flex-col justify-around gap-[13px] '>
+      <ul className='mt-[18px] flex items-center justify-center gap-x-[24px] '>
         {category === '심쩔' &&
-          categoryData.map((item: IHelperBoard, index: number) => {
-            return <Board1Item key={index} {...item} />;
+          categoryData.map((item: IHelperBoard) => {
+            return (
+              <BoardResult.Item key={item.board1_id}>
+                <HelperCard
+                  {...item}
+                  badges={[
+                    item.sub_job,
+                    item.progress_time === 0 ? '시간 협의 가능' : item.progress_time + '시간'
+                  ]}
+                />
+              </BoardResult.Item>
+            );
           })}
 
         {category === '겹사' &&
-          categoryData?.map((item: IHunterBoard, index: number) => {
-            return <Board2Item key={index} {...item} />;
+          categoryData?.map((item: IHunterBoard) => {
+            return (
+              <BoardResult.Item key={item.board2_id}>
+                <HunterCard {...item} badges={[item.place_theif_nickname]} />
+              </BoardResult.Item>
+            );
           })}
 
         {category === '나무꾼' &&
-          categoryData?.map((item: IWoodBoard, index: number) => {
-            return <Board3Item key={index} {...item} />;
+          categoryData?.map((item: IWoodBoard) => {
+            return (
+              <BoardResult.Item key={item.board3_id}>
+                <WoodCutterCard
+                  {...item}
+                  badges={[
+                    item.sub_job,
+                    item.progress_time === 0 ? '시간 협의 가능' : item.progress_time + '시간',
+                    item.hunting_ground,
+                    'Lv .' + item.level
+                  ]}
+                />
+              </BoardResult.Item>
+            );
           })}
 
         {category === '파티 모집' &&
-          categoryData?.map((item: IPartyBoard, index: number) => {
-            return <Board4Item key={index} {...item} />;
+          categoryData?.map((item: IPartyBoard) => {
+            return (
+              <BoardResult.Item key={item.board4_id}>
+                <PartyCard
+                  {...item}
+                  badges={[
+                    item.progress_time === 0 ? '시간 협의 가능' : item.progress_time + ' 시간',
+                    item.hunting_ground,
+                    `${item.recruit_people_count}명 모집`
+                  ]}
+                />
+              </BoardResult.Item>
+            );
           })}
       </ul>
     </div>

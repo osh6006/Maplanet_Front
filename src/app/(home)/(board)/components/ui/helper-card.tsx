@@ -31,8 +31,7 @@ const HelperCard: React.FunctionComponent<IHelperCardProps> = ({
   manner_count,
   report_count,
   title,
-  user_id,
-  view_count
+  user_id
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -55,39 +54,32 @@ const HelperCard: React.FunctionComponent<IHelperCardProps> = ({
       ) : (
         <BoardCardHoverButtons discordId={discord_id} setIsModalOpen={onOpen} profileId={user_id} />
       )}
+      <time className='text-right text-[10px] font-medium text-gray-400'>
+        {dayjs(created_at).format('YYYY-MM-DD')}
+      </time>
 
-      <div className='flex w-full items-center justify-between '>
-        <Badge className={clsx('bg-violet')} size='card'>
-          심쩔
-        </Badge>
-        <time className='font-medium text-gray-400'>
-          {dayjs(created_at).format('YYYY년 MM월 DD일')}
-        </time>
-      </div>
-
-      <h1 className='my-6 text-xl font-semibold'>{title}</h1>
-      <div className='mb-4 mt-3 flex flex-wrap items-center gap-2'>
-        <Badge size='card' className='bg-lightGray text-yellow'>
-          <Icon src='/svgs/money.svg' size={20} alt='meso' />
-          {meso}
-        </Badge>
-        {badges?.map((el) => (
-          <Badge size='card' key={el} className='bg-lightGray '>
-            {el}
-          </Badge>
-        ))}
-      </div>
-      <div className='mt-6 flex items-center justify-between '>
+      <div className='flex w-full flex-col justify-end px-[12px]'>
         <InlineProfile
           imgUrl={filterImageUrl(discord_image)}
           manner={manner_count}
           unManner={report_count}
           discordNickName={discord_global_name}
         />
-        <div className='flex items-center gap-x-1 font-light'>
-          <Icon src={'/svgs/eyes.svg'} alt='view' size={20} />
-          <p className='leading-3'>{view_count}</p>
-        </div>
+      </div>
+
+      <div className='mt-2 h-[122px] w-full break-words px-[12px] text-xl font-semibold'>
+        {title}
+      </div>
+      <div className='mb-4 mt-2 flex flex-wrap items-center gap-2 px-[12px]'>
+        <Badge size='card' className='bg-lightGray text-yellow'>
+          <Icon src='/svgs/money.svg' size={20} alt='meso' />
+          {meso === 0 ? '협의가능' : meso}
+        </Badge>
+        {badges?.map((el) => (
+          <Badge size='card' key={el} className='bg-lightGray '>
+            {el}
+          </Badge>
+        ))}
       </div>
     </>
   );

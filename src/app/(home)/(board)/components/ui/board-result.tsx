@@ -30,15 +30,15 @@ interface IBoardResultItemProps {
 const BoardItem = ({ children }: IBoardResultItemProps) => {
   return (
     <li
-      className='group relative h-full w-full flex-col justify-between overflow-hidden rounded-3xl bg-[#161616] p-8 transition-all sm:flex
-  sm:w-[320px]'>
+      className='group relative h-[296px] w-full flex-col justify-between overflow-hidden rounded-xl bg-[#161616] px-[11px] py-[10px] transition-all sm:flex
+  '>
       {children}
     </li>
   );
 };
 
-BoardResult.List = BoardList;
 BoardResult.Wrapper = BoardResultWrapper;
+BoardResult.List = BoardList;
 BoardResult.Item = BoardItem;
 
 export default BoardResult;

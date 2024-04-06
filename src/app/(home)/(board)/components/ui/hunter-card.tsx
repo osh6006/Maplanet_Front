@@ -61,18 +61,22 @@ const HunterCard: React.FunctionComponent<IHelperCardProps> = ({
         />
       )}
 
-      <div className='flex w-full items-center justify-between '>
-        <Badge
-          className={clsx(report_kind === '인기도 하락' ? 'bg-main' : 'bg-violet')}
-          size='card'>
-          {report_kind}
-        </Badge>
-        <time className='font-medium text-gray-400'>
-          {dayjs(created_at).format('YYYY년 MM월 DD일')}
-        </time>
+      <time className='text-right text-[10px] font-medium text-gray-400'>
+        {dayjs(created_at).format('YYYY-MM-DD')}
+      </time>
+
+      <div className='flex w-full flex-col justify-end px-[12px]'>
+        <InlineProfile
+          imgUrl={filterImageUrl(discord_image)}
+          manner={manner_count}
+          unManner={report_count}
+          discordNickName={discord_global_name}
+        />
       </div>
 
-      <h1 className='my-6 text-xl font-semibold'>{title}</h1>
+      <div className='mt-2 h-[122px] w-full break-words px-[12px] text-xl font-semibold'>
+        {title}
+      </div>
       <div className='mb-4 mt-3 flex flex-wrap items-center gap-2'>
         <Badge size='card' className='bg-lightGray text-yellow'>
           <Icon src='/svgs/money.svg' size={20} alt='meso' />
@@ -83,18 +87,6 @@ const HunterCard: React.FunctionComponent<IHelperCardProps> = ({
             {el}
           </Badge>
         ))}
-      </div>
-      <div className='mt-6 flex items-center justify-between '>
-        <InlineProfile
-          imgUrl={filterImageUrl(discord_image)}
-          manner={manner_count}
-          unManner={report_count}
-          discordNickName={discord_global_name}
-        />
-        <div className='flex items-center gap-x-1 font-light'>
-          <Icon src={'/svgs/eyes.svg'} alt='view' size={20} />
-          <p className='leading-3'>{props.view_count}</p>
-        </div>
       </div>
     </>
   );

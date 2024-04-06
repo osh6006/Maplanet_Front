@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         new: '#D92E2E',
-        main: '#63B4FF',
+        main: '#F28500',
         warning: '#D92E2E',
         complete: '#FF0000',
         discord: '#5865F2',
