@@ -10,7 +10,7 @@ const Notification: React.FunctionComponent<INotificationProps> = () => {
   const { data, error, isLoading } = GetHomeData();
 
   return (
-    <div className='fixed top-[60px] z-40 h-[40px] w-full overflow-hidden bg-[#CE98B1]'>
+    <div className='fixed top-[60px] z-40 h-[40px] w-full overflow-hidden bg-main'>
       <div className='flex h-[40px] animate-slide-in-left items-center justify-center space-x-4'>
         {isLoading ? (
           <div>데이터를 불러오는 중...</div>
@@ -19,7 +19,7 @@ const Notification: React.FunctionComponent<INotificationProps> = () => {
         ) : (
           <div className='flex items-center gap-x-4'>
             <Icon src='/svgs/snail.svg' alt='snail' size={26} />
-            <div className='whitespace-nowrap text-lg font-bold text-[#7C0747]'>
+            <div className='whitespace-nowrap text-lg font-bold '>
               <span className='mr-5'>[공지사항]</span>
               <span>{data?.noticeData?.title}</span>
             </div>

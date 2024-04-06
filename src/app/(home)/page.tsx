@@ -50,7 +50,7 @@ const HomePage: React.FunctionComponent<IHomePageProps> = () => {
             </div>
           </div>
           {/* 방문자 수 */}
-          <div className='right-0 mt-2 flex flex-row flex-wrap items-center justify-center  gap-2 gap-x-2 text-sm font-light text-[#c3c3c3] sm:flex-col md:absolute'>
+          <div className='right-0 mt-2 flex flex-row flex-wrap items-center justify-center gap-2  gap-x-2 text-sm font-light text-[#c3c3c3] sm:flex-col sm:items-start md:absolute'>
             <div className='flex flex-col items-center gap-2 sm:flex-row'>
               <p>전체 방문 유저</p>
               <strong className='font-normal text-[#fff]'>
