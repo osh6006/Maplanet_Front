@@ -53,10 +53,27 @@ const WoodCutterBoardPage: React.FunctionComponent<IWoodCutterBoardPageProps> = 
                 <WoodCutterCard
                   {...board}
                   badges={[
-                    board.sub_job,
-                    board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간',
-                    board.hunting_ground,
-                    'Lv .' + board.level
+                    {
+                      name: board.sub_job,
+                      iconSrc: '/svgs/sword.svg',
+                      alt: 'sub_job_icon'
+                    },
+                    {
+                      name:
+                        board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간',
+                      iconSrc: '/svgs/time.svg',
+                      alt: 'time_icon'
+                    },
+                    {
+                      name: board.hunting_ground,
+                      iconSrc: '/svgs/map.svg',
+                      alt: 'hunting_ground_icon'
+                    },
+                    {
+                      name: 'Lv .' + board.level,
+                      iconSrc: '/svgs/LV.svg',
+                      alt: 'level_icon'
+                    }
                   ]}
                 />
               </BoardResult.Item>
@@ -72,10 +89,27 @@ const WoodCutterBoardPage: React.FunctionComponent<IWoodCutterBoardPageProps> = 
                 <WoodCutterCard
                   {...board}
                   badges={[
-                    board.sub_job,
-                    board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간',
-                    board.hunting_ground,
-                    'Lv .' + board.level
+                    {
+                      name: board.sub_job,
+                      iconSrc: '/svgs/sword.svg',
+                      alt: 'sub_job_icon'
+                    },
+                    {
+                      name:
+                        board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간',
+                      iconSrc: '/svgs/time.svg',
+                      alt: 'time_icon'
+                    },
+                    {
+                      name: board.hunting_ground,
+                      iconSrc: '/svgs/map.svg',
+                      alt: 'hunting_ground_icon'
+                    },
+                    {
+                      name: 'Lv .' + board.level,
+                      iconSrc: '/svgs/LV.svg',
+                      alt: 'level_icon'
+                    }
                   ]}
                 />
               </BoardResult.Item>

@@ -1,17 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { IPartyBoard } from '@/types';
+import { IBadge, IPartyBoard } from '@/types';
 import { BoardCardCompleate, BoardCardHoverButtons } from './board-card-wrappers';
 import Badge from '@/components/ui/badge';
 import dayjs from 'dayjs';
-import Icon from '@/components/ui/icon';
 import InlineProfile from '@/components/ui/inline-profile';
 import { filterImageUrl } from '@/util/util';
 import PartyBoardModal from '@/components/modal/board/party-board-modal';
+import Icon from '@/components/ui/icon';
 
 interface IPartyCardProps extends IPartyBoard {
-  badges?: string[];
+  badges?: IBadge[];
 }
 
 const PartyCard: React.FunctionComponent<IPartyCardProps> = ({
@@ -72,8 +72,9 @@ const PartyCard: React.FunctionComponent<IPartyCardProps> = ({
 
       <div className='mb-4 mt-3 flex flex-wrap items-center gap-2'>
         {badges?.map((el) => (
-          <Badge size='card' key={el} className='bg-lightGray '>
-            {el}
+          <Badge size='card' key={el.iconSrc} className='bg-lightGray '>
+            <Icon src={el.iconSrc} size={14} alt={el.alt} />
+            {el.name}
           </Badge>
         ))}
       </div>

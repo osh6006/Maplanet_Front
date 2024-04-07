@@ -1,18 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { IWoodCutterBoard } from '@/types';
+import { IBadge, IWoodCutterBoard } from '@/types';
 import { BoardCardCompleate, BoardCardHoverButtons } from './board-card-wrappers';
 import Badge from '@/components/ui/badge';
 import dayjs from 'dayjs';
 import Icon from '@/components/ui/icon';
 import InlineProfile from '@/components/ui/inline-profile';
-import { filterImageUrl } from '@/util/util';
+import { filterImageUrl, formatMoney } from '@/util/util';
 import WoodCutterBoardModal from '@/components/modal/board/wood-cutter-board-modal';
 dayjs.locale('ko');
 
 interface IWoodCutterCardProps extends IWoodCutterBoard {
-  badges?: string[];
+  badges?: IBadge[];
 }
 
 const WoodCutterCard: React.FunctionComponent<IWoodCutterCardProps> = ({
@@ -73,12 +73,13 @@ const WoodCutterCard: React.FunctionComponent<IWoodCutterCardProps> = ({
       </div>
       <div className='mb-4 mt-3 flex flex-wrap items-center gap-2'>
         <Badge size='card' className='bg-lightGray text-yellow'>
-          <Icon src='/svgs/money.svg' size={20} alt='meso' />
-          {meso === 0 ? '협의 가능' : meso}
+          <Icon src='/svgs/money.svg' size={16} alt='meso' />
+          <p className='font-semibold text-main'>{meso === 0 ? '협의가능' : formatMoney(+meso)}</p>
         </Badge>
         {badges?.map((el) => (
-          <Badge size='card' key={el} className='bg-lightGray '>
-            {el}
+          <Badge size='card' key={el.alt} className='bg-lightGray '>
+            <Icon src={el.iconSrc} size={14} alt={el.alt} />
+            {el.name}
           </Badge>
         ))}
       </div>

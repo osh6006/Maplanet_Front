@@ -50,7 +50,16 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
           render={(board) => {
             return (
               <BoardResult.Item key={board.board2_id}>
-                <HunterCard {...board} badges={[board.place_theif_nickname]} />
+                <HunterCard
+                  {...board}
+                  badges={[
+                    {
+                      name: board.place_theif_nickname,
+                      iconSrc: '/svgs/sword.svg',
+                      alt: 'sub_job_icon'
+                    }
+                  ]}
+                />
               </BoardResult.Item>
             );
           }}
@@ -61,7 +70,16 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
           render={(board) => {
             return (
               <BoardResult.Item key={board.board2_id}>
-                <HunterCard {...board} badges={[board.place_theif_nickname]} />
+                <HunterCard
+                  {...board}
+                  badges={[
+                    {
+                      name: board.place_theif_nickname,
+                      iconSrc: '/svgs/sword.svg',
+                      alt: 'sub_job_icon'
+                    }
+                  ]}
+                />
               </BoardResult.Item>
             );
           }}

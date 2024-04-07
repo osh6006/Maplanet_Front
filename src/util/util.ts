@@ -31,3 +31,7 @@ export function filterImageUrl(url: string) {
   }
   return url;
 }
+
+export function formatMoney(money: number) {
+  return new Intl.NumberFormat().format(money);
+}

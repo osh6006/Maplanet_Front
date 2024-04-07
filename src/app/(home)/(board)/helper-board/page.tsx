@@ -52,8 +52,17 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
                 <HelperCard
                   {...board}
                   badges={[
-                    board.sub_job,
-                    board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간'
+                    {
+                      name: board.sub_job,
+                      iconSrc: '/svgs/sword.svg',
+                      alt: 'sub_job_icon'
+                    },
+                    {
+                      name:
+                        board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간',
+                      iconSrc: '/svgs/time.svg',
+                      alt: 'time_icon'
+                    }
                   ]}
                 />
               </BoardResult.Item>
@@ -69,8 +78,17 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
                 <HelperCard
                   {...board}
                   badges={[
-                    board.sub_job,
-                    board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간'
+                    {
+                      name: board.sub_job,
+                      iconSrc: '/svgs/sword.svg',
+                      alt: 'sub_job_icon'
+                    },
+                    {
+                      name:
+                        board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간',
+                      iconSrc: '/svgs/time.svg',
+                      alt: 'time_icon'
+                    }
                   ]}
                 />
               </BoardResult.Item>

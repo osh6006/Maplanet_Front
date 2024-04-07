@@ -53,9 +53,22 @@ const PartyBoardPage: React.FunctionComponent<IPartyBoardPageProps> = async ({
                 <PartyCard
                   {...board}
                   badges={[
-                    board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + ' 시간',
-                    board.hunting_ground,
-                    `${board.recruit_people_count}명 모집`
+                    {
+                      name:
+                        board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간',
+                      iconSrc: '/svgs/time.svg',
+                      alt: 'time_icon'
+                    },
+                    {
+                      name: board.hunting_ground,
+                      iconSrc: '/svgs/map.svg',
+                      alt: 'hunting_ground_icon'
+                    },
+                    {
+                      name: `${board.recruit_people_count}명 모집`,
+                      iconSrc: '/svgs/Profile.svg',
+                      alt: 'recruit_icon'
+                    }
                   ]}
                 />
               </BoardResult.Item>
@@ -71,9 +84,22 @@ const PartyBoardPage: React.FunctionComponent<IPartyBoardPageProps> = async ({
                 <PartyCard
                   {...board}
                   badges={[
-                    board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + ' 시간',
-                    board.hunting_ground,
-                    `${board.recruit_people_count}명 모집`
+                    {
+                      name:
+                        board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간',
+                      iconSrc: '/svgs/time.svg',
+                      alt: 'time_icon'
+                    },
+                    {
+                      name: board.hunting_ground,
+                      iconSrc: '/svgs/map.svg',
+                      alt: 'hunting_ground_icon'
+                    },
+                    {
+                      name: `${board.recruit_people_count}명 모집`,
+                      iconSrc: '/svgs/Profile.svg',
+                      alt: 'recruit_icon'
+                    }
                   ]}
                 />
               </BoardResult.Item>

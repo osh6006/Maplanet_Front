@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { filterImageUrl } from '@/util/util';
+import { filterImageUrl, formatMoney } from '@/util/util';
 
 import Icon from '@/components/ui/icon';
 import Badge from '@/components/ui/badge';
@@ -11,12 +11,12 @@ import InlineProfile from '@/components/ui/inline-profile';
 import { BoardCardCompleate, BoardCardHoverButtons } from './board-card-wrappers';
 import HunterBoardModal from '@/components/modal/board/hunter-board-modal';
 
-import { IHunterBoard } from '@/types';
+import { IBadge, IHunterBoard } from '@/types';
 
 dayjs.locale('ko');
 
 interface IHelperCardProps extends IHunterBoard {
-  badges?: string[];
+  badges?: IBadge[];
 }
 
 const HunterCard: React.FunctionComponent<IHelperCardProps> = ({
@@ -78,13 +78,14 @@ const HunterCard: React.FunctionComponent<IHelperCardProps> = ({
         {title}
       </div>
       <div className='mb-4 mt-3 flex flex-wrap items-center gap-2'>
-        <Badge size='card' className='bg-lightGray text-yellow'>
-          <Icon src='/svgs/money.svg' size={20} alt='meso' />
-          {meso === 0 ? '협의 가능' : meso}
+        <Badge size='card' className='bg-lightGray '>
+          <Icon src='/svgs/money.svg' size={16} alt='meso' />
+          <p className='font-semibold text-main'>{meso === 0 ? '협의가능' : formatMoney(meso)}</p>
         </Badge>
         {badges?.map((el) => (
-          <Badge size='card' key={el} className='bg-lightGray '>
-            {el}
+          <Badge size='card' key={el.alt} className='bg-lightGray '>
+            <Icon src={el.iconSrc} size={14} alt={el.alt} />
+            {el.name}
           </Badge>
         ))}
       </div>

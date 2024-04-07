@@ -6,17 +6,16 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Icon from '@/components/ui/icon';
 import GetHomeData from '@/actions/home';
-import { IHelperBoard, IHunterBoard } from '@/types';
-import { IWoodBoard } from '@/types/interfaces/wood';
-import { IPartyBoard, IPartyBoardDeatil } from '@/types/interfaces/party';
-
-import Spinner from '@/components/ui/spinner';
+import Loading from '@/components/ui/loading';
 import HelperCard from '../(board)/components/ui/helper-card';
 import HunterCard from '../(board)/components/ui/hunter-card';
 import WoodCutterCard from '../(board)/components/ui/wood-cutter-card';
 import PartyCard from '../(board)/components/ui/party-card';
 import BoardResult from '../(board)/components/ui/board-result';
-import Loading from '@/components/ui/loading';
+
+import { IWoodBoard } from '@/types/interfaces/wood';
+import { IPartyBoard } from '@/types/interfaces/party';
+import { IHelperBoard, IHunterBoard } from '@/types';
 
 interface IBoardProps {
   category: string;
@@ -114,8 +113,17 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
                 <HelperCard
                   {...item}
                   badges={[
-                    item.sub_job,
-                    item.progress_time === 0 ? '시간 협의 가능' : item.progress_time + '시간'
+                    {
+                      name: item.sub_job,
+                      iconSrc: '/svgs/sword.svg',
+                      alt: 'sub_job_icon'
+                    },
+                    {
+                      name:
+                        item.progress_time === 0 ? '시간 협의 가능' : item.progress_time + '시간',
+                      iconSrc: '/svgs/time.svg',
+                      alt: 'time_icon'
+                    }
                   ]}
                 />
               </BoardResult.Item>
@@ -126,7 +134,16 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
           categoryData?.map((item: IHunterBoard) => {
             return (
               <BoardResult.Item key={item.board2_id}>
-                <HunterCard {...item} badges={[item.place_theif_nickname]} />
+                <HunterCard
+                  {...item}
+                  badges={[
+                    {
+                      name: item.place_theif_nickname,
+                      iconSrc: '/svgs/sword.svg',
+                      alt: 'sub_job_icon'
+                    }
+                  ]}
+                />
               </BoardResult.Item>
             );
           })}
@@ -138,10 +155,27 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
                 <WoodCutterCard
                   {...item}
                   badges={[
-                    item.sub_job,
-                    item.progress_time === 0 ? '시간 협의 가능' : item.progress_time + '시간',
-                    item.hunting_ground,
-                    'Lv .' + item.level
+                    {
+                      name: item.sub_job,
+                      iconSrc: '/svgs/sword.svg',
+                      alt: 'sub_job_icon'
+                    },
+                    {
+                      name:
+                        item.progress_time === 0 ? '시간 협의 가능' : item.progress_time + '시간',
+                      iconSrc: '/svgs/time.svg',
+                      alt: 'time_icon'
+                    },
+                    {
+                      name: item.hunting_ground,
+                      iconSrc: '/svgs/map.svg',
+                      alt: 'hunting_ground_icon'
+                    },
+                    {
+                      name: 'Lv .' + item.level,
+                      iconSrc: '/svgs/LV.svg',
+                      alt: 'level_icon'
+                    }
                   ]}
                 />
               </BoardResult.Item>
@@ -155,9 +189,22 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
                 <PartyCard
                   {...item}
                   badges={[
-                    item.progress_time === 0 ? '시간 협의 가능' : item.progress_time + ' 시간',
-                    item.hunting_ground,
-                    `${item.recruit_people_count}명 모집`
+                    {
+                      name:
+                        item.progress_time === 0 ? '시간 협의 가능' : item.progress_time + '시간',
+                      iconSrc: '/svgs/time.svg',
+                      alt: 'time_icon'
+                    },
+                    {
+                      name: item.hunting_ground,
+                      iconSrc: '/svgs/map.svg',
+                      alt: 'hunting_ground_icon'
+                    },
+                    {
+                      name: `${item.recruit_people_count}명 모집`,
+                      iconSrc: '/svgs/Profile.svg',
+                      alt: 'recruit_icon'
+                    }
                   ]}
                 />
               </BoardResult.Item>

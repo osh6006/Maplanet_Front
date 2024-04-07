@@ -1,22 +1,22 @@
 'use client';
 
-import clsx from 'clsx';
 import dayjs from 'dayjs';
 import { useState } from 'react';
+import { filterImageUrl, formatMoney } from '@/util/util';
 
+import { IBadge, IHelperBoard } from '@/types';
+
+import Icon from '@/components/ui/icon';
 import Badge from '@/components/ui/badge';
 
-import { IHelperBoard } from '@/types';
-import Icon from '@/components/ui/icon';
 import InlineProfile from '@/components/ui/inline-profile';
-import { filterImageUrl } from '@/util/util';
 import HelperBoardModal from '@/components/modal/board/helper-board-modal';
 import { BoardCardCompleate, BoardCardHoverButtons } from './board-card-wrappers';
 
 dayjs.locale('ko');
 
 interface IHelperCardProps extends IHelperBoard {
-  badges?: string[];
+  badges?: IBadge[];
 }
 
 const HelperCard: React.FunctionComponent<IHelperCardProps> = ({
@@ -58,7 +58,7 @@ const HelperCard: React.FunctionComponent<IHelperCardProps> = ({
         {dayjs(created_at).format('YYYY-MM-DD')}
       </time>
 
-      <div className='flex w-full flex-col justify-end px-[12px]'>
+      <div className='flex w-full flex-col justify-end px-[12px] '>
         <InlineProfile
           imgUrl={filterImageUrl(discord_image)}
           manner={manner_count}
@@ -71,13 +71,14 @@ const HelperCard: React.FunctionComponent<IHelperCardProps> = ({
         {title}
       </div>
       <div className='mb-4 mt-2 flex flex-wrap items-center gap-2 px-[12px]'>
-        <Badge size='card' className='bg-lightGray text-yellow'>
-          <Icon src='/svgs/money.svg' size={20} alt='meso' />
-          {meso === 0 ? '협의가능' : meso}
+        <Badge size='card' className='bg-lightGray '>
+          <Icon src='/svgs/money.svg' size={16} alt='meso' />
+          <p className='font-semibold text-main'>{meso === 0 ? '협의가능' : formatMoney(meso)}</p>
         </Badge>
         {badges?.map((el) => (
-          <Badge size='card' key={el} className='bg-lightGray '>
-            {el}
+          <Badge size='card' key={el.alt} className='bg-lightGray '>
+            <Icon src={el.iconSrc} size={14} alt={el.alt} />
+            {el.name}
           </Badge>
         ))}
       </div>
