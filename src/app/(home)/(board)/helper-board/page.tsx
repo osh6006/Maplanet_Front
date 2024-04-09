@@ -104,7 +104,7 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
           }}
         />
       </BoardResult.Wrapper>
-      <Pagination totalPost={totalBoardCount || 0} itemsPerPage={5} pagePerItem={12} />
+      <Pagination totalPost={totalBoardCount || 0} itemsPerPage={5} pagePerItem={8} />
     </>
   );
 };

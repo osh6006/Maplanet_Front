@@ -56,23 +56,31 @@ const WoodCutterBoardPage: React.FunctionComponent<IWoodCutterBoardPageProps> = 
                     {
                       name: board.sub_job,
                       iconSrc: '/svgs/sword.svg',
-                      alt: 'sub_job_icon'
+                      alt: 'sub_job_icon',
+                      width: 14,
+                      height: 14
                     },
                     {
                       name:
                         board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간',
                       iconSrc: '/svgs/time.svg',
-                      alt: 'time_icon'
+                      alt: 'time_icon',
+                      width: 14,
+                      height: 14
                     },
                     {
                       name: board.hunting_ground,
                       iconSrc: '/svgs/map.svg',
-                      alt: 'hunting_ground_icon'
+                      alt: 'hunting_ground_icon',
+                      width: 14,
+                      height: 14
                     },
                     {
                       name: 'Lv .' + board.level,
                       iconSrc: '/svgs/LV.svg',
-                      alt: 'level_icon'
+                      alt: 'level_icon',
+                      width: 14,
+                      height: 14
                     }
                   ]}
                 />
@@ -92,23 +100,31 @@ const WoodCutterBoardPage: React.FunctionComponent<IWoodCutterBoardPageProps> = 
                     {
                       name: board.sub_job,
                       iconSrc: '/svgs/sword.svg',
-                      alt: 'sub_job_icon'
+                      alt: 'sub_job_icon',
+                      width: 14,
+                      height: 14
                     },
                     {
                       name:
                         board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간',
                       iconSrc: '/svgs/time.svg',
-                      alt: 'time_icon'
+                      alt: 'time_icon',
+                      width: 14,
+                      height: 14
                     },
                     {
                       name: board.hunting_ground,
                       iconSrc: '/svgs/map.svg',
-                      alt: 'hunting_ground_icon'
+                      alt: 'hunting_ground_icon',
+                      width: 14,
+                      height: 14
                     },
                     {
                       name: 'Lv .' + board.level,
                       iconSrc: '/svgs/LV.svg',
-                      alt: 'level_icon'
+                      alt: 'level_icon',
+                      width: 14,
+                      height: 14
                     }
                   ]}
                 />
@@ -117,7 +133,7 @@ const WoodCutterBoardPage: React.FunctionComponent<IWoodCutterBoardPageProps> = 
           }}
         />
       </BoardResult.Wrapper>
-      <Pagination totalPost={totalBoardCount} itemsPerPage={5} pagePerItem={12} />
+      <Pagination totalPost={totalBoardCount} itemsPerPage={5} pagePerItem={8} />
     </>
   );
 };

@@ -57,17 +57,23 @@ const PartyBoardPage: React.FunctionComponent<IPartyBoardPageProps> = async ({
                       name:
                         board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간',
                       iconSrc: '/svgs/time.svg',
-                      alt: 'time_icon'
+                      alt: 'time_icon',
+                      width: 14,
+                      height: 14
                     },
                     {
                       name: board.hunting_ground,
                       iconSrc: '/svgs/map.svg',
-                      alt: 'hunting_ground_icon'
+                      alt: 'hunting_ground_icon',
+                      width: 14,
+                      height: 14
                     },
                     {
                       name: `${board.recruit_people_count}명 모집`,
                       iconSrc: '/svgs/Profile.svg',
-                      alt: 'recruit_icon'
+                      alt: 'recruit_icon',
+                      width: 14,
+                      height: 14
                     }
                   ]}
                 />
@@ -88,17 +94,23 @@ const PartyBoardPage: React.FunctionComponent<IPartyBoardPageProps> = async ({
                       name:
                         board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간',
                       iconSrc: '/svgs/time.svg',
-                      alt: 'time_icon'
+                      alt: 'time_icon',
+                      width: 14,
+                      height: 14
                     },
                     {
                       name: board.hunting_ground,
                       iconSrc: '/svgs/map.svg',
-                      alt: 'hunting_ground_icon'
+                      alt: 'hunting_ground_icon',
+                      width: 14,
+                      height: 14
                     },
                     {
                       name: `${board.recruit_people_count}명 모집`,
                       iconSrc: '/svgs/Profile.svg',
-                      alt: 'recruit_icon'
+                      alt: 'recruit_icon',
+                      width: 14,
+                      height: 14
                     }
                   ]}
                 />
@@ -107,7 +119,7 @@ const PartyBoardPage: React.FunctionComponent<IPartyBoardPageProps> = async ({
           }}
         />
       </BoardResult.Wrapper>
-      <Pagination totalPost={totalBoardCount} itemsPerPage={5} pagePerItem={12} />
+      <Pagination totalPost={totalBoardCount} itemsPerPage={5} pagePerItem={8} />
     </>
   );
 };
