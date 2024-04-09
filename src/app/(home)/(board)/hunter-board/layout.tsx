@@ -12,7 +12,7 @@ interface IHunterBoardLayoutProps {
 const HunterBoardLayout: React.FunctionComponent<IHunterBoardLayoutProps> = ({ children }) => {
   return (
     <main>
-      <Banner title='현상금 게시판' imgUrl='/images/banner.png' />
+      <Banner title='현상금' imgUrl='/images/banner.png' />
       <BoardInner>
         <div className='mt-8 flex flex-col justify-between gap-y-4 sm:flex-row'>
           <Sort options={sortOptions} />
