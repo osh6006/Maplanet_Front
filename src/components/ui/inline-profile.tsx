@@ -22,11 +22,11 @@ const InlineProfile: React.FunctionComponent<IInlineProfileProps> = ({
         <p>{discordNickName}</p>
       </div>
       <div className='flex items-center gap-x-1'>
-        <Icon src={'/svgs/maple.svg'} alt='manner' size={16} />
+        <Icon src={'/svgs/maple.svg'} alt='manner' width={16} height={16} />
         <p>{manner || 0}</p>
       </div>
       <div className='flex items-center gap-x-1'>
-        <Icon src={'/svgs/un-manner.svg'} alt='unmanner' size={16} />
+        <Icon src={'/svgs/un-manner.svg'} alt='unmanner' width={16} height={16} />
         <p>{unManner || 0}</p>
       </div>
     </div>

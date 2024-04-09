@@ -3,22 +3,26 @@ import Image from 'next/image';
 interface IIconProps {
   src: string;
   alt: string;
-  size: number;
+  width: number;
+  height: number;
   className?: string;
   priority?: boolean;
 }
 
-const Icon: React.FunctionComponent<IIconProps> = ({ src, alt, size, className, priority }) => {
+const Icon: React.FunctionComponent<IIconProps> = ({
+  src,
+  alt,
+  width,
+  height,
+  className,
+  priority
+}) => {
   return (
     <Image
       src={src}
       alt={alt}
-      width={size}
-      height={size}
-      style={{
-        height: size,
-        width: size
-      }}
+      width={width}
+      height={height}
       className={className}
       priority={priority}
     />

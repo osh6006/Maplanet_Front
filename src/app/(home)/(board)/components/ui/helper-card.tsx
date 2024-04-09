@@ -72,12 +72,12 @@ const HelperCard: React.FunctionComponent<IHelperCardProps> = ({
       </div>
       <div className='mb-4 mt-2 flex flex-wrap items-center gap-2 px-[12px]'>
         <Badge size='card' className='bg-lightGray '>
-          <Icon src='/svgs/money.svg' size={16} alt='meso' />
+          <Icon src='/svgs/money.svg' width={16} height={16} alt='meso' />
           <p className='font-semibold text-main'>{meso === 0 ? '협의가능' : formatMoney(meso)}</p>
         </Badge>
         {badges?.map((el) => (
           <Badge size='card' key={el.alt} className='bg-lightGray '>
-            <Icon src={el.iconSrc} size={14} alt={el.alt} />
+            <Icon src={el.iconSrc} height={el.height} width={el.width} alt={el.alt} />
             {el.name}
           </Badge>
         ))}

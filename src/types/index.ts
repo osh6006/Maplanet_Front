@@ -14,4 +14,6 @@ export interface IBadge {
   name: string;
   iconSrc: string;
   alt: string;
+  width: number;
+  height: number;
 }

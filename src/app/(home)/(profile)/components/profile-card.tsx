@@ -134,7 +134,7 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
                 href={`discord://discord.com/users/${discord_id}`}
                 target='_blanck'
                 className='flex items-center gap-x-2'>
-                <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={20} />
+                <Icon src='/svgs/discord-icon.svg' alt='discordIcon' width={20} height={20} />
                 1:1 대화
               </Link>
             </Button>
@@ -142,54 +142,52 @@ const ProfileCard: React.FunctionComponent<IProfileCard> = ({
         )}
 
         {/* my profile handle complete */}
-        {completeState &&
-          pathName.includes('/my-profile') && (
-            <div className='absolute inset-0 z-[15] flex items-center justify-center backdrop-blur-sm'>
-              <div className='relative flex h-full w-full items-center justify-center'>
-                <h1 className='pointer-events-none z-10 text-3xl font-semibold'>완료</h1>
-                <button
-                  className='absolute right-5 top-5 z-[50] cursor-pointer text-3xl text-white'
-                  onClick={() => {
-                    if (window.confirm('완료 취소하시겠습니까?')) {
-                      console.log(boardType, board_id);
-                      CompleteMyPost(boardType, board_id);
-                      setCompleteState(prev => !prev);
-                    }
-                  }}>
-                  <Image
-                    src='/svgs/plus.svg'
-                    alt='x'
-                    width={24}
-                    height={24}
-                    style={{ transform: 'rotate(45deg)' }}
-                  />
-                </button>
-                <div className='absolute inset-0 bg-black/40'></div>
-              </div>
-            </div>
-          )}
-
-        {/* server rendering */}
-        {!completeState &&
-          pathName.includes('/my-profile') && (
-            <div
-              className={`absolute inset-0 flex flex-col items-center justify-center gap-y-2 text-nowrap bg-black/50 px-4 opacity-0 transition
-group-hover:opacity-100 group-hover:duration-300`}>
-              <Button
-                color='lightGray'
-                size='wide'
+        {completeState && pathName.includes('/my-profile') && (
+          <div className='absolute inset-0 z-[15] flex items-center justify-center backdrop-blur-sm'>
+            <div className='relative flex h-full w-full items-center justify-center'>
+              <h1 className='pointer-events-none z-10 text-3xl font-semibold'>완료</h1>
+              <button
+                className='absolute right-5 top-5 z-[50] cursor-pointer text-3xl text-white'
                 onClick={() => {
-                  if (window.confirm('완료하시겠습니까?')) {
+                  if (window.confirm('완료 취소하시겠습니까?')) {
                     console.log(boardType, board_id);
-                    CompleteMyPost(boardType, board_id); // server action
-                    setCompleteState(prev => !prev);
-                    // handleCompleteToggle(boardType, board_id);
+                    CompleteMyPost(boardType, board_id);
+                    setCompleteState((prev) => !prev);
                   }
                 }}>
-                완료하기
-              </Button>
+                <Image
+                  src='/svgs/plus.svg'
+                  alt='x'
+                  width={24}
+                  height={24}
+                  style={{ transform: 'rotate(45deg)' }}
+                />
+              </button>
+              <div className='absolute inset-0 bg-black/40'></div>
             </div>
-          )}
+          </div>
+        )}
+
+        {/* server rendering */}
+        {!completeState && pathName.includes('/my-profile') && (
+          <div
+            className={`absolute inset-0 flex flex-col items-center justify-center gap-y-2 text-nowrap bg-black/50 px-4 opacity-0 transition
+group-hover:opacity-100 group-hover:duration-300`}>
+            <Button
+              color='lightGray'
+              size='wide'
+              onClick={() => {
+                if (window.confirm('완료하시겠습니까?')) {
+                  console.log(boardType, board_id);
+                  CompleteMyPost(boardType, board_id); // server action
+                  setCompleteState((prev) => !prev);
+                  // handleCompleteToggle(boardType, board_id);
+                }
+              }}>
+              완료하기
+            </Button>
+          </div>
+        )}
 
         {/* card content */}
         <div className='flex w-full items-center justify-between '>
@@ -222,7 +220,7 @@ group-hover:opacity-100 group-hover:duration-300`}>
           {/* 메소 */}
           {meso || meso === 0 ? (
             <Badge size='card' className='bg-lightGray text-yellow'>
-              <Icon src='/svgs/money.svg' size={20} alt='meso' />
+              <Icon src='/svgs/money.svg' width={20} height={20} alt='meso' />
               {meso}
             </Badge>
           ) : (
@@ -280,7 +278,7 @@ group-hover:opacity-100 group-hover:duration-300`}>
             discordNickName={discord_global_name!}
           />
           <div className='flex items-center gap-x-1 font-light'>
-            <Icon src={'/svgs/eyes.svg'} alt='view' size={20} />
+            <Icon src={'/svgs/eyes.svg'} alt='view' width={20} height={20} />
             <p className='leading-3'>{view_count}</p>
           </div>
         </div>

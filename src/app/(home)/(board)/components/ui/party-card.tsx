@@ -73,7 +73,7 @@ const PartyCard: React.FunctionComponent<IPartyCardProps> = ({
       <div className='mb-4 mt-3 flex flex-wrap items-center gap-2'>
         {badges?.map((el) => (
           <Badge size='card' key={el.iconSrc} className='bg-lightGray '>
-            <Icon src={el.iconSrc} size={14} alt={el.alt} />
+            <Icon src={el.iconSrc} width={el.width} height={el.height} alt={el.alt} />
             {el.name}
           </Badge>
         ))}

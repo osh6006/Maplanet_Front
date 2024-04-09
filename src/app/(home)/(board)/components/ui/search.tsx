@@ -7,7 +7,6 @@ import Filter from './filter';
 import Icon from '@/components/ui/icon';
 import Input from '@/components/ui/input';
 import Button from '@/components/ui/button';
-import Link from 'next/link';
 
 interface IFilter {
   name: string;
@@ -20,7 +19,7 @@ interface ISearchProps {
 }
 
 const Search: React.FunctionComponent<ISearchProps> = ({ filters }) => {
-  const { replace, push } = useRouter();
+  const { push } = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -100,7 +99,7 @@ const Search: React.FunctionComponent<ISearchProps> = ({ filters }) => {
                   labelRequired
                   icon={
                     <div className='flex items-center'>
-                      <Icon src='/svgs/search.svg' alt='search' size={20} />
+                      <Icon src='/svgs/search.svg' alt='search' width={20} height={20} />
                     </div>
                   }
                 />

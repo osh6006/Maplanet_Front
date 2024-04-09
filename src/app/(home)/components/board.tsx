@@ -93,7 +93,8 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
             <Icon
               src='/svgs/plus-large.svg'
               alt='plus'
-              size={24}
+              width={24}
+              height={24}
               className={clsx(
                 isHovered
                   ? 'scale-90 transition-all duration-200'
@@ -116,13 +117,17 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
                     {
                       name: item.sub_job,
                       iconSrc: '/svgs/sword.svg',
-                      alt: 'sub_job_icon'
+                      alt: 'sub_job_icon',
+                      width: 14,
+                      height: 14
                     },
                     {
                       name:
                         item.progress_time === 0 ? '시간 협의 가능' : item.progress_time + '시간',
                       iconSrc: '/svgs/time.svg',
-                      alt: 'time_icon'
+                      alt: 'time_icon',
+                      width: 14,
+                      height: 14
                     }
                   ]}
                 />
@@ -140,7 +145,9 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
                     {
                       name: item.place_theif_nickname,
                       iconSrc: '/svgs/sword.svg',
-                      alt: 'sub_job_icon'
+                      alt: 'sub_job_icon',
+                      width: 14,
+                      height: 14
                     }
                   ]}
                 />
@@ -158,23 +165,31 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
                     {
                       name: item.sub_job,
                       iconSrc: '/svgs/sword.svg',
-                      alt: 'sub_job_icon'
+                      alt: 'sub_job_icon',
+                      width: 14,
+                      height: 14
                     },
                     {
                       name:
                         item.progress_time === 0 ? '시간 협의 가능' : item.progress_time + '시간',
                       iconSrc: '/svgs/time.svg',
-                      alt: 'time_icon'
+                      alt: 'time_icon',
+                      width: 14,
+                      height: 14
                     },
                     {
                       name: item.hunting_ground,
                       iconSrc: '/svgs/map.svg',
-                      alt: 'hunting_ground_icon'
+                      alt: 'hunting_ground_icon',
+                      width: 14,
+                      height: 14
                     },
                     {
                       name: 'Lv .' + item.level,
                       iconSrc: '/svgs/LV.svg',
-                      alt: 'level_icon'
+                      alt: 'level_icon',
+                      width: 14,
+                      height: 14
                     }
                   ]}
                 />
@@ -193,17 +208,23 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
                       name:
                         item.progress_time === 0 ? '시간 협의 가능' : item.progress_time + '시간',
                       iconSrc: '/svgs/time.svg',
-                      alt: 'time_icon'
+                      alt: 'time_icon',
+                      width: 14,
+                      height: 14
                     },
                     {
                       name: item.hunting_ground,
                       iconSrc: '/svgs/map.svg',
-                      alt: 'hunting_ground_icon'
+                      alt: 'hunting_ground_icon',
+                      width: 14,
+                      height: 14
                     },
                     {
                       name: `${item.recruit_people_count}명 모집`,
                       iconSrc: '/svgs/Profile.svg',
-                      alt: 'recruit_icon'
+                      alt: 'recruit_icon',
+                      width: 14,
+                      height: 14
                     }
                   ]}
                 />

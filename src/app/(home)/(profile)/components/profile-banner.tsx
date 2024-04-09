@@ -4,7 +4,6 @@ import Avatar from '@/components/ui/avatar';
 import Button from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import Inner from '@/components/ui/inner';
-import * as React from 'react';
 import Link from 'next/link';
 import Spinner from '@/components/ui/spinner';
 import GetProfileData from '@/actions/profile';
@@ -39,13 +38,13 @@ const ProfileBanner: React.FunctionComponent<IProfileBannerProps> = ({
 
   const mannerIncreaseOrDecrease = async (userId: number) => {
     await MannerCount(userId);
-    mutate({ ...data, manner_count : data.userProfile.manner_count })
-  }
+    mutate({ ...data, manner_count: data.userProfile.manner_count });
+  };
 
   const reportIncreaseOrDecrease = async (userId: number) => {
     await ReportCount(userId);
-    mutate({ ...data, report_count : data.userProfile.report_count })
-  }
+    mutate({ ...data, report_count: data.userProfile.report_count });
+  };
 
   return (
     <div className='flex h-[193px] items-center bg-[#000]'>
@@ -84,7 +83,7 @@ const ProfileBanner: React.FunctionComponent<IProfileBannerProps> = ({
                   href={`discord://discord.com/users/${data.userProfile.discord_id}`}
                   target='_blanck'
                   className='flex items-center justify-center gap-2'>
-                  <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={20} />
+                  <Icon src='/svgs/discord-icon.svg' alt='discordIcon' width={20} height={20} />
                   1:1 대화
                 </Link>
               </Button>

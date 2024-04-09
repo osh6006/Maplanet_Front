@@ -18,12 +18,12 @@ const Notification: React.FunctionComponent<INotificationProps> = () => {
           <div>에러가 발생했습니다.</div>
         ) : (
           <div className='flex items-center gap-x-4'>
-            <Icon src='/svgs/snail.svg' alt='snail' size={26} />
+            <Icon src='/svgs/snail.svg' alt='snail' width={26} height={26} />
             <div className='whitespace-nowrap text-lg font-bold '>
               <span className='mr-5'>[공지사항]</span>
               <span>{data?.noticeData?.title}</span>
             </div>
-            <Icon src='/svgs/snail.svg' alt='snail' size={26} />
+            <Icon src='/svgs/snail.svg' alt='snail' width={26} height={26} />
           </div>
         )}
       </div>

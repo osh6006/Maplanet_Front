@@ -26,11 +26,11 @@ const SNSButton: React.FunctionComponent<ISNSButtonProps> = ({
           ' relative z-20 flex items-center justify-center gap-x-2 rounded-full px-4 py-3 transition-all active:scale-95',
           color
         )}>
-        <Icon alt={alt} src={imageUrl} size={20} />
+        <Icon alt={alt} src={imageUrl} width={20} height={20} />
         <span className='absolute  opacity-0 group-hover:static group-hover:opacity-100 group-hover:transition-all'>
           {title}
         </span>
-        <Icon src={'/svgs/link.svg'} alt='link' size={15} />
+        <Icon src={'/svgs/link.svg'} alt='link' width={15} height={15} />
       </button>
     </Link>
   );

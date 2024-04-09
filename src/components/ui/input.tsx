@@ -2,7 +2,6 @@
 
 import clsx from 'clsx';
 import { InputHTMLAttributes } from 'react';
-import Icon from './icon';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   labelRequired?: boolean;

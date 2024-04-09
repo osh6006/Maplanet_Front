@@ -49,13 +49,13 @@ const BoardMesoInput: React.FunctionComponent<IBoardMesoInputProps> = ({
                   placeholder='메소'
                   icon={
                     <div className='flex items-center gap-x-1'>
-                      <Icon src='/svgs/money.svg' alt='x' size={20} />
+                      <Icon src='/svgs/money.svg' alt='meso' width={20} height={20} />
                       <button
                         disabled={newDisabled}
                         type='button'
                         onClick={() => handleReset()}
                         className={clsx(value ? 'block' : 'hidden')}>
-                        <Icon src='/svgs/x.svg' alt='x' size={15} />
+                        <Icon src='/svgs/x.svg' alt='x' width={15} height={15} />
                       </button>
                     </div>
                   }

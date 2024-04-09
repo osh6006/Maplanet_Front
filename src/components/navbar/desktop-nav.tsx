@@ -44,7 +44,7 @@ const DesktopNav: React.FunctionComponent<IDesktopNavProps> = ({ accessToken, us
           ) : (
             <Link href={DISCORD_LINK || '#'}>
               <Button size='sm' color='discord'>
-                <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15} />
+                <Icon src={'/svgs/discord-icon.svg'} alt='discord' width={15} height={15} />
                 로그인
               </Button>
             </Link>

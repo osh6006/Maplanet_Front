@@ -56,7 +56,9 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
                     {
                       name: board.place_theif_nickname,
                       iconSrc: '/svgs/sword.svg',
-                      alt: 'sub_job_icon'
+                      alt: 'sub_job_icon',
+                      width: 14,
+                      height: 14
                     }
                   ]}
                 />
@@ -76,7 +78,9 @@ const HunterBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
                     {
                       name: board.place_theif_nickname,
                       iconSrc: '/svgs/sword.svg',
-                      alt: 'sub_job_icon'
+                      alt: 'sub_job_icon',
+                      width: 14,
+                      height: 14
                     }
                   ]}
                 />

@@ -27,7 +27,7 @@ const MobileNav: React.FunctionComponent<IMobileNavProps> = ({ userInfo, accessT
     <>
       <div className='absolute left-0 flex w-full items-center justify-between  px-3 sm:hidden'>
         <button onClick={handleOpen}>
-          <Icon size={30} src='/svgs/menu.svg' alt='menu' />
+          <Icon width={30} height={30} src='/svgs/menu.svg' alt='menu' />
         </button>
 
         {/* nav logo */}
@@ -40,14 +40,14 @@ const MobileNav: React.FunctionComponent<IMobileNavProps> = ({ userInfo, accessT
         ) : (
           <Link href={DISCORD_LINK || '#'}>
             <Button size='sm' color='discord'>
-              <Icon src={'/svgs/discord-icon.svg'} alt='discord' size={15} />
+              <Icon src={'/svgs/discord-icon.svg'} alt='discord' width={15} height={15} />
             </Button>
           </Link>
         )}
         {isOpen ? (
           <div ref={ref} className='fixed inset-y-0 left-0 z-20 w-2/3 bg-background px-4'>
             <button className='absolute right-3 top-6' onClick={handleClose}>
-              <Icon size={20} src='/svgs/x.svg' alt='menu' />
+              <Icon width={20} height={20} src='/svgs/x.svg' alt='menu' />
             </button>
 
             <button

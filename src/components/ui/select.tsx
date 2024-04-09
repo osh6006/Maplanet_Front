@@ -54,7 +54,7 @@ const Select: React.FunctionComponent<ISelectProps> = ({
         )}>
         {value ? value : placeHolder}
         <div className={clsx('transition-all', isOpen ? 'rotate-[180deg]' : '')}>
-          <Icon src='/svgs/triangle.svg' alt='triangle' size={15} />
+          <Icon src='/svgs/triangle.svg' alt='triangle' width={15} height={15} />
         </div>
       </button>
 

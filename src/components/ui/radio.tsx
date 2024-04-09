@@ -26,12 +26,12 @@ const Radio: React.FunctionComponent<IRadioProps> = ({ label, name, icon, onChan
       {icon}
       <label htmlFor={props.id} className='hidden flex-1 peer-checked:flex '>
         <div className='h-[18px] w-[18px]'>
-          <Icon src='/svgs/check-true.svg' alt='chektrue' size={18} />
+          <Icon src='/svgs/check-true.svg' alt='chektrue' width={18} height={18} />
         </div>
       </label>
       <label htmlFor={props.id} className='flex flex-1 peer-checked:hidden'>
         <div className='h-[18px] w-[18px]'>
-          <Icon src='/svgs/check-false.svg' alt='chektrue' size={18} />
+          <Icon src='/svgs/check-false.svg' alt='chektrue' width={18} height={18} />
         </div>
       </label>
       <label htmlFor={props.id} className='flex w-full gap-x-2 peer-checked:text-main'>

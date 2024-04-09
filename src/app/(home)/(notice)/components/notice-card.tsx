@@ -40,7 +40,8 @@ const NoticeCard: React.FunctionComponent<INoticeCardProps> = ({
           <div>{writer}</div>
           <time>{dayjs(created_at).format('YYYY년 MM월 DD일')}</time>
           <Icon
-            size={15}
+            width={15}
+            height={15}
             src='/svgs/triangle.svg'
             alt='dropdown'
             className={clsx(isOpen ? 'rotate-[180deg]' : '')}

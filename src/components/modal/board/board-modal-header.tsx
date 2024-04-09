@@ -36,12 +36,12 @@ const BoardModalHeader: React.FunctionComponent<IPostModalHeaderProps> = ({
         <div className='flex gap-x-2 '>
           <div className='flex items-center gap-x-3'>
             <div className='flex items-center gap-x-1'>
-              <Icon src={'/svgs/maple.svg'} alt='manner' size={15} />
+              <Icon src={'/svgs/maple.svg'} alt='manner' width={15} height={15} />
               <span>·</span>
               <p>{manner_count}</p>
             </div>
             <div className='flex items-center gap-x-1'>
-              <Icon src={'/svgs/un-manner.svg'} alt='unmanner' size={15} />
+              <Icon src={'/svgs/un-manner.svg'} alt='unmanner' width={15} height={15} />
               <span>·</span>
               <p>{report_count}</p>
             </div>

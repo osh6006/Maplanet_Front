@@ -32,7 +32,7 @@ const Modal: React.FunctionComponent<IModalProps> = ({ children, onClose, isOpen
                 e.stopPropagation();
               }}>
               <button className='absolute right-5 top-5 flex w-full justify-end' onClick={onClose}>
-                <Icon size={25} src='/svgs/x.svg' alt='X' priority />
+                <Icon width={25} height={25} src='/svgs/x.svg' alt='X' priority />
               </button>
               {children}
             </div>

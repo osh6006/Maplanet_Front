@@ -83,7 +83,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
               onClick={() => {
                 // TODO : Move Profile
               }}>
-              <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={20} />
+              <Icon src='/svgs/discord-icon.svg' alt='discordIcon' width={20} height={20} />
               1:1 대화
             </Button>
           </div>
@@ -100,7 +100,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
         <h1 className='my-6 text-xl font-semibold'>{title}</h1>
         <div className='mb-4 mt-3 flex flex-wrap items-center gap-2'>
           <Badge size='card' className='bg-lightGray text-yellow'>
-            <Icon src='/svgs/money.svg' size={20} alt='meso' />
+            <Icon src='/svgs/money.svg' width={20} height={20} alt='meso' />
             {meso}
           </Badge>
           {badges?.map((el) => (
@@ -131,7 +131,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
             onClick={() => {
               // TODO : Move Profile
             }}>
-            <Icon src='/svgs/discord-icon.svg' alt='discordIcon' size={20} />
+            <Icon src='/svgs/discord-icon.svg' alt='discordIcon' width={20} height={20} />
             1:1 대화
           </Button>
         </div>
@@ -144,7 +144,7 @@ const PostCard: React.FunctionComponent<IPostCardProps> = ({
             discordNickName={discordNickName!}
           />
           <div className='flex items-center gap-x-1 font-light'>
-            <Icon src={'/svgs/eyes.svg'} alt='view' size={20} />
+            <Icon src={'/svgs/eyes.svg'} alt='view' width={20} height={20} />
             <p className='leading-3'>{view}</p>
           </div>
         </div>
