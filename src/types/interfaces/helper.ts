@@ -18,6 +18,7 @@ export interface IHelperBoard {
   meso: number;
   title: string;
   sub_job: string;
+  hunting_ground: string;
   progress_time: number;
   discord_global_name: string;
   discord_image: string;

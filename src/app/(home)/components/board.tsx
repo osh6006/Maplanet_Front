@@ -27,6 +27,8 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
 
   const { data, isLoading, error } = GetHomeData();
 
+  console.log(data);
+
   let categoryData = [];
 
   if (category === '심쩔') {
@@ -109,6 +111,8 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
       <ul className='mt-[18px] flex items-center justify-center gap-x-[24px] '>
         {category === '심쩔' &&
           categoryData.map((item: IHelperBoard) => {
+            console.log(item);
+
             return (
               <BoardResult.Item key={item.board1_id}>
                 <HelperCard
@@ -126,6 +130,13 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
                         item.progress_time === 0 ? '시간 협의 가능' : item.progress_time + '시간',
                       iconSrc: '/svgs/time.svg',
                       alt: 'time_icon',
+                      width: 14,
+                      height: 14
+                    },
+                    {
+                      name: item.hunting_ground || '전 구역 가능',
+                      iconSrc: '/svgs/map.svg',
+                      alt: 'sub_job_icon',
                       width: 14,
                       height: 14
                     }

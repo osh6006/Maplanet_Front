@@ -1,5 +1,3 @@
-import { Suspense } from 'react';
-
 import BoardResult from '../components/ui/board-result';
 import HelperCard from '../components/ui/helper-card';
 
@@ -64,6 +62,13 @@ const HelperBoardPage: React.FunctionComponent<IHelperBoardPageProps> = async ({
                         board.progress_time === 0 ? '시간 협의 가능' : board.progress_time + '시간',
                       iconSrc: '/svgs/time.svg',
                       alt: 'time_icon',
+                      width: 14,
+                      height: 14
+                    },
+                    {
+                      name: board.hunting_ground || '전 구역 가능',
+                      iconSrc: '/svgs/map.svg',
+                      alt: 'sub_job_icon',
                       width: 14,
                       height: 14
                     }
