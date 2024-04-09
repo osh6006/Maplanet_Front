@@ -18,7 +18,7 @@ const WritePage: React.FunctionComponent<IWriteProps> = ({ searchParams }) => {
   return (
     <>
       <div className='mt-8 grid grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-4'>
-        <WriteTypeWrapper name='심쩔' writeType='helperBoard' selectedWriteType={writeType} />
+        <WriteTypeWrapper name='심알바' writeType='helperBoard' selectedWriteType={writeType} />
         <WriteTypeWrapper
           name='겹사 / 인기도'
           writeType='hunterBoard'

@@ -121,6 +121,25 @@ const HelperBoardForm: React.FunctionComponent<IHelperBoardFormProps> = () => {
           }}
           icon={<span className=' items-center text-[15px] font-semibold text-black'>LV</span>}
         />
+
+        <BoardInput
+          control={control}
+          name='hunting_ground'
+          label='사냥터'
+          placeholder='사냥터를 입력해 주세요'
+          disabled={isLoading}
+          rules={{
+            required: '사냥터는 필수로 입력해야 합니다.',
+            minLength: {
+              message: '최소 2글자 이상 입력해야 합니다.',
+              value: 2
+            },
+            maxLength: {
+              message: '20글자 이상은 입력이 불가합니다.',
+              value: 12
+            }
+          }}
+        />
       </div>
       <div className='flex flex-col gap-y-8'>
         <BoardInput
