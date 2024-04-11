@@ -15,7 +15,7 @@
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 
   --tw-ring-opacity: 1;
-  --tw-ring-color: #63b4ff;
+  --tw-ring-color: #f28500;
 }
 
 .react-tagsinput > span {
@@ -29,9 +29,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #63b4ff;
+  background-color: #f28500;
   border-radius: 2px;
-  border: 1px solid #63b4ff;
+  border: 1px solid #f28500;
   color: #fff;
   font-family: sans-serif;
   font-size: 13px;

@@ -27,8 +27,6 @@ const Board: React.FunctionComponent<IBoardProps> = ({ category }) => {
 
   const { data, isLoading, error } = GetHomeData();
 
-  console.log(data);
-
   let categoryData = [];
 
   if (category === '심쩔') {

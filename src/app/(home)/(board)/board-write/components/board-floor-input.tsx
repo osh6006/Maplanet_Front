@@ -20,10 +20,6 @@ const BoardFloorInput: React.FunctionComponent<IBoardFloorInputProps> = ({
 }) => {
   const [tags, setTags] = useState<string[]>([]);
 
-  const handleChange = (tags: string[]) => {
-    setTags(tags);
-  };
-
   const isHidden = `${tags.length === 3 ? 'react-tagsinput-hidden' : 'react-tagsinput-input'}`;
 
   return (
@@ -31,10 +27,6 @@ const BoardFloorInput: React.FunctionComponent<IBoardFloorInputProps> = ({
       <Controller
         name={name}
         control={control}
-        rules={{
-          required: '층수가 있으면 필수로 입력해야 합니다'
-        }}
-        // disabled={disabled}
         render={({ field: { value, onChange, name }, fieldState: { error, invalid } }) => {
           return (
             <div className='flex justify-between gap-x-4 '>

@@ -3,7 +3,7 @@ import clsx from 'clsx';
 interface ILabelProps {
   name: string;
   label: string;
-  required: boolean;
+  required?: boolean;
   className?: string;
 }
 

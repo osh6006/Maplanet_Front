@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import toast from 'react-hot-toast';
 import usePost from '@/hooks/use-post';
 import { useRouter } from 'next/navigation';
@@ -13,6 +14,7 @@ import BoardTimeInput from './board-time-input';
 
 import { IPartyBoardPost } from '@/types';
 import { postBoardData } from '@/actions/board';
+import { partyFloorNames } from '@/data/board';
 
 interface IPartyBoardFormProps {}
 
@@ -21,19 +23,35 @@ const PartyBoardForm: React.FunctionComponent<IPartyBoardFormProps> = ({}) => {
   const { isLoading, setIsLoading, error, setError } = usePost();
   const router = useRouter();
 
+  const [floor, setFloor] = useState(1);
+  const floorArr = Array.from({ length: floor }, (_, index) => index + 1);
+
   if (error) throw new Error(error + '');
 
   const onSubmit: SubmitHandler<IPartyBoardPost> = async (data) => {
     setIsLoading(true);
 
     let parsingData = { ...data };
+
     parsingData = { ...data, parking: Boolean(data.parking) };
 
     if (data.progress_time === null) {
       parsingData = { ...parsingData, progress_time: 0 };
     }
 
-    parsingData = filterFloor(parsingData);
+    for (let i = 0; i < 6; i++) {
+      const name = partyFloorNames[i];
+
+      if (!floorArr[i]) {
+        parsingData[name] = null;
+      } else {
+        if (!parsingData[name]) {
+          parsingData[name] = '구인중,구인중,구인중';
+        }
+      }
+    }
+
+    filterFloor(parsingData);
 
     const result = await postBoardData({
       url: '/board4/post',
@@ -177,11 +195,15 @@ const PartyBoardForm: React.FunctionComponent<IPartyBoardFormProps> = ({}) => {
           }}
           icon={<span className=' items-center text-[15px] font-semibold text-black'>명</span>}
         />
-        <BoardFloors control={control} />
+        <BoardFloors floor={floor} setFloor={setFloor} floorArr={floorArr} control={control} />
       </div>
       <div></div>
       <div className='mt-4'>
-        <Button size='wide' color='main' disabled={isLoading}>
+        <Button
+          size='wide'
+          color='main'
+          //  disabled={isLoading}
+        >
           등록하기
         </Button>
       </div>
@@ -190,6 +212,10 @@ const PartyBoardForm: React.FunctionComponent<IPartyBoardFormProps> = ({}) => {
 };
 
 function filterFloor(boardData: IPartyBoardPost) {
+  if (!boardData.first_floor) {
+    boardData.first_floor = '';
+  }
+
   if (!boardData.second_floor) {
     boardData.second_floor = '';
   }

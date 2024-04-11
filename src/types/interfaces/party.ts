@@ -11,6 +11,7 @@ export interface IPartyBoardPost {
   fourth_floor: string | null;
   fifth_floor: string | null;
   sixth_floor: string | null;
+  [key: string]: string | null | number | boolean;
 }
 
 export interface IPartyBoard {
