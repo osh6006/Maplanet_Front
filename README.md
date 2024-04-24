@@ -4,58 +4,85 @@
 
 </div>
 
-<h1 align="center">메이플래닛 프론트엔드</h1>
-
-<!-- Status -->
-
-<!-- <h4 align="center">
-	🚧  Gaebalin Front 🚀 Under construction...  🚧
-</h4>
-
-<hr> -->
+<h1 align="center">매랜피플 프론트엔드</h1>
 
 <p align="center">
-  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
-  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
-  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
-  <a href="#memo-license">License</a> &#xa0; | &#xa0;
-  <a href="https://github.com/{{YOUR_GITHUB_USERNAME}}" target="_blank">Author</a>
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/osh6006/Maplanet_Front?color=56BEB8">
+
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/osh6006/Maplanet_Front?color=56BEB8">
+
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/osh6006/Maplanet_Front?color=56BEB8">
+
 </p>
 
+<p align="center">
+  <a href="#dart-프로젝트-소개">프로젝트 소개</a> &#xa0; | &#xa0; 
+  <a href="#bust_in_silhouette-팀원-소개">팀원 소개</a> &#xa0; | &#xa0; 
+  <a href="#rocket-개발-환경">개발 환경</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-필수-사항">필수 사항</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-시작하기">시작하기</a> &#xa0; | &#xa0;
+  <a href="#hammer-채택-기술">채택 기술</a> &#xa0; | &#xa0;
+  <a href="#sparkles-페이지-별-기능">페이지 별 기능</a> &#xa0; | &#xa0;
+  <a href="#lightbulb-프로젝트를-통해-배운-부분">프로젝트를 통해 배운 부분</a> &#xa0; | &#xa0;
+  <a href="#construction-트러블-슈팅">트러블 슈팅</a> &#xa0; | &#xa0;
+  <a href="#roller_coaster-개선해야-할-사항">개선해야 할 사항</a> &#xa0; | &#xa0;
+  <a href="#memo-라이센스">라이센스</a> &#xa0; | &#xa0;
+  <a href="https://github.com/osh6006" target="_blank">작성자</a>
+</p>
 <br>
 
-## :dart: About
+## :dart: 프로젝트 소개
 
-메이플래닛 프론트엔드 레포지토리 입니다.
+[Demo 사이트 바로가기](https://www.maplelandpp.com/) **(2024.04.24)현 시점 운영이 종료되었을 수 있습니다. **
 
-데모 사이트 :
-<a href="https://maplanet-front.vercel.app/">Demo</a>
+현재 메이플 랜드 유저들은 파티 구성원을 구하거나 심쩔, 나무꾼 등의 역할을 맡을 플레이어를 찾기 위해 디스코드 등의 외부 플랫폼을 활용하고 있습니다. 하지만 이러한 방법은 불편하고 시간이 많이 소요되는 경우가 많습니다. 따라서 이를 해결하기 위해 메랜피플 사이트를 만들게 되었습니다.
 
-<!-- [Demo](https://gaebalin-front-osh6006.vercel.app/) -->
+## :bust_in_silhouette: 팀원 소개
 
-## :sparkles: Features
+| 이름           | 주특기  | 깃허브 주소                     | 블로그주소                     |
+| :------------- | :------ | :------------------------------ | ------------------------------ |
+| 오황석 F.E     | React   | https://github.com/osh6006      | https://osh6006.github.io/     |
+| 최현식 F.E     | React   | https://github.com/camac0808    |
+| 박준수 B.E (L) | Node.js | https://github.com/crystalation |
+| 김용식 B.E     | Node.js | https://github.com/ystar5008    | https://ystar5008.tistory.com/ |
 
-:heavy_check_mark: 기능1 \
-:heavy_check_mark: 기능2 \
-:heavy_check_mark: 기능3...
+## :rocket: 개발 환경
+
+### 개발
+
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
+![vscode](https://img.shields.io/badge/visualstudiocode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
+![Github](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Nextjs](https://img.shields.io/badge/nextdotjs-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+
+### 라이브러리
+
+![swr](https://img.shields.io/badge/swr-000000?style=for-the-badge&logo=swr&logoColor=white)
+![zustand](https://img.shields.io/badge/zustand-37b24d?style=for-the-badge&logo=&logoColor=white)
+![tailwindcss](https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![swr](https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=reactquery&logoColor=white)
+![reacthookform](https://img.shields.io/badge/reacthookform-EC5990?style=for-the-badge&logo=reacthookform&logoColor=white)
+
+### 백엔드 API
+
+백엔드 `api`는 백엔드 팀원의 레포지토리에서 확인하실 수 있습니다.
+
+[백엔드 레포지토리 바로 가기](https://github.com/MaplelandPP/Maplanet_Backend)
+
+### 배포
+
+![vercel](https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+
+## :white_check_mark: 필수 사항
+
+⭐ 프로젝트를 시작하기 전에 `Git`와 `NodeJS`를 설치해 주세요 ⭐\
+⭐ env 파일을 확인해 주세요 ⭐
 
 ## :rocket: Technologies
 
 이 프로젝트에는 다음의 기술 및 도구가 활용 되었습니다.
-
-![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
-![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
-![tailwindcss](https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Nextjs](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
-![zustand](https://img.shields.io/badge/zustand-37b24d?style=for-the-badge&logo=&logoColor=white)
-![swr](https://img.shields.io/badge/swr-000000?style=for-the-badge&logo=swr&logoColor=white)
-![reacthookform](https://img.shields.io/badge/reacthookform-EC5990?style=for-the-badge&logo=reacthookform&logoColor=white)
-![TanStackTable](https://img.shields.io/badge/TanStackTable-FF4154?style=for-the-badge&logo=reacttable&logoColor=white)
-![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
-![vercel](https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 ## :white_check_mark: Requirements
 
@@ -80,6 +107,61 @@ $ npm run dev
 
 # The server will initialize in the <http://localhost:3000>
 ```
+
+## :hammer: 채택 기술
+
+### Nextjs, TypeScript tailwindcss
+
+- Nextjs
+
+  - Next.js는 서버 사이드 렌더링(SSR)과 정적 사이트 생성(Static Site Generation, SSG)을 지원하는 React 프레임워크입니다. 이를 통해 더 나은 초기 로딩 시간과 검색 엔진 최적화(SEO)를 달성할 수 있습니다.
+  - Next.js의 라우팅 시스템은 폴더 기반으로 구성되어 있어 개발자가 쉽게 페이지를 추가하고 관리할 수 있었습니다.
+  - Next.js는 기본적으로 Error boundary, Loading, fetch api, cookie등을 관리할 수 있는 라이브러리를 기본적으로 지원해 주기 때문에 훨씬 빠르게 개발할 수 있었고 최대한 Next에 있는 기능들을 활용하려고 노력했습니다.
+
+- TypeScirpt
+
+  - 타입스크립트는 자바스크립트에 정적 타이핑을 추가하는 오픈 소스 프로그래밍 언어입니다. 이는 개발 과정에서 타입 오류를 사전에 발견하고 수정할 수 있게 해주어, 런타임에서의 버그를 크게 줄여주고 코드의 안정성과 유지보수성을 향상시킵니다.
+  - 현 웹 사이트에서는 사용하고 있는 라이브러리 모두 Typescript를 지원하며 백엔드에서 받아오는 데이터 타입은 Type이라는 폴더를 만들어 타입을 초기화 해주었습니다.
+
+- Tailwindcss
+  - Tailwind CSS는 클래스 기반의 스타일링을 제공하여 CSS를 직접 작성하는 번거로움을 줄여줍니다. 컴포넌트에 바로 인라인 스타일 처럼 적용할 수 있어 빠르게 작업이 가능했습니다. 또한 반응형 스타일도 직관적으로 지정할 수 있기 때문에 반응형 디자인도 쉽게 적용이 가능했습니다.
+  - tailwindconfig.js 파일을 통해 color, size, animation 설정을 전역으로 설정할 수 있기 때문에 빠른 스타일링 작업이 가능했습니다.
+
+### Zustand, SWR
+
+- Zustand
+
+  - 불필요한 props 전달을 방지하기 위해서 발생합니다. 따라서, 필요한 컴포넌트 내부에서만 상태 값을 가져다 사용하기 위해 상태 관리 라이브러리를 사용하기로 했습니다.
+
+  - zustand는 다른 상태 관리 라이브러리와는 다르게 provider로 감싸지 않고 어디서든 사용이 가능합니다. 따라서 다른 상태 관리 라이브러리보다 사용하기 쉽고 코드도 더욱 간단했습니다.
+
+- SWR
+
+  - SWR은 데이터 패칭을 위한 리액트 훅 라이브러리로, 주로 API 호출의 결과를 캐싱, 재사용, 동기화하는 기능을 제공합니다. 자동 재요청, 포커스 시 데이터 새로고침, 데이터 종속성 관리와 같은 고급 기능을 제공하여 개발자가 보다 쉽게 데이터 관련 작업을 처리할 수 있게 도와줍니다.
+
+  - 현 웹 사이트 에서는 클라이언트 사이드 컴포넌트에서 데이터를 다룰 때 사용하고 있습니다.
+
+### ReactHookForm
+
+- React Hook Form은 사용하기 간단하며, 복잡한 폼 유효성 검사, 폼 상태 관리, 에러 처리를 손쉽게 할 수 있도록 도와줍니다. 또한, 폼 입력 요소와 간단하게 통합되어 개발자가 보다 빠르고 효율적으로 폼을 구현할 수 있게 해줍니다.
+
+- 현 웹 사이트에서는 제공하고 있는 모든 게시글 작성 방식을 React Hook Form을 사용하여 유효성 검사 폼 상태 관리 에러처리를 하고 있습니다.
+
+## :sparkles: 페이지별 기능
+
+### :heavy_check_mark: 디스코드 로그인
+
+- 화면 위쪽의 네비게이션 바에서 로그인 버튼을 클릭하면 디스코드 페이지로 이동된 후 사용자가 승인 버튼을 누르면 다시 매랜피플 홈 페이지로 이동합니다.
+  - 로그인을 하지 않으면 사용자는 글을 작성할 수 없습니다.
+
+### 메인 페이지
+
+- 메인 페이지는 각 페이지 별 게시글의 최신 글 정보를 볼 수 있고 위의 네비게이션 바 혹은 게시글 제목의 버튼을 누르면 페이지로 이동합니다.
+
+  - 각 블록 에서는 최근 게시글 2개를 볼 수 있으며 상단의 + 버튼을 누르면 해당 페이지로 이동합니다.
+  - 사용자가 게시글 카드를 hover 할 시 상세보기, 디스코드 대화, 프로필 보기 버튼을 사용할 수 있습니다.
+
+### 심쩔 페이지
 
 ## :memo: License
 
