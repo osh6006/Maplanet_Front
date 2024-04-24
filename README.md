@@ -15,6 +15,8 @@
 
 </p>
 
+![메인 페이지](https://github.com/MaplelandPP/Maplanet_Front/assets/56256924/fd6b5555-fe9d-42d9-bded-d22612b4965d)
+
 <p align="center">
   <a href="#dart-프로젝트-소개">프로젝트 소개</a> &#xa0; | &#xa0; 
   <a href="#bust_in_silhouette-팀원-소개">팀원 소개</a> &#xa0; | &#xa0; 
@@ -157,12 +159,16 @@ $ npm run dev
 
 - 로그아웃은 화면 위쪽의 아바타 메뉴에서 로그아웃 버튼을 누르면 로그아웃이 가능합니다.
 
+
+
 ### :heavy_check_mark: 메인 페이지
 
 - 메인 페이지는 각 페이지 별 게시글의 최신 글 정보를 볼 수 있고 위의 네비게이션 바 혹은 게시글 제목의 버튼을 누르면 페이지로 이동합니다.
 
   - 각 블록 에서는 최근 게시글 2개를 볼 수 있으며 상단의 + 버튼을 누르면 해당 페이지로 이동합니다.
   - 사용자가 게시글 카드를 hover 할 시 상세보기, 디스코드 대화, 프로필 보기 버튼을 사용할 수 있습니다.
+    
+![메인 페이지](https://github.com/MaplelandPP/Maplanet_Front/assets/56256924/f9adf647-d0fd-444a-910b-b5eff93fae29)
 
 ### :heavy_check_mark: 심쩔 구인 페이지, 겹사 구인 페이지, 나무꾼 구인 페이지, 파티 구인 페이지
 
@@ -170,12 +176,16 @@ $ npm run dev
 
   - 게시글은 기본적으로 8개가 표시되며, 다음 글을 보기 위해서 아래의 페이지네이션 버튼을 클릭하여 다음 페이지의 글들을 볼 수 있습니다.
   - 사용자가 게시글 카드를 hover 할 시 상세보기, 디스코드 대화, 프로필 보기 버튼을 사용할 수 있습니다.
+ 
+![게시글 페이지와 검색](https://github.com/MaplelandPP/Maplanet_Front/assets/56256924/67683d92-379b-42b9-87fb-9a6174499678)
 
 ### :heavy_check_mark: 게시글 상세보기
 
 - 게시글 상세보기는 각 게시글을 사용자가 hover했을 시 해당 메뉴를 클릭하면 팝업 형태로 게시글 상세정보를 확인할 수 있습니다.
 
   - 각 게시글마다 상세정보가 다르며, 상세보기에서도 1:1대화와 프로필 보기가 가능합니다.
+ 
+![게시글 상세](https://github.com/MaplelandPP/Maplanet_Front/assets/56256924/829f18b4-7a42-4a7f-9a9f-947634208154)
 
 ### :heavy_check_mark: 프로필 페이지
 
@@ -184,13 +194,19 @@ $ npm run dev
   - 프로필에서는 작성자가 어떤 게시글을 작성했는지 볼 수 있습니다.
   - 또한 자신이 작성한 글이 아니라면 매너지수와 신고지수를 올리거나 내릴 수 있습니다.
   - 자신이 작성한 글이고 게시글을 닫거나 완료된 게시글을 완료표시 할 수 있습니다.
+  
+![프로필 페이지](https://github.com/MaplelandPP/Maplanet_Front/assets/56256924/f6ac6499-b675-4016-aeb0-5822c3ce64a6)
 
 ### :heavy_check_mark: 1:1 대화
 
 - 1:1 대화는 각 게시글을 사용자가 hover했을 시 해당 메뉴를 클릭하면 디스코드 앱으로 연결되며, 게시글 작성자와 디스코드로 1:1 대화를 할 수 있습니다.
   - 디스코드 사용자가 1:1 대화 설정을 하지 않았다면 메세지가 가지 않을 수 있습니다.
+ 
+![1대1대화](https://github.com/MaplelandPP/Maplanet_Front/assets/56256924/f21636e6-c995-4d52-b279-dda1e95b2948)
 
 ### :heavy_check_mark: 게시글 작성
+
+![게시글 작성](https://github.com/MaplelandPP/Maplanet_Front/assets/56256924/590a0964-ed3a-41e5-a49e-af085e7bc299)
 
 - 게시글 작성 페이지는 사용자가 로그인을 한 후 상단 바의 새글 버튼을 누르면 해당 페이지로 이동합니다.
 
@@ -199,8 +215,13 @@ $ npm run dev
 
 ### :heavy_check_mark: 공지사항
 
+![공지사항](https://github.com/MaplelandPP/Maplanet_Front/assets/56256924/3693443f-3d00-4742-b7cf-cae0a9e78d40)
+
 - 공지사항 페이지는 상단 네비게이션 바에서 공지사항 링크를 클릭하면 이동합니다.
 - 공지사항 페이지는 백엔드(관리자) 에서 등록된 글이 보여지며, 해당 게시글을 클릭하면 아래에 상세 내용이 보여집니다.
+- 공지사항 작성은 권한이 있는 사람만 작성이 가능 합니다.
+
+![공지사항](https://github.com/MaplelandPP/Maplanet_Front/assets/56256924/b1a8e7a5-1e43-4540-8733-89c5bb461407)
 
 ## :pencil2: 프로젝트를 통해 배운 점
 
