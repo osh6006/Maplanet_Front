@@ -18,18 +18,21 @@
 ![메인 페이지](https://github.com/MaplelandPP/Maplanet_Front/assets/56256924/fd6b5555-fe9d-42d9-bded-d22612b4965d)
 
 <p align="center">
-  <a href="#dart-프로젝트-소개">프로젝트 소개</a> &#xa0; | &#xa0; 
-  <a href="#bust_in_silhouette-팀원-소개">팀원 소개</a> &#xa0; | &#xa0; 
-  <a href="#rocket-개발-환경">개발 환경</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-필수-사항">필수 사항</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-시작하기">시작하기</a> &#xa0; | &#xa0;
-  <a href="#hammer-채택-기술">채택 기술</a> &#xa0; | &#xa0;
-  <a href="#sparkles-페이지-별-기능">페이지 별 기능</a> &#xa0; | &#xa0;
-  <a href="#lightbulb-프로젝트를-통해-배운-부분">프로젝트를 통해 배운 부분</a> &#xa0; | &#xa0;
-  <a href="#construction-트러블-슈팅">트러블 슈팅</a> &#xa0; | &#xa0;
-  <a href="#roller_coaster-개선해야-할-사항">개선해야 할 사항</a> &#xa0; | &#xa0;
-  <a href="#memo-라이센스">라이센스</a> &#xa0; | &#xa0;
-  <a href="https://github.com/osh6006" target="_blank">작성자</a>
+<a href="#dart-프로젝트-소개">프로젝트 소개</a> &#xa0; | &#xa0; 
+<a href="#bust_in_silhouette-팀원-소개">팀원 소개</a> &#xa0; | &#xa0; 
+<a href="#rocket-개발-환경">개발 환경</a> &#xa0; | &#xa0;
+<a href="#white_check_mark-필수-사항">필수 사항</a> &#xa0; | &#xa0;
+<a href="#checkered_flag-시작하기">시작하기</a> &#xa0; | &#xa0;
+<a href="#hammer-채택-기술">채택 기술</a> &#xa0; | &#xa0;
+<a href="#developer-역할-분담">역할 분담</a> &#xa0; | &#xa0;
+<a href="#calendar-개발-기간-및-작업관리">개발 기간 및 작업관리</a> &#xa0; | &#xa0;
+<a href="#sparkles-페이지-별-기능">페이지 별 기능</a> &#xa0; | &#xa0;
+<a href="#lightbulb-프로젝트를-통해-배운-부분">프로젝트를 통해 배운 부분</a> &#xa0; | &#xa0;
+<a href="#construction-트러블-슈팅">트러블 슈팅</a> &#xa0; | &#xa0;
+<a href="#roller_coaster-개선해야-할-사항">개선해야 할 사항</a> &#xa0; | &#xa0;
+<a href="#memo-라이센스">라이센스</a> &#xa0; | &#xa0;
+<a href="https://github.com/osh6006" target="_blank">작성자</a>
+
 </p>
 <br>
 
@@ -149,6 +152,35 @@ $ npm run dev
 
 - 현 웹 사이트에서는 제공하고 있는 모든 게시글 작성 방식을 React Hook Form을 사용하여 유효성 검사 폼 상태 관리 에러처리를 하고 있습니다.
 
+## :developer: 역할 분담
+
+오황석
+
+- UI
+  - 페이지 : 홈, 심쩔·겹사·나무꾼·파티 게시판, 게시글 등록 , 게시글 상세,
+  - 공통 컴포넌트 : 게시글 템플릿, 게시글 카드, 버튼, 페이지네이션, 아바타 메뉴, 인라인 프로필, 태그뱃지, 검색, 검색 필터, 네비게이션, footer, InputBox
+- 기능
+  - 소셜 로그인, 게시글 검색, 게시글 등록, 게시글 상세 확인, 게시글 불러오기, 게시글 페이지네이션, 공지사항 불러오기
+
+최현식
+
+- UI
+  - 페이지 : 홈, 프로필, 팔로잉&팔로워 리스트, 상품 등록, 상품 수정, 채팅 목록, 404 페이지
+  - 공통 컴포넌트 : 홈 공지사항, 네비게이션 바
+- 기능
+  - 게시글 완료, 유저 매너·신고 지수, 유저 프로필 게시글 불러오기, 유저 프로필 필터
+
+## :calendar: 개발 기간 및 작업 관리
+
+개발 기간
+전체 개발 기간 : 2024-02-20 ~ 2024-03-14
+UI 구현 : 2024-02-20 ~ 2024-03-01
+기능 구현 : 2024-03-01 ~ 2024-03-14
+
+작업 관리
+GitHub Projects와 gather를 사용하여 소통하면서 진행 상황을 공유했습니다.
+주간회의를 진행하며 작업 순서와 방향성에 대한 고민을 나누고 notion에 회의 내용을 기록했습니다.
+
 ## :sparkles: 페이지별 기능
 
 ### :heavy_check_mark: 디스코드 로그인 / 로그아웃
@@ -159,15 +191,13 @@ $ npm run dev
 
 - 로그아웃은 화면 위쪽의 아바타 메뉴에서 로그아웃 버튼을 누르면 로그아웃이 가능합니다.
 
-
-
 ### :heavy_check_mark: 메인 페이지
 
 - 메인 페이지는 각 페이지 별 게시글의 최신 글 정보를 볼 수 있고 위의 네비게이션 바 혹은 게시글 제목의 버튼을 누르면 페이지로 이동합니다.
 
   - 각 블록 에서는 최근 게시글 2개를 볼 수 있으며 상단의 + 버튼을 누르면 해당 페이지로 이동합니다.
   - 사용자가 게시글 카드를 hover 할 시 상세보기, 디스코드 대화, 프로필 보기 버튼을 사용할 수 있습니다.
-    
+
 ![메인 페이지](https://github.com/MaplelandPP/Maplanet_Front/assets/56256924/f9adf647-d0fd-444a-910b-b5eff93fae29)
 
 ### :heavy_check_mark: 심쩔 구인 페이지, 겹사 구인 페이지, 나무꾼 구인 페이지, 파티 구인 페이지
@@ -176,7 +206,7 @@ $ npm run dev
 
   - 게시글은 기본적으로 8개가 표시되며, 다음 글을 보기 위해서 아래의 페이지네이션 버튼을 클릭하여 다음 페이지의 글들을 볼 수 있습니다.
   - 사용자가 게시글 카드를 hover 할 시 상세보기, 디스코드 대화, 프로필 보기 버튼을 사용할 수 있습니다.
- 
+
 ![게시글 페이지와 검색](https://github.com/MaplelandPP/Maplanet_Front/assets/56256924/67683d92-379b-42b9-87fb-9a6174499678)
 
 ### :heavy_check_mark: 게시글 상세보기
@@ -184,7 +214,7 @@ $ npm run dev
 - 게시글 상세보기는 각 게시글을 사용자가 hover했을 시 해당 메뉴를 클릭하면 팝업 형태로 게시글 상세정보를 확인할 수 있습니다.
 
   - 각 게시글마다 상세정보가 다르며, 상세보기에서도 1:1대화와 프로필 보기가 가능합니다.
- 
+
 ![게시글 상세](https://github.com/MaplelandPP/Maplanet_Front/assets/56256924/829f18b4-7a42-4a7f-9a9f-947634208154)
 
 ### :heavy_check_mark: 프로필 페이지
@@ -194,14 +224,14 @@ $ npm run dev
   - 프로필에서는 작성자가 어떤 게시글을 작성했는지 볼 수 있습니다.
   - 또한 자신이 작성한 글이 아니라면 매너지수와 신고지수를 올리거나 내릴 수 있습니다.
   - 자신이 작성한 글이고 게시글을 닫거나 완료된 게시글을 완료표시 할 수 있습니다.
-  
+
 ![프로필 페이지](https://github.com/MaplelandPP/Maplanet_Front/assets/56256924/f6ac6499-b675-4016-aeb0-5822c3ce64a6)
 
 ### :heavy_check_mark: 1:1 대화
 
 - 1:1 대화는 각 게시글을 사용자가 hover했을 시 해당 메뉴를 클릭하면 디스코드 앱으로 연결되며, 게시글 작성자와 디스코드로 1:1 대화를 할 수 있습니다.
   - 디스코드 사용자가 1:1 대화 설정을 하지 않았다면 메세지가 가지 않을 수 있습니다.
- 
+
 ![1대1대화](https://github.com/MaplelandPP/Maplanet_Front/assets/56256924/f21636e6-c995-4d52-b279-dda1e95b2948)
 
 ### :heavy_check_mark: 게시글 작성
