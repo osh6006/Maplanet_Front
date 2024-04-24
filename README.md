@@ -24,7 +24,7 @@
 <a href="#white_check_mark-필수-사항">필수 사항</a> &#xa0; | &#xa0;
 <a href="#checkered_flag-시작하기">시작하기</a> &#xa0; | &#xa0;
 <a href="#hammer-채택-기술">채택 기술</a> &#xa0; | &#xa0;
-<a href="#developer-역할-분담">역할 분담</a> &#xa0; | &#xa0;
+<a href="#heavy_division_sign-역할-분담">역할 분담</a> &#xa0; | &#xa0;
 <a href="#calendar-개발-기간-및-작업관리">개발 기간 및 작업관리</a> &#xa0; | &#xa0;
 <a href="#sparkles-페이지-별-기능">페이지 별 기능</a> &#xa0; | &#xa0;
 <a href="#lightbulb-프로젝트를-통해-배운-부분">프로젝트를 통해 배운 부분</a> &#xa0; | &#xa0;
@@ -152,7 +152,7 @@ $ npm run dev
 
 - 현 웹 사이트에서는 제공하고 있는 모든 게시글 작성 방식을 React Hook Form을 사용하여 유효성 검사 폼 상태 관리 에러처리를 하고 있습니다.
 
-## :developer: 역할 분담
+## :heavy_division_sign: 역할 분담
 
 오황석
 
