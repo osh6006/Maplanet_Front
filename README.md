@@ -44,12 +44,12 @@
 
 ## :bust_in_silhouette: 팀원 소개
 
-| 이름           | 주특기  | 깃허브 주소                     | 블로그주소                     |
-| :------------- | :------ | :------------------------------ | ------------------------------ |
-| 오황석 F.E     | React   | https://github.com/osh6006      | https://osh6006.github.io/     |
-| 최현식 F.E     | React   | https://github.com/camac0808    |
-| 박준수 B.E (L) | Node.js | https://github.com/crystalation |
-| 김용식 B.E     | Node.js | https://github.com/ystar5008    | https://ystar5008.tistory.com/ |
+| 이름            깃허브 주소                     | 블로그주소                     |
+| :------------- | :------------------------------ | ------------------------------ |
+| 오황석 F.E     | https://github.com/osh6006      | https://osh6006.github.io/     |
+| 최현식 F.E     |  https://github.com/camac0808    |
+| 박준수 B.E (L) |  https://github.com/crystalation |
+| 김용식 B.E     | https://github.com/ystar5008    | https://ystar5008.tistory.com/ |
 
 ## :rocket: 개발 환경
 
