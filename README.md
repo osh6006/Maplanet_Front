@@ -260,9 +260,14 @@ $ npm run dev
 
 프로젝트를 통해 배운 점을 저의 블로그에 정리하였습니다.
 
+[Nextjs 에서 fetch 사용하여 데이터 가져오기 ](https://osh6006.github.io/posts/Nextjs%EC%97%90%EC%84%9C-fetch%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0/)
+[Nextjs에서 loading과 error 다루기](https://osh6006.github.io/posts/Nextjs%EC%97%90%EC%84%9C-loading-error-%EB%8B%A4%EB%A3%A8%EA%B8%B0/)
+
 ## :construction: 트러블 슈팅
 
 프로젝트 도중 발생한 트러블 슈팅에 대해 저의 블로그에 정리하였습니다.
+
+[쿠키에 대해서 자세히 알아보기 (With Next.js)](https://osh6006.github.io/posts/Nextjs%EC%99%80-cookie/)
 
 ## :memo: License
 
